@@ -1,0 +1,89 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+docs: https://api.rentberry.com/docs
+api: Rentberry API
+base_url: https://api.rentberry.com/
+media_type: application/json
+authentication:
+  style: opaque bearer token in a request header
+  scheme_name: XAuthToken
+  detail: authentication/rentberry-authentication.yml
+  applied_to: 122 of 220 operations
+versioning:
+  style: uri-path-template
+  pattern: /v{version}/...
+  note: >-
+    Every one of the 188 paths is templated as /v{version}/ with a `version` path parameter constrained to
+    the regex \d+ — the version is a caller-supplied integer rather than a fixed path segment. Operation
+    descriptions state the minimum supported version in prose, e.g. "Available since API version 1" /
+    "Available since API version 2". The document's info.version is 4.
+  info_version: 4
+  observed_versions:
+  - 1
+  - 2
+  - 3
+  - 4
+  detail: lifecycle/rentberry-lifecycle.yml
+idempotency:
+  supported: false
+  evidence: >-
+    No Idempotency-Key header, parameter, or `idempoten*` string appears anywhere in the OpenAPI document
+    (0 occurrences), and Rentberry publishes no idempotency guidance. No Idempotency pointer is emitted.
+pagination:
+  style: page-and-limit (offset), with a cursor variant on messages
+  parameters:
+  - name: page
+    in: query
+    used_by_operations: 8
+  - name: limit
+    in: query
+    used_by_operations: 12
+  - name: before
+    in: query
+    note: cursor-style parameter on GET /v{version}/messages/{id}
+  response_fields:
+    note: >-
+      The spec does not declare a shared pagination envelope schema; list responses return arrays or
+      operation-specific objects. No RFC 8288 Link header is documented.
+filtering:
+  note: Per-operation query parameters (active, deleted, type, transactionType, provider, listingType, countryCode, country, withApartments, userType).
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or correlation header is documented. Responses are fronted by Cloudflare and carry a
+    `cf-ray` identifier, which is edge infrastructure rather than a Rentberry API contract.
+error_envelope:
+  format: custom-envelope
+  shape: '{"body": null, "error": {"code": <int>, "message": <string>, "description": <string>}}'
+  rfc9457: false
+  detail: errors/rentberry-problem-types.yml
+  application_codes: >-
+    Response keys 1001-1005 in the spec are Rentberry application codes (e.g. 1005 "User blocked or not
+    verified"), not HTTP statuses.
+rate_limiting:
+  documented: true
+  signal: >-
+    27 operations declare a 429 response ("Rate limit exceeded" / "Too many requests from one IP"),
+    concentrated on auth, registration, OAuth, phone/SMS verification, listing inquiries and open-house
+    applications. No RateLimit-* / Retry-After response headers or published quota numbers were found, so
+    no rate-limits/ artifact is emitted.
+  operations_with_429: 11
+event_surface:
+  consumer_webhooks: false
+  note: >-
+    The spec exposes INBOUND webhook receivers Rentberry runs for its own third-party integrations
+    (/mailchimp/webhook, /mandrill/webhook, /stripe/connected/webhook, /stripe/direct/webhook,
+    /contract/callback, /user/verify/callback, /email/unsubscribe/callback). These are endpoints Rentberry
+    consumes, not an event-subscription surface offered to API consumers, so no AsyncAPI or Webhooks
+    artifact/pointer is emitted.
+cross_links:
+  authentication: authentication/rentberry-authentication.yml
+  errors: errors/rentberry-problem-types.yml
+  lifecycle: lifecycle/rentberry-lifecycle.yml
+  data_model: data-model/rentberry-data-model.yml
+  conformance: conformance/rentberry-conformance.yml

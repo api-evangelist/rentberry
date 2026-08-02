@@ -1,0 +1,275 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+format: custom-envelope
+notes: 'Rentberry does not use RFC 9457 application/problem+json. Live probes of api.rentberry.com return a custom
+  JSON envelope: {"body":null,"error":{"code":404,"message":"Oops, error occurred","description":"Object not found"}}
+  — observed 2026-08-02 on GET https://api.rentberry.com/docs.json (404) and GET https://api.rentberry.com/v1/openapi.json
+  (403, "Not enough rights"). The OpenAPI declares no error schema in components; 4xx responses carry a description
+  only.'
+envelope:
+  shape: '{"body": null, "error": {"code": <int>, "message": <string>, "description": <string>}}'
+  fields:
+  - name: error.code
+    description: HTTP-aligned or application-specific numeric code
+  - name: error.message
+    description: Generic message, e.g. "Oops, error occurred"
+  - name: error.description
+    description: Human-readable cause, e.g. "Object not found", "Not enough rights"
+  evidence:
+  - url: https://api.rentberry.com/docs.json
+    http_status: 404
+    body: '{"body":null,"error":{"code":404,"message":"Oops, error occurred","description":"Object not found"}}'
+    fetched: '2026-08-02'
+  - url: https://api.rentberry.com/v1/openapi.json
+    http_status: 403
+    body: '{"body":null,"error":{"code":403,"message":"Oops, error occurred","description":"Not enough rights"}}'
+    fetched: '2026-08-02'
+application_codes_note: Codes 1001-1005 appear as response keys in the OpenAPI and are Rentberry application-level
+  codes, not HTTP status codes.
+problems:
+- status: 400
+  title: Bad request - Validation failed
+  observed_titles:
+  - Bad request - Validation failed
+  - Validation failed.
+  - Validation failed
+  - No OAuth code provided
+  - Error getting signing URL
+  - Invalid parameters
+  operation_count: 92
+  source_operations:
+  - delete_api_v1_oauth_authorize_disconnect_user
+  - delete_api_v3_user_delete
+  - get_api_v1_contract_download
+  - get_api_v1_contract_sign
+  - get_api_v1_contract_sign_by_token
+  - get_api_v1_feature_view_prices
+  - get_api_v1_landing_statistics_by_type
+  - get_api_v1_landing_statistics_by_type_and_city
+- status: 401
+  title: Unauthorized
+  observed_titles:
+  - Unauthorized
+  - Unauthorized - Missing or invalid authentication token
+  - Unauthorized - Authentication required
+  - Unauthorized - User is not authenticated
+  - Authorization failed
+  - Unauthorized - Invalid or missing authentication
+  operation_count: 120
+  source_operations:
+  - delete_api_v1_apartment_apply_decline
+  - delete_api_v1_apartment_archive
+  - delete_api_v1_apartment_favorite_delete
+  - delete_api_v1_apartment_picture_delete
+  - delete_api_v1_apartment_tour_apply_decline
+  - delete_api_v1_applicant_attachment_delete
+  - delete_api_v1_contract_delete
+  - delete_api_v1_contract_template_delete
+- status: 402
+  title: Payment required
+  observed_titles:
+  - Payment required
+  - Payment required - Feature is locked
+  - Payment required - Advanced features subscription needed
+  - Payment required - No promotion tickets available
+  - Payment required or invalid ticket
+  operation_count: 6
+  source_operations:
+  - post_api_v1_apartment_new
+  - post_api_v1_apartment_promote
+  - post_api_v1_contract_create
+  - post_api_v1_screening_screen_pay
+  - post_api_v1_screening_screen_user
+  - post_api_v1_screening_validate_screening_data
+- status: 403
+  title: Access denied to rental.
+  observed_titles:
+  - Access denied to rental.
+  - Forbidden
+  - Forbidden - User does not own this listing
+  - Forbidden - User does not have permission to view this rental
+  - Access denied to conversation
+  - Access denied to subscription.
+  operation_count: 54
+  source_operations:
+  - delete_api_v1_apartment_apply_decline
+  - delete_api_v1_apartment_tour_apply_decline
+  - delete_api_v1_applicant_attachment_delete
+  - delete_api_v1_contract_delete
+  - delete_api_v1_oauth_authorize_disconnect_user
+  - delete_api_v1_rental_payment_stripe_cancel
+  - delete_api_v1_screening_request_cancel
+  - delete_api_v3_user_delete
+- status: 404
+  title: Listing not found
+  observed_titles:
+  - Listing not found
+  - Application not found
+  - Contract not found
+  - Device not found with provided token
+  - Listing not found or not active
+  - (Real code 11001) Request already deleted
+  operation_count: 74
+  source_operations:
+  - delete_api_v1_apartment_apply_decline
+  - delete_api_v1_apartment_archive
+  - delete_api_v1_apartment_favorite_delete
+  - delete_api_v1_apartment_picture_delete
+  - delete_api_v1_apartment_tour_apply_decline
+  - delete_api_v1_contract_delete
+  - delete_api_v1_contract_template_delete
+  - delete_api_v1_device_delete
+- status: 405
+  title: (Real code 6024) Contract already signed
+  observed_titles:
+  - (Real code 6024) Contract already signed
+  - (Real code 1001) Not your image - Cannot edit image owned by another user
+  - (Real code 21001) Feature disabled - Open house feature is not available
+  - (Real code 12003) Application already accepted
+  - (Real code 11002) Request already canceled
+  - (Real code 11004) Request already processed
+  operation_count: 27
+  source_operations:
+  - delete_api_v1_apartment_archive
+  - delete_api_v1_apartment_picture_delete
+  - delete_api_v1_apartment_tour_apply_decline
+  - delete_api_v1_contract_template_delete
+  - delete_api_v1_device_delete
+  - delete_api_v1_screening_request_cancel
+  - get_api_v1_contract_sign
+  - get_api_v1_contract_sign_by_token
+- status: 406
+  title: (Real code 12004) Application already declined
+  observed_titles:
+  - (Real code 12004) Application already declined
+  - (Real code 6023) Cannot create contract for someone else's apartment
+  - (Real code 1011) Cannot restore deleted listing
+  - (Real code 1025) Cannot edit rented listing
+  - (Real code 1021) Cannot archive/delete rented listing
+  - (Real code 1003) Cannot delete cover image
+  operation_count: 10
+  source_operations:
+  - delete_api_v1_apartment_archive
+  - delete_api_v1_apartment_picture_delete
+  - delete_api_v1_apartment_tour_apply_decline
+  - delete_api_v1_screening_request_cancel
+  - post_api_v1_apartment_edit
+  - post_api_v1_contract_create
+  - post_api_v1_screening_request_resend
+  - post_api_v1_screening_screen_user
+- status: 407
+  title: (Real code 6025) Template error - cannot resolve contract template file
+  observed_titles:
+  - (Real code 6025) Template error - cannot resolve contract template file
+  - (Real code 1020) Cannot set pet deposit without selecting cat or dog
+  - (Real code 11011) Cannot cancel paid screening
+  operation_count: 3
+  source_operations:
+  - delete_api_v1_screening_request_cancel
+  - post_api_v1_apartment_edit
+  - post_api_v1_contract_create
+- status: 409
+  title: Already verified or has pending request
+  observed_titles:
+  - Already verified or has pending request
+  - Application already has an applicant.
+  - Application is withdrawn or declined.
+  - Application is withdrawn.
+  - Conflict - Country code cannot be resolved from address
+  - Place not found
+  operation_count: 13
+  source_operations:
+  - get_api_v1_credit_score_report
+  - get_api_v1_criminal_report
+  - get_api_v1_rental_activate
+  - post_api_v1_applicant_create
+  - post_api_v1_applicant_edit
+  - post_api_v1_country_settings
+  - post_api_v1_feature_create_stripe_payment
+  - post_api_v1_user_verify
+- status: 410
+  title: Listing expired or not viewable
+  observed_titles:
+  - Listing expired or not viewable
+  operation_count: 1
+  source_operations:
+  - get_api_v4_apartment_view
+- status: 429
+  title: Rate limit exceeded
+  observed_titles:
+  - Rate limit exceeded
+  - Too many requests - Rate limit exceeded
+  operation_count: 11
+  source_operations:
+  - get_api_v1_oauth_authorize
+  - get_api_v1_oauth_authorize_by_short_lived_access_token
+  - get_api_v1_oauth_init
+  - post_api_v1_apartment_tour_apply
+  - post_api_v1_auth_email_otp_request
+  - post_api_v1_listing_inquiry_create
+  - post_api_v1_user_phone_change
+  - post_api_v3_auth_register
+- status: 500
+  title: Error sending email
+  observed_titles:
+  - Error sending email
+  - Internal server error
+  operation_count: 2
+  source_operations:
+  - post_api_v1_contract_invite
+  - post_api_v1_user_phone_code_validate
+- status: 1001
+  title: Listing already rented
+  observed_titles:
+  - Listing already rented
+  operation_count: 1
+  source_operations:
+  - post_api_v1_apartment_apply_add
+- status: 1002
+  title: Listing not applicable for applications
+  observed_titles:
+  - Listing not applicable for applications
+  operation_count: 1
+  source_operations:
+  - post_api_v1_apartment_apply_add
+- status: 1003
+  title: Cannot apply to your own listing
+  observed_titles:
+  - Cannot apply to your own listing
+  operation_count: 1
+  source_operations:
+  - post_api_v1_apartment_apply_add
+- status: 1004
+  title: Cannot edit application that has already been accepted by homeowner
+  observed_titles:
+  - Cannot edit application that has already been accepted by homeowner
+  - User already registered
+  operation_count: 2
+  source_operations:
+  - post_api_v1_apartment_apply_edit
+  - post_api_v3_auth_register
+- status: 1005
+  title: Listing already rented
+  observed_titles:
+  - Listing already rented
+  - User blocked
+  - User blocked or not verified
+  operation_count: 3
+  source_operations:
+  - post_api_v1_auth_token
+  - post_api_v3_auth_register
+  - put_api_v1_apartment_apply_accept
+- status: default
+  title: null
+  observed_titles: []
+  operation_count: 22
+  source_operations:
+  - get_api_v1_notification_test_helper_list
+  - get_api_v4_mandrill_webhook
+  - get_get_email_parameters
+  - get_get_email_types
+  - post_api_v1_notification_test_helper_send
+  - post_api_v1_stripe_connected_webhook
+  - post_api_v1_stripe_direct_webhook
+  - post_api_v1_test_helper_apartment_create

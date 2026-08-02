@@ -1,0 +1,90 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: >-
+    OpenAPI 3.0.0 document with 188 paths / 220 operations / 44 tags / 164 component schemas, published in
+    the Swagger UI at https://api.rentberry.com/docs (embedded as <script id="swagger-data">). Every
+    operation carries a unique operationId, a summary and a description.
+- id: openapi-securitySchemes-defined
+  conforms: false
+  evidence: >-
+    122 operations reference a security requirement named `XAuthToken`, but the document has no
+    components.securitySchemes block — the scheme is used and never defined.
+- id: openapi-operations-tagged
+  conforms: false
+  evidence: 22 of 220 operations carry no tags.
+- id: openapi-servers-declared
+  conforms: false
+  evidence: The document declares no `servers[]`; the base URL is only knowable from the docs host (api.rentberry.com).
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No oauth2 security scheme. The OAuth tag is end-user social login (Google, Apple) into Rentberry
+    accounts, not an authorization server for API consumers.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on rentberry.com and api.rentberry.com (2026-08-02).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a custom envelope {"body":null,"error":{"code","message","description"}}; no
+    application/problem+json media type appears in the spec or in live responses.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on rentberry.com and api.rentberry.com (2026-08-02).
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation headers documented; deprecation is spec-flag only.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 (2026-08-02).
+- id: llms-txt
+  conforms: false
+  evidence: https://rentberry.com/llms.txt returns 404 (2026-08-02).
+- id: a2a-agent-card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on both rentberry.com and
+    api.rentberry.com (2026-08-02). No agent card artifact is written.
+- id: mcp
+  conforms: false
+  evidence: No hosted MCP server found; /mcp returns 404 on both hosts (2026-08-02).
+- id: graphql
+  conforms: false
+  evidence: /graphql returns 404 on api.rentberry.com (2026-08-02).
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    No event/streaming surface offered to consumers. The webhook paths in the spec are inbound receivers
+    for Rentberry's own Stripe / Mailchimp / Mandrill integrations.
+- id: grpc-protobuf
+  conforms: true
+  evidence: >-
+    First-party proto3 service definitions published at
+    https://github.com/Rentberry/geocoder/blob/master/api/geocoder.proto (GeocodeService, TimezoneService),
+    with PHP bindings on Packagist as rentberry/geocoder-grpc.
+- id: hsts
+  conforms: true
+  evidence: >-
+    strict-transport-security max-age=31536000; includeSubDomains; preload observed on both rentberry.com
+    and api.rentberry.com (2026-08-02). See security/rentberry-domain-security.yml.
+- id: dnssec
+  conforms: false
+  evidence: No DNSSEC on rentberry.com (probed 2026-08-02).
+- id: caa
+  conforms: false
+  evidence: No CAA records on rentberry.com (probed 2026-08-02).
+- id: spf-dmarc
+  conforms: true
+  evidence: SPF present; DMARC present with policy=quarantine (probed 2026-08-02).
+compliance_program:
+  published: false
+  note: >-
+    No trust center, no named certifications (SOC 2 / ISO 27001 / PCI DSS / HIPAA), and no vulnerability
+    disclosure or bug bounty page were found by probe on 2026-08-02, so no `Compliance`, `TrustCenter`,
+    `Security` or `VulnerabilityDisclosure` pointers are emitted. Rentberry handles US credit and criminal
+    background screening (via Microbilt integrations in its GitHub org) and processes card payments through
+    Stripe, so a published compliance posture is a real gap worth raising with the provider.

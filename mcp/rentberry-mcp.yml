@@ -1,0 +1,100 @@
+generated: '2026-08-02'
+method: derived
+status: candidate
+source: openapi/rentberry-openapi.yml
+server:
+  name: rentberry
+  transport: null
+  url: null
+  published: false
+search:
+  note: >-
+    No official Rentberry MCP server exists. Probed 2026-08-02 — https://api.rentberry.com/mcp 404,
+    https://rentberry.com/mcp 404, no /.well-known/oauth-protected-resource on either host, nothing in the
+    Rentberry GitHub organization (10 repos, all infrastructure), nothing on npm under
+    @modelcontextprotocol or a rentberry scope, and no MCP mention in the docs. No `MCPServer` pointer is
+    wired into apis.yml — this file is a candidate design derived from the OpenAPI, not a claim that
+    Rentberry ships an MCP server.
+authentication:
+  required: true
+  scheme: XAuthToken (see authentication/rentberry-authentication.yml)
+  note: >-
+    Every candidate tool below except the public search/location reads requires a user token from
+    post_api_v1_auth_token, so an MCP deployment would need per-user credentials, not a service key.
+tools:
+- name: search_listings_by_place
+  description: Search long-term rental listings by place (city, neighbourhood, address).
+  source_operation: openapi/rentberry-openapi.yml#post_api_v4_apartment_search_place
+- name: search_listings_by_bounds
+  description: Search listings inside a map bounding box.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v4_apartment_search_bounds
+- name: get_search_filter_config
+  description: Get the available search filters for a country and transaction type.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v4_search_filter
+- name: get_listing
+  description: Get public listing details.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v4_apartment_view
+- name: get_similar_listings
+  description: Get listings similar to a given listing.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_apartment_search_similar_apartments
+- name: get_recommended_listings
+  description: Get recommended listings for the authenticated user.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v4_recommendation_request_get
+- name: geocode_address
+  description: Geocode a formatted address to structured location data.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v4_place_geocoding
+- name: list_countries
+  description: List supported countries.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_country_list
+- name: save_search
+  description: Save a set of search criteria for the authenticated user.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v4_save_search
+- name: add_listing_to_favorites
+  description: Add a listing to the authenticated user's favorites.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_apartment_favorite_add
+- name: create_listing_inquiry
+  description: Send an inquiry about a listing.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_listing_inquiry_create
+- name: apply_to_listing
+  description: Submit a rental application for a listing.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_apartment_apply_add
+- name: list_my_applications
+  description: List applications sent by the authenticated user.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_apartment_apply_list
+- name: create_listing
+  description: Create a new rental listing as a homeowner.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_apartment_new
+- name: list_my_listings
+  description: List the authenticated homeowner's listings.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_apartment_list
+- name: create_screening_request
+  description: Create a tenant screening request.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_screening_request_create
+- name: get_screening_request
+  description: Get a screening request by reference.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_screening_request_get
+- name: create_contract
+  description: Create a rental contract.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_contract_create
+- name: get_contract_signing_url
+  description: Get the signing URL for a contract.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_contract_sign
+- name: list_rentals
+  description: List the authenticated user's rentals.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_application_rentals_list
+- name: list_rental_payments
+  description: List Stripe payments for a rental.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_rental_payment_list_for_rental_stripe
+- name: list_conversations
+  description: List messaging conversations for a user type.
+  source_operation: openapi/rentberry-openapi.yml#get_api_v1_messages_list
+- name: send_message
+  description: Send a message in a conversation.
+  source_operation: openapi/rentberry-openapi.yml#post_api_v1_message_create
+coverage:
+  rest_operations_total: 220
+  candidate_tools: 22
+  note: >-
+    Deliberately a curated subset of the marquee read/write flows, not a 1:1 wrap of all 220 operations.
+    Write tools touching money (payouts, subscriptions, feature payments), account deletion and the
+    testing-helper fixture family are intentionally excluded from the candidate surface.

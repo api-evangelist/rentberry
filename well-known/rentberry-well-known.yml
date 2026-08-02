@@ -1,0 +1,79 @@
+generated: '2026-08-02'
+method: probed
+source: live GET probes with a browser User-Agent (Cloudflare returns 403 to default curl UA)
+summary:
+  documents_found: 0
+  note: >-
+    Neither rentberry.com nor api.rentberry.com serves any /.well-known/ discovery document. rentberry.com
+    answers a 404 with the SPA HTML shell for every /.well-known/* path; api.rentberry.com answers a plain
+    nginx 404. No raw files were saved because nothing returned 200.
+hosts:
+- host: https://rentberry.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    note: >-
+      Present (23 KB) but not a /.well-known/ document. Disallows /api/, /u/, /auth*, and WordPress blog
+      admin paths.
+- host: https://api.rentberry.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /docs
+    status: 200
+    note: >-
+      Not a /.well-known/ document, but this is where the machine-readable contract actually lives — the
+      Swagger UI page embeds the full OpenAPI 3.0.0 document. Harvested to openapi/.
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /docs.json
+    status: 404
+  - path: /graphql
+    status: 404
+  - path: /mcp
+    status: 404
+subdomains_probed:
+- host: developer.rentberry.com
+  result: DNS does not resolve
+- host: developers.rentberry.com
+  result: DNS does not resolve
+- host: docs.rentberry.com
+  result: DNS does not resolve
+- host: status.rentberry.com
+  result: DNS does not resolve
+- host: help.rentberry.com
+  result: 200 (Intercom-hosted help center)

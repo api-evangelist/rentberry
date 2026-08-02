@@ -1,0 +1,102 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+docs: https://api.rentberry.com/docs
+summary:
+  types:
+  - token
+  api_key_in:
+  - header
+  oauth2_flows: []
+  note: >-
+    The Rentberry OpenAPI 3.0.0 applies a security requirement named `XAuthToken` to 122 of its 220
+    operations, but `components.securitySchemes` is ABSENT from the document — the scheme is referenced
+    and never defined. This is a spec defect captured in overlays/rentberry-openapi-overlay.yaml, not an
+    API Evangelist assumption: the token flow below is reconstructed from the auth operations that the
+    spec DOES describe, plus live probes of api.rentberry.com.
+schemes:
+- name: XAuthToken
+  type: apiKey
+  in: header
+  parameter_name: X-Auth-Token
+  parameter_name_confidence: low
+  defined_in_spec: false
+  applied_to_operations: 122
+  sources:
+  - openapi/rentberry-openapi.yml
+  note: >-
+    Referenced by name only. The header name `X-Auth-Token` is inferred from the scheme name and is NOT
+    published by Rentberry; it must be confirmed with the provider before use.
+token_acquisition:
+- operationId: post_api_v1_auth_token
+  method: POST
+  path: /v{version}/auth/token
+  summary: Authenticate user and get token
+  request:
+    required:
+    - username
+    - plainPassword
+    optional:
+    - oauthConnectId
+    - oauthProvider
+    - isRaiUser
+  response:
+    '200': '{"auth_token": "<string>"}'
+    '400': Validation failed
+    '401': Authentication failed
+    '1005': User blocked or not verified
+- operationId: get_api_v2_auth_session
+  method: GET
+  path: /v{version}/auth
+  summary: Get current user session information (returns auth boolean + notification counters)
+- operationId: post_api_v1_auth_email_otp_request
+  method: POST
+  path: /v{version}/auth/email-otp/request
+  summary: Request an email one-time passcode
+- operationId: post_api_v1_auth_email_otp_verify
+  method: POST
+  path: /v{version}/auth/email-otp/verify
+  summary: Verify an email one-time passcode
+social_login:
+  note: >-
+    The `OAuth` tag covers END-USER social login into Rentberry accounts (Google, Apple) — it is NOT a
+    third-party OAuth 2.0 authorization server for API consumers. No /.well-known/openid-configuration or
+    /.well-known/oauth-authorization-server is served on rentberry.com or api.rentberry.com (both 404 on
+    2026-08-02), and the spec declares no oauth2 security scheme, so no scopes/ artifact is emitted.
+  providers:
+  - google
+  - apple
+  operations:
+  - get_api_v1_oauth_init
+  - get_api_v1_oauth_authorize
+  - post_api_v4_google_one_tap
+  - get_api_v1_oauth_authorize_by_short_lived_access_token
+  - post_api_v4_oauth_apple_callback
+  - delete_api_v1_oauth_authorize_disconnect_user
+device_identity:
+  header: X-Device-Token
+  operations:
+  - get_api_v1_device_list
+  - put_api_v1_device_update
+  - post_api_v1_device_register
+  - delete_api_v1_device_delete
+  - put_api_v1_device_link_user
+  note: A separate device-scoped header used by the Devices operations for push registration.
+roles:
+  note: >-
+    Operation descriptions carry role requirements in prose, e.g. "Requires ROLE_USER". These are Symfony
+    security roles, not OAuth scopes, and are not machine-readable in the spec.
+  observed:
+  - ROLE_USER
+x-evidence:
+- fetched: '2026-08-02'
+  url: https://api.rentberry.com/v2/auth
+  http_status: 403
+  body: '{"body":null,"error":{"code":403,"message":"Oops, error occurred","description":"Not enough rights"}}'
+  note: Unauthenticated request to a token-protected operation.
+- fetched: '2026-08-02'
+  url: https://api.rentberry.com/.well-known/openid-configuration
+  http_status: 404
+- fetched: '2026-08-02'
+  url: https://api.rentberry.com/.well-known/oauth-authorization-server
+  http_status: 404

@@ -1,0 +1,64 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+versioning:
+  scheme: uri-path-template
+  pattern: /v{version}/
+  current: '4'
+  current_source: OpenAPI info.version
+  docs: https://api.rentberry.com/docs
+  policy_url: null
+  note: >-
+    No written versioning policy is published. Minimum supported version is stated per operation in prose
+    ("Available since API version 1" … "Available since API version 4").
+deprecation:
+  policy_url: null
+  sunset_header: false
+  rfc8594: false
+  note: >-
+    No deprecation policy page, no Sunset or Deprecation response headers. Deprecation is signalled only by
+    the OpenAPI `deprecated: true` flag and by "(deprecated)" / "DEPRECATED" text in operation summaries.
+    Because there is no published policy, no `Deprecation` pointer is emitted in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  probed:
+  - url: https://status.rentberry.com/
+    result: DNS does not resolve
+    fetched: '2026-08-02'
+  note: >-
+    No status page found on status.rentberry.com or linked from rentberry.com, so no `StatusPage` pointer
+    is emitted.
+changelog:
+  url: null
+  note: >-
+    No dated public changelog. The only version history signal is the per-operation "Available since API
+    version N" prose in the OpenAPI, so no changelog/ artifact is emitted.
+deprecated_operations:
+- operationId: post_api_v1_apartment_apply_confirm
+  path: /v{version}/apartment/apply/confirm/{id}
+  method: POST
+  summary: Confirm application (DEPRECATED)
+  note: Used only for mobile apps.
+- operationId: post_api_event_statistic
+  path: /v{version}/event/{type}
+  method: POST
+  summary: Log event statistic (deprecated)
+  note: Available since API version 2. Will be removed in future versions.
+- operationId: post_api_v1_screening_screen_pay
+  path: /v{version}/screening/screen/{reference}/pay
+  method: POST
+  summary: Pay for screening (deprecated)
+  note: Replaced by the Stripe webhook flow.
+- operationId: post_api_v1_apartment_search_buckets
+  path: /v{version}/apartment/search/buckets
+  method: POST
+  summary: Get search buckets
+  note: Deprecated in favour of newer search endpoints.
+support:
+  help_center: https://help.rentberry.com/en/
+  email: support@rentberry.com
+  phone: '+1-415-795-7171'
+  hours: 24/7

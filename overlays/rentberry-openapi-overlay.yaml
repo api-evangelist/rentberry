@@ -1,0 +1,72 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Rentberry API
+  version: 1.0.0
+extends: openapi/rentberry-openapi.yml
+x-generated: '2026-08-02'
+x-method: generated
+x-source: >-
+  Harvested from the Swagger UI at https://api.rentberry.com/docs on 2026-08-02 (the OpenAPI 3.0.0 document
+  is embedded in the page as <script id="swagger-data" type="application/json">). This overlay records the
+  API Evangelist enhancements and the defects observed in the original document; the original is preserved
+  verbatim at openapi/_original/rentberry-openapi.json and is never mutated.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: rentberry
+    x-apievangelist-harvested: '2026-08-02'
+    x-apievangelist-source: https://api.rentberry.com/docs
+    x-apievangelist-notes: >-
+      188 paths, 220 operations, 44 tags, 164 component schemas. Every operation has a unique operationId,
+      summary and description.
+- target: $
+  update:
+    servers:
+    - url: https://api.rentberry.com
+      description: >-
+        Production host. Added by API Evangelist — the harvested document declares no servers[]; the host
+        is the one that serves the Swagger UI and answers every /v{version}/ path.
+- target: $
+  update:
+    components:
+      securitySchemes:
+        XAuthToken:
+          type: apiKey
+          in: header
+          name: X-Auth-Token
+          description: >-
+            RECONSTRUCTED BY API EVANGELIST — the harvested document applies a security requirement named
+            `XAuthToken` to 122 operations but ships no components.securitySchemes block, so the scheme is
+            referenced and never defined. The header name is inferred from the scheme name and has NOT been
+            confirmed by Rentberry. Tokens are issued by post_api_v1_auth_token.
+- target: $.info
+  update:
+    x-apievangelist-spec-gaps:
+    - id: securityschemes-missing
+      severity: high
+      detail: components.securitySchemes absent while 122 operations reference `XAuthToken`.
+    - id: servers-missing
+      severity: high
+      detail: No servers[] declared; base URL is undiscoverable from the document alone.
+    - id: untagged-operations
+      severity: medium
+      count: 22
+      detail: 22 of 220 operations carry no tags, so they fall out of every tag-based navigation.
+    - id: non-http-response-codes
+      severity: medium
+      detail: >-
+        Response keys 1001, 1002, 1003, 1004 and 1005 are Rentberry application codes used where OpenAPI
+        expects HTTP status codes or `default`.
+    - id: no-error-schema
+      severity: medium
+      detail: >-
+        No shared error schema in components; 4xx/5xx responses carry a description only, even though the
+        live API returns a consistent {"body":null,"error":{...}} envelope.
+    - id: no-examples
+      severity: low
+      detail: Almost no request/response examples are provided in the document.
+    - id: version-as-parameter
+      severity: low
+      detail: >-
+        Every path is templated /v{version}/... with version as a caller-supplied \d+ path parameter rather
+        than a concrete version segment, which makes generated clients ask for a version number on every call.

@@ -1,0 +1,69 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  npm registry search, PyPI, Packagist vendor listing (packagist.org/packages/list.json?vendor=rentberry),
+  and the GitHub organization https://github.com/Rentberry — all probed 2026-08-02.
+summary:
+  api_client_sdks: 0
+  first_party_published_packages: 4
+  note: >-
+    Rentberry publishes NO client SDK for the Rentberry REST API in any language — not on npm, PyPI, Maven
+    Central, NuGet, pkg.go.dev, RubyGems, Packagist or crates.io. The packages below are genuinely
+    first-party (published from the Rentberry GitHub org / Packagist vendor namespace) but they are
+    infrastructure and integration libraries the company open-sourced, not clients for api.rentberry.com.
+    No `SDKs` pointer is emitted in apis.yml because no SDK for the API exists.
+packages:
+- language: php
+  registry: packagist
+  name: rentberry/geocoder-grpc
+  url: https://packagist.org/packages/rentberry/geocoder-grpc
+  install: composer require rentberry/geocoder-grpc
+  official: true
+  repository: https://github.com/Rentberry/geocoder
+  description: PHP gRPC bindings for the Rentberry geocoder service (GeocodeService, TimezoneService).
+  downloads_total: 48159
+  api_client_for: grpc/rentberry-geocoder.proto
+- language: php
+  registry: packagist
+  name: rentberry/coinmarketcap-api
+  url: https://packagist.org/packages/rentberry/coinmarketcap-api
+  install: composer require rentberry/coinmarketcap-api
+  official: true
+  repository: https://github.com/Rentberry/coinmarketcap-api-php
+  description: PHP client for the CoinMarketCap JSON API (third-party API, not Rentberry's).
+  api_client_for: null
+- language: php
+  registry: packagist
+  name: rentberry/maps-utils
+  url: https://packagist.org/packages/rentberry/maps-utils
+  install: composer require rentberry/maps-utils
+  official: true
+  repository: https://github.com/Rentberry/MapsUtils
+  description: Map/geo utilities used by Rentberry search. Upstream repository is archived.
+  api_client_for: null
+- language: javascript
+  registry: npm
+  name: lambda-images-resizer
+  url: https://www.npmjs.com/package/lambda-images-resizer
+  install: npm install lambda-images-resizer
+  official: true
+  repository: https://github.com/Rentberry/lambda-images-resizer
+  description: AWS Lambda handler that resizes S3 images; published from the Rentberry GitHub org.
+  api_client_for: null
+registries_probed:
+- registry: npm
+  result: only lambda-images-resizer; no Rentberry API client
+- registry: pypi
+  result: 404 for `rentberry`
+- registry: packagist
+  result: 3 packages under the `rentberry` vendor
+- registry: rubygems
+  result: none found
+- registry: pkg.go.dev
+  result: github.com/Rentberry/geocoder is a Go service, not a published API client module
+- registry: maven-central
+  result: none found
+- registry: nuget
+  result: none found
+- registry: crates.io
+  result: none found

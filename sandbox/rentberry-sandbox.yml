@@ -1,0 +1,92 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/rentberry-openapi.yml
+summary: >-
+  Rentberry publishes no separate sandbox environment, no test-vs-live key prefixes and no test credentials.
+  What it does ship is (a) an interactive Swagger UI console at https://api.rentberry.com/docs that renders
+  the full OpenAPI and can execute requests, and (b) a real fixture/trigger surface inside the API itself —
+  a `testing-helper` family of operations that provisions listings, applications, proof-of-income
+  attachments and contract states, plus a `push-testing-helper` family for push notifications. Those
+  operations are declared in the published contract; whether they are reachable outside Rentberry's own
+  environments was NOT verified (every unauthenticated call to api.rentberry.com returns 403 "Not enough
+  rights").
+console:
+  url: https://api.rentberry.com/docs
+  type: swagger-ui
+  version: swagger-ui-dist@5
+  try_it_out: true
+  note: Executes against the production host; there is no environment switcher.
+test_environment:
+  separate_host: false
+  test_key_prefix: null
+  test_mode_flag: null
+  test_cards: null
+  note: Not published. Payments run through Stripe; no Rentberry-published Stripe test values were found.
+fixtures:
+  note: >-
+    Fixture/trigger operations declared in the OpenAPI. Untagged in the source document; grouped here by
+    prefix. Auth requirements are as declared in the spec.
+  operations:
+  - operationId: post_api_v1_test_helper_apartment_create
+    method: POST
+    path: /v{version}/testing-helper/create-apartment
+    creates: listing
+  - operationId: post_api_v1_test_helper_rented_apartment_create
+    method: POST
+    path: /v{version}/testing-helper/create-rented-apartment
+    creates: rented listing
+  - operationId: post_api_v1_test_helper_inactive_apartment_create
+    method: POST
+    path: /v{version}/testing-helper/create-inactive-apartment
+    creates: inactive listing
+  - operationId: post_api_v1_test_helper_apples_apartment_create
+    method: POST
+    path: /v{version}/testing-helper/create-apples-apartment
+    creates: listing fixture variant
+  - operationId: post_api_v1_test_helper_application_create
+    method: POST
+    path: /v{version}/testing-helper/create-application
+    creates: rental application
+  - operationId: post_api_v1_test_helper_declined_application_create
+    method: POST
+    path: /v{version}/testing-helper/create-declined-application
+    creates: declined application
+  - operationId: post_api_v1_test_helper_roommates_application_create
+    method: POST
+    path: /v{version}/testing-helper/create-roommates-application
+    creates: roommates application
+  - operationId: post_api_v1_test_helper_application_proof_create
+    method: POST
+    path: /v{version}/testing-helper/create-application-proof-income
+    creates: proof-of-income attachment
+  - operationId: post_api_v1_test_helper_update_contract_status
+    method: POST
+    path: /v{version}/testing-helper/update-contract-status
+    triggers: contract status transition
+  - operationId: post_api_v1_test_helper_update_apartment_listed_at
+    method: POST
+    path: /v{version}/testing-helper/update-apartment-listed-at
+    triggers: listing listed_at time simulation
+  - operationId: get_api_v1_notification_test_helper_list
+    method: GET
+    path: /v{version}/push-testing-helper/notifications-list
+    reads: available push notification types
+  - operationId: post_api_v1_notification_test_helper_send
+    method: POST
+    path: /v{version}/push-testing-helper/notification-send
+    triggers: push notification send
+email_preview:
+  note: A related preview/trigger family for transactional email exists in the same untagged group.
+  operations:
+  - operationId: get_get_email_types
+    method: GET
+    path: /v{version}/email/types
+  - operationId: get_get_email_parameters
+    method: GET
+    path: /v{version}/email/parameters/{type}
+  - operationId: post_email_render_preview
+    method: POST
+    path: /v{version}/email/render/{type}
+  - operationId: post_email_test_send
+    method: POST
+    path: /v{version}/email/send
