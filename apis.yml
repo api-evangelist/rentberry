@@ -31,53 +31,13 @@ tags:
 - geocoding
 - marketplace
 apis:
-- name: Rentberry API
-  description: >-
-    Versioned REST API behind the Rentberry rental marketplace, described by an OpenAPI 3.0.0 document published in
-    the Swagger UI at https://api.rentberry.com/docs. 188 paths / 220 operations across 44 tags covering rental
-    applications and applicant attachments, authentication and social OAuth (Google, Apple) login, listings and
-    listing pictures, virtual tours, search and saved searches, contracts and contract templates with e-signing,
-    screening and screening reports, payments, rentals and rental subscriptions, messaging, notifications and
-    subscriptions, user profile / settings / verification, geolocation, SEO URLs and translation. Requests are
-    authenticated with an X-Auth-Token style bearer token issued by the auth/token operation.
-  humanURL: https://api.rentberry.com/docs
-  baseURL: https://api.rentberry.com/
-  tags:
-  - real-estate
-  - proptech
-  - rentals
-  - rental-marketplace
-  - property-management
-  - tenant-screening
-  - e-signature
-  - payments
-  - listings
-  - search
-  properties:
-  - type: OpenAPI
-    url: openapi/rentberry-openapi.yml
-  - type: APIReference
-    url: https://api.rentberry.com/docs
-  - type: Documentation
-    url: https://api.rentberry.com/docs
-  - type: Authentication
-    url: authentication/rentberry-authentication.yml
-  - type: Conventions
-    url: conventions/rentberry-conventions.yml
-  - type: ErrorCatalog
-    url: errors/rentberry-problem-types.yml
-  - type: DataModel
-    url: data-model/rentberry-data-model.yml
-  - type: Overlay
-    url: overlays/rentberry-openapi-overlay.yaml
-  - type: Lifecycle
-    url: lifecycle/rentberry-lifecycle.yml
 - name: Rentberry Geocoder (gRPC)
   description: >-
-    Open-source gRPC geocoding and timezone-lookup service Rentberry built and runs for its own property search, with
-    published proto3 definitions and PHP client bindings on Packagist. Two services: GeocodeService.Geocode resolves
-    an address or lat/lng into structured Location records (country, state, admin levels, sublocality levels, bounds,
-    postal code, timezone, provider components) and TimezoneService.Lookup returns a timezone for a coordinate pair.
+    Open-source gRPC geocoding and timezone-lookup service Rentberry built and runs for its own property
+    search, with published proto3 definitions and PHP client bindings on Packagist. Two services: GeocodeService.Geocode
+    resolves an address or lat/lng into structured Location records (country, state, admin levels, sublocality
+    levels, bounds, postal code, timezone, provider components) and TimezoneService.Lookup returns a timezone
+    for a coordinate pair.
   humanURL: https://github.com/Rentberry/geocoder
   baseURL: https://github.com/Rentberry/geocoder
   tags:
@@ -91,12 +51,1097 @@ apis:
     url: grpc/rentberry-geocoder.proto
   - type: SourceCode
     url: https://github.com/Rentberry/geocoder
+- aid: rentberry:rentberry-applications-api
+  name: Rentberry Applications API
+  description: Applications
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-applications-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-auth-api
+  name: Rentberry Auth API
+  description: Auth
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-auth-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-breadcrumbs-api
+  name: Rentberry Breadcrumbs API
+  description: Breadcrumbs
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Breadcrumbs
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-breadcrumbs-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-complaints-api
+  name: Rentberry Complaints API
+  description: Complaints
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Complaints
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-complaints-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-contract-templates-api
+  name: Rentberry Contract Templates API
+  description: Contract Templates
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Contract Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-contract-templates-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-contracts-api
+  name: Rentberry Contracts API
+  description: Contracts
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-contracts-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-devices-api
+  name: Rentberry Devices API
+  description: Devices
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-devices-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-events-api
+  name: Rentberry Events API
+  description: Events
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-events-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-features-api
+  name: Rentberry Features API
+  description: Features
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Features
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-features-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-integration-requests-api
+  name: Rentberry Integration Requests API
+  description: Integration Requests
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Integration Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-integration-requests-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-landing-pages-api
+  name: Rentberry Landing Pages API
+  description: Landing Pages
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Landing Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-landing-pages-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-landing-statistics-api
+  name: Rentberry Landing Statistics API
+  description: Landing Statistics
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Landing Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-landing-statistics-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-leads-api
+  name: Rentberry Leads API
+  description: Leads
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Leads
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-leads-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-listing-pictures-api
+  name: Rentberry Listing Pictures API
+  description: Listing Pictures
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Listing Pictures
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-listing-pictures-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-listings-api
+  name: Rentberry Listings API
+  description: Listings
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Listings
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-listings-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-location-api
+  name: Rentberry Location API
+  description: Location
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-location-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-messages-api
+  name: Rentberry Messages API
+  description: Messages
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-messages-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-mobile-search-api
+  name: Rentberry Mobile Search API
+  description: Mobile Search
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Mobile Search
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-mobile-search-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-newsletter-api
+  name: Rentberry Newsletter API
+  description: Newsletter
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Newsletter
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-newsletter-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-notifications-api
+  name: Rentberry Notifications API
+  description: Notifications
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-oauth-api
+  name: Rentberry O Auth API
+  description: OAuth
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-oauth-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-payments-api
+  name: Rentberry Payments API
+  description: Payments
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-payments-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-providers-api
+  name: Rentberry Providers API
+  description: Providers
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-providers-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-registration-api
+  name: Rentberry Registration API
+  description: Registration
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Registration
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-registration-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-rental-api
+  name: Rentberry Rental API
+  description: Rental
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Rental
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-rental-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-rental-payments-api
+  name: Rentberry Rental Payments API
+  description: Rental Payments
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Rental Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-rental-payments-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-rental-subscription-api
+  name: Rentberry Rental Subscription API
+  description: Rental Subscription
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Rental Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-rental-subscription-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-rentals-api
+  name: Rentberry Rentals API
+  description: Rentals
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Rentals
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-rentals-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-resources-api
+  name: Rentberry Resources API
+  description: Resources
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-resources-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-saved-search-api
+  name: Rentberry Saved Search API
+  description: Saved Search
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Saved Search
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-saved-search-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-screening-api
+  name: Rentberry Screening API
+  description: Screening
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Screening
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-screening-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-screening-reports-api
+  name: Rentberry Screening Reports API
+  description: Screening Reports
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Screening Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-screening-reports-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-search-api
+  name: Rentberry Search API
+  description: Search
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-search-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-seo-redirects-api
+  name: Rentberry SEO Redirects API
+  description: SEO Redirects
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - SEO Redirects
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-seo-redirects-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-seo-urls-api
+  name: Rentberry SEO URLs API
+  description: SEO URLs
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - SEO URLs
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-seo-urls-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-sms-api
+  name: Rentberry SMS API
+  description: SMS
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - SMS
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-sms-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-subscriptions-api
+  name: Rentberry Subscriptions API
+  description: Subscriptions
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-subscriptions-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-translation-api
+  name: Rentberry Translation API
+  description: Translation
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Translation
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-translation-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-user-api
+  name: Rentberry User API
+  description: User
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-user-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-user-phone-verification-api
+  name: Rentberry User Phone Verification API
+  description: User Phone Verification
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - User Phone Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-user-phone-verification-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-user-settings-api
+  name: Rentberry User Settings API
+  description: User Settings
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - User Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-user-settings-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-user-status-api
+  name: Rentberry User Status API
+  description: User Status
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - User Status
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-user-status-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-user-verification-api
+  name: Rentberry User Verification API
+  description: User Verification
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - User Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-user-verification-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-v-version-api
+  name: Rentberry V{version} API
+  description: The V{version} API from Rentberry — 21 operation(s) for v{version}.
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - V{version}
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-v-version-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-virtual-tours-api
+  name: Rentberry Virtual Tours API
+  description: Virtual Tours
+  humanURL: https://api.rentberry.com/docs
+  baseURL: https://api.rentberry.com/
+  tags:
+  - Virtual Tours
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-virtual-tours-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/rentberry-mcp.yml
+- type: License
+  name: GPL-3.0
+  url: https://github.com/Rentberry/geocoder/blob/master/LICENSE
 - type: Website
   url: https://rentberry.com/
 - type: DeveloperPortal
@@ -128,7 +1173,7 @@ common:
 - type: Investors
   url: https://rentberry.com/investors
 - type: OpenAPI
-  url: openapi/rentberry-openapi.yml
+  url: openapi/_original/rentberry-openapi.yml
 - type: Protobuf
   url: grpc/rentberry-geocoder.proto
 - type: Authentication
