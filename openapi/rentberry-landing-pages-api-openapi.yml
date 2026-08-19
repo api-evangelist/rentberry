@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Landing Pages API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Landing Pages
+  description: Landing Pages
+paths:
+  /v{version}/hyperlinking/:
+    get:
+      tags:
+      - Landing Pages
+      summary: Get all hyperlink sets
+      description: Available since API version 4. Returns all hyperlink sets used for landing pages. Hyperlink sets contain organized links for different regions and listing types.
+      operationId: get_api_v4_get_all_hyperlinks
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of all hyperlink sets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      description: Unique identifier for the hyperlink set
+                      type: integer
+                    name:
+                      description: Name of the hyperlink set
+                      type: string
+                    links:
+                      description: List of hyperlinks in this set
+                      type: array
+                      items:
+                        properties:
+                          url:
+                            description: URL of the hyperlink
+                            type: string
+                          text:
+                            description: Display text for the hyperlink
+                            type: string
+                          type:
+                            description: Type of hyperlink (city, state, etc.)
+                            type: string
+                          meta:
+                            description: Additional metadata for the hyperlink
+                            type: object
+                        type: object
+                    region:
+                      description: Geographic region for this hyperlink set
+                      type: string
+                    listingType:
+                      description: Type of listing these hyperlinks are for
+                      type: string
+                      enum:
+                      - apartment
+                      - house
+                      - condo
+                      - townhouse
+                      - duplex
+                      - loft
+                      - room
+                  type: object
+              example:
+              - id: 1
+                name: Popular California Apartments
+                links:
+                - url: /ca/los-angeles/apartments-for-rent
+                  text: Los Angeles Apartments
+                  type: city
+                  meta:
+                    population: 3849000
+                - url: /ca/san-francisco/apartments-for-rent
+                  text: San Francisco Apartments
+                  type: city
+                  meta:
+                    population: 865000
+                region: California
+                listingType: apartment
+        '404':
+          description: No hyperlink sets found

@@ -1,0 +1,92 @@
+openapi: 3.2.0
+info:
+  title: Rentberry SEO Redirects API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: SEO Redirects
+  description: SEO Redirects
+paths:
+  /v{version}/seo_redirect_url/{id}/hit:
+    post:
+      tags:
+      - SEO Redirects
+      summary: Track redirect hit
+      description: Available since API version 1. Records a hit/click for the specified redirect URL for analytics and tracking purposes.
+      operationId: post_api_v1_seo_redirect_url_hit
+      parameters:
+      - name: id
+        in: path
+        description: Redirect ID to track
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '204':
+          description: Hit recorded successfully
+        '404':
+          description: Redirect not found
+  /v{version}/seo_redirect_url:
+    get:
+      tags:
+      - SEO Redirects
+      summary: Get all active redirects
+      description: Available since API version 1. Returns list of all active SEO redirects with their URLs and configuration.
+      operationId: get_api_v1_seo_redirect_url_list
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of active redirects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Redirect'
+components:
+  schemas:
+    Redirect:
+      required:
+      - url
+      - urlFrom
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+          maxLength: 512
+        urlFrom:
+          type: string
+          maxLength: 512
+        saveGetString:
+          type: boolean
+          default: false
+        httpStatus:
+          type: integer
+          default: 301
+          enum:
+          - 301
+          - 302
+          - 303
+          - 307
+          - 308
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object

@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Listing Pictures API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listing Pictures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create listing picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/pictures",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "imageFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "apartmentId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "cover",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "order",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Available since API version 1. Uploads a new picture for a listing. If marked as cover, removes cover status from existing cover image."
+        },
+        {
+          "info": {
+            "name": "Update listing picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/pictures/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Picture ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "imageFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "order",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Available since API version 1. Updates an existing listing picture. Can update the image file and display order."
+        },
+        {
+          "info": {
+            "name": "Delete listing picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/apartment/pictures/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Picture ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Deletes a listing picture. Cannot delete cover images."
+        },
+        {
+          "info": {
+            "name": "Update pictures order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/pictures/order",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Updates the display order of multiple listing pictures in bulk."
+        },
+        {
+          "info": {
+            "name": "Detect amenities from listing pictures",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/pictures/detect-amenities",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Analyzes listing pictures using AI to detect amenities automatically."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

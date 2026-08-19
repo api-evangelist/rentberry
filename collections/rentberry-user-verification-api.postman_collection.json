@@ -1,0 +1,1389 @@
+{
+  "item": [
+    {
+      "id": "f73021f1-0793-41d6-91e7-efd4e7d2f715",
+      "name": "User Verification",
+      "description": {
+        "content": "User Verification",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b4cb076-fc4a-46fd-ace3-881ea1bd04e7",
+          "name": "Handle IDology verification callback.",
+          "request": {
+            "name": "Handle IDology verification callback.",
+            "description": {
+              "content": "Available since API version 1. Webhook endpoint for IDology verification service callbacks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "326b3fe6-25a6-472e-9d93-9b8b28f775fd",
+              "name": "Callback processed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b40a7523-6e63-4f7e-af13-5e302b82d9ef",
+              "name": "Invalid callback payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2df178f2-6791-4bcd-9af8-8af18868b541",
+          "name": "Start user verification process (US only).",
+          "request": {
+            "name": "Start user verification process (US only).",
+            "description": {
+              "content": "Available since API version 1. Step 1 of US user verification process using IDology.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"birthday\": \"<integer>\",\n  \"ssn\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bff44f86-85ee-47a3-8910-48d1b6e43b2a",
+              "name": "Verification started successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"birthday\": \"<integer>\",\n  \"ssn\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstring\",\n    \"birthday\": \"1969-01-16T18:23:42.350Z\",\n    \"hasPassword\": true,\n    \"phoneCountryCode\": \"string\",\n    \"id\": 1321,\n    \"nameMiddle\": \"string\",\n    \"company\": {\n      \"id\": 6399,\n      \"name\": \"string\",\n      \"phone\": 9464,\n      \"website\": \"string\",\n      \"logoThumbs\": \"string\",\n      \"email\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"st\",\n      \"provider\": \"string\",\n      \"externalId\": \"string\",\n      \"createdAt\": \"1972-11-22T07:06:54.792Z\",\n      \"updatedAt\": \"1989-09-17T03:42:27.096Z\"\n    },\n    \"companyName\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"bio\": \"string\",\n    \"oauthProviders\": [\n      {\n        \"id\": 7009,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      },\n      {\n        \"id\": 9915,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      }\n    ],\n    \"address\": {\n      \"street\": \"string\",\n      \"houseNumber\": \"string\",\n      \"city\": \"string\",\n      \"zip\": \"string\",\n      \"streetType\": null,\n      \"state\": {\n        \"id\": 6336,\n        \"shortName\": null,\n        \"name\": null\n      }\n    },\n    \"creditScore\": {\n      \"score\": 2909,\n      \"creditScoreUpdatedAt\": \"1958-12-31T08:06:43.564Z\",\n      \"alert\": \"string\",\n      \"createdAt\": \"2025-02-08T08:10:54.298Z\",\n      \"updatedAt\": \"2005-03-25T04:06:05.049Z\"\n    },\n    \"criminalReport\": {\n      \"criminalRecordFound\": false,\n      \"status\": 1145,\n      \"createdAt\": \"2014-12-27T17:33:00.018Z\",\n      \"updatedAt\": \"1949-07-03T07:00:32.325Z\"\n    },\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"value\": \"<Circular reference to #/components/schemas/User2 detected>\"\n      },\n      \"createdAt\": \"1999-05-06T16:01:55.868Z\",\n      \"updatedAt\": \"2006-08-30T21:10:14.657Z\"\n    },\n    \"active\": true,\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"emailNotVerifiedAfter\": \"1989-10-15T10:34:26.500Z\",\n    \"lastActiveAt\": \"1989-11-01T15:47:36.136Z\",\n    \"createdAt\": \"1948-01-16T01:15:05.063Z\",\n    \"updatedAt\": \"1958-11-14T18:23:21.483Z\",\n    \"statusType\": \"regular\",\n    \"authToken\": \"string\",\n    \"deleted\": false,\n    \"rentalPaymentAccount\": {\n      \"stripeAccountId\": \"string\",\n      \"isStripeOnboardingFinished\": false,\n      \"createdAt\": \"2000-01-23T22:32:20.151Z\",\n      \"updatedAt\": \"2025-11-15T20:50:15.500Z\"\n    },\n    \"newsletterSubscription\": false,\n    \"premiumPartner\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"m\",\n    \"isRaiUser\": false\n  },\n  \"status\": true,\n  \"questions\": false,\n  \"transactionId\": 2861\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22cc754b-560b-4f9c-9df4-09e8c88647fb",
+              "name": "Validation failed or phone not verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"birthday\": \"<integer>\",\n  \"ssn\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "387804ea-83d4-48a5-b132-e795017f4d23",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"birthday\": \"<integer>\",\n  \"ssn\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "614b1f9a-4aa7-43fe-a5d8-a81b86557e49",
+              "name": "Already verified or max attempts reached",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"birthday\": \"<integer>\",\n  \"ssn\": \"<string>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17c10010-b254-43d4-92d4-13d731ddd3fb",
+          "name": "Initialize verification process (non-US).",
+          "request": {
+            "name": "Initialize verification process (non-US).",
+            "description": {
+              "content": "Available since API version 1. Step 1 of international user verification process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify",
+                "verify-init"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f351373e-aa82-44b6-acb4-07c375e68b2f",
+              "name": "Verification initialized successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionId\": 5341\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "711015cd-d12e-4a94-bfb3-26fae17e2564",
+              "name": "Validation failed or phone not verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4d91e82-5f99-4ea6-bdc2-79ac7f1de334",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "963c12a0-85a8-46e5-be27-129e0b1e61ca",
+              "name": "Already verified or has pending request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baadec56-2a0a-4cdd-8712-7d8f7f94738b",
+          "name": "Upload documents for verification (non-US).",
+          "request": {
+            "name": "Upload documents for verification (non-US).",
+            "description": {
+              "content": "Available since API version 1. Step 2 of international user verification process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify",
+                "verify-by-documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "value": "",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "backImage",
+                  "value": "",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "faceImage",
+                  "value": "",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "queryId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "documentType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of driverLicense,idCard,passport)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "242a04a1-c9da-47b1-a8d7-ab4ecaf2305c",
+              "name": "Documents uploaded successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-by-documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "backImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "faceImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "queryId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "countryCode",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of driverLicense,idCard,passport)",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1e711ec-b3aa-486d-bc3f-a3f9832c795f",
+              "name": "Invalid documents or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-by-documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "backImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "faceImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "queryId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "countryCode",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of driverLicense,idCard,passport)",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f088d688-b524-420c-981d-6f9d2977cb9c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-by-documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "backImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "faceImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "queryId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "countryCode",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of driverLicense,idCard,passport)",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f627745d-9578-4379-b37c-d2c9c990901c",
+              "name": "Already verified or has pending request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-by-documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "backImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "faceImage",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "queryId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "countryCode",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of driverLicense,idCard,passport)",
+                        "type": "text/plain"
+                      },
+                      "key": "documentType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58a08c05-c4a3-496a-8c3e-2ddfe2066667",
+          "name": "Check document verification status (non-US).",
+          "request": {
+            "name": "Check document verification status (non-US).",
+            "description": {
+              "content": "Available since API version 1. Step 3 of international user verification - check processing status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify",
+                "verify-document-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "0723d8a4-fb17-44d0-9889-b04892d20c44",
+              "name": "Returns verification status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-document-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50f1fdae-e5f4-4614-acf1-fc3fccc1f63b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-document-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43cc4333-7f8f-4760-86c8-ef9afeda6d21",
+              "name": "Verification violated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "verify-document-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd583640-466b-44bd-b62f-f976e8c63090",
+          "name": "Submit verification question answers (US only).",
+          "request": {
+            "name": "Submit verification question answers (US only).",
+            "description": {
+              "content": "Available since API version 1. Step 2 of US user verification process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "verify",
+                "answer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idNumber\": \"<integer>\",\n  \"answers\": [\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "604290ba-67a3-4664-8732-60b5bdfd3840",
+              "name": "Answers submitted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idNumber\": \"<integer>\",\n  \"answers\": [\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstring\",\n    \"birthday\": \"1962-07-17T01:30:04.359Z\",\n    \"hasPassword\": true,\n    \"phoneCountryCode\": \"string\",\n    \"id\": 4965,\n    \"nameMiddle\": \"string\",\n    \"company\": {\n      \"id\": 233,\n      \"name\": \"string\",\n      \"phone\": 8769,\n      \"website\": \"string\",\n      \"logoThumbs\": \"string\",\n      \"email\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"st\",\n      \"provider\": \"string\",\n      \"externalId\": \"string\",\n      \"createdAt\": \"1962-10-05T07:26:13.534Z\",\n      \"updatedAt\": \"1984-04-04T23:42:31.171Z\"\n    },\n    \"companyName\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"bio\": \"string\",\n    \"oauthProviders\": [\n      {\n        \"id\": 7386,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      },\n      {\n        \"id\": 1310,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      }\n    ],\n    \"address\": {\n      \"street\": \"string\",\n      \"houseNumber\": \"string\",\n      \"city\": \"string\",\n      \"zip\": \"string\",\n      \"streetType\": null,\n      \"state\": {\n        \"id\": 5751,\n        \"shortName\": null,\n        \"name\": null\n      }\n    },\n    \"creditScore\": {\n      \"score\": 9525,\n      \"creditScoreUpdatedAt\": \"1988-08-24T16:05:12.412Z\",\n      \"alert\": \"string\",\n      \"createdAt\": \"2020-05-15T01:01:01.455Z\",\n      \"updatedAt\": \"2016-02-23T03:21:17.000Z\"\n    },\n    \"criminalReport\": {\n      \"criminalRecordFound\": false,\n      \"status\": 9891,\n      \"createdAt\": \"2022-04-07T10:45:40.704Z\",\n      \"updatedAt\": \"2008-09-26T04:22:44.717Z\"\n    },\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"value\": \"<Circular reference to #/components/schemas/User2 detected>\"\n      },\n      \"createdAt\": \"1973-10-10T00:21:56.582Z\",\n      \"updatedAt\": \"1953-07-25T09:59:03.861Z\"\n    },\n    \"active\": true,\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"emailNotVerifiedAfter\": \"1960-05-26T20:29:21.319Z\",\n    \"lastActiveAt\": \"1971-10-04T18:30:42.859Z\",\n    \"createdAt\": \"1987-01-15T12:19:02.065Z\",\n    \"updatedAt\": \"2024-02-13T07:28:32.607Z\",\n    \"statusType\": \"regular\",\n    \"authToken\": \"string\",\n    \"deleted\": false,\n    \"rentalPaymentAccount\": {\n      \"stripeAccountId\": \"string\",\n      \"isStripeOnboardingFinished\": false,\n      \"createdAt\": \"2012-01-31T17:42:31.787Z\",\n      \"updatedAt\": \"1985-02-12T08:30:51.265Z\"\n    },\n    \"newsletterSubscription\": false,\n    \"premiumPartner\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"ft\",\n    \"isRaiUser\": false\n  },\n  \"status\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05cf8239-91f9-463e-8bf4-906b4b27982f",
+              "name": "Invalid answers or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idNumber\": \"<integer>\",\n  \"answers\": [\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be6257a3-72b9-4aed-be9c-9bfeffe4acde",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idNumber\": \"<integer>\",\n  \"answers\": [\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cf46a4f-2e13-4520-8b2e-dbc5c0e24363",
+              "name": "Already verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "verify",
+                    "answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idNumber\": \"<integer>\",\n  \"answers\": [\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"answer\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "afe967c0-ffb0-4d3a-bd73-1def278a0ad2",
+    "name": "Rentberry User Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

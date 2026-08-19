@@ -1,0 +1,185 @@
+{
+  "item": [
+    {
+      "id": "3778ffb1-688e-411b-8dfe-b5d4f3cccd8f",
+      "name": "User Status",
+      "description": {
+        "content": "User Status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb355934-9ffe-4317-b336-e6b832bb5ae7",
+          "name": "Activate user premium or VIP status.",
+          "request": {
+            "name": "Activate user premium or VIP status.",
+            "description": {
+              "content": "Available since API version 1. Activates pending premium or VIP user status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "status",
+                "type",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "b3fe6c03-34f8-40ec-9381-fc3bc617581b",
+              "name": "Status activated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "status",
+                    "type",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nameFirst\": \"string\",\n  \"nameLast\": \"string\",\n  \"username\": \"string\",\n  \"phone\": \"stringstri\",\n  \"birthday\": \"2005-08-21T21:16:47.659Z\",\n  \"hasPassword\": false,\n  \"phoneCountryCode\": \"string\",\n  \"id\": 4546,\n  \"nameMiddle\": \"string\",\n  \"company\": {\n    \"id\": 8709,\n    \"name\": \"string\",\n    \"phone\": 792,\n    \"website\": \"string\",\n    \"logoThumbs\": \"string\",\n    \"email\": \"string\",\n    \"city\": \"string\",\n    \"countryCode\": \"st\",\n    \"provider\": \"string\",\n    \"externalId\": \"string\",\n    \"createdAt\": \"1991-08-06T13:07:56.461Z\",\n    \"updatedAt\": \"2021-05-23T20:54:16.482Z\"\n  },\n  \"companyName\": \"string\",\n  \"profilePictureThumbs\": \"string\",\n  \"bio\": \"string\",\n  \"oauthProviders\": [\n    {\n      \"id\": 8985,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    },\n    {\n      \"id\": 1862,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    }\n  ],\n  \"address\": {\n    \"street\": \"string\",\n    \"houseNumber\": \"string\",\n    \"city\": \"string\",\n    \"zip\": \"string\",\n    \"streetType\": \"string\",\n    \"state\": {\n      \"id\": 1439,\n      \"shortName\": null,\n      \"name\": null\n    }\n  },\n  \"creditScore\": {\n    \"score\": 3111,\n    \"creditScoreUpdatedAt\": \"2013-11-11T19:05:27.847Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1963-05-20T17:20:21.690Z\",\n    \"updatedAt\": \"1989-09-20T18:59:06.362Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 1321,\n    \"createdAt\": \"1962-09-07T11:52:05.579Z\",\n    \"updatedAt\": \"1976-08-26T11:36:38.677Z\"\n  },\n  \"stripeCustomer\": {\n    \"customerId\": \"string\",\n    \"user\": {\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"username\": \"string\",\n      \"phone\": \"stringstring\",\n      \"birthday\": \"1983-04-19T06:50:16.935Z\",\n      \"hasPassword\": false,\n      \"phoneCountryCode\": \"string\",\n      \"id\": 2037,\n      \"nameMiddle\": \"string\",\n      \"company\": {\n        \"id\": 5009,\n        \"name\": \"string\",\n        \"phone\": 268,\n        \"website\": \"string\",\n        \"logoThumbs\": \"string\",\n        \"email\": \"string\",\n        \"city\": \"string\",\n        \"countryCode\": \"st\",\n        \"provider\": \"string\",\n        \"externalId\": \"string\",\n        \"createdAt\": \"1981-06-22T23:02:18.726Z\",\n        \"updatedAt\": \"2016-05-04T23:10:20.134Z\"\n      },\n      \"companyName\": \"string\",\n      \"profilePictureThumbs\": \"string\",\n      \"bio\": \"string\",\n      \"oauthProviders\": [\n        {\n          \"id\": 6628,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        },\n        {\n          \"id\": 1718,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        }\n      ],\n      \"address\": {\n        \"street\": \"string\",\n        \"houseNumber\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"string\",\n        \"streetType\": \"string\",\n        \"state\": {\n          \"id\": 3047,\n          \"shortName\": null,\n          \"name\": null\n        }\n      },\n      \"creditScore\": {\n        \"score\": 7427,\n        \"creditScoreUpdatedAt\": \"2008-06-25T07:10:14.662Z\",\n        \"alert\": \"string\",\n        \"createdAt\": \"2001-04-09T06:11:36.947Z\",\n        \"updatedAt\": \"1960-05-31T19:11:11.124Z\"\n      },\n      \"criminalReport\": {\n        \"criminalRecordFound\": false,\n        \"status\": 2770,\n        \"createdAt\": \"2019-11-23T16:51:37.022Z\",\n        \"updatedAt\": \"1996-07-13T16:00:18.694Z\"\n      },\n      \"stripeCustomer\": {\n        \"value\": \"<Circular reference to #/components/schemas/UserStripeCustomer2 detected>\"\n      },\n      \"active\": true,\n      \"fromNotBerryForbiddenCountry\": false,\n      \"verified\": false,\n      \"emailVerified\": false,\n      \"phoneVerified\": false,\n      \"registered\": true,\n      \"emailNotVerifiedAfter\": \"1966-08-19T06:36:57.724Z\",\n      \"lastActiveAt\": \"2026-06-22T12:17:05.942Z\",\n      \"createdAt\": \"2000-12-12T00:42:41.390Z\",\n      \"updatedAt\": \"1947-08-09T22:50:08.513Z\",\n      \"statusType\": \"regular\",\n      \"authToken\": \"string\",\n      \"deleted\": false,\n      \"rentalPaymentAccount\": {\n        \"stripeAccountId\": \"string\",\n        \"isStripeOnboardingFinished\": false,\n        \"createdAt\": \"1952-08-25T05:55:17.230Z\",\n        \"updatedAt\": \"1966-10-11T23:09:07.474Z\"\n      },\n      \"newsletterSubscription\": false,\n      \"premiumPartner\": false,\n      \"locale\": \"en_US\",\n      \"currency\": \"string\",\n      \"lengthUnit\": \"m\",\n      \"isRaiUser\": false\n    },\n    \"createdAt\": \"1955-10-22T16:26:44.104Z\",\n    \"updatedAt\": \"1986-06-18T02:37:22.167Z\"\n  },\n  \"active\": true,\n  \"fromNotBerryForbiddenCountry\": false,\n  \"verified\": false,\n  \"emailVerified\": false,\n  \"phoneVerified\": false,\n  \"registered\": true,\n  \"emailNotVerifiedAfter\": \"1965-02-15T10:28:49.628Z\",\n  \"lastActiveAt\": \"1948-04-05T06:18:04.353Z\",\n  \"createdAt\": \"1957-11-03T10:37:46.386Z\",\n  \"updatedAt\": \"1986-11-17T19:27:43.274Z\",\n  \"statusType\": \"regular\",\n  \"authToken\": \"string\",\n  \"deleted\": false,\n  \"rentalPaymentAccount\": {\n    \"stripeAccountId\": \"string\",\n    \"isStripeOnboardingFinished\": false,\n    \"createdAt\": \"2006-12-16T12:04:50.745Z\",\n    \"updatedAt\": \"2013-10-31T03:54:25.645Z\"\n  },\n  \"newsletterSubscription\": false,\n  \"premiumPartner\": false,\n  \"locale\": \"en_US\",\n  \"currency\": \"string\",\n  \"lengthUnit\": \"ft\",\n  \"isRaiUser\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bc9262c-1caf-47da-a9bf-2318354f3a18",
+              "name": "No pending status to activate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "status",
+                    "type",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c16ec3f6-a313-41bd-a36a-96cd3268758a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "status",
+                    "type",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "20ae5d57-2059-418a-b36c-6e3613e60951",
+    "name": "Rentberry User Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

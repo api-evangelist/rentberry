@@ -1,0 +1,60 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Virtual Tours API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Virtual Tours
+  description: Virtual Tours
+paths:
+  /v{version}/listing/virtual-tour/{id}:
+    get:
+      tags:
+      - Virtual Tours
+      summary: Get virtual tour by ID
+      description: Available since API version 4. Returns virtual tour information for a specific virtual tour ID.
+      operationId: get_virtual_tour_view
+      parameters:
+      - name: id
+        in: path
+        description: Virtual tour ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Virtual tour information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTour'
+        '404':
+          description: Virtual tour not found
+components:
+  schemas:
+    VirtualTour:
+      required:
+      - url
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        isMain:
+          type: boolean
+          default: false
+        duration:
+          type: integer
+        thumbnailUrl:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+      type: object

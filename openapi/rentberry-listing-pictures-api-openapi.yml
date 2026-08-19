@@ -1,0 +1,275 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Listing Pictures API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Listing Pictures
+  description: Listing Pictures
+paths:
+  /v{version}/apartment/pictures:
+    post:
+      tags:
+      - Listing Pictures
+      summary: Create listing picture
+      description: Available since API version 1. Uploads a new picture for a listing. If marked as cover, removes cover status from existing cover image.
+      operationId: post_api_v1_apartment_picture_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - imageFile
+              properties:
+                imageFile:
+                  description: 'Image file to upload. Supported formats: PNG, JPEG, HEIC, HEIF. Max size: 20MB.'
+                  type: string
+                  format: binary
+                apartmentId:
+                  description: Listing ID to associate the picture with
+                  type: integer
+                cover:
+                  description: Set this picture as cover image
+                  type: boolean
+                  default: false
+                order:
+                  description: Display order of the picture
+                  type: integer
+                type:
+                  description: Type of picture
+                  type: string
+                  enum:
+                  - picture
+                  - floorPlan
+              type: object
+      responses:
+        '200':
+          description: Picture created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingPicture'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/pictures/{id}:
+    post:
+      tags:
+      - Listing Pictures
+      summary: Update listing picture
+      description: Available since API version 1. Updates an existing listing picture. Can update the image file and display order.
+      operationId: post_api_v1_apartment_picture_edit
+      parameters:
+      - name: id
+        in: path
+        description: Picture ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                imageFile:
+                  description: New image file (optional)
+                  type: string
+                  format: binary
+                order:
+                  description: Display order of the picture
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Picture updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingPicture'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 1001) Not your image - Cannot edit image owned by another user
+        '404':
+          description: Picture not found
+      security:
+      - XAuthToken: []
+    delete:
+      tags:
+      - Listing Pictures
+      summary: Delete listing picture
+      description: Available since API version 1. Deletes a listing picture. Cannot delete cover images.
+      operationId: delete_api_v1_apartment_picture_delete
+      parameters:
+      - name: id
+        in: path
+        description: Picture ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Picture deleted successfully
+          content:
+            application/json:
+              schema:
+                properties: []
+                type: object
+              example: []
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 1002) Not your image - Cannot delete image owned by another user
+        '406':
+          description: (Real code 1003) Cannot delete cover image
+        '404':
+          description: Picture not found
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/pictures/order:
+    post:
+      tags:
+      - Listing Pictures
+      summary: Update pictures order
+      description: Available since API version 1. Updates the display order of multiple listing pictures in bulk.
+      operationId: post_api_v1_apartment_picture_order_edit
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - orderData
+              properties:
+                orderData:
+                  description: Array of picture objects with new order
+                  type: array
+                  items:
+                    required:
+                    - id
+                    - order
+                    properties:
+                      id:
+                        description: Picture ID
+                        type: integer
+                      order:
+                        description: New display order
+                        type: integer
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Pictures order updated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListingPicture'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 1001) Not your image - Cannot edit image owned by another user
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/pictures/detect-amenities:
+    post:
+      tags:
+      - Listing Pictures
+      summary: Detect amenities from listing pictures
+      description: Available since API version 4. Analyzes listing pictures using AI to detect amenities automatically.
+      operationId: post_api_v4_apartment_picture_detect_amenities
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PicturesIdsType'
+      responses:
+        '200':
+          description: Detected amenities
+          content:
+            application/json:
+              schema:
+                properties:
+                  amenities:
+                    description: List of detected amenities
+                    type: array
+                    items:
+                      description: Amenity key
+                      type: string
+                type: object
+        '400':
+          description: Bad request - Invalid picture IDs or validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    ListingPicture:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+        imageThumbs:
+          type: string
+        order:
+          type: integer
+        type:
+          type: string
+          default: picture
+      type: object
+    PicturesIdsType:
+      required:
+      - picturesIds
+      properties:
+        picturesIds:
+          type: array
+          items:
+            type: integer
+      type: object

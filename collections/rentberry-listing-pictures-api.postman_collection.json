@@ -1,0 +1,1386 @@
+{
+  "item": [
+    {
+      "id": "160437e4-95f8-4acb-8cbd-e627e27ad1e8",
+      "name": "Listing Pictures",
+      "description": {
+        "content": "Listing Pictures",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "118df332-26f5-46bf-943d-329290a25908",
+          "name": "Create listing picture",
+          "request": {
+            "name": "Create listing picture",
+            "description": {
+              "content": "Available since API version 1. Uploads a new picture for a listing. If marked as cover, removes cover status from existing cover image.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "pictures"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "imageFile",
+                  "type": "file",
+                  "description": "(Required) Image file to upload. Supported formats: PNG, JPEG, HEIC, HEIF. Max size: 20MB."
+                },
+                {
+                  "key": "apartmentId",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Listing ID to associate the picture with"
+                },
+                {
+                  "key": "cover",
+                  "value": "false",
+                  "type": "text",
+                  "description": "Set this picture as cover image"
+                },
+                {
+                  "key": "order",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Display order of the picture"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Type of picture (This can only be one of picture,floorPlan)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f98d777-b512-44a5-b845-10b99230a2bb",
+              "name": "Picture created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Image file to upload. Supported formats: PNG, JPEG, HEIC, HEIF. Max size: 20MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Listing ID to associate the picture with",
+                        "type": "text/plain"
+                      },
+                      "key": "apartmentId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set this picture as cover image",
+                        "type": "text/plain"
+                      },
+                      "key": "cover",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of picture (This can only be one of picture,floorPlan)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8819,\n  \"imageThumbs\": \"string\",\n  \"order\": 7989,\n  \"type\": \"picture\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9df2914-3c15-45d9-8e4b-a412cb141195",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Image file to upload. Supported formats: PNG, JPEG, HEIC, HEIF. Max size: 20MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Listing ID to associate the picture with",
+                        "type": "text/plain"
+                      },
+                      "key": "apartmentId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set this picture as cover image",
+                        "type": "text/plain"
+                      },
+                      "key": "cover",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of picture (This can only be one of picture,floorPlan)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c81cde5c-ff33-4b01-9719-a35959f1d91c",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Image file to upload. Supported formats: PNG, JPEG, HEIC, HEIF. Max size: 20MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Listing ID to associate the picture with",
+                        "type": "text/plain"
+                      },
+                      "key": "apartmentId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set this picture as cover image",
+                        "type": "text/plain"
+                      },
+                      "key": "cover",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Type of picture (This can only be one of picture,floorPlan)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e76a8ba-4be9-4b97-987a-b4785fa5b4fc",
+          "name": "Update listing picture",
+          "request": {
+            "name": "Update listing picture",
+            "description": {
+              "content": "Available since API version 1. Updates an existing listing picture. Can update the image file and display order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "pictures",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Picture ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "imageFile",
+                  "type": "file",
+                  "description": "New image file (optional)"
+                },
+                {
+                  "key": "order",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Display order of the picture"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9312eb03-86a5-4ed2-93e5-9e13d7c183cb",
+              "name": "Picture updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "New image file (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8819,\n  \"imageThumbs\": \"string\",\n  \"order\": 7989,\n  \"type\": \"picture\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "021da4ae-d21f-44bb-9301-f8c28b3e33b3",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "New image file (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a93641a7-472d-47a8-8f41-021861a8caa2",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "New image file (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fda8d25-d39a-4f32-9eda-c10300200f83",
+              "name": "Picture not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "New image file (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dfa1cd3-b14e-4b39-bfe6-a60ea6446c05",
+              "name": "(Real code 1001) Not your image - Cannot edit image owned by another user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "New image file (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "imageFile",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Display order of the picture",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<integer>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1c28e83-04a4-41ab-82c4-f00f9e04dc8a",
+          "name": "Delete listing picture",
+          "request": {
+            "name": "Delete listing picture",
+            "description": {
+              "content": "Available since API version 1. Deletes a listing picture. Cannot delete cover images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "pictures",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Picture ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "8392fe1d-f533-4b65-a3f3-aac8d1d6e6bc",
+              "name": "Picture deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c361a6d-0190-44fb-b789-acb010a57c1d",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c41e6b4-69b3-4778-ae02-455a9a1376d4",
+              "name": "Picture not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c98f072-fd9f-4471-ae03-b1d7503be92f",
+              "name": "(Real code 1002) Not your image - Cannot delete image owned by another user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a516c1e-56c0-4e95-a60b-cfe15d7efb35",
+              "name": "(Real code 1003) Cannot delete cover image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Picture ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "084688b7-5420-4a60-8bef-219df0067a00",
+          "name": "Update pictures order",
+          "request": {
+            "name": "Update pictures order",
+            "description": {
+              "content": "Available since API version 1. Updates the display order of multiple listing pictures in bulk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "pictures",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderData\": [\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae20362a-b235-4fc3-a710-57c09ebab91d",
+              "name": "Pictures order updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderData\": [\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7204,\n    \"imageThumbs\": \"string\",\n    \"order\": 7649,\n    \"type\": \"picture\"\n  },\n  {\n    \"id\": 9001,\n    \"imageThumbs\": \"string\",\n    \"order\": 6753,\n    \"type\": \"picture\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94de613b-699d-4516-ba7f-93bf0b685385",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderData\": [\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0317892e-c925-47c1-85e9-45a5484125f3",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderData\": [\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f48dbedb-3447-4624-a896-5fd66025362f",
+              "name": "(Real code 1001) Not your image - Cannot edit image owned by another user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderData\": [\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebec2333-27bf-4805-b806-7bc1cf3abc6f",
+          "name": "Detect amenities from listing pictures",
+          "request": {
+            "name": "Detect amenities from listing pictures",
+            "description": {
+              "content": "Available since API version 4. Analyzes listing pictures using AI to detect amenities automatically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "pictures",
+                "detect-amenities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"picturesIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58ce5ec9-1edb-42d3-a3bd-b0473fae01e4",
+              "name": "Detected amenities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "detect-amenities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"picturesIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amenities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "939c39a3-b024-45de-ab85-e03320764ef5",
+              "name": "Bad request - Invalid picture IDs or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "detect-amenities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"picturesIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b637986b-4914-4f4c-b3d7-629729691991",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "pictures",
+                    "detect-amenities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"picturesIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "70da48fa-a41c-452b-8f6c-4536dd62d0bd",
+    "name": "Rentberry Listing Pictures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Subscriptions API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Subscriptions
+  description: Subscriptions
+paths:
+  /v{version}/subscription:
+    get:
+      tags:
+      - Subscriptions
+      summary: Get user subscription preferences
+      description: Available since API version 1. Returns current subscription status for all notification groups. Can be accessed via JWT token from email unsubscribe links.
+      operationId: get_api_v1_subscription_list
+      parameters:
+      - name: reference
+        in: query
+        description: JWT token for accessing subscriptions without authentication (from email links)
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: User subscription preferences
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  description: Subscription status for each notification group
+                  type: boolean
+              example:
+                groupNewMessages: true
+                groupApplicationTenant: false
+                groupProperties: true
+                weaklyDigestNews: true
+        '401':
+          description: Unauthorized - Invalid or missing authentication
+        '403':
+          description: Access denied - Invalid JWT reference token
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Subscriptions
+      summary: Update user subscription preferences
+      description: Available since API version 1. Updates subscription preferences for specific notification groups. Can be accessed via JWT token from email unsubscribe links.
+      operationId: post_api_v1_subscription_list_edit
+      parameters:
+      - name: reference
+        in: query
+        description: JWT token for accessing subscriptions without authentication (from email links)
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                description: New subscription status for notification groups
+                type: boolean
+            example:
+              groupNewMessages: true
+              groupApplicationTenant: false
+              weaklyDigestNews: true
+      responses:
+        '200':
+          description: Subscriptions updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: boolean
+        '400':
+          description: Bad request - Invalid subscription data
+        '401':
+          description: Unauthorized - Invalid or missing authentication
+        '403':
+          description: Access denied - Invalid JWT reference token
+      security:
+      - XAuthToken: []
+  /v{version}/subscription/type-status/{groupType}/toggle:
+    post:
+      tags:
+      - Subscriptions
+      summary: Toggle subscription type (SMS/Email)
+      description: Available since API version 1. Toggles all notifications of specified type (SMS or Email) on/off. Returns new subscription status.
+      operationId: post_api_v1_subscription_type_toggle
+      parameters:
+      - name: groupType
+        in: path
+        description: Type of notifications to toggle
+        required: true
+        schema:
+          type: string
+          pattern: sms|email
+          enum:
+          - sms
+          - email
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Subscription status after toggle
+          content:
+            application/json:
+              schema:
+                description: True if subscribed, false if unsubscribed
+                type: boolean
+        '401':
+          description: Unauthorized - Authentication required
+      security:
+      - XAuthToken: []
+  /v{version}/subscription/type-status:
+    get:
+      tags:
+      - Subscriptions
+      summary: Get subscription type statuses
+      description: Available since API version 1. Returns overall subscription status for SMS and Email notification types.
+      operationId: get_api_v1_subscription_type
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Subscription type statuses
+          content:
+            application/json:
+              schema:
+                properties:
+                  sms:
+                    description: SMS notifications enabled
+                    type: boolean
+                  email:
+                    description: Email notifications enabled
+                    type: boolean
+                type: object
+              example:
+                sms: true
+                email: false
+        '401':
+          description: Unauthorized - Authentication required
+      security:
+      - XAuthToken: []

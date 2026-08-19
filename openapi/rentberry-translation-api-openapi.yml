@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Translation API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Translation
+  description: Translation
+paths:
+  /v{version}/translation/listing/{id}:
+    post:
+      tags:
+      - Translation
+      summary: Translate listing name and description
+      description: Available since API version 4. Translates listing title and description to the specified target locale using AI translation service.
+      operationId: post_api_v4_listing_translate
+      parameters:
+      - name: id
+        in: path
+        description: Listing ID to translate
+        required: true
+        schema:
+          type: integer
+          maximum: 2147483646
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Translation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingTranslation'
+        '404':
+          description: Listing not found
+        '405':
+          description: (Real code 24001) Translation service error - content could not be translated
+components:
+  schemas:
+    ListingTranslation:
+      properties:
+        description:
+          type: string
+        title:
+          type: string
+        language:
+          type: string
+          default: en_US
+      type: object

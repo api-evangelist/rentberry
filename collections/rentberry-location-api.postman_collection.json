@@ -1,0 +1,534 @@
+{
+  "item": [
+    {
+      "id": "3d37fdbc-aa2e-4a9d-a4f6-f106fc316601",
+      "name": "Location",
+      "description": {
+        "content": "Location",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f21b6627-1869-4f8d-a99c-f022087b9b87",
+          "name": "Get countries list",
+          "request": {
+            "name": "Get countries list",
+            "description": {
+              "content": "Available since API version 1. Returns list of countries, optionally filtered to only include countries with available listings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "withApartments",
+                  "value": "false",
+                  "description": "Filter to only countries with available listings"
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Type of transaction (only used when withApartments=true)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15aabd65-96c7-4793-ae63-127024596e9f",
+              "name": "List of countries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withApartments",
+                      "value": "false"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8963,\n    \"name\": \"string\",\n    \"shortCode\": \"string\"\n  },\n  {\n    \"id\": 224,\n    \"name\": \"string\",\n    \"shortCode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88671af3-a8b2-4ac7-92ee-05c2610e03e8",
+          "name": "Get country settings by address",
+          "request": {
+            "name": "Get country settings by address",
+            "description": {
+              "content": "Available since API version 1. Geocodes an address and returns country-specific settings for that location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "country-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formattedAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cc889b0-6433-4454-ae3d-c35a7fce6d09",
+              "name": "Country settings for the geocoded address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "country-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 Main St, New York, NY 10001, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd3eecd7-3b86-46a7-abf8-d2b3d0a2ea08",
+              "name": "Bad request - formattedAddress field is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "country-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 Main St, New York, NY 10001, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Field formattedAddress is empty\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddf044cc-80b8-44d0-8666-484974d6797d",
+              "name": "(Real code 13001) Place not found during geocoding",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "country-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 Main St, New York, NY 10001, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7b05c0a-442b-4f94-acf8-59d6d1efa27b",
+              "name": "Conflict - Country code cannot be resolved from address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "country-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 Main St, New York, NY 10001, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e846dbad-5d12-4b93-96ca-3f14c22f1b8c",
+          "name": "Geocode formatted address",
+          "request": {
+            "name": "Geocode formatted address",
+            "description": {
+              "content": "Converts a formatted address string into geographic location data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "place",
+                "geocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formattedAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9577845-e3a3-4395-908a-32c65211eab2",
+              "name": "Successfully geocoded address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "place",
+                    "geocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 William St, New York, NY 10038, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"placeType\": \"street\",\n  \"placeAddress\": \"123 William St, New York, NY 10038, USA\",\n  \"formattedAddressForUsa\": \"123 William Street, Manhattan, New York, NY\",\n  \"location\": {\n    \"formattedAddress\": \"123 William St, New York, NY 10038, USA\",\n    \"streetNumber\": \"123\",\n    \"streetName\": \"William Street\",\n    \"country\": \"US\",\n    \"state\": \"NY\",\n    \"locality\": \"New York\",\n    \"subLocality\": \"Manhattan\",\n    \"neighborhood\": null,\n    \"postalCode\": \"10038\",\n    \"adminLevels\": {\n      \"1\": {\n        \"level\": 1,\n        \"name\": \"New York\",\n        \"code\": \"NY\"\n      },\n      \"2\": {\n        \"level\": 2,\n        \"name\": \"New York County\",\n        \"code\": \"New York County\"\n      }\n    },\n    \"coordinates\": [\n      -74.0071269,\n      40.7094055\n    ],\n    \"bounds\": {\n      \"south\": 40.7079548197085,\n      \"west\": -74.0083148802915,\n      \"north\": 40.7106527802915,\n      \"east\": -74.00561691970849\n    },\n    \"provider\": \"google\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b9f18ee-5b96-474f-a67c-70462976d0db",
+              "name": "Bad request - formattedAddress is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "place",
+                    "geocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 William St, New York, NY 10038, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"body\": \"Field formattedAddress is empty\",\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"string\",\n    \"description\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5309e539-da0b-46a8-9eb3-ff32f8ed3b52",
+              "name": "Place not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "place",
+                    "geocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"123 William St, New York, NY 10038, USA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 13001,\n    \"message\": \"string\",\n    \"description\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "aaff1d10-42f4-48ff-8b77-2e1c9d70b86b",
+    "name": "Rentberry Location API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

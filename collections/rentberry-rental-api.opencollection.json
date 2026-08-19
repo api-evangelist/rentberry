@@ -1,0 +1,316 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Rental API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rental",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of user rentals.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns paginated list of rentals for the authenticated user. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Create a new rental.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new rental and sends invitation to tenant. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Get list of chargeable rentals.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/chargeable/:userType",
+            "params": [
+              {
+                "name": "userType",
+                "value": "",
+                "type": "path",
+                "description": "User type (tenant or homeowner)"
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Include archived rentals"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns paginated list of chargeable rentals for tenant or homeowner. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Get rental details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/:id",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific rental. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Update an existing rental.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/:id",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates rental information. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Activate rental by tenant.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/activate/:reference",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "Rental reference code"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activates rental using reference code when tenant accepts invitation. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Archive a rental.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/archive/:rental",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archives rental and changes its status. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Send invitation to homeowner.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/invite-homeowner",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends email invitation to potential homeowner. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Resend invitation to tenant.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/invite-tenant/:rental",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resends email invitation to tenant for rental. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Get short list of user rentals.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/list",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns simplified list of rentals for the authenticated user. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Upload document to rental.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/:id/document",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads and attaches document to rental. Available since API version 1."
+        },
+        {
+          "info": {
+            "name": "Download rental document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/:id/document/download/:document",
+            "params": [
+              {
+                "name": "document",
+                "value": "",
+                "type": "path",
+                "description": "Document ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Downloads document attached to rental. Available since API version 1."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

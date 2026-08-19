@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "fd060f70-5d05-4a50-9f68-8688e9741f61",
+      "name": "Leads",
+      "description": {
+        "content": "Leads",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c691a3f7-09dd-4740-8152-7405aa7f39cb",
+          "name": "Get lead information for a listing",
+          "request": {
+            "name": "Get lead information for a listing",
+            "description": {
+              "content": "Available since API version 3. Returns lead URL and provider information for external listings that support lead generation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                ":id",
+                "lead"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Listing ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75b14863-fdfc-40cb-84ca-de4925dbf7b3",
+              "name": "Lead information retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    ":id",
+                    "lead"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Listing ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"toUrl\": \"https://external-provider.com/listing/12345\",\n  \"providerName\": \"Zillow\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a0e371f-e63f-47a1-b6c4-865d40740f33",
+              "name": "Listing not found or lead URL not available for this listing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    ":id",
+                    "lead"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Listing ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "77c6b095-d10d-47c6-9e70-5671f1795d37",
+    "name": "Rentberry Leads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

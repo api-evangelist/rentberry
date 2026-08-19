@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Breadcrumbs API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Breadcrumbs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get breadcrumbs for listing type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/breadcrumbs/:listingType",
+            "params": [
+              {
+                "name": "listingType",
+                "value": "",
+                "type": "path",
+                "description": "Type of listing"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction (default: rental)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns breadcrumbs navigation structure for specified listing type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

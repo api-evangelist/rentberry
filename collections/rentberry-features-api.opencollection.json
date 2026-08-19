@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Features API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Features",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get feature payment details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/feature/payment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns details of a specific feature payment."
+        },
+        {
+          "info": {
+            "name": "Get feature information.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/feature/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Feature type"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns feature status and availability for the current user."
+        },
+        {
+          "info": {
+            "name": "Get unused feature ticket.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/feature/:type/ticket",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Feature type"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns unused feature ticket for the specified type."
+        },
+        {
+          "info": {
+            "name": "Get feature prices for currency.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/feature/price/:currency",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "path",
+                "description": "Currency code (e.g., USD, EUR)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns feature prices for the specified currency."
+        },
+        {
+          "info": {
+            "name": "Create Stripe payment for feature.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/feature/payment/stripe/feature/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Feature type"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates a Stripe payment intent for purchasing a feature."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

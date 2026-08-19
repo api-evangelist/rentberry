@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "ab37314e-3ebd-4df3-a54d-8b8a275563e9",
+      "name": "SEO URLs",
+      "description": {
+        "content": "SEO URLs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4018e337-9028-491b-82ab-1864dee70532",
+          "name": "Generate SEO-optimized search URL",
+          "request": {
+            "name": "Generate SEO-optimized search URL",
+            "description": {
+              "content": "Available since API version 1. Generates canonical, SEO-friendly URLs for search pages based on location and search parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "search_seo_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"mapView\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "535a74a6-9f64-40be-9b66-3a50fd3a7242",
+              "name": "SEO URL generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "search_seo_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"/apartments-for-rent/new-york-ny\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d13a1649-4b56-41d1-ba5a-c28073dc0496",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "search_seo_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cb11966-2fd3-4da7-b676-f88fa2ce505b",
+              "name": "Location not found or cannot be geocoded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "search_seo_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "061eef40-4d30-4ebd-98e4-a8606333748a",
+    "name": "Rentberry SEO URLs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

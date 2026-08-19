@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Rental Subscription API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rental Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a rental subscription with Stripe.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/:rental_id/subscription/stripe",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new rental subscription and returns client secret for Stripe payment setup. Available since API version 4."
+        },
+        {
+          "info": {
+            "name": "Update an existing rental subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/subscription/:rental_subscription_id/stripe/update",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental_subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates rental subscription payment details. Available since API version 4."
+        },
+        {
+          "info": {
+            "name": "Get rental subscription details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/subscription/:rental_subscription_id/stripe",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental_subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific rental subscription. Available since API version 4."
+        },
+        {
+          "info": {
+            "name": "Cancel a rental subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/rental/subscription/:rental_subscription_id/stripe",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rental_subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels an active rental subscription. Available since API version 4."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Breadcrumbs API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Breadcrumbs
+  description: Breadcrumbs
+paths:
+  /v{version}/breadcrumbs/{listingType}:
+    get:
+      tags:
+      - Breadcrumbs
+      summary: Get breadcrumbs for listing type
+      description: Available since API version 1. Returns breadcrumbs navigation structure for specified listing type.
+      operationId: get_api_v1_get_breadcrumbs
+      parameters:
+      - name: listingType
+        in: path
+        description: Type of listing
+        required: true
+        schema:
+          type: string
+          pattern: (apartment|house|condo|townhouse|duplex|loft|room)
+          enum:
+          - apartment
+          - house
+          - condo
+          - townhouse
+          - duplex
+          - loft
+          - room
+      - name: transactionType
+        in: query
+        description: 'Type of transaction (default: rental)'
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Breadcrumbs schema for the specified listing type
+          content:
+            application/json:
+              schema:
+                description: Structured breadcrumbs navigation data
+                type: object

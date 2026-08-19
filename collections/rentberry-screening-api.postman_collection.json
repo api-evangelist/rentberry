@@ -1,0 +1,1891 @@
+{
+  "item": [
+    {
+      "id": "2814d63f-6691-4dc2-9ac0-c3941fa09078",
+      "name": "Screening",
+      "description": {
+        "content": "Screening",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4925b309-f3d4-46d7-99bb-001c2cc698df",
+          "name": "Get homeowner screening requests",
+          "request": {
+            "name": "Get homeowner screening requests",
+            "description": {
+              "content": "Available since API version 1. Returns paginated list of screening requests created by the authenticated homeowner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "true",
+                  "description": "Filter by active status"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Items per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "2c5e4898-c6fd-4a2d-a0d4-b0d357c3ef1b",
+              "name": "List of screening requests with notifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "active",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaef552d-d081-426b-a88f-268131854188",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "active",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a65191e5-55dd-4003-9593-a142db95334e",
+          "name": "Create screening requests",
+          "request": {
+            "name": "Create screening requests",
+            "description": {
+              "content": "Available since API version 1. Creates screening requests for one or more tenants and sends email invitations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"users\": [\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    },\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea410875-c4e2-45db-90c3-c5be40984014",
+              "name": "Screening requests created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"users\": [\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    },\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d85b610-0d23-47bd-92aa-17e9aa95f33c",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"users\": [\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    },\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98358204-49b5-49ea-846a-0109c2c5f120",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"users\": [\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    },\n    {\n      \"tenantNameFirst\": \"<string>\",\n      \"tenantNameLast\": \"<string>\",\n      \"tenantEmail\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36b8d3ce-7836-44d6-9e1f-de2dddc40275",
+          "name": "Get screening request by reference",
+          "request": {
+            "name": "Get screening request by reference",
+            "description": {
+              "content": "Available since API version 1. Returns screening request details using reference code from email invitation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) Unique reference code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acd9be15-269e-4dd4-a3ff-e6327af1a333",
+              "name": "Screening request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Unique reference code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 763,\n  \"homeowner\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstring\",\n    \"phoneCountryCode\": \"string\",\n    \"id\": 275,\n    \"nameMiddle\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"value\": \"<Circular reference to #/components/schemas/User7 detected>\"\n      },\n      \"createdAt\": \"2025-12-27T22:20:22.185Z\",\n      \"updatedAt\": \"2024-10-02T13:01:05.918Z\"\n    },\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"statusType\": \"regular\",\n    \"deleted\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"m\"\n  },\n  \"status\": 1,\n  \"active\": true,\n  \"deleted\": false,\n  \"tenantEmail\": \"string\",\n  \"tenantNameFirst\": \"string\",\n  \"tenantNameLast\": \"string\",\n  \"reference\": \"string\",\n  \"creditScore\": {\n    \"score\": 4650,\n    \"creditScoreUpdatedAt\": \"1988-11-21T16:51:02.114Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1965-08-31T00:57:30.847Z\",\n    \"updatedAt\": \"1947-02-14T09:02:06.071Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 3491,\n    \"createdAt\": \"1986-08-10T10:46:20.535Z\",\n    \"updatedAt\": \"1961-02-24T18:14:05.777Z\"\n  },\n  \"expiredAt\": \"1949-02-18T22:48:23.538Z\",\n  \"featureTicket\": {\n    \"id\": 1994,\n    \"code\": \"string\",\n    \"type\": \"string\",\n    \"usedAt\": \"1948-04-19T02:06:12.927Z\",\n    \"isUsed\": false,\n    \"createdAt\": \"1949-07-16T04:58:55.124Z\",\n    \"updatedAt\": \"1995-08-30T09:40:25.910Z\"\n  },\n  \"createdAt\": \"1992-03-07T14:09:52.276Z\",\n  \"updatedAt\": \"1957-09-25T12:08:24.799Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b7e4f8c-ecb3-4ba2-ad29-3d93a4f19a17",
+              "name": "Screening request not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Unique reference code"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33ae6ef3-b4d6-4487-99a6-6b012da47237",
+          "name": "Resend screening request email",
+          "request": {
+            "name": "Resend screening request email",
+            "description": {
+              "content": "Available since API version 1. Resends email invitation to tenant for an existing screening request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                "resend",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Screening request ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "72f648a3-a5cd-45ad-8bb8-79d05befc2f0",
+              "name": "Email resent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2cc4bbe-931f-446d-bced-1fd61ee6bf8f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83bffea0-8de9-4f68-a773-0b8009657f94",
+              "name": "Not your screening request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "585afb9e-0508-4230-a26d-6d216f88ec87",
+              "name": "(Real code 11001) Request already deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ebf5691c-0afe-4704-9ad0-e5c84dc37874",
+              "name": "(Real code 11002) Request already canceled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4dd5e03-477f-41f3-9179-e4f006701bd1",
+              "name": "(Real code 11009) Request already completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "resend",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "261049c8-67ca-4f4e-8428-50e0a175fb1b",
+          "name": "Cancel screening request",
+          "request": {
+            "name": "Cancel screening request",
+            "description": {
+              "content": "Available since API version 1. Cancels an active screening request. Cannot cancel completed or paid requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Screening request ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "d2540d3f-1e7e-4488-a67e-9d1a7676400d",
+              "name": "Request canceled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2264,\n  \"homeowner\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstring\",\n    \"birthday\": \"1984-02-22T13:49:17.442Z\",\n    \"hasPassword\": true,\n    \"phoneCountryCode\": \"string\",\n    \"id\": 1330,\n    \"nameMiddle\": \"string\",\n    \"company\": {\n      \"id\": 412,\n      \"name\": \"string\",\n      \"phone\": 641,\n      \"website\": \"string\",\n      \"logoThumbs\": \"string\",\n      \"email\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"st\",\n      \"provider\": \"string\",\n      \"externalId\": \"string\",\n      \"createdAt\": \"1999-07-03T01:17:30.892Z\",\n      \"updatedAt\": \"1981-07-17T15:56:51.148Z\"\n    },\n    \"companyName\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"bio\": \"string\",\n    \"oauthProviders\": [\n      {\n        \"id\": 2041,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      },\n      {\n        \"id\": 7323,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      }\n    ],\n    \"address\": {\n      \"street\": \"string\",\n      \"houseNumber\": \"string\",\n      \"city\": \"string\",\n      \"zip\": \"string\",\n      \"streetType\": null,\n      \"state\": {\n        \"id\": 502,\n        \"shortName\": null,\n        \"name\": null,\n        \"description\": \"string\"\n      }\n    },\n    \"creditScore\": {\n      \"score\": 3946,\n      \"creditScoreUpdatedAt\": \"2016-06-16T10:07:35.114Z\",\n      \"alert\": \"string\",\n      \"createdAt\": \"1950-02-16T19:30:32.039Z\",\n      \"updatedAt\": \"1988-01-12T18:57:46.009Z\"\n    },\n    \"criminalReport\": {\n      \"criminalRecordFound\": false,\n      \"status\": 816,\n      \"createdAt\": \"2011-01-27T22:00:07.172Z\",\n      \"updatedAt\": \"1986-06-29T19:47:15.482Z\"\n    },\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n      },\n      \"createdAt\": \"1949-06-21T01:49:37.294Z\",\n      \"updatedAt\": \"2023-08-18T02:42:29.336Z\"\n    },\n    \"active\": true,\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"emailNotVerifiedAfter\": \"1998-09-29T13:46:20.943Z\",\n    \"lastActiveAt\": \"2014-07-23T12:12:52.735Z\",\n    \"createdAt\": \"2016-06-29T23:49:17.963Z\",\n    \"updatedAt\": \"2005-03-08T01:40:47.072Z\",\n    \"statusType\": \"regular\",\n    \"authToken\": \"string\",\n    \"rentalHistory\": [\n      {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"homeownerPhone\": 8472,\n        \"id\": 6989,\n        \"user\": {\n          \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n        },\n        \"applicantId\": 798,\n        \"price\": 7431,\n        \"term\": 2649\n      },\n      {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"homeownerPhone\": 1220,\n        \"id\": 3349,\n        \"user\": {\n          \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n        },\n        \"applicantId\": 797,\n        \"price\": 9655,\n        \"term\": 7362\n      }\n    ],\n    \"deleted\": false,\n    \"rentalPaymentAccount\": {\n      \"stripeAccountId\": \"string\",\n      \"isStripeOnboardingFinished\": false,\n      \"createdAt\": \"1961-11-04T21:06:18.366Z\",\n      \"updatedAt\": \"1967-06-07T16:36:55.285Z\"\n    },\n    \"newsletterSubscription\": false,\n    \"premiumPartner\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"ft\",\n    \"isRaiUser\": false\n  },\n  \"status\": 1,\n  \"active\": true,\n  \"deleted\": false,\n  \"tenantEmail\": \"string\",\n  \"tenantNameFirst\": \"string\",\n  \"tenantNameLast\": \"string\",\n  \"reference\": \"string\",\n  \"creditScore\": {\n    \"score\": 1918,\n    \"creditScoreUpdatedAt\": \"2024-11-02T01:47:44.971Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1960-08-17T16:07:51.065Z\",\n    \"updatedAt\": \"1998-12-12T06:09:46.557Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 3974,\n    \"createdAt\": \"1954-10-21T02:03:00.363Z\",\n    \"updatedAt\": \"2003-11-10T06:39:40.118Z\"\n  },\n  \"expiredAt\": \"1988-07-23T04:54:14.869Z\",\n  \"featureTicket\": {\n    \"id\": 6701,\n    \"code\": \"string\",\n    \"type\": \"string\",\n    \"usedAt\": \"1956-11-05T07:47:56.912Z\",\n    \"isUsed\": false,\n    \"createdAt\": \"2008-07-01T15:07:50.089Z\",\n    \"updatedAt\": \"2020-03-16T16:14:07.946Z\"\n  },\n  \"createdAt\": \"1973-08-24T05:07:42.264Z\",\n  \"updatedAt\": \"1994-08-28T22:39:59.889Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce07e5ac-c0e3-400e-8433-c27b47ea697c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76a46e51-4acd-4a70-974c-1c300f98690e",
+              "name": "Not your screening request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e507b60-fe9b-4742-8909-5e1c06dfd28c",
+              "name": "(Real code 11001) Request already deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7819b5e0-d247-4e3f-a6af-71e10da6b517",
+              "name": "(Real code 11002) Request already canceled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73615a85-119e-4fe7-9df5-b24ab9f2028d",
+              "name": "(Real code 11006) Cannot cancel completed screening",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7532e157-6840-4f10-9701-854111b7cc91",
+              "name": "(Real code 11011) Cannot cancel paid screening",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Screening request ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Proxy Authentication Required",
+              "code": 407,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1f12b69-fda2-4558-8d8a-1a0a0dd5793b",
+          "name": "Pay for screening (deprecated)",
+          "request": {
+            "name": "Pay for screening (deprecated)",
+            "description": {
+              "content": "Available since API version 1. DEPRECATED: Use Stripe webhook instead. Associates feature ticket with screening request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                "screen",
+                ":reference",
+                "pay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) Screening reference code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ticket\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff261ed5-4f0e-4332-98bd-ef4ee9cde146",
+              "name": "Payment processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d722fb5-9248-483d-ab23-8586fa01f46e",
+              "name": "Payment required or invalid ticket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ticket\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d35a103-b071-4ac3-b598-b8f24368c1b4",
+          "name": "Validate tenant data for screening",
+          "request": {
+            "name": "Validate tenant data for screening",
+            "description": {
+              "content": "Available since API version 1. Validates tenant personal information before performing actual screening.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                "validate",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) Screening reference code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8121ce1e-13ab-4225-b470-ce208aef1629",
+              "name": "Data validated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "validate",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0790dcca-8ba4-4d75-af65-ddd590944af1",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "validate",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74d2d0cd-62b3-4033-8850-5d5a0fb580b1",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "validate",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e3c23bcf-7801-4be7-b41a-6a283c56e276",
+              "name": "(Real code 11001) Request already deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "validate",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd812980-762a-41e0-b3d3-c398951dc9c1",
+              "name": "(Real code 11004) Request already processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "validate",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65145547-4f09-45b4-8ad8-9cd27780be05",
+          "name": "Perform tenant screening",
+          "request": {
+            "name": "Perform tenant screening",
+            "description": {
+              "content": "Available since API version 1. Executes credit and criminal background screening for tenant using validated data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "screening",
+                "screen",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) Screening reference code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a332ca67-a5e0-4f1f-88fe-43b9a43cabf3",
+              "name": "Screening completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4fd506b4-85e9-4e2e-bcd8-eec3ef204e30",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72ed5372-906e-4977-b092-4a8cf5c4cfb0",
+              "name": "Payment required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7d239de-5180-4fb5-8565-f5c4025901a3",
+              "name": "(Real code 11007) Request was canceled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc7a3c3c-5da0-4613-ae63-b1e63c6e2cb3",
+              "name": "(Real code 11004) Request already processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74570813-5f46-4481-920f-d7ac2096f51f",
+              "name": "(Real code 11005) Error obtaining screening reports",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "screening",
+                    "screen",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Screening reference code"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nameFirst\": \"<string>\",\n  \"nameMiddle\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"phone\": \"<integer>\",\n  \"birthday\": \"<integer>\",\n  \"address\": {\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"stateId\": \"<integer>\",\n    \"streetType\": \"<string>\"\n  },\n  \"creditScore\": {\n    \"ssn\": \"<string>\"\n  },\n  \"pinCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "18ba0d4a-5f7b-45cd-a815-d84040b8d185",
+    "name": "Rentberry Screening API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

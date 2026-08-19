@@ -1,0 +1,293 @@
+{
+  "item": [
+    {
+      "id": "dbc97682-aa29-4d56-b7b9-31ba12ef54ca",
+      "name": "Saved Search",
+      "description": {
+        "content": "Saved Search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9477f62f-26c1-4048-ad74-67f4c3e55fc4",
+          "name": "Save search criteria",
+          "request": {
+            "name": "Save search criteria",
+            "description": {
+              "content": "Available since API version 4. Saves search criteria to receive email alerts when new matching listings are found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "saved-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"filter\": {\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"minPrice\": \"<integer>\",\n    \"maxPrice\": \"<integer>\",\n    \"formattedAddress\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"bedrooms\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  },\n  \"originalCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11f4086b-5491-4072-9d85-70c1b8b77e1e",
+              "name": "Search saved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "saved-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"filter\": {\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"minPrice\": \"<integer>\",\n    \"maxPrice\": \"<integer>\",\n    \"formattedAddress\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"bedrooms\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  },\n  \"originalCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"string\",\n  \"id\": 6677,\n  \"status\": 9833,\n  \"reminderSent\": false,\n  \"createdAt\": \"1994-02-07T05:45:24.833Z\",\n  \"updatedAt\": \"2005-06-02T18:04:16.848Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "774498db-4915-4eaf-8fd9-3f48f400adff",
+              "name": "Validation failed - Invalid email or search data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "saved-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"filter\": {\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"minPrice\": \"<integer>\",\n    \"maxPrice\": \"<integer>\",\n    \"formattedAddress\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"bedrooms\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  },\n  \"originalCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03000c0a-9482-4a7e-ae4f-447816dea9f0",
+          "name": "Disable saved search",
+          "request": {
+            "name": "Disable saved search",
+            "description": {
+              "content": "Available since API version 4. Disables an active saved search using its unique hash to stop receiving email alerts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "saved-search",
+                "disable",
+                ":hash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hash",
+                  "description": "(Required) Unique hash identifier of the saved search"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ad10b23-5358-4eac-a4f4-015a4277f144",
+              "name": "Search disabled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "saved-search",
+                    "disable",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) Unique hash identifier of the saved search"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ce391b4-075a-4f7a-b539-f41036085cf5",
+              "name": "Saved search not found or already disabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "saved-search",
+                    "disable",
+                    ":hash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hash",
+                      "description": "(Required) Unique hash identifier of the saved search"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "f54f69a3-ab99-4bbd-9cf0-654606ed4384",
+    "name": "Rentberry Saved Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

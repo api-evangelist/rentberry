@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Devices API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List user devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/device",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns a list of devices associated with the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Register device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/device",
+            "headers": [
+              {
+                "name": "X-Device-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Registers a new device or updates an existing one identified by X-Device-Token header. If user is logged in, the device will be associated with the user."
+        },
+        {
+          "info": {
+            "name": "Update device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v:version/device",
+            "headers": [
+              {
+                "name": "X-Device-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Updates an existing device identified by X-Device-Token header."
+        },
+        {
+          "info": {
+            "name": "Unlink device from user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/device",
+            "headers": [
+              {
+                "name": "X-Device-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Removes user association from a device. The device is identified by X-Device-Token header."
+        },
+        {
+          "info": {
+            "name": "Link device to user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v:version/device/link",
+            "headers": [
+              {
+                "name": "X-Device-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Links a device to the authenticated user. The device is identified by X-Device-Token header."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

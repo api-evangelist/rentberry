@@ -1,0 +1,335 @@
+openapi: 3.2.0
+info:
+  title: Rentberry User Status API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: User Status
+  description: User Status
+paths:
+  /v{version}/user/status/type/activate:
+    post:
+      tags:
+      - User Status
+      summary: Activate user premium or VIP status.
+      description: Available since API version 1. Activates pending premium or VIP user status.
+      operationId: post_api_v1_user_status_activate
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Status activated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2'
+        '401':
+          description: Unauthorized
+        '400':
+          description: No pending status to activate
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    UserAddress2:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    State2:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
+    User2:
+      required:
+      - nameFirst
+      - nameLast
+      - username
+      - phone
+      - birthday
+      properties:
+        hasPassword:
+          type: boolean
+        phoneCountryCode:
+          type: string
+        id:
+          type: integer
+        nameFirst:
+          type: string
+          maxLength: 255
+          minLength: 2
+        nameMiddle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        nameLast:
+          type: string
+          maxLength: 255
+          minLength: 2
+        company:
+          $ref: '#/components/schemas/Company'
+        companyName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        username:
+          type: string
+          maxLength: 255
+          minLength: 1
+        profilePictureThumbs:
+          type: string
+        phone:
+          type: string
+          maxLength: 15
+          minLength: 7
+        birthday:
+          type: string
+          format: date-time
+        bio:
+          type: string
+          maxLength: 1500
+        oauthProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserOauthProvider'
+        address:
+          $ref: '#/components/schemas/UserAddress2'
+        creditScore:
+          $ref: '#/components/schemas/UserCreditScore'
+        criminalReport:
+          $ref: '#/components/schemas/UserCriminalReport'
+        stripeCustomer:
+          $ref: '#/components/schemas/UserStripeCustomer2'
+        active:
+          type: boolean
+          default: true
+        fromNotBerryForbiddenCountry:
+          type: boolean
+          default: false
+        verified:
+          type: boolean
+          default: false
+        emailVerified:
+          type: boolean
+          default: false
+        phoneVerified:
+          type: boolean
+          default: false
+        registered:
+          type: boolean
+          default: true
+        emailNotVerifiedAfter:
+          type: string
+          format: date-time
+        lastActiveAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        statusType:
+          type: string
+          default: regular
+          enum:
+          - regular
+          - premium
+          - premium_pending
+          - vip
+          - vip_pending
+        authToken:
+          type: string
+        deleted:
+          type: boolean
+          default: false
+        rentalPaymentAccount:
+          $ref: '#/components/schemas/RentalPaymentAccount'
+        newsletterSubscription:
+          type: boolean
+          default: false
+        premiumPartner:
+          type: boolean
+          default: false
+        locale:
+          type: string
+          default: en_US
+          enum:
+          - en_US
+          - es_ES
+        currency:
+          type: string
+        lengthUnit:
+          type: string
+          enum:
+          - m
+          - ft
+        isRaiUser:
+          type: boolean
+          default: false
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object

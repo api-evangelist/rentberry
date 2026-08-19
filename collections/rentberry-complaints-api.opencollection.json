@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Complaints API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Complaints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a complaint against a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/complain/user",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates a complaint against another user."
+        },
+        {
+          "info": {
+            "name": "Create a complaint against an apartment listing.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/complain/apartment",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates a complaint against an apartment listing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

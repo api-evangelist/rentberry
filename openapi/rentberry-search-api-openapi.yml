@@ -1,0 +1,1855 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Search API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Search
+  description: Search
+paths:
+  /v{version}/polygon/search:
+    post:
+      tags:
+      - Search
+      summary: Search polygons by bounds
+      description: Available since API version 1. Searches for polygons (neighborhoods, districts) within specified geographical bounds. Returns neighborhoods only when zoom level is sufficient.
+      operationId: post_api_v1_polygon_search_bounds
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - bounds
+              - zoom
+              properties:
+                bounds:
+                  description: Geographical bounds for search
+                  properties:
+                    north:
+                      description: Northern latitude
+                      type: number
+                      format: float
+                    south:
+                      description: Southern latitude
+                      type: number
+                      format: float
+                    east:
+                      description: Eastern longitude
+                      type: number
+                      format: float
+                    west:
+                      description: Western longitude
+                      type: number
+                      format: float
+                  type: object
+                zoom:
+                  description: Map zoom level (affects whether neighborhoods are included)
+                  type: integer
+                  example: 12
+              type: object
+      responses:
+        '200':
+          description: List of polygons within the specified bounds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  description: Polygon data with geographical information
+                  type: object
+        '400':
+          description: Bad request - Validation failed
+  /v{version}/apartment/search/ids:
+    post:
+      tags:
+      - Search
+      summary: Get listings by IDs
+      description: Available since API version 2. Retrieves specific listings by their IDs with optional sorting and location-based relevance.
+      operationId: post_api_v2_apartment_search_by_ids
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchIdsType'
+      responses:
+        '200':
+          description: Listings retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdsResponse'
+        '400':
+          description: Validation failed - Invalid IDs or parameters
+  /v{version}/apartment/search/similar-apartment/{id}:
+    get:
+      tags:
+      - Search
+      summary: Get similar listings
+      description: Available since API version 1. Returns listings similar to the specified one based on location, price, and features.
+      operationId: get_api_v1_apartment_search_similar_apartments
+      parameters:
+      - name: id
+        in: path
+        description: Listing ID to find similar properties for
+        required: true
+        schema:
+          type: integer
+          maximum: 2147483646
+          pattern: \d+
+      - name: page
+        in: query
+        description: Page number for pagination
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        description: Number of results per page
+        schema:
+          type: integer
+          default: 10
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Similar listings found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimilarResponse'
+        '404':
+          description: Original listing not found
+  /v{version}/search-filter-config/{countryCode}/{transactionType}:
+    get:
+      tags:
+      - Search
+      summary: Get search filter configuration
+      description: Available since API version 4. Returns available filter options for search based on country and transaction type (rental/sale).
+      operationId: get_api_v4_search_filter
+      parameters:
+      - name: countryCode
+        in: path
+        description: ISO country code (e.g., US, CA, GB)
+        required: true
+        schema:
+          type: string
+          pattern: ^[A-Z]{2}$
+        example: US
+      - name: transactionType
+        in: path
+        description: Type of property transaction
+        required: true
+        schema:
+          type: string
+          enum:
+          - rental
+          - sale
+        example: rental
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Filter configuration retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchFilterConfig'
+        '404':
+          description: No configuration found for this country and transaction type
+  /v{version}/apartment/search/init:
+    post:
+      tags:
+      - Search
+      summary: Initialize Search
+      description: Available since API version 4. Initializes search parameters from URL and returns initial search data with map configuration.
+      operationId: post_api_v4_apartment_search_init
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitType'
+      responses:
+        '200':
+          description: Search initialized successfully with parsed parameters and initial data
+          content:
+            application/json:
+              schema:
+                description: Initial search response with parsed URL parameters
+                type: object
+        '400':
+          description: Bad request - Invalid URL or search parameters
+        '404':
+          description: Place not found in search URL
+        '405':
+          description: (Real code 13001) Search place could not be resolved
+  /v{version}/apartment/search/place:
+    post:
+      tags:
+      - Search
+      summary: Search listings by place (web)
+      description: Available since API version 4. Web-optimized search for listings by specific place or address with full filtering capabilities.
+      operationId: post_api_v4_apartment_search_place
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchPlaceWebType'
+      responses:
+        '200':
+          description: Search results for place-based Search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Bad request - Invalid search parameters
+        '404':
+          description: No results found or search window too large
+  /v{version}/apartment/search/bounds:
+    post:
+      tags:
+      - Search
+      summary: Search listings by map bounds (web)
+      description: Available since API version 4. Web-optimized search for listings within specified rectangular map area defined by coordinates.
+      operationId: post_api_v4_apartment_search_bounds
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchBoundsWebType'
+      responses:
+        '200':
+          description: Search results for bounds-based Search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Bad request - Invalid map bounds or search parameters
+        '404':
+          description: No results found or search window too large
+  /v{version}/apartment/search/buckets:
+    post:
+      tags:
+      - Search
+      summary: Get search buckets
+      description: Available since API version 1. Returns aggregated data buckets for search faceting and filtering (DEPRECATED - consider using newer search endpoints).
+      operationId: post_api_v1_apartment_search_buckets
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  description: Search URL to parse
+                  type: string
+                mapWidth:
+                  description: Map width for bounds calculation
+                  type: integer
+                mapHeight:
+                  description: Map height for bounds calculation
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Search buckets data
+        '400':
+          description: Bad request - Missing or invalid URL
+      deprecated: true
+  /v{version}/apartment/search/price-settings:
+    post:
+      tags:
+      - Search
+      summary: Get price settings
+      description: Available since API version 4. Returns recommended price ranges and settings for search filters based on location and market data.
+      operationId: post_api_v4_listing_search_price_settings
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceSettingsType'
+      responses:
+        '200':
+          description: Price settings and recommendations
+          content:
+            application/json:
+              schema:
+                description: Price range recommendations and market data
+                type: object
+        '400':
+          description: Bad request - Invalid parameters
+        '404':
+          description: Location not found for price analysis
+  /v{version}/apartment/search/content:
+    get:
+      tags:
+      - Search
+      summary: Get search content
+      description: Available since API version 4. Returns SEO content and metadata for search results pages based on search URL.
+      operationId: get_api_v4_listing_search_content
+      parameters:
+      - name: url
+        in: query
+        description: Search URL to generate content for
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: SEO content and metadata for search page
+          content:
+            application/json:
+              schema:
+                description: SEO content including title, description, and structured data
+                type: object
+    post:
+      tags:
+      - Search
+      summary: Get search content (POST)
+      description: Available since API version 4. Returns SEO content and metadata for search results pages based on search URL.
+      operationId: post_api_v4_listing_search_content
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/URLRequest'
+      responses:
+        '200':
+          description: SEO content and metadata for search page
+          content:
+            application/json:
+              schema:
+                description: SEO content including title, description, and structured data
+                type: object
+  /v{version}/apartment/search/related-content:
+    get:
+      tags:
+      - Search
+      summary: Get related search content
+      description: Available since API version 4. Returns related search suggestions and content recommendations based on current search URL.
+      operationId: get_api_v4_listing_search_related_content
+      parameters:
+      - name: url
+        in: query
+        description: Current search URL to find related content for
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Related search content and suggestions
+          content:
+            application/json:
+              schema:
+                description: Related searches and content recommendations
+                type: object
+    post:
+      tags:
+      - Search
+      summary: Get related search content (POST)
+      description: Available since API version 4. Returns related search suggestions and content recommendations based on current search URL.
+      operationId: post_api_v4_listing_search_related_content
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/URLRequest'
+      responses:
+        '200':
+          description: Related search content and suggestions
+          content:
+            application/json:
+              schema:
+                description: Related searches and content recommendations
+                type: object
+components:
+  schemas:
+    InitType:
+      required:
+      - url
+      - mapWidth
+      - mapHeight
+      - mapView
+      properties:
+        url:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapView:
+          type: string
+      type: object
+    ListingSearchIdsType:
+      required:
+      - ids
+      - sort
+      - latitude
+      - longitude
+      - transactionType
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        latitude:
+          type: number
+        longitude:
+          type: number
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+      type: object
+    PriceSettingsType:
+      required:
+      - url
+      - mapWidth
+      - mapHeight
+      - minPrice
+      - maxPrice
+      properties:
+        url:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        minPrice:
+          type: number
+        maxPrice:
+          type: number
+      type: object
+    IdsResponse:
+      properties: []
+      type: object
+    SearchResponse:
+      type: object
+    FileBag:
+      properties: []
+      type: object
+    URLRequest:
+      required:
+      - url
+      properties:
+        url:
+          type: string
+        originalRequest:
+          $ref: '#/components/schemas/Request'
+      type: object
+    SimilarResponse:
+      properties:
+        total:
+          type: integer
+        searchRoute:
+          type:
+          - string
+          - 'null'
+          default: null
+      type: object
+    ListingSearchBoundsWebType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - zoom
+      - seLatitude
+      - seLongitude
+      - nwLatitude
+      - nwLongitude
+      - url
+      - amenities
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        zoom:
+          type: number
+        seLatitude:
+          type: string
+        seLongitude:
+          type: string
+        nwLatitude:
+          type: string
+        nwLongitude:
+          type: string
+        url:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+            enum:
+            - gym
+            - pool
+            - garden
+            - parking
+            - doorman
+            - storage
+            - balcony
+            - elevator
+            - fireplace
+            - highRise
+            - roofDeck
+            - furnished
+            - dishwasher
+            - beachView
+            - washerUnit
+            - hardwoodFloors
+            - airConditioning
+            - wheelchairAccessible
+            - attic
+            - basement
+            - bbqArea
+            - deck
+            - disabledAccess
+            - garageParking
+            - greenhouse
+            - intercom
+            - lawn
+            - new
+            - secondarySuite
+            - security
+            - waterfront
+            - wired
+            - studentFriendly
+            - utilitiesIncluded
+            - energyEfficient
+            - solarPowered
+            - kitchen
+            - privateKitchen
+            - sharedKitchen
+            - internet
+            - wifi
+            - tv
+            - localTv
+            - cableTv
+            - computer
+            - laptopWorkspace
+            - hotTube
+            - tub
+            - iron
+            - towels
+            - ironingBoard
+            - toiletries
+            - guestToilet
+            - buzzerWirelessIntercom
+            - privateEntrance
+            - hairDryer
+            - suitableForEvents
+            - centralizedHeating
+            - autonomousHeating
+            - busStop
+            - trainStation
+            - airport
+            - bicyclesForUse
+            - library
+            - shoppingCenter
+            - hospital
+            - park
+            - golf
+            - museums
+            - healthClub
+            - amusementPark
+            - cinema
+            - restaurant
+            - gamesRoom
+            - horseStables
+            - bowling
+            - smokeAlarm
+            - smokeAlarmEachFloor
+            - sportsArena
+            - coDetector
+            - cellar
+            - blankets
+            - pillows
+            - bedClothes
+            - broom
+            - floorWiper
+            - shower
+            - toaster
+            - microwave
+            - fridge
+            - coffee
+            - kettle
+            - cutlery
+            - vacuumCleaner
+            - stove
+            - detergents
+            - bidet
+            - hourSecurity24
+            - fishing
+            - waterSports
+            - creditApplication
+            - smokingFriendly
+            - brokerFee
+            - garbageDisposer
+            - iceMaker
+            - trashCompactor
+            - warmingDrawer
+            - coffeeSystem
+            - coffeeSystemRoughIn
+            - cooktop
+            - cooktopElectric
+            - cooktopElectric2Burner
+            - cooktopElectric6Burner
+            - cooktopGas
+            - cooktopGas2Burner
+            - cooktopGas5Burner
+            - cooktopGas6Burner
+            - cooktopGasCustom
+            - cooktopInduction
+            - cooktopInduction2Burner
+            - cooktopInduction6Burner
+            - dishwasherDrawer
+            - dishwasherTwoOrMore
+            - dryer
+            - dryerDualFuel
+            - dryerElectric110v
+            - dryerElectric220v
+            - dryerGas
+            - dryerGasRoughIn
+            - oven
+            - ovenConvection
+            - ovenDouble
+            - ovenDoubleElectric
+            - ovenDoubleGas
+            - ovenGas
+            - ovenGas3Wide
+            - ovenSelfCleaning
+            - ovenSteam
+            - ovenTwin
+            - ovenTwinElectric
+            - ovenTwinGas
+            - ovenTwinGas3Wide
+            - ovenTwinMixed
+            - range
+            - rangeBuiltIn
+            - rangeDual
+            - rangeDual10Burner
+            - rangeDual6Burner
+            - rangeDual8Burner
+            - rangeElectric
+            - rangeGas
+            - rangeGas10Burner
+            - rangeGas6Burner
+            - rangeGas8Burner
+            - rangeInduction
+            - rangeOther
+            - rangetopElectric
+            - rangetopElectric2Burner
+            - rangetopElectric6Burner
+            - rangetopGas
+            - rangetopGas10Burner
+            - rangetopGas2Burner
+            - rangetopGas4BurnerCompact
+            - rangetopGas6Burner
+            - rangetopGas8Burner
+            - rangetopGasCustom
+            - rangetopInduction
+            - rangetopInduction2Burner
+            - rangetopInduction6Burner
+            - freezer
+            - freezerCompact
+            - freezerUpright
+            - refrigerator
+            - refrigeratorBar
+            - refrigeratorBuiltIn
+            - refrigeratorBuiltInWithPlumbing
+            - refrigeratorDrawer
+            - refrigeratorSideBySide
+            - refrigeratorUndercounter
+            - refrigeratorWineStorage
+            - refrigeratorWithPlumbing
+            - vacuumSystem
+            - vacuumSystemRoughIn
+            - ventHood
+            - ventHood10Burner
+            - ventHood6Burner
+            - ventHood8Burner
+            - washer
+            - washerFrontLoad
+            - washerSteamer
+            - washerTopLoad
+            - washerDryerCombo
+            - washerDryerStack
+            - waterFilter
+            - waterInstantHot
+            - waterPurifier
+            - waterSoftener
+            - architectureAFrame
+            - architectureArtDeco
+            - architectureBungalow
+            - architectureCapeCod
+            - architectureColonial
+            - architectureContemporary
+            - architectureConventional
+            - architectureCottage
+            - architectureCraftsman
+            - architectureCreole
+            - architectureDome
+            - architectureDutchColonial
+            - architectureEnglish
+            - architectureFederal
+            - architectureFrench
+            - architectureFrenchProvincial
+            - architectureGeorgian
+            - architectureGothicRevival
+            - architectureGreekRevival
+            - architectureHighRise
+            - architectureHistorical
+            - architectureInternational
+            - architectureItalianate
+            - architectureLoft
+            - architectureMansion
+            - architectureMediterranean
+            - architectureModern
+            - architectureMonterey
+            - architectureMountain
+            - architectureNational
+            - architectureNeoclassical
+            - architectureNewTraditional
+            - architecturePrairie
+            - architecturePueblo
+            - architectureQueenAnne
+            - architectureRambler
+            - architectureRanch
+            - architectureRegency
+            - architectureRustic
+            - architectureSaltbox
+            - architectureSantaFe
+            - architectureSecondEmpire
+            - architectureShed
+            - architectureShingle
+            - architectureShotgun
+            - architectureSpanish
+            - architectureSpanishEclectic
+            - architectureSplitLevel
+            - architectureStick
+            - architectureTudor
+            - architectureVictorian
+            - coolingAtticFan
+            - coolingCeilingFan
+            - coolingCentralAC
+            - coolingCentralEvaporative
+            - coolingCentralFan
+            - coolingChilledWater
+            - coolingDehumidifiers
+            - coolingDessicantCooler
+            - coolingEvaporative
+            - coolingHeatPumps
+            - coolingPartial
+            - coolingRadiantFloor
+            - coolingRadiantFloorGroundLoop
+            - coolingRefrigeratorEvaporative
+            - coolingSolarAcActive
+            - coolingSolarAcPassive
+            - coolingWallUnitAc
+            - coolingWallUnitEvaporative
+            - coolingWindowUnitAc
+            - coolingWindowUnitEvaporative
+            - coolingZonedAc
+            - exteriorAdobe
+            - exteriorAluminumSiding
+            - exteriorAsbestos
+            - exteriorAsphalt
+            - exteriorBlock
+            - exteriorBoardAndBatten
+            - exteriorBrick
+            - exteriorBrickAndWood
+            - exteriorBrickVeneer
+            - exteriorCedarSiding
+            - exteriorComb
+            - exteriorComposition
+            - exteriorCompositionShingles
+            - exteriorConcrete
+            - exteriorConcreteBlock
+            - exteriorEifs
+            - exteriorFiberglass
+            - exteriorGlass
+            - exteriorHardboard
+            - exteriorLog
+            - exteriorLogSiding
+            - exteriorMasonite
+            - exteriorMasonry
+            - exteriorMetal
+            - exteriorMetalSiding
+            - exteriorPouredConcrete
+            - exteriorShinglesNotWood
+            - exteriorStone
+            - exteriorStoneVeneer
+            - exteriorStucco
+            - exteriorStuccoSynthetic
+            - exteriorTile
+            - exteriorTiltUpPreCastConcrete
+            - exteriorVinylSiding
+            - exteriorWood
+            - exteriorWoodShingle
+            - exteriorWoodSiding
+            - coveringFloorBamboo
+            - coveringFloorBrick
+            - coveringFloorCarpet
+            - coveringFloorCarpetFull
+            - coveringFloorCarpetPartial
+            - coveringFloorConcrete
+            - coveringFloorConcreteBare
+            - coveringFloorConcretePainted
+            - coveringFloorCork
+            - coveringFloorDrainage
+            - coveringFloorEngineeredWood
+            - coveringFloorGlass
+            - coveringFloorGranite
+            - coveringFloorHardwood
+            - coveringFloorLaminate
+            - coveringFloorLinoleum
+            - coveringFloorLoadRestriction
+            - coveringFloorMarble
+            - coveringFloorParquetWood
+            - coveringFloorRoughIn
+            - coveringFloorSlate
+            - coveringFloorSoftWood
+            - coveringFloorSolidWood
+            - coveringFloorSpecialty
+            - coveringFloorSpecialtyConcrete
+            - coveringFloorTile
+            - coveringFloorTileCeramic
+            - coveringFloorTilePorcelain
+            - coveringFloorTileStone
+            - coveringFloorTileOrStone
+            - coveringFloorVinyl
+            - coveringFloorWood
+            - fuelHeatingButaneGas
+            - fuelHeatingCoal
+            - fuelHeatingElectric
+            - fuelHeatingGeothermal
+            - fuelHeatingKerosene
+            - fuelHeatingNaturalGas
+            - fuelHeatingOil
+            - fuelHeatingPassiveHeatPump
+            - fuelHeatingPassiveSolar
+            - fuelHeatingPellet
+            - fuelHeatingPropaneGas
+            - fuelHeatingSolar
+            - fuelHeatingSolarPanel
+            - fuelHeatingWood
+            - heatingBaseboard
+            - heatingCentralFurnace
+            - heatingElectricAirFilter
+            - heatingFireplace
+            - heatingFireplaceInsert
+            - heatingFloorFurnace
+            - heatingFloorWall
+            - heatingForcedAir
+            - heatingGeothermal
+            - heatingGravityAir
+            - heatingGravityHotWater
+            - heatingHeatPump
+            - heatingHotWater
+            - heatingHotWaterRadiantFloor
+            - heatingHumidifier
+            - heatingPelletStove
+            - heatingRadiant
+            - heatingRadiantCeiling
+            - heatingRadiantFloor
+            - heatingRadiator
+            - heatingSwChangeover
+            - heatingSolarActive
+            - heatingSolarActiveAndPassive
+            - heatingSolarPassive
+            - heatingSpaceHeater
+            - heatingSteam
+            - heatingWallUnit
+            - heatingZoned
+            - parkingAlley
+            - parkingAssigned
+            - parkingBoat
+            - parkingBuiltIn
+            - parkingCarport
+            - parkingCommercial
+            - parkingCovered
+            - parkingDriveway
+            - parkingFee
+            - parkingFenced
+            - parkingGarage
+            - parkingGarageAttached
+            - parkingGarageDetached
+            - parkingGated
+            - parkingGolfCart
+            - parkingGuest
+            - parkingHeated
+            - parkingLeased
+            - parkingMechanics
+            - parkingMeter
+            - parkingOffAlley
+            - parkingOffStreet
+            - parkingOffsite
+            - parkingOnStreet
+            - parkingOpen
+            - parkingOversized
+            - parkingOwned
+            - parkingParkingLot
+            - parkingParkingStructure
+            - parkingPavedOrSurfaced
+            - parkingPole
+            - parkingPorteCochere
+            - parkingPullThrough
+            - parkingRamp
+            - parkingRv
+            - parkingSecured
+            - parkingSideApron
+            - parkingSideBySide
+            - parkingSpecialNeeds
+            - parkingStacked
+            - parkingTandem
+            - parkingTuckUnder
+            - parkingUnassigned
+            - parkingUndergroundBasement
+            - parkingUnimproved
+            - parkingValet
+            - parkingWorkshop
+            - parkingZonedPermit
+            - roofAluminum
+            - roofAsbestos
+            - roofAsphalt
+            - roofBuiltUp
+            - roofClayTile
+            - roofCompositionShingle
+            - roofConcreteTile
+            - roofCopper
+            - roofCorrugatedMetal
+            - roofGreen
+            - roofMasoniteOrCementShake
+            - roofMembrane
+            - roofMetal
+            - roofSlate
+            - roofSolarPanel
+            - roofStandingSeam
+            - roofSteel
+            - roofTarAndGravel
+            - roofThatched
+            - roofTile
+            - roofUrethane
+            - roofWoodShake
+            - roofWoodShingle
+            - viewAirport
+            - viewAverage
+            - viewBluff
+            - viewBridge
+            - viewCanyon
+            - viewCity
+            - viewDesert
+            - viewForest
+            - viewGolfCourse
+            - viewHarbor
+            - viewHills
+            - viewLake
+            - viewMarina
+            - viewMountain
+            - viewOcean
+            - viewPanorama
+            - viewPark
+            - viewRavine
+            - viewRiver
+            - viewTerritorial
+            - viewValley
+            - viewVista
+            - viewWater
+            - newConstruction
+            - securitySystem
+      type: object
+    ServerBag:
+      properties: []
+      type: object
+    union: []
+    ParameterBag:
+      properties: []
+      type: object
+    InputBag:
+      properties: []
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    SearchFilterConfig:
+      required:
+      - transactionType
+      properties:
+        id:
+          type: integer
+        country:
+          $ref: '#/components/schemas/Country'
+        transactionType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Closure:
+      type: object
+    HeaderBag:
+      properties: []
+      type: object
+    ListingSearchPlaceWebType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - googleId
+      - mapWidth
+      - mapHeight
+      - mapScale
+      - url
+      - amenities
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        googleId:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapScale:
+          type: number
+        url:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+            enum:
+            - gym
+            - pool
+            - garden
+            - parking
+            - doorman
+            - storage
+            - balcony
+            - elevator
+            - fireplace
+            - highRise
+            - roofDeck
+            - furnished
+            - dishwasher
+            - beachView
+            - washerUnit
+            - hardwoodFloors
+            - airConditioning
+            - wheelchairAccessible
+            - attic
+            - basement
+            - bbqArea
+            - deck
+            - disabledAccess
+            - garageParking
+            - greenhouse
+            - intercom
+            - lawn
+            - new
+            - secondarySuite
+            - security
+            - waterfront
+            - wired
+            - studentFriendly
+            - utilitiesIncluded
+            - energyEfficient
+            - solarPowered
+            - kitchen
+            - privateKitchen
+            - sharedKitchen
+            - internet
+            - wifi
+            - tv
+            - localTv
+            - cableTv
+            - computer
+            - laptopWorkspace
+            - hotTube
+            - tub
+            - iron
+            - towels
+            - ironingBoard
+            - toiletries
+            - guestToilet
+            - buzzerWirelessIntercom
+            - privateEntrance
+            - hairDryer
+            - suitableForEvents
+            - centralizedHeating
+            - autonomousHeating
+            - busStop
+            - trainStation
+            - airport
+            - bicyclesForUse
+            - library
+            - shoppingCenter
+            - hospital
+            - park
+            - golf
+            - museums
+            - healthClub
+            - amusementPark
+            - cinema
+            - restaurant
+            - gamesRoom
+            - horseStables
+            - bowling
+            - smokeAlarm
+            - smokeAlarmEachFloor
+            - sportsArena
+            - coDetector
+            - cellar
+            - blankets
+            - pillows
+            - bedClothes
+            - broom
+            - floorWiper
+            - shower
+            - toaster
+            - microwave
+            - fridge
+            - coffee
+            - kettle
+            - cutlery
+            - vacuumCleaner
+            - stove
+            - detergents
+            - bidet
+            - hourSecurity24
+            - fishing
+            - waterSports
+            - creditApplication
+            - smokingFriendly
+            - brokerFee
+            - garbageDisposer
+            - iceMaker
+            - trashCompactor
+            - warmingDrawer
+            - coffeeSystem
+            - coffeeSystemRoughIn
+            - cooktop
+            - cooktopElectric
+            - cooktopElectric2Burner
+            - cooktopElectric6Burner
+            - cooktopGas
+            - cooktopGas2Burner
+            - cooktopGas5Burner
+            - cooktopGas6Burner
+            - cooktopGasCustom
+            - cooktopInduction
+            - cooktopInduction2Burner
+            - cooktopInduction6Burner
+            - dishwasherDrawer
+            - dishwasherTwoOrMore
+            - dryer
+            - dryerDualFuel
+            - dryerElectric110v
+            - dryerElectric220v
+            - dryerGas
+            - dryerGasRoughIn
+            - oven
+            - ovenConvection
+            - ovenDouble
+            - ovenDoubleElectric
+            - ovenDoubleGas
+            - ovenGas
+            - ovenGas3Wide
+            - ovenSelfCleaning
+            - ovenSteam
+            - ovenTwin
+            - ovenTwinElectric
+            - ovenTwinGas
+            - ovenTwinGas3Wide
+            - ovenTwinMixed
+            - range
+            - rangeBuiltIn
+            - rangeDual
+            - rangeDual10Burner
+            - rangeDual6Burner
+            - rangeDual8Burner
+            - rangeElectric
+            - rangeGas
+            - rangeGas10Burner
+            - rangeGas6Burner
+            - rangeGas8Burner
+            - rangeInduction
+            - rangeOther
+            - rangetopElectric
+            - rangetopElectric2Burner
+            - rangetopElectric6Burner
+            - rangetopGas
+            - rangetopGas10Burner
+            - rangetopGas2Burner
+            - rangetopGas4BurnerCompact
+            - rangetopGas6Burner
+            - rangetopGas8Burner
+            - rangetopGasCustom
+            - rangetopInduction
+            - rangetopInduction2Burner
+            - rangetopInduction6Burner
+            - freezer
+            - freezerCompact
+            - freezerUpright
+            - refrigerator
+            - refrigeratorBar
+            - refrigeratorBuiltIn
+            - refrigeratorBuiltInWithPlumbing
+            - refrigeratorDrawer
+            - refrigeratorSideBySide
+            - refrigeratorUndercounter
+            - refrigeratorWineStorage
+            - refrigeratorWithPlumbing
+            - vacuumSystem
+            - vacuumSystemRoughIn
+            - ventHood
+            - ventHood10Burner
+            - ventHood6Burner
+            - ventHood8Burner
+            - washer
+            - washerFrontLoad
+            - washerSteamer
+            - washerTopLoad
+            - washerDryerCombo
+            - washerDryerStack
+            - waterFilter
+            - waterInstantHot
+            - waterPurifier
+            - waterSoftener
+            - architectureAFrame
+            - architectureArtDeco
+            - architectureBungalow
+            - architectureCapeCod
+            - architectureColonial
+            - architectureContemporary
+            - architectureConventional
+            - architectureCottage
+            - architectureCraftsman
+            - architectureCreole
+            - architectureDome
+            - architectureDutchColonial
+            - architectureEnglish
+            - architectureFederal
+            - architectureFrench
+            - architectureFrenchProvincial
+            - architectureGeorgian
+            - architectureGothicRevival
+            - architectureGreekRevival
+            - architectureHighRise
+            - architectureHistorical
+            - architectureInternational
+            - architectureItalianate
+            - architectureLoft
+            - architectureMansion
+            - architectureMediterranean
+            - architectureModern
+            - architectureMonterey
+            - architectureMountain
+            - architectureNational
+            - architectureNeoclassical
+            - architectureNewTraditional
+            - architecturePrairie
+            - architecturePueblo
+            - architectureQueenAnne
+            - architectureRambler
+            - architectureRanch
+            - architectureRegency
+            - architectureRustic
+            - architectureSaltbox
+            - architectureSantaFe
+            - architectureSecondEmpire
+            - architectureShed
+            - architectureShingle
+            - architectureShotgun
+            - architectureSpanish
+            - architectureSpanishEclectic
+            - architectureSplitLevel
+            - architectureStick
+            - architectureTudor
+            - architectureVictorian
+            - coolingAtticFan
+            - coolingCeilingFan
+            - coolingCentralAC
+            - coolingCentralEvaporative
+            - coolingCentralFan
+            - coolingChilledWater
+            - coolingDehumidifiers
+            - coolingDessicantCooler
+            - coolingEvaporative
+            - coolingHeatPumps
+            - coolingPartial
+            - coolingRadiantFloor
+            - coolingRadiantFloorGroundLoop
+            - coolingRefrigeratorEvaporative
+            - coolingSolarAcActive
+            - coolingSolarAcPassive
+            - coolingWallUnitAc
+            - coolingWallUnitEvaporative
+            - coolingWindowUnitAc
+            - coolingWindowUnitEvaporative
+            - coolingZonedAc
+            - exteriorAdobe
+            - exteriorAluminumSiding
+            - exteriorAsbestos
+            - exteriorAsphalt
+            - exteriorBlock
+            - exteriorBoardAndBatten
+            - exteriorBrick
+            - exteriorBrickAndWood
+            - exteriorBrickVeneer
+            - exteriorCedarSiding
+            - exteriorComb
+            - exteriorComposition
+            - exteriorCompositionShingles
+            - exteriorConcrete
+            - exteriorConcreteBlock
+            - exteriorEifs
+            - exteriorFiberglass
+            - exteriorGlass
+            - exteriorHardboard
+            - exteriorLog
+            - exteriorLogSiding
+            - exteriorMasonite
+            - exteriorMasonry
+            - exteriorMetal
+            - exteriorMetalSiding
+            - exteriorPouredConcrete
+            - exteriorShinglesNotWood
+            - exteriorStone
+            - exteriorStoneVeneer
+            - exteriorStucco
+            - exteriorStuccoSynthetic
+            - exteriorTile
+            - exteriorTiltUpPreCastConcrete
+            - exteriorVinylSiding
+            - exteriorWood
+            - exteriorWoodShingle
+            - exteriorWoodSiding
+            - coveringFloorBamboo
+            - coveringFloorBrick
+            - coveringFloorCarpet
+            - coveringFloorCarpetFull
+            - coveringFloorCarpetPartial
+            - coveringFloorConcrete
+            - coveringFloorConcreteBare
+            - coveringFloorConcretePainted
+            - coveringFloorCork
+            - coveringFloorDrainage
+            - coveringFloorEngineeredWood
+            - coveringFloorGlass
+            - coveringFloorGranite
+            - coveringFloorHardwood
+            - coveringFloorLaminate
+            - coveringFloorLinoleum
+            - coveringFloorLoadRestriction
+            - coveringFloorMarble
+            - coveringFloorParquetWood
+            - coveringFloorRoughIn
+            - coveringFloorSlate
+            - coveringFloorSoftWood
+            - coveringFloorSolidWood
+            - coveringFloorSpecialty
+            - coveringFloorSpecialtyConcrete
+            - coveringFloorTile
+            - coveringFloorTileCeramic
+            - coveringFloorTilePorcelain
+            - coveringFloorTileStone
+            - coveringFloorTileOrStone
+            - coveringFloorVinyl
+            - coveringFloorWood
+            - fuelHeatingButaneGas
+            - fuelHeatingCoal
+            - fuelHeatingElectric
+            - fuelHeatingGeothermal
+            - fuelHeatingKerosene
+            - fuelHeatingNaturalGas
+            - fuelHeatingOil
+            - fuelHeatingPassiveHeatPump
+            - fuelHeatingPassiveSolar
+            - fuelHeatingPellet
+            - fuelHeatingPropaneGas
+            - fuelHeatingSolar
+            - fuelHeatingSolarPanel
+            - fuelHeatingWood
+            - heatingBaseboard
+            - heatingCentralFurnace
+            - heatingElectricAirFilter
+            - heatingFireplace
+            - heatingFireplaceInsert
+            - heatingFloorFurnace
+            - heatingFloorWall
+            - heatingForcedAir
+            - heatingGeothermal
+            - heatingGravityAir
+            - heatingGravityHotWater
+            - heatingHeatPump
+            - heatingHotWater
+            - heatingHotWaterRadiantFloor
+            - heatingHumidifier
+            - heatingPelletStove
+            - heatingRadiant
+            - heatingRadiantCeiling
+            - heatingRadiantFloor
+            - heatingRadiator
+            - heatingSwChangeover
+            - heatingSolarActive
+            - heatingSolarActiveAndPassive
+            - heatingSolarPassive
+            - heatingSpaceHeater
+            - heatingSteam
+            - heatingWallUnit
+            - heatingZoned
+            - parkingAlley
+            - parkingAssigned
+            - parkingBoat
+            - parkingBuiltIn
+            - parkingCarport
+            - parkingCommercial
+            - parkingCovered
+            - parkingDriveway
+            - parkingFee
+            - parkingFenced
+            - parkingGarage
+            - parkingGarageAttached
+            - parkingGarageDetached
+            - parkingGated
+            - parkingGolfCart
+            - parkingGuest
+            - parkingHeated
+            - parkingLeased
+            - parkingMechanics
+            - parkingMeter
+            - parkingOffAlley
+            - parkingOffStreet
+            - parkingOffsite
+            - parkingOnStreet
+            - parkingOpen
+            - parkingOversized
+            - parkingOwned
+            - parkingParkingLot
+            - parkingParkingStructure
+            - parkingPavedOrSurfaced
+            - parkingPole
+            - parkingPorteCochere
+            - parkingPullThrough
+            - parkingRamp
+            - parkingRv
+            - parkingSecured
+            - parkingSideApron
+            - parkingSideBySide
+            - parkingSpecialNeeds
+            - parkingStacked
+            - parkingTandem
+            - parkingTuckUnder
+            - parkingUnassigned
+            - parkingUndergroundBasement
+            - parkingUnimproved
+            - parkingValet
+            - parkingWorkshop
+            - parkingZonedPermit
+            - roofAluminum
+            - roofAsbestos
+            - roofAsphalt
+            - roofBuiltUp
+            - roofClayTile
+            - roofCompositionShingle
+            - roofConcreteTile
+            - roofCopper
+            - roofCorrugatedMetal
+            - roofGreen
+            - roofMasoniteOrCementShake
+            - roofMembrane
+            - roofMetal
+            - roofSlate
+            - roofSolarPanel
+            - roofStandingSeam
+            - roofSteel
+            - roofTarAndGravel
+            - roofThatched
+            - roofTile
+            - roofUrethane
+            - roofWoodShake
+            - roofWoodShingle
+            - viewAirport
+            - viewAverage
+            - viewBluff
+            - viewBridge
+            - viewCanyon
+            - viewCity
+            - viewDesert
+            - viewForest
+            - viewGolfCourse
+            - viewHarbor
+            - viewHills
+            - viewLake
+            - viewMarina
+            - viewMountain
+            - viewOcean
+            - viewPanorama
+            - viewPark
+            - viewRavine
+            - viewRiver
+            - viewTerritorial
+            - viewValley
+            - viewVista
+            - viewWater
+            - newConstruction
+            - securitySystem
+      type: object
+    Request:
+      properties:
+        httpMethodParameterOverride:
+          type: boolean
+          default: false
+        attributes:
+          title: Custom parameters.
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/ParameterBag'
+        request:
+          title: Request body parameters ($_POST).
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/InputBag'
+        query:
+          title: Query string parameters ($_GET).
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/InputBag'
+        server:
+          title: Server and execution environment parameters ($_SERVER).
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/ServerBag'
+        files:
+          title: Uploaded files ($_FILES).
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/FileBag'
+        cookies:
+          title: Cookies ($_COOKIE).
+          default: []
+          oneOf:
+          - $ref: '#/components/schemas/InputBag'
+        headers:
+          title: Headers (taken from the $_SERVER).
+          oneOf:
+          - $ref: '#/components/schemas/HeaderBag'
+        pathInfo:
+          type: string
+        requestUri:
+          type: string
+        baseUrl:
+          type: string
+        basePath:
+          type: string
+        method:
+          type: string
+        format:
+          type: string
+        session:
+          $ref: '#/components/schemas/union'
+        locale:
+          type: string
+        defaultLocale:
+          type: string
+          default: en
+        requestFactory:
+          $ref: '#/components/schemas/Closure'
+        preferredFormat:
+          type: string
+        isHostValid:
+          type: boolean
+          default: true
+        isForwardedValid:
+          type: boolean
+          default: true
+        isSafeContentPreferred:
+          type: boolean
+        trustedHeaderSet:
+          type: integer
+          default: -1
+        isIisRewrite:
+          type: boolean
+          default: false
+      type: object

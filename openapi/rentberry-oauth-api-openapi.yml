@@ -1,0 +1,405 @@
+openapi: 3.2.0
+info:
+  title: Rentberry O Auth API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: OAuth
+  description: OAuth
+paths:
+  /v{version}/oauth/{provider}:
+    get:
+      tags:
+      - OAuth
+      summary: Get OAuth authorization URL
+      description: Available since API version 1. Returns the URL to initiate OAuth authorization with the specified provider.
+      operationId: get_api_v1_oauth_init
+      parameters:
+      - name: provider
+        in: path
+        description: OAuth provider name (e.g., "google", "apple")
+        required: true
+        schema:
+          type: string
+          pattern: google|google\.ios|apple|apple\.app|apple\.rai
+          enum:
+          - google
+          - apple
+      - name: redirectUrl
+        in: query
+        description: URL to redirect after OAuth authentication
+        schema:
+          type: string
+      - name: authActionType
+        in: query
+        description: Type of authentication action (e.g., "login", "register", "connect")
+        schema:
+          type: string
+          enum:
+          - login
+          - register
+          - connect
+      - name: prevUrl
+        in: query
+        description: Previous URL to return to after authentication
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: OAuth authorization URL successfully generated
+          content:
+            application/json:
+              schema:
+                properties:
+                  oauthUrl:
+                    description: URL to redirect the user to for OAuth authorization
+                    type: string
+                type: object
+        '400':
+          description: Invalid provider or parameters
+        '429':
+          description: Rate limit exceeded
+  /v{version}/oauth/apple/callback:
+    post:
+      tags:
+      - OAuth
+      summary: Handle Apple OAuth callback
+      description: Available since API version 4. Processes the callback from Apple OAuth authentication and redirects to the authentication page.
+      operationId: post_api_v4_oauth_apple_callback
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        description: Apple callback data
+        content:
+          application/json:
+            schema:
+              properties:
+                code:
+                  description: Authorization code from Apple
+                  type: string
+                state:
+                  description: State parameter for CSRF protection
+                  type: string
+                id_token:
+                  description: JWT ID token from Apple
+                  type: string
+                user:
+                  description: User information from Apple (JSON string)
+                  type: string
+                error:
+                  description: Error message if authentication failed
+                  type: string
+              type: object
+      responses:
+        '302':
+          description: Redirect to authentication page
+          headers:
+            Location:
+              description: URL to redirect to
+              schema:
+                type: string
+        '400':
+          description: Invalid callback data
+        '429':
+          description: Rate limit exceeded
+  /v{version}/oauth/{provider}/authorize/code:
+    get:
+      tags:
+      - OAuth
+      summary: Authorize via OAuth code
+      description: Available since API version 2. Processes OAuth authorization code from any supported provider.
+      operationId: get_api_v1_oauth_authorize
+      parameters:
+      - name: provider
+        in: path
+        description: OAuth provider name
+        required: true
+        schema:
+          type: string
+          pattern: google|google\.ios|apple|apple\.app|apple\.rai
+          enum:
+          - google
+          - apple
+      - name: code
+        in: query
+        description: Authorization code from the provider
+        required: true
+        schema:
+          type: string
+      - name: authActionType
+        in: query
+        description: Type of authentication action (login, register, connect)
+        schema:
+          type: string
+          enum:
+          - login
+          - register
+          - connect
+      - name: isRaiUser
+        in: query
+        description: Mark user as RAI user. Pass "1" or "true" to set. Only sets to true, never resets.
+        schema:
+          type: string
+          enum:
+          - '0'
+          - '1'
+          - 'true'
+          - 'false'
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Authorization successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthUserResponse'
+        '400':
+          description: No OAuth code provided
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+              example:
+                error: No OAuth code provided
+        '401':
+          description: Authorization failed
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+              example:
+                error: Invalid OAuth code
+        '429':
+          description: Rate limit exceeded
+  /v{version}/oauth/google/authorize/token:
+    post:
+      tags:
+      - OAuth
+      summary: Verify Google One Tap token
+      description: Available since API version 4. Verifies and processes a Google One Tap authentication token.
+      operationId: post_api_v4_google_one_tap
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - token
+              properties:
+                token:
+                  description: Google One Tap JWT token
+                  type: string
+                authActionType:
+                  description: Type of authentication action (login, register, connect)
+                  type: string
+                isRaiUser:
+                  description: Mark user as RAI user (only sets to true, never resets)
+                  type: boolean
+                provider:
+                  description: Google provider variant (google, google.ios). Defaults to google.
+                  type: string
+                  enum:
+                  - google
+                  - google.ios
+              type: object
+      responses:
+        '200':
+          description: Token verification successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthUserResponse'
+        '401':
+          description: Token verification failed
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '429':
+          description: Rate limit exceeded
+  /v{version}/oauth/{provider}/authorize/access-token:
+    get:
+      tags:
+      - OAuth
+      summary: Authorize via OAuth access token
+      description: Available since API version 2. Processes OAuth short-lived access token from any supported provider.
+      operationId: get_api_v1_oauth_authorize_by_short_lived_access_token
+      parameters:
+      - name: provider
+        in: path
+        description: OAuth provider name
+        required: true
+        schema:
+          type: string
+          pattern: google|google\.ios|apple|apple\.app|apple\.rai
+          enum:
+          - google
+          - apple
+      - name: code
+        in: query
+        description: Short-lived access token from the provider
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Authentication action type
+        schema:
+          type: string
+      - name: isRaiUser
+        in: query
+        description: Mark user as RAI user. Pass "1" or "true" to set. Only sets to true, never resets.
+        schema:
+          type: string
+          enum:
+          - '0'
+          - '1'
+          - 'true'
+          - 'false'
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Authorization successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthUserResponse'
+        '400':
+          description: No OAuth code provided
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '401':
+          description: Authorization failed
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '429':
+          description: Rate limit exceeded
+  /v{version}/oauth/disconnect/{provider}:
+    delete:
+      tags:
+      - OAuth
+      summary: Disconnect OAuth provider
+      description: Available since API version 1. Removes the connection between user account and OAuth provider.
+      operationId: delete_api_v1_oauth_authorize_disconnect_user
+      parameters:
+      - name: provider
+        in: path
+        description: OAuth provider ID to disconnect
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Provider disconnected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: No connected user for this provider
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '403':
+          description: Trying to disconnect provider that belongs to another user
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '401':
+          description: Unauthorized - User is not authenticated
+        '404':
+          description: Provider not found
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    OAuthUserResponse:
+      properties:
+        userData:
+          $ref: '#/components/schemas/OAuthUserUser'
+        action:
+          type: string
+        accessToken:
+          type: string
+        oauthProvider:
+          type: string
+        oauthConnectId:
+          type: string
+      type: object
+    OAuthUserUser:
+      properties:
+        id:
+          type: integer
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        username:
+          type: string
+        phone:
+          type: string
+        pictureUrl:
+          type: string
+      type: object

@@ -1,0 +1,1360 @@
+{
+  "item": [
+    {
+      "id": "c6515919-73b2-4079-890d-19e2fc51d7e4",
+      "name": "V{version}",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2e4e388-8267-4ec9-851c-b52276dc9141",
+          "name": "post api v4 email unsubscribe callback",
+          "request": {
+            "name": "post api v4 email unsubscribe callback",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "email",
+                "unsubscribe",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f68ea63c-d1fc-4fa7-bf83-7aae04102c2c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "email",
+                    "unsubscribe",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0678bf15-8806-49f6-9537-6625e8cfedff",
+          "name": "post api v4 mailchimp webhook",
+          "request": {
+            "name": "post api v4 mailchimp webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "mailchimp",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac1be4a4-5b24-478a-8b26-647d825985b2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "mailchimp",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaacc58c-52be-4250-952d-232c1cab96da",
+          "name": "get api v4 mandrill webhook",
+          "request": {
+            "name": "get api v4 mandrill webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "mandrill",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de16f1ac-2f9a-428b-b9a8-241ab7b7f751",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "mandrill",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa5b0221-5458-42b8-b229-cb1a9ef4dd42",
+          "name": "post api v4 mandrill webhook",
+          "request": {
+            "name": "post api v4 mandrill webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "mandrill",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a74ae766-4d39-4eec-801d-c19f99f87fc2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "mandrill",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a975e9b5-a388-4808-8d6d-f4f8e0322740",
+          "name": "post api v1 stripe connected webhook",
+          "request": {
+            "name": "post api v1 stripe connected webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "stripe",
+                "connected",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f64e6a4c-5cf3-497c-9d18-9155e8c3f17e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "stripe",
+                    "connected",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1890db24-2681-47b7-96ac-a5f5b6298e21",
+          "name": "post api v1 stripe direct webhook",
+          "request": {
+            "name": "post api v1 stripe direct webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "stripe",
+                "direct",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da072a34-a549-40db-9a21-42e217dc3d1b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "stripe",
+                    "direct",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "516b7877-f483-40ab-972c-5f3e68545290",
+          "name": "post email render preview",
+          "request": {
+            "name": "post email render preview",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "email",
+                "render",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee29f842-87cb-4412-bbd4-35d9504cedda",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "email",
+                    "render",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d223046-335b-457c-9e28-22f44cf535fd",
+          "name": "get get email types",
+          "request": {
+            "name": "get get email types",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "email",
+                "types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57f98d19-5c16-453b-8f50-c6d5165c1ee2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "email",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30afee53-1b8d-4795-a34b-43d967bb3247",
+          "name": "get get email parameters",
+          "request": {
+            "name": "get get email parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "email",
+                "parameters",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "778d9e9e-47b6-460f-90dc-342c9d755524",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "email",
+                    "parameters",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f523f03a-fa5d-4aa1-a265-f73141a82e63",
+          "name": "post email test send",
+          "request": {
+            "name": "post email test send",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "email",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b650b3ec-e853-414e-bdb7-3f4c63529a25",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "email",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "096fbc4f-c508-4264-b420-0cea2b94e519",
+          "name": "get api v1 notification test helper list",
+          "request": {
+            "name": "get api v1 notification test helper list",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "push-testing-helper",
+                "notifications-list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e06f9347-e309-4c0f-8125-7d2fe161117e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "push-testing-helper",
+                    "notifications-list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96033072-6709-4a42-b0a0-5b8d7702019b",
+          "name": "post api v1 notification test helper send",
+          "request": {
+            "name": "post api v1 notification test helper send",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "push-testing-helper",
+                "notification-send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0153eb1a-3059-44a5-9650-3d25663896b8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "push-testing-helper",
+                    "notification-send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad5377a7-12f2-4a06-bbf2-849b3fabb8bb",
+          "name": "post api v1 test helper apartment create",
+          "request": {
+            "name": "post api v1 test helper apartment create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a37efb4-1e01-4320-a3f1-1ab341887434",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63f195ad-52ef-4d74-99f5-168ca01eb15a",
+          "name": "post api v1 test helper rented apartment create",
+          "request": {
+            "name": "post api v1 test helper rented apartment create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-rented-apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40b431d2-1aa1-4091-a66b-b23386090eb0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-rented-apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a21d161c-5dc1-48bd-b7d5-02a861b037aa",
+          "name": "post api v1 test helper inactive apartment create",
+          "request": {
+            "name": "post api v1 test helper inactive apartment create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-inactive-apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e44135b-4151-4468-aef5-a2004153bb87",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-inactive-apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5b7660f-6d82-47e4-baac-319227091b7d",
+          "name": "post api v1 test helper apples apartment create",
+          "request": {
+            "name": "post api v1 test helper apples apartment create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-apples-apartment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24a69be4-46d0-4a18-9140-95fb71a0949a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-apples-apartment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f852eef2-c85e-4db2-9293-ce6b2bfa049f",
+          "name": "post api v1 test helper declined application create",
+          "request": {
+            "name": "post api v1 test helper declined application create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-declined-application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a90af2ce-0ff7-45a1-8829-a42248ce8b91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-declined-application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7eb2657-01f4-4f61-a3c8-60accff9523e",
+          "name": "post api v1 test helper roommates application create",
+          "request": {
+            "name": "post api v1 test helper roommates application create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-roommates-application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1420b31-4c6b-4f83-8dfb-2d2316154660",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-roommates-application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b53554a-c50e-4d2a-8c58-fd4f127ad440",
+          "name": "post api v1 test helper application create",
+          "request": {
+            "name": "post api v1 test helper application create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df1f29d2-ac13-4e84-8680-ade82c7e825b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d59f5d9-588d-4b3b-9cfd-a094f81b67ac",
+          "name": "post api v1 test helper application proof create",
+          "request": {
+            "name": "post api v1 test helper application proof create",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "create-application-proof-income"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6f0aa54-8836-4997-bc97-6211fd54b282",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "create-application-proof-income"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46e4d637-93a2-4986-8ddd-7fa0fd45e8aa",
+          "name": "post api v1 test helper update contract status",
+          "request": {
+            "name": "post api v1 test helper update contract status",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "update-contract-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8da998ef-4436-486e-a47f-d35647ba1ccb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "update-contract-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c61da00f-1718-4a5a-abc7-f32d03bae253",
+          "name": "post api v1 test helper update apartment listed at",
+          "request": {
+            "name": "post api v1 test helper update apartment listed at",
+            "description": {},
+            "url": {
+              "path": [
+                "v{{version}}",
+                "testing-helper",
+                "update-apartment-listed-at"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "652b76d6-fb77-44c9-82ff-ed018647b25b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "testing-helper",
+                    "update-apartment-listed-at"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "a2467640-fb89-4e74-867b-197c25ca566f",
+    "name": "Rentberry V{version} V{version} API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

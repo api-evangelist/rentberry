@@ -1,0 +1,143 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Saved Search API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Saved Search
+  description: Saved Search
+paths:
+  /v{version}/saved-search:
+    post:
+      tags:
+      - Saved Search
+      summary: Save search criteria
+      description: Available since API version 4. Saves search criteria to receive email alerts when new matching listings are found.
+      operationId: post_api_v4_save_search
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchType'
+      responses:
+        '200':
+          description: Search saved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchData'
+        '400':
+          description: Validation failed - Invalid email or search data
+  /v{version}/saved-search/disable/{hash}:
+    post:
+      tags:
+      - Saved Search
+      summary: Disable saved search
+      description: Available since API version 4. Disables an active saved search using its unique hash to stop receiving email alerts.
+      operationId: post_api_v4_disable_save_search
+      parameters:
+      - name: hash
+        in: path
+        description: Unique hash identifier of the saved search
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Search disabled successfully
+        '404':
+          description: Saved search not found or already disabled
+components:
+  schemas:
+    SearchData:
+      required:
+      - email
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        status:
+          type: integer
+        reminderSent:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    SavedSearchType:
+      required:
+      - email
+      - filter
+      - originalCurrency
+      properties:
+        email:
+          type: string
+        filter:
+          $ref: '#/components/schemas/SavedSearchFilterType'
+        originalCurrency:
+          type: string
+      type: object
+    SavedSearchFilterType:
+      required:
+      - types
+      - minPrice
+      - maxPrice
+      - formattedAddress
+      - transactionType
+      - bedrooms
+      properties:
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+      type: object

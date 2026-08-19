@@ -1,0 +1,191 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Screening Reports API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Screening Reports
+  description: Screening Reports
+paths:
+  /v{version}/screening/criminal-report/{id}:
+    get:
+      tags:
+      - Screening Reports
+      summary: Get criminal background report (HTML)
+      description: Available since API version 1. Returns HTML criminal background report for completed screening.
+      operationId: get_api_v1_criminal_report
+      parameters:
+      - name: id
+        in: path
+        description: Screening request ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: HTML criminal report
+          content:
+            application/json:
+              schema:
+                properties:
+                  report:
+                    description: HTML formatted criminal report
+                    type: string
+                type: object
+        '401':
+          description: Unauthorized
+        '409':
+          description: (Real code 8009) Cannot view this criminal report
+        '404':
+          description: (Real code 8004) User has no criminal report
+        '403':
+          description: (Real code 8005) Cannot get criminal report
+      security:
+      - XAuthToken: []
+  /v{version}/screening/credit-score/{id}:
+    get:
+      tags:
+      - Screening Reports
+      summary: Get credit score report (HTML)
+      description: Available since API version 1. Returns HTML credit score report for completed screening.
+      operationId: get_api_v1_credit_score_report
+      parameters:
+      - name: id
+        in: path
+        description: Screening request ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: HTML credit report
+          content:
+            application/json:
+              schema:
+                properties:
+                  report:
+                    description: HTML formatted credit report
+                    type: string
+                type: object
+        '401':
+          description: Unauthorized
+        '409':
+          description: (Real code 8009) Cannot view this credit report
+        '404':
+          description: (Real code 8004) User has no credit report
+        '403':
+          description: (Real code 8005) Cannot view credit report
+      security:
+      - XAuthToken: []
+  /v{version}/screening/reports-preview/{id}:
+    get:
+      tags:
+      - Screening Reports
+      summary: Get screening reports preview
+      description: Available since API version 1. Returns summary preview of both credit and criminal reports for completed screening.
+      operationId: get_api_v1_reports_preview
+      parameters:
+      - name: id
+        in: path
+        description: Screening request ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Combined screening reports preview
+          content:
+            application/json:
+              schema:
+                properties:
+                  criminalReport:
+                    oneOf:
+                    - $ref: '#/components/schemas/CriminalReportDTO'
+                    description: Criminal report summary with cases
+                  creditReport:
+                    oneOf:
+                    - $ref: '#/components/schemas/CreditReportDTO'
+                    description: Credit report summary with score and details
+                  tenant:
+                    properties:
+                      email:
+                        type: string
+                        example: tenant@example.com
+                      firstName:
+                        type: string
+                        example: John
+                      lastName:
+                        type: string
+                        example: Doe
+                    type: object
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: (Real code 8005) Cannot view screening reports
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    CriminalReportDTO:
+      properties:
+        reportId:
+          type: string
+        criminalReportFound:
+          type: boolean
+        status:
+          type: string
+          default: NO STATUS
+      type: object
+    CreditReportDTO:
+      properties:
+        reportId:
+          type: string
+        score:
+          type: integer
+        collectionsCount:
+          type: number
+          format: float
+        inquiriesCount:
+          type: number
+          format: float
+        openAccounts:
+          type: integer
+        totalCreditLimitAmount:
+          type: number
+          format: float
+        totalCreditBalanceAmount:
+          type: number
+          format: float
+        delinquencies:
+          type: integer
+        publicRecords:
+          type: integer
+        availablePercent:
+          type: integer
+        alert:
+          type: string
+        status:
+          type: string
+      type: object

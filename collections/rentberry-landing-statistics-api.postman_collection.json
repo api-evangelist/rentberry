@@ -1,0 +1,814 @@
+{
+  "item": [
+    {
+      "id": "92aac32b-b898-4832-9943-d20e02305c2d",
+      "name": "Landing Statistics",
+      "description": {
+        "content": "Landing Statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37cff05d-9ce3-447b-8c8a-e6d16663871a",
+          "name": "Get cities and average prices by listing type",
+          "request": {
+            "name": "Get cities and average prices by listing type",
+            "description": {
+              "content": "Available since API version 1. Returns top 10 cities with average prices for a specific listing type. This data is used for statistical displays on landing pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "landing",
+                "statistics",
+                "type",
+                ":listingType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Type of transaction (default: rental)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "listingType",
+                  "description": "(Required) Type of listing to get statistics for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "919999e1-4acb-4a55-88d4-42dae68797c9",
+              "name": "Top 10 cities with average prices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "type",
+                    ":listingType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listingType",
+                      "description": "(Required) Type of listing to get statistics for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"city\": \"New York\",\n    \"stateShortName\": \"NY\",\n    \"countryCode\": \"US\",\n    \"stateId\": 32,\n    \"averagePrice\": 3200.5,\n    \"count\": 12543\n  },\n  {\n    \"city\": \"Los Angeles\",\n    \"stateShortName\": \"CA\",\n    \"countryCode\": \"US\",\n    \"stateId\": 5,\n    \"averagePrice\": 2850.75,\n    \"count\": 9876\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40994acb-3e60-454f-b32a-6426e8cbcb7d",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "type",
+                    ":listingType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listingType",
+                      "description": "(Required) Type of listing to get statistics for"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a48ac587-ec6f-445a-ba71-b64aaed40e72",
+          "name": "Get statistics by listing type and city",
+          "request": {
+            "name": "Get statistics by listing type and city",
+            "description": {
+              "content": "Available since API version 1. Returns detailed price statistics for a specific listing type in a city, including breakdowns by number of bedrooms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "landing",
+                "statistics",
+                "type",
+                ":city",
+                ":listingType",
+                ":stateId",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Type of transaction (default: rental)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "city",
+                  "description": "(Required) City name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "listingType",
+                  "description": "(Required) Type of listing"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "stateId",
+                  "description": "(Required) State ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) Country code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc006936-ca43-4ab0-9cc0-c0284a87e4bd",
+              "name": "Price statistics for the specified city and listing type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "type",
+                    ":city",
+                    ":listingType",
+                    ":stateId",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "city",
+                      "description": "(Required) City name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listingType",
+                      "description": "(Required) Type of listing"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stateId",
+                      "description": "(Required) State ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) Country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"city\": \"New York\",\n  \"stateShortName\": \"NY\",\n  \"listingType\": \"apartment\",\n  \"byBedroomsCount\": {\n    \"1\": {\n      \"averagePrice\": 2500,\n      \"count\": 3450\n    },\n    \"2\": {\n      \"averagePrice\": 3800,\n      \"count\": 2780\n    },\n    \"3\": {\n      \"averagePrice\": 5200,\n      \"count\": 1100\n    }\n  },\n  \"allAveragePrice\": 3500,\n  \"totalCount\": 7330\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d3d0bf8-032b-4412-adac-f3b40da4f0ea",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "type",
+                    ":city",
+                    ":listingType",
+                    ":stateId",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "city",
+                      "description": "(Required) City name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listingType",
+                      "description": "(Required) Type of listing"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "stateId",
+                      "description": "(Required) State ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) Country code"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8ad5f0c-fcbb-4167-80d5-8905c7af971d",
+          "name": "Get statistics by state",
+          "request": {
+            "name": "Get statistics by state",
+            "description": {
+              "content": "Available since API version 1. Returns landing page statistics for a specific state, including cities with their listing counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "landing",
+                "statistics",
+                "state",
+                ":state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Type of transaction (default: rental)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "state",
+                  "description": "(Required) State name or abbreviation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4f7aa22-a9ca-4aba-b3bb-dd91cd87aec2",
+              "name": "Landing statistics for the state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "state",
+                    ":state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "state",
+                      "description": "(Required) State name or abbreviation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1523,\n  \"shortName\": null,\n  \"name\": null,\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83555540-0dfe-452d-a5c4-cd9f006428a6",
+              "name": "Sitemap not ready yet",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "state",
+                    ":state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "state",
+                      "description": "(Required) State name or abbreviation"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9517c834-5c86-4324-acad-f9345a4b1d84",
+              "name": "No cities found for state or state not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "state",
+                    ":state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "state",
+                      "description": "(Required) State name or abbreviation"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0cb2d7f-3b21-4226-8563-3167f2d68195",
+          "name": "Get statistics by country",
+          "request": {
+            "name": "Get statistics by country",
+            "description": {
+              "content": "Available since API version 1. Returns landing page statistics for a specific country, including states and cities with their listing counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "landing",
+                "statistics",
+                "country",
+                ":country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Type of transaction (default: rental)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "country",
+                  "description": "(Required) Country name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f74f490-f797-4c23-a090-86557d8b2e38",
+              "name": "Landing statistics for the country",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "country",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shortCode\": \"string\",\n  \"longCode\": \"string\",\n  \"name\": \"string\",\n  \"phone\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e488abf7-88aa-46e6-9535-20ad5fc5ffab",
+              "name": "Sitemap not ready yet",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "country",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0faa787c-e48f-4ecf-a627-9b6ebe1bea9a",
+              "name": "No cities found for country or country not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "landing",
+                    "statistics",
+                    "country",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "8ea9281a-e8d2-4a1a-b88b-8f49d077886a",
+    "name": "Rentberry Landing Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

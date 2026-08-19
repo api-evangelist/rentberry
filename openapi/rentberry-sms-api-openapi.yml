@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: Rentberry SMS API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: SMS
+  description: SMS
+paths:
+  /v{version}/sms:
+    post:
+      tags:
+      - SMS
+      summary: Send SMS message
+      description: Available since API version 1. Sends SMS message to specified phone number. Used for promotional messages like app download links.
+      operationId: post_api_v1_complain_sms_send
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - type
+              - to
+              properties:
+                type:
+                  description: Type of SMS message to send
+                  type: string
+                  enum:
+                  - downloadApplication
+                  example: downloadApplication
+                to:
+                  description: Phone number to send SMS to (without + prefix)
+                  type: integer
+                  example: 1234567890
+              type: object
+      responses:
+        '200':
+          description: SMS sent successfully
+          content:
+            application/json:
+              schema:
+                properties: []
+                type: object
+              example: []
+        '400':
+          description: Bad request - Invalid phone number or SMS type
+        '401':
+          description: Unauthorized - Authentication required
+      security:
+      - XAuthToken: []

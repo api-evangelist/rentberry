@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry User Verification API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Handle IDology verification callback.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/verify/callback",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Webhook endpoint for IDology verification service callbacks."
+        },
+        {
+          "info": {
+            "name": "Start user verification process (US only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/verify",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Step 1 of US user verification process using IDology."
+        },
+        {
+          "info": {
+            "name": "Initialize verification process (non-US).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/verify/verify-init",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Step 1 of international user verification process."
+        },
+        {
+          "info": {
+            "name": "Upload documents for verification (non-US).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/verify/verify-by-documents",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Available since API version 1. Step 2 of international user verification process."
+        },
+        {
+          "info": {
+            "name": "Check document verification status (non-US).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/verify/verify-document-status",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Step 3 of international user verification - check processing status."
+        },
+        {
+          "info": {
+            "name": "Submit verification question answers (US only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/verify/answer",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Step 2 of US user verification process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Integration Requests API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integration Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create integration request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/listing/integration-request",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 3. Creates a request for MLS integration and sends notification emails to the sales team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

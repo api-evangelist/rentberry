@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Notifications API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Notifications
+  description: Notifications
+paths:
+  /v{version}/auth/counters:
+    get:
+      tags:
+      - Notifications
+      summary: Get user notification counters
+      description: Available since API version 4. Retrieves counts of various notification types for the authenticated user.
+      operationId: get_api_v4_notifications_counters
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns notification counters
+          content:
+            application/json:
+              schema:
+                properties:
+                  messagesTenant:
+                    description: Count of unread messages for tenant role
+                    type: integer
+                  messagesHomeowner:
+                    description: Count of unread messages for homeowner role
+                    type: integer
+                  propertiesHomeowner:
+                    description: Count of property-related notifications for homeowner
+                    type: integer
+                  screeningCounter:
+                    description: Count of unread screening completion notifications
+                    type: integer
+                  propertiesTenant:
+                    description: Count of property-related notifications for tenant
+                    type: integer
+                  openHousesApplies:
+                    description: Count of open house applications
+                    type: integer
+                  placeCounter:
+                    description: Count of new signatures and unviewed contracts
+                    type: integer
+                  appliesCounter:
+                    description: Count of application notifications
+                    type: integer
+                  emailVerified:
+                    description: Flag indicating if email needs verification (1 = not verified)
+                    type: integer
+                  rentalPaymentsTenant:
+                    description: DEPRECATED - Count of rental payment notifications for tenant
+                    type: integer
+                  paymentsTenant:
+                    description: Count of payment expiration notifications for tenant
+                    type: integer
+                  paymentsHomeowner:
+                    description: Count of payment notifications for homeowner
+                    type: integer
+                  rentalPaymentsLandlord:
+                    description: DEPRECATED - Count of rental payment notifications for landlord
+                    type: integer
+                  csMyCampaigns:
+                    description: Count of campaign notifications
+                    type: integer
+                  csReceived:
+                    description: Count of received notifications
+                    type: integer
+                  csSupported:
+                    description: Count of support notifications
+                    type: integer
+                type: object
+        '401':
+          description: Unauthorized - User is not authenticated
+        '403':
+          description: Forbidden - User does not have sufficient permissions
+      security:
+      - XAuthToken: []

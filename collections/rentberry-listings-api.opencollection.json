@@ -1,0 +1,780 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Listings API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate listing description as stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/description/stream",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Generates a listing description using AI and returns it as a Server-Sent Events (SSE) stream."
+        },
+        {
+          "info": {
+            "name": "Get favorite listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/favorite",
+            "params": [
+              {
+                "name": "beforeId",
+                "value": "",
+                "type": "query",
+                "description": "Get listings before this ID (for cursor-based pagination)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 2. Returns a paginated list of the authenticated user's favorite listings."
+        },
+        {
+          "info": {
+            "name": "Add listing to favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/favorite",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Adds a listing to the authenticated user's favorites list."
+        },
+        {
+          "info": {
+            "name": "Add multiple listings to favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/favorite/bulk",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Adds multiple listings to the authenticated user's favorites list in bulk."
+        },
+        {
+          "info": {
+            "name": "Remove listing from favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/apartment/favorite/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID to remove from favorites"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Removes a listing from the authenticated user's favorites list."
+        },
+        {
+          "info": {
+            "name": "Create inquiry for a listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/listing/:listing/inquiry",
+            "params": [
+              {
+                "name": "listing",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates an inquiry for a specific listing. Rate limited to prevent spam."
+        },
+        {
+          "info": {
+            "name": "Get inquiry information for a listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/listing/:listing/inquiry/info",
+            "params": [
+              {
+                "name": "listing",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns statistics and information about inquiries for a specific listing."
+        },
+        {
+          "info": {
+            "name": "Get homeowner listings list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status (true = active listings, false = all listings)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (varies based on active status and page)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns a paginated list of listings owned by the authenticated user with notification counters."
+        },
+        {
+          "info": {
+            "name": "Create new listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Available since API version 1. Creates a new listing for the authenticated user. Requires advanced features subscription for certain users."
+        },
+        {
+          "info": {
+            "name": "Get homeowner listings IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/ids",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns a simple list of listing IDs owned by the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get listing details (v3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 3. Returns detailed information about a specific listing."
+        },
+        {
+          "info": {
+            "name": "Update existing listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Available since API version 1. Updates an existing listing owned by the authenticated user. Cannot update rented listings."
+        },
+        {
+          "info": {
+            "name": "Restore archived listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v:version/apartment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Restores an archived listing to active status."
+        },
+        {
+          "info": {
+            "name": "Archive or delete listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/apartment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "delete",
+                "value": "",
+                "type": "query",
+                "description": "Permanently delete listing (true) or just archive it (false)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Archives or permanently deletes a listing owned by the authenticated user. Cannot delete rented listings."
+        },
+        {
+          "info": {
+            "name": "View listing details (public)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/:id/view",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns listing details for public viewing, including expired MLS listings with redirect URLs."
+        },
+        {
+          "info": {
+            "name": "Get listing competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/:id/competitors",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns paginated list of competing applications for a specific listing."
+        },
+        {
+          "info": {
+            "name": "Get application info for listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/application/info/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns statistical information about applications for a specific listing, including competitor data and country settings."
+        },
+        {
+          "info": {
+            "name": "Get listings with virtual tours",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/virtual-tours",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns paginated list of listings that have virtual tours available. Results are cached for performance."
+        },
+        {
+          "info": {
+            "name": "Create maintenance request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/maintenance/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates a new maintenance request for a listing. Only tenants with approved applications can create maintenance requests."
+        },
+        {
+          "info": {
+            "name": "Get open house applications for listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/open-house/applies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status (true = active applications, false = all applications)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns paginated list of open house applications for a specific listing owned by the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create open house application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/open-house/apply",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates an application for an open house viewing. Rate limited to prevent spam."
+        },
+        {
+          "info": {
+            "name": "Create open house application for MLS listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/open-house/apply-mls",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Creates an application for an open house viewing for MLS listings. Does not check for existing users. Rate limited to prevent spam."
+        },
+        {
+          "info": {
+            "name": "Decline open house application",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/apartment/open-house/apply/decline/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Open house application ID"
+              },
+              {
+                "name": "declinedReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason for declining the application"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Declines an open house application. Only the listing owner can decline applications."
+        },
+        {
+          "info": {
+            "name": "Accept open house application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v:version/apartment/open-house/apply/accept/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Open house application ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Accepts an open house application. Only the listing owner can accept applications."
+        },
+        {
+          "info": {
+            "name": "Promote listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/:id/promote",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Promotes a listing to increase its visibility. Requires promote feature to be enabled and consumes a promotion ticket."
+        },
+        {
+          "info": {
+            "name": "Check if listing is syndicatable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/:id/syndicatable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Checks whether a listing can be syndicated to external platforms."
+        },
+        {
+          "info": {
+            "name": "Get rentals for listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/:id/rental",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns all rental agreements associated with a specific listing owned by the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get recommended listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/recommendation",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of listing recommendation"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query",
+                "description": "Listing provider filter"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns paginated list of recommended listings based on specified criteria."
+        },
+        {
+          "info": {
+            "name": "Get user profile apartment listings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/user/:id/profile-apartment-list",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns paginated list of apartments for a specific user profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

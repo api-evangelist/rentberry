@@ -1,0 +1,147 @@
+{
+  "item": [
+    {
+      "id": "7e503ea6-0350-42ec-a7a5-5190d47237d1",
+      "name": "Landing Pages",
+      "description": {
+        "content": "Landing Pages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee8da8c5-04cd-4844-9069-b530a134c237",
+          "name": "Get all hyperlink sets",
+          "request": {
+            "name": "Get all hyperlink sets",
+            "description": {
+              "content": "Available since API version 4. Returns all hyperlink sets used for landing pages. Hyperlink sets contain organized links for different regions and listing types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "hyperlinking",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "648331fc-6534-44a9-8cb4-d3d3cfedd215",
+              "name": "List of all hyperlink sets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "hyperlinking",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Popular California Apartments\",\n    \"links\": [\n      {\n        \"url\": \"/ca/los-angeles/apartments-for-rent\",\n        \"text\": \"Los Angeles Apartments\",\n        \"type\": \"city\",\n        \"meta\": {\n          \"population\": 3849000\n        }\n      },\n      {\n        \"url\": \"/ca/san-francisco/apartments-for-rent\",\n        \"text\": \"San Francisco Apartments\",\n        \"type\": \"city\",\n        \"meta\": {\n          \"population\": 865000\n        }\n      }\n    ],\n    \"region\": \"California\",\n    \"listingType\": \"apartment\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bde26ad2-37ba-4e5b-991e-150a62e65141",
+              "name": "No hyperlink sets found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "hyperlinking",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "d53bd2fd-980e-421d-a146-cdc452003aa6",
+    "name": "Rentberry Landing Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

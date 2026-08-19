@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "c543d6e1-1391-414b-abee-97478e5eeba1",
+      "name": "Events",
+      "description": {
+        "content": "Events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6315a3f-6a54-42c9-9b96-84d5dfbb77f5",
+          "name": "Log event statistic (deprecated).",
+          "request": {
+            "name": "Log event statistic (deprecated).",
+            "description": {
+              "content": "Available since API version 2. This endpoint is deprecated and will be removed in future versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "event",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Event type"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9d56ce4-48ea-467a-a551-9311420243d1",
+              "name": "Event accepted (no processing).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "event",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Event type"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "ce9332c9-cf9f-413b-87f2-fbac4399a0e9",
+    "name": "Rentberry Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

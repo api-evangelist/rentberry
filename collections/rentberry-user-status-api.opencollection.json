@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry User Status API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Activate user premium or VIP status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/status/type/activate",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Activates pending premium or VIP user status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

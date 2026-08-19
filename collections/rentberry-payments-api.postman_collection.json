@@ -1,0 +1,592 @@
+{
+  "item": [
+    {
+      "id": "e5b9e484-8aba-4a2d-840b-5d83b3ee636e",
+      "name": "Payments",
+      "description": {
+        "content": "Payments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28270d86-9ea0-4e56-8345-b420fa5f895b",
+          "name": "Create payment account for onboarding",
+          "request": {
+            "name": "Create payment account for onboarding",
+            "description": {
+              "content": "Available since API version 1. Creates a Stripe account for the user and returns an onboarding URL to complete setup.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "payments",
+                "onboarding",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "9f04135a-e155-4db6-b45f-b3b227611037",
+              "name": "Account link URL for completing onboarding",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"https://connect.stripe.com/setup/s/acct_1234567890\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27e42cc4-85b0-4b52-be80-77811c159246",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a8888d4-d25f-4ca0-8583-7692dd644561",
+              "name": "(Real code 23005) Illegal Stripe account ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "612ae5b2-decc-4020-b38a-d98eac10897e",
+          "name": "Finish payment onboarding",
+          "request": {
+            "name": "Finish payment onboarding",
+            "description": {
+              "content": "Available since API version 1. Completes the payment onboarding process for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "payments",
+                "onboarding",
+                "finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "784e98a0-e465-4156-99f7-8f6f20dd6723",
+              "name": "Onboarding completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d107cfa7-b79a-4b50-a216-81d19dd46f9f",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "496da62a-b206-4d5a-bdff-76902ec53954",
+              "name": "(Real code 23001) User payment account ID not set",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "payments",
+                    "onboarding",
+                    "finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a7a47f3-f5bc-45e8-907d-7c5f58f6abf1",
+          "name": "Create Stripe payment for feature.",
+          "request": {
+            "name": "Create Stripe payment for feature.",
+            "description": {
+              "content": "Available since API version 1. Creates a Stripe payment intent for purchasing a feature.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "feature",
+                "payment",
+                "stripe",
+                "feature",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Feature type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"screening_reference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fc61d37-2d5b-4641-a7da-52cea8fdc57b",
+              "name": "Payment intent created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "feature",
+                    "payment",
+                    "stripe",
+                    "feature",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Feature type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"screening_reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stripe_payment\": {\n    \"id\": 3950,\n    \"amount\": \"0\",\n    \"status\": \"string\",\n    \"cancellationReason\": \"string\",\n    \"errorMessage\": \"string\",\n    \"internalType\": \"string\",\n    \"last4Digits\": \"string\",\n    \"paymentMethod\": \"card\",\n    \"createdAt\": \"1989-03-05T11:32:59.510Z\",\n    \"updatedAt\": \"1950-08-29T00:55:35.732Z\"\n  },\n  \"feature_payment\": {\n    \"id\": 1706,\n    \"amount\": \"string\",\n    \"currency\": \"string\",\n    \"status\": 1,\n    \"type\": \"string\",\n    \"ticket\": {\n      \"id\": 1531,\n      \"code\": \"string\",\n      \"type\": \"string\",\n      \"usedAt\": \"1998-06-04T23:04:50.406Z\",\n      \"isUsed\": false,\n      \"createdAt\": \"1998-09-29T13:06:13.545Z\",\n      \"updatedAt\": \"2023-09-24T23:00:50.976Z\"\n    },\n    \"createdAt\": \"2021-02-18T11:44:28.470Z\",\n    \"updatedAt\": \"2022-12-08T16:55:30.652Z\"\n  },\n  \"clientSecret\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d1efaf6-9e28-4b65-b76c-518331b14bac",
+              "name": "Invalid feature type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "feature",
+                    "payment",
+                    "stripe",
+                    "feature",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Feature type"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"screening_reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29e37fbc-211e-4930-be62-cb57e984930e",
+              "name": "Screening request not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "feature",
+                    "payment",
+                    "stripe",
+                    "feature",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Feature type"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"screening_reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27562713-7fe6-47bc-b3f6-774a6da96dda",
+              "name": "Screening request already paid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "feature",
+                    "payment",
+                    "stripe",
+                    "feature",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Feature type"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"screening_reference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "68d726a2-fb6a-47e2-8cd5-3f85d5bc6fcf",
+    "name": "Rentberry Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2474 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Applications API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Applications
+  description: Applications
+paths:
+  /v{version}/applicant/proof-income:
+    post:
+      tags:
+      - Applications
+      summary: Upload a new applicant attachment.
+      description: Available since API version 1. Requires ROLE_USER.
+      operationId: post_api_v1_applicant_attachment_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantAttachmentType'
+      responses:
+        '201':
+          description: Attachment uploaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicantAttachment'
+        '400':
+          description: Validation failed.
+      security:
+      - XAuthToken: []
+  /v{version}/applicant/proof-income/{id}:
+    post:
+      tags:
+      - Applications
+      summary: Update an existing applicant attachment.
+      description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
+      operationId: post_api_v1_applicant_attachment_edit
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantAttachmentType'
+      responses:
+        '200':
+          description: Attachment updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicantAttachment'
+        '400':
+          description: Validation failed.
+        '403':
+          description: Forbidden
+      security:
+      - XAuthToken: []
+    delete:
+      tags:
+      - Applications
+      summary: Delete an applicant attachment.
+      description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
+      operationId: delete_api_v1_applicant_attachment_delete
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '204':
+          description: Attachment deleted.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - XAuthToken: []
+  /v{version}/applicant/proof-income/download/{id}:
+    get:
+      tags:
+      - Applications
+      summary: Download an applicant attachment file.
+      description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
+      operationId: get_api_v1_applicant_attachment_download
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: File download.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - XAuthToken: []
+  /v{version}/applicant:
+    get:
+      tags:
+      - Applications
+      summary: Retrieve the last active applicant for the authenticated user.
+      description: Available since API version 1. Requires ROLE_USER.
+      operationId: get_api_v1_applicant_last
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Applicant data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        '404':
+          description: Applicant not found.
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Applications
+      summary: Create a new applicant record.
+      description: Available since API version 1. Requires ROLE_USER.
+      operationId: post_api_v1_applicant_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantFormType'
+      responses:
+        '200':
+          description: Applicant created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        '400':
+          description: Validation failed or bad request.
+        '403':
+          description: Phone not verified.
+        '409':
+          description: Application already has an applicant.
+      security:
+      - XAuthToken: []
+  /v{version}/applicant/{id}:
+    put:
+      tags:
+      - Applications
+      summary: Submit the applicant for review.
+      description: Available since API version 1. Requires ROLE_USER and ownership of the applicant.
+      operationId: put_api_v1_applicant_submit
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Applicant submitted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        '403':
+          description: Not owner of applicant.
+        '409':
+          description: Application is withdrawn or declined.
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Applications
+      summary: Edit an existing applicant.
+      description: Available since API version 1. Requires ROLE_USER and ownership of the applicant.
+      operationId: post_api_v1_applicant_edit
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantFormType'
+      responses:
+        '200':
+          description: Applicant updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        '400':
+          description: Validation failed.
+        '403':
+          description: Phone not verified or not owner of applicant.
+        '409':
+          description: Application is withdrawn.
+      security:
+      - XAuthToken: []
+  /v{version}/applicant/list:
+    get:
+      tags:
+      - Applications
+      summary: Retrieve list of applicants.
+      description: Available since API version 1. Requires ROLE_USER.
+      operationId: get_api_v1_get_applicants_list
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of applicants.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Applicant'
+        '401':
+          description: Unauthorized
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/apply/{id}:
+    get:
+      tags:
+      - Applications
+      summary: Get application details
+      description: Available since API version 1. Returns detailed information about a specific application, including pricing status, notifications, and competitive data.
+      operationId: get_api_v1_apartment_apply_get
+      parameters:
+      - name: id
+        in: path
+        description: Application ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Application details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplyResponse'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not have permission to view this application
+        '404':
+          description: Application not found
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Applications
+      summary: Edit application
+      description: Available since API version 1. Modifies an existing application, updating price, deposit, and other details.
+      operationId: post_api_v1_apartment_apply_edit
+      parameters:
+      - name: id
+        in: path
+        description: Application ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                price:
+                  description: Updated monthly rental price offer
+                  type: number
+                  format: float
+                deposit:
+                  description: Updated security deposit offer
+                  type: number
+                  format: float
+                moveIn:
+                  description: Updated desired move-in date
+                  type: string
+                  format: date
+                comment:
+                  description: Updated comment
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Application updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingApplication'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not own this application
+        '404':
+          description: Application not found
+        '1004':
+          description: Cannot edit application that has already been accepted by homeowner
+      security:
+      - XAuthToken: []
+    delete:
+      tags:
+      - Applications
+      summary: Decline or withdraw application
+      description: Available since API version 1. Declines an application (if called by listing owner) or withdraws it (if called by applicant).
+      operationId: delete_api_v1_apartment_apply_decline
+      parameters:
+      - name: id
+        in: path
+        description: Application ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: declinedReason
+        in: query
+        description: Reason for declining (only used when listing owner declines)
+        schema:
+          type: string
+          default: homeownerDecision
+          enum:
+          - homeownerDecision
+          - otherCandidate
+          - notRentedYet
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Application declined or withdrawn successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingApplication'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not have permission to decline/withdraw this application
+        '404':
+          description: Application not found
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/apply/apartment/{id}:
+    get:
+      tags:
+      - Applications
+      summary: Get applications for a specific listing
+      description: Available since API version 1. Returns applications received for a specific listing owned by the authenticated user.
+      operationId: get_api_v1_apartment_apply_by_apartment
+      parameters:
+      - name: id
+        in: path
+        description: Listing ID
+        required: true
+        schema:
+          type: integer
+      - name: active
+        in: query
+        description: Filter by active status (true = active applications, false = all applications)
+        schema:
+          type: boolean
+          default: true
+      - name: limit
+        in: query
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 9
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of applications for the listing
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ListingApplication'
+                  pagination:
+                    type: object
+                  counters:
+                    description: DEPRECATED - Notification counters for the listing
+                    properties:
+                      applications:
+                        description: Count of applications with notifications
+                        type: integer
+                      expiredNotifications:
+                        description: Count of unread expired property notifications
+                        type: integer
+                    type: object
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not own this listing
+        '404':
+          description: Listing not found
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/apply:
+    get:
+      tags:
+      - Applications
+      summary: Get applications sent by authenticated user
+      description: Available since API version 1. Returns a list of applications submitted by the authenticated user.
+      operationId: get_api_v1_apartment_apply_list
+      parameters:
+      - name: deleted
+        in: query
+        description: Filter by deleted status (0 = active applications, 1 = deleted applications)
+        schema:
+          type: integer
+          default: 0
+          enum:
+          - 0
+          - 1
+      - name: limit
+        in: query
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 9
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of sent applications with notification data and status information
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ApplyResponse'
+                  pagination:
+                    type: object
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Applications
+      summary: Create a new application
+      description: Available since API version 1. Creates a new application for a listing.
+      operationId: post_api_v1_apartment_apply_add
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - listing
+              - price
+              - deposit
+              - moveIn
+              properties:
+                listing:
+                  description: Listing ID
+                  type: integer
+                price:
+                  description: Offered monthly rental price
+                  type: number
+                  format: float
+                deposit:
+                  description: Offered security deposit
+                  type: number
+                  format: float
+                moveIn:
+                  description: Desired move-in date (YYYY-MM-DD)
+                  type: string
+                  format: date
+                comment:
+                  description: Optional comment for the application
+                  type: string
+                roommates:
+                  description: Optional list of roommates
+                  type: array
+                  items:
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: Application created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingApplication'
+        '400':
+          description: Bad request - Validation failed
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '1001':
+          description: Listing already rented
+        '1002':
+          description: Listing not applicable for applications
+        '1003':
+          description: Cannot apply to your own listing
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/apply/confirm/{id}:
+    post:
+      tags:
+      - Applications
+      summary: Confirm application (DEPRECATED)
+      description: Available since API version 1. DEPRECATED - Used only for mobile apps. Confirms an application by setting necessary confirmation flags.
+      operationId: post_api_v1_apartment_apply_confirm
+      parameters:
+      - name: id
+        in: path
+        description: Application ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                confirm:
+                  description: Confirmation flag
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Application confirmed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingApplication'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not own this application
+        '404':
+          description: Application not found
+      deprecated: true
+      security:
+      - XAuthToken: []
+  /v{version}/apartment/apply/accept/{id}:
+    put:
+      tags:
+      - Applications
+      summary: Accept application
+      description: Available since API version 1. Accepts an application, creating a rental agreement and marking the listing as rented.
+      operationId: put_api_v1_apartment_apply_accept
+      parameters:
+      - name: id
+        in: path
+        description: Application ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Application accepted successfully, rental created
+          content:
+            application/json:
+              schema:
+                description: Rental object created from the application
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - User does not have permission to accept this application
+        '404':
+          description: Application not found
+        '1005':
+          description: Listing already rented
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    Bounds:
+      properties:
+        northeast:
+          $ref: '#/components/schemas/Coordinates'
+        southwest:
+          $ref: '#/components/schemas/Coordinates'
+      type: object
+    RentalPaymentUnit:
+      properties:
+        paymentAmount:
+          type: string
+        id:
+          type: integer
+        type:
+          type: string
+        amount:
+          type: string
+      type: object
+    ApplicantAttachment:
+      properties:
+        id:
+          type: integer
+        fileName:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Applicant:
+      required:
+      - employmentType
+      properties:
+        id:
+          type: integer
+        apartmentApply:
+          $ref: '#/components/schemas/ListingApplication'
+        user:
+          $ref: '#/components/schemas/User'
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantReference'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantAttachment'
+        creator:
+          type: boolean
+          default: false
+        active:
+          type: boolean
+          default: false
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory'
+        employmentType:
+          type: string
+          enum:
+          - employed
+          - unemployed
+          - student
+        employmentName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentTitle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentSourceIncome:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentIncome:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    User:
+      required:
+      - nameFirst
+      - nameLast
+      - username
+      - phone
+      - birthday
+      properties:
+        hasPassword:
+          type: boolean
+        phoneCountryCode:
+          type: string
+        id:
+          type: integer
+        nameFirst:
+          type: string
+          maxLength: 255
+          minLength: 2
+        nameMiddle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        nameLast:
+          type: string
+          maxLength: 255
+          minLength: 2
+        company:
+          $ref: '#/components/schemas/Company'
+        companyName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        username:
+          type: string
+          maxLength: 255
+          minLength: 1
+        profilePictureThumbs:
+          type: string
+        phone:
+          type: string
+          maxLength: 15
+          minLength: 7
+        birthday:
+          type: string
+          format: date-time
+        bio:
+          type: string
+          maxLength: 1500
+        oauthProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserOauthProvider'
+        address:
+          $ref: '#/components/schemas/UserAddress'
+        creditScore:
+          $ref: '#/components/schemas/UserCreditScore'
+        criminalReport:
+          $ref: '#/components/schemas/UserCriminalReport'
+        stripeCustomer:
+          $ref: '#/components/schemas/UserStripeCustomer'
+        active:
+          type: boolean
+          default: true
+        fromNotBerryForbiddenCountry:
+          type: boolean
+          default: false
+        verified:
+          type: boolean
+          default: false
+        emailVerified:
+          type: boolean
+          default: false
+        phoneVerified:
+          type: boolean
+          default: false
+        registered:
+          type: boolean
+          default: true
+        emailNotVerifiedAfter:
+          type: string
+          format: date-time
+        lastActiveAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        statusType:
+          type: string
+          default: regular
+          enum:
+          - regular
+          - premium
+          - premium_pending
+          - vip
+          - vip_pending
+        authToken:
+          type: string
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory'
+        deleted:
+          type: boolean
+          default: false
+        rentalPaymentAccount:
+          $ref: '#/components/schemas/RentalPaymentAccount'
+        newsletterSubscription:
+          type: boolean
+          default: false
+        premiumPartner:
+          type: boolean
+          default: false
+        locale:
+          type: string
+          default: en_US
+          enum:
+          - en_US
+          - es_ES
+        currency:
+          type: string
+        lengthUnit:
+          type: string
+          enum:
+          - m
+          - ft
+        isRaiUser:
+          type: boolean
+          default: false
+      type: object
+    UserDocument:
+      required:
+      - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ApplicantAttachmentsType:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+      type: object
+    UserRentalHistory:
+      required:
+      - address
+      - city
+      - homeownerPhone
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        applicantId:
+          type: integer
+        address:
+          type: string
+          maxLength: 255
+          minLength: 3
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    ApplicantAttachmentType:
+      required:
+      - proofIncomeFile
+      - applicantId
+      properties:
+        proofIncomeFile: []
+        applicantId:
+          type: integer
+      type: object
+    ApplicantReference:
+      required:
+      - name
+      - relationship
+      - phone
+      properties:
+        id:
+          type: integer
+        applicant:
+          $ref: '#/components/schemas/Applicant'
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        relationship:
+          type: string
+          maxLength: 255
+          minLength: 1
+        email:
+          type: string
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Coordinates:
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+      type: object
+    UserAddress:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    State:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
+          type: string
+      type: object
+    UserStripeCustomer:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ApplicantReferencesType:
+      required:
+      - name
+      - phone
+      - relationship
+      - email
+      properties:
+        name:
+          type: string
+        phone:
+          type: integer
+        relationship:
+          type: string
+        email:
+          type: string
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    StripePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        status:
+          type: string
+        cancellationReason:
+          type: string
+        errorMessage:
+          type: string
+        internalType:
+          type: string
+        last4Digits:
+          type: string
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    RentalSubscription:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        commissionFee:
+          type: string
+          default: '0'
+        amountTotal:
+          type: string
+          default: '0'
+        currency:
+          type: string
+        comment:
+          type: string
+        status:
+          type: string
+          default: incomplete
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Rental:
+      properties:
+        listing:
+          $ref: '#/components/schemas/Listing'
+        apartmentId:
+          title: for iOs compatibility.
+          type: integer
+        latestPayment:
+          $ref: '#/components/schemas/RentalPayment'
+        activeSubscription:
+          $ref: '#/components/schemas/RentalSubscription'
+        id:
+          type: integer
+        application:
+          $ref: '#/components/schemas/ListingApplication'
+        moveIn:
+          type: string
+          format: date-time
+        moveOut:
+          type: string
+          format: date-time
+        firstPaymentDate:
+          type: string
+          format: date-time
+        monthlyRentAmount:
+          type: string
+          maximum: 9999999
+          minimum: 1
+        monthlyDueDate:
+          type: integer
+        tenantFirstName:
+          type: string
+        tenantLastName:
+          type: string
+        tenantEmail:
+          type: string
+        address:
+          type: string
+        unit:
+          type: string
+        homeowner:
+          $ref: '#/components/schemas/User'
+        tenant:
+          $ref: '#/components/schemas/User'
+        status:
+          type: string
+          default: pending
+        isChargeable:
+          type: boolean
+          default: false
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDocument'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    AdminLevelCollection:
+      properties: []
+      type: object
+    ApplicantFormType:
+      required:
+      - term
+      - moveIn
+      - notes
+      - references
+      - proofIncomes
+      - rentalHistory
+      - employmentType
+      - employmentIncome
+      - employmentTitle
+      - employmentName
+      - employmentSourceIncome
+      properties:
+        term:
+          type: integer
+        moveIn:
+          type: integer
+        notes:
+          type: string
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantReferencesType'
+        proofIncomes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantAttachmentsType'
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantRentalHistoryType'
+        employmentType:
+          type: string
+          enum:
+          - employed
+          - unemployed
+          - student
+        employmentIncome:
+          type: integer
+        employmentTitle:
+          type: string
+        employmentName:
+          type: string
+        employmentSourceIncome:
+          type: string
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ApplicantRentalHistoryType:
+      required:
+      - address
+      - city
+      - term
+      properties:
+        address:
+          type: string
+        city:
+          type: string
+        price:
+          type: integer
+        term:
+          type: integer
+      type: object
+    Listing:
+      required:
+      - name
+      - type
+      - description
+      - externalKey
+      properties:
+        openHousesEnabled:
+          type: boolean
+        leadUrl:
+          type: boolean
+        price:
+          type: number
+          format: float
+        priceTerm:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        active:
+          type: boolean
+        rented:
+          type: boolean
+        providerType:
+          type: string
+        editedByUser:
+          title: legacy.
+          type: boolean
+        expired:
+          type: boolean
+        promoted:
+          type: boolean
+        currency:
+          type: string
+        company:
+          $ref: '#/components/schemas/Company'
+        expireAt:
+          type: integer
+        listingStatus:
+          type: string
+        hasVirtualTour:
+          type: boolean
+        originalPrice:
+          $ref: '#/components/schemas/Price'
+        rooms:
+          title: legacy.
+          type: integer
+        traffic:
+          title: legacy.
+          type: integer
+        rentDuration:
+          title: legacy.
+          type: integer
+        unitNumber:
+          title: legacy.
+          type: string
+        levelId:
+          title: legacy.
+          type: integer
+        shapeId:
+          title: legacy.
+          type: string
+        panoramaId:
+          title: legacy.
+          type: string
+        occupant:
+          title: legacy.
+          type: string
+        id:
+          type: integer
+        apartmentPictures:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListingPicture'
+        virtualTours:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualTour'
+        address:
+          $ref: '#/components/schemas/ListingAddress'
+        apartmentApplies:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListingApplication'
+        openHouseApplications:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenHouseApplication'
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        available:
+          type: string
+          format: date-time
+        space:
+          type: integer
+          maximum: 99999
+        lengthUnit:
+          type: string
+          enum:
+          - ft
+          - m
+        type:
+          type: string
+          enum:
+          - apartment
+          - house
+          - condo
+          - townhouse
+          - duplex
+          - loft
+          - room
+          - land
+          - other
+        deposit:
+          type: integer
+          maximum: 999999999
+          minimum: 0
+        utilitiesPrice:
+          type: integer
+          maximum: 999999999
+          minimum: 0
+        description:
+          type: string
+          maxLength: 10000
+        isAIDescription:
+          type: boolean
+          default: false
+        deleted:
+          type: boolean
+          default: false
+        syndicated:
+          type: boolean
+          default: false
+        externalUrl:
+          type: string
+          maxLength: 2048
+        seoUrl:
+          type: string
+        externalKey:
+          type: string
+        listedAt:
+          type: string
+          format: date-time
+        publishedAt:
+          title: Date when listing was published on MLS.
+          type: string
+          format: date-time
+        provider:
+          type: string
+          default: rentberry
+          enum:
+          - rentberry
+          - apartmentlist
+          - apts
+          - avail
+          - bondnewyork
+          - bostonapartments
+          - collegestudentapartments
+          - commercialpropertykenya
+          - eurovilla
+          - expedia
+          - findroommate
+          - flatio
+          - fourstay
+          - foreclosure
+          - fultongrace
+          - goplaceit
+          - harlington
+          - hemavi
+          - homestay
+          - housinganywhere
+          - housestay
+          - huurstunt
+          - inlife
+          - joivy
+          - junehome
+          - krn
+          - levit
+          - livinfrance
+          - mapaprop
+          - morningcroissant
+          - mystate
+          - navent
+          - onthemarket
+          - openimmo
+          - padfinders
+          - padsplit
+          - parisattitude
+          - pepehousing
+          - pin
+          - realbird
+          - reallyo
+          - realtymx
+          - realtyww
+          - rentalsource
+          - rentengine
+          - renthia
+          - rentinsingapore
+          - rentola
+          - roomless
+          - roomster
+          - samtrygg
+          - siamrealestate
+          - speedhome
+          - spotahome
+          - 3dapartment
+          - turbotenant
+          - uniplaces
+          - wunderflats
+          - yourrentals
+          - yucalive
+          - xml2u
+          - ziptoss
+          - cheznestor
+          - coliving
+          - domaingroup
+          - erasmusu
+          - explorastay
+          - rentcatalogue
+          - homelike
+          - hyrenbostad
+          - lejebolig
+          - listhub
+          - properstar
+          - studentsglobalrelocation
+          - zappyrent
+          - zeusliving
+        maintenance:
+          type: array
+          items:
+            $ref: '#/components/schemas/Maintenance'
+        amenities:
+          type: array
+          items:
+            enum:
+            - gym
+            - pool
+            - garden
+            - parking
+            - doorman
+            - storage
+            - balcony
+            - elevator
+            - fireplace
+            - highRise
+            - roofDeck
+            - furnished
+            - dishwasher
+            - beachView
+            - washerUnit
+            - hardwoodFloors
+            - airConditioning
+            - wheelchairAccessible
+            - attic
+            - basement
+            - bbqArea
+            - deck
+            - disabledAccess
+            - garageParking
+            - greenhouse
+            - intercom
+            - lawn
+            - new
+            - secondarySuite
+            - security
+            - waterfront
+            - wired
+            - newConstruction
+            - securitySystem
+            - hotTube
+            - studentFriendly
+            - utilitiesIncluded
+            - energyEfficient
+            - solarPowered
+            - kitchen
+            - privateKitchen
+            - sharedKitchen
+            - internet
+            - wifi
+            - tv
+            - localTv
+            - cableTv
+            - computer
+            - laptopWorkspace
+            - hotTube
+            - tub
+            - iron
+            - towels
+            - ironingBoard
+            - toiletries
+            - guestToilet
+            - buzzerWirelessIntercom
+            - privateEntrance
+            - hairDryer
+            - suitableForEvents
+            - centralizedHeating
+            - autonomousHeating
+            - busStop
+            - trainStation
+            - airport
+            - bicyclesForUse
+            - library
+            - shoppingCenter
+            - hospital
+            - park
+            - golf
+            - museums
+            - healthClub
+            - amusementPark
+            - cinema
+            - restaurant
+            - gamesRoom
+            - horseStables
+            - bowling
+            - smokeAlarm
+            - smokeAlarmEachFloor
+            - sportsArena
+            - coDetector
+            - cellar
+            - blankets
+            - pillows
+            - bedClothes
+            - broom
+            - floorWiper
+            - shower
+            - toaster
+            - microwave
+            - fridge
+            - coffee
+            - kettle
+            - cutlery
+            - vacuumCleaner
+            - stove
+            - detergents
+            - bidet
+            - hourSecurity24
+            - fishing
+            - waterSports
+            - creditApplication
+            - smokingFriendly
+            - brokerFee
+            - garbageDisposer
+            - iceMaker
+            - trashCompactor
+            - warmingDrawer
+            - coffeeSystem
+            - coffeeSystemRoughIn
+            - cooktop
+            - cooktopElectric
+            - cooktopElectric2Burner
+            - cooktopElectric6Burner
+            - cooktopGas
+            - cooktopGas2Burner
+            - cooktopGas5Burner
+            - cooktopGas6Burner
+            - cooktopGasCustom
+            - cooktopInduction
+            - cooktopInduction2Burner
+            - cooktopInduction6Burner
+            - dishwasherDrawer
+            - dishwasherTwoOrMore
+            - dryer
+            - dryerDualFuel
+            - dryerElectric110v
+            - dryerElectric220v
+            - dryerGas
+            - dryerGasRoughIn
+            - oven
+            - ovenConvection
+            - ovenDouble
+            - ovenDoubleElectric
+            - ovenDoubleGas
+            - ovenGas
+            - ovenGas3Wide
+            - ovenSelfCleaning
+            - ovenSteam
+            - ovenTwin
+            - ovenTwinElectric
+            - ovenTwinGas
+            - ovenTwinGas3Wide
+            - ovenTwinMixed
+            - range
+            - rangeBuiltIn
+            - rangeDual
+            - rangeDual10Burner
+            - rangeDual6Burner
+            - rangeDual8Burner
+            - rangeElectric
+            - rangeGas
+            - rangeGas10Burner
+            - rangeGas6Burner
+            - rangeGas8Burner
+            - rangeInduction
+            - rangeOther
+            - rangetopElectric
+            - rangetopElectric2Burner
+            - rangetopElectric6Burner
+            - rangetopGas
+            - rangetopGas10Burner
+            - rangetopGas2Burner
+            - rangetopGas4BurnerCompact
+            - rangetopGas6Burner
+            - rangetopGas8Burner
+            - rangetopGasCustom
+            - rangetopInduction
+            - rangetopInduction2Burner
+            - rangetopInduction6Burner
+            - freezer
+            - freezerCompact
+            - freezerUpright
+            - refrigerator
+            - refrigeratorBar
+            - refrigeratorBuiltIn
+            - refrigeratorBuiltInWithPlumbing
+            - refrigeratorDrawer
+            - refrigeratorSideBySide
+            - refrigeratorUndercounter
+            - refrigeratorWineStorage
+            - refrigeratorWithPlumbing
+            - vacuumSystem
+            - vacuumSystemRoughIn
+            - ventHood
+            - ventHood10Burner
+            - ventHood6Burner
+            - ventHood8Burner
+            - washer
+            - washerFrontLoad
+            - washerSteamer
+            - washerTopLoad
+            - washerDryerCombo
+            - washerDryerStack
+            - waterFilter
+            - waterInstantHot
+            - waterPurifier
+            - waterSoftener
+            - architectureAFrame
+            - architectureArtDeco
+            - architectureBungalow
+            - architectureCapeCod
+            - architectureColonial
+            - architectureContemporary
+            - architectureConventional
+            - architectureCottage
+            - architectureCraftsman
+            - architectureCreole
+            - architectureDome
+            - architectureDutchColonial
+            - architectureEnglish
+            - architectureFederal
+            - architectureFrench
+            - architectureFrenchProvincial
+            - architectureGeorgian
+            - architectureGothicRevival
+            - architectureGreekRevival
+            - architectureHighRise
+            - architectureHistorical
+            - architectureInternational
+            - architectureItalianate
+            - architectureLoft
+            - architectureMansion
+            - architectureMediterranean
+            - architectureModern
+            - architectureMonterey
+            - architectureMountain
+            - architectureNational
+            - architectureNeoclassical
+            - architectureNewTraditional
+            - architecturePrairie
+            - architecturePueblo
+            - architectureQueenAnne
+            - architectureRambler
+            - architectureRanch
+            - architectureRegency
+            - architectureRustic
+            - architectureSaltbox
+            - architectureSantaFe
+            - architectureSecondEmpire
+            - architectureShed
+            - architectureShingle
+            - architectureShotgun
+            - architectureSpanish
+            - architectureSpanishEclectic
+            - architectureSplitLevel
+            - architectureStick
+            - architectureTudor
+            - architectureVictorian
+            - coolingAtticFan
+            - coolingCeilingFan
+            - coolingCentralAC
+            - coolingCentralEvaporative
+            - coolingCentralFan
+            - coolingChilledWater
+            - coolingDehumidifiers
+            - coolingDessicantCooler
+            - coolingEvaporative
+            - coolingHeatPumps
+            - coolingPartial
+            - coolingRadiantFloor
+            - coolingRadiantFloorGroundLoop
+            - coolingRefrigeratorEvaporative
+            - coolingSolarAcActive
+            - coolingSolarAcPassive
+            - coolingWallUnitAc
+            - coolingWallUnitEvaporative
+            - coolingWindowUnitAc
+            - coolingWindowUnitEvaporative
+            - coolingZonedAc
+            - exteriorAdobe
+            - exteriorAluminumSiding
+            - exteriorAsbestos
+            - exteriorAsphalt
+            - exteriorBlock
+            - exteriorBoardAndBatten
+            - exteriorBrick
+            - exteriorBrickAndWood
+            - exteriorBrickVeneer
+            - exteriorCedarSiding
+            - exteriorComb
+            - exteriorComposition
+            - exteriorCompositionShingles
+            - exteriorConcrete
+            - exteriorConcreteBlock
+            - exteriorEifs
+            - exteriorFiberglass
+            - exteriorGlass
+            - exteriorHardboard
+            - exteriorLog
+            - exteriorLogSiding
+            - exteriorMasonite
+            - exteriorMasonry
+            - exteriorMetal
+            - exteriorMetalSiding
+            - exteriorPouredConcrete
+            - exteriorShinglesNotWood
+            - exteriorStone
+            - exteriorStoneVeneer
+            - exteriorStucco
+            - exteriorStuccoSynthetic
+            - exteriorTile
+            - exteriorTiltUpPreCastConcrete
+            - exteriorVinylSiding
+            - exteriorWood
+            - exteriorWoodShingle
+            - exteriorWoodSiding
+            - coveringFloorBamboo
+            - coveringFloorBrick
+            - coveringFloorCarpet
+            - coveringFloorCarpetFull
+            - coveringFloorCarpetPartial
+            - coveringFloorConcrete
+            - coveringFloorConcreteBare
+            - coveringFloorConcretePainted
+            - coveringFloorCork
+            - coveringFloorDrainage
+            - coveringFloorEngineeredWood
+            - coveringFloorGlass
+            - coveringFloorGranite
+            - coveringFloorHardwood
+            - coveringFloorLaminate
+            - coveringFloorLinoleum
+            - coveringFloorLoadRestriction
+            - coveringFloorMarble
+            - coveringFloorParquetWood
+            - coveringFloorRoughIn
+            - coveringFloorSlate
+            - coveringFloorSoftWood
+            - coveringFloorSolidWood
+            - coveringFloorSpecialty
+            - coveringFloorSpecialtyConcrete
+            - coveringFloorTile
+            - coveringFloorTileCeramic
+            - coveringFloorTilePorcelain
+            - coveringFloorTileStone
+            - coveringFloorTileOrStone
+            - coveringFloorVinyl
+            - coveringFloorWood
+            - fuelHeatingButaneGas
+            - fuelHeatingCoal
+            - fuelHeatingElectric
+            - fuelHeatingGeothermal
+            - fuelHeatingKerosene
+            - fuelHeatingNaturalGas
+            - fuelHeatingOil
+            - fuelHeatingPassiveHeatPump
+            - fuelHeatingPassiveSolar
+            - fuelHeatingPellet
+            - fuelHeatingPropaneGas
+            - fuelHeatingSolar
+            - fuelHeatingSolarPanel
+            - fuelHeatingWood
+            - heatingBaseboard
+            - heatingCentralFurnace
+            - heatingElectricAirFilter
+            - heatingFireplace
+            - heatingFireplaceInsert
+            - heatingFloorFurnace
+            - heatingFloorWall
+            - heatingForcedAir
+            - heatingGeothermal
+            - heatingGravityAir
+            - heatingGravityHotWater
+            - heatingHeatPump
+            - heatingHotWater
+            - heatingHotWaterRadiantFloor
+            - heatingHumidifier
+            - heatingPelletStove
+            - heatingRadiant
+            - heatingRadiantCeiling
+            - heatingRadiantFloor
+            - heatingRadiator
+            - heatingSwChangeover
+            - heatingSolarActive
+            - heatingSolarActiveAndPassive
+            - heatingSolarPassive
+            - heatingSpaceHeater
+            - heatingSteam
+            - heatingWallUnit
+            - heatingZoned
+            - parkingAlley
+            - parkingAssigned
+            - parkingBoat
+            - parkingBuiltIn
+            - parkingCarport
+            - parkingCommercial
+            - parkingCovered
+            - parkingDriveway
+            - parkingFee
+            - parkingFenced
+            - parkingGarage
+            - parkingGarageAttached
+            - parkingGarageDetached
+            - parkingGated
+            - parkingGolfCart
+            - parkingGuest
+            - parkingHeated
+            - parkingLeased
+            - parkingMechanics
+            - parkingMeter
+            - parkingOffAlley
+            - parkingOffStreet
+            - parkingOffsite
+            - parkingOnStreet
+            - parkingOpen
+            - parkingOversized
+            - parkingOwned
+            - parkingParkingLot
+            - parkingParkingStructure
+            - parkingPavedOrSurfaced
+            - parkingPole
+            - parkingPorteCochere
+            - parkingPullThrough
+            - parkingRamp
+            - parkingRv
+            - parkingSecured
+            - parkingSideApron
+            - parkingSideBySide
+            - parkingSpecialNeeds
+            - parkingStacked
+            - parkingTandem
+            - parkingTuckUnder
+            - parkingUnassigned
+            - parkingUndergroundBasement
+            - parkingUnimproved
+            - parkingValet
+            - parkingWorkshop
+            - parkingZonedPermit
+            - roofAluminum
+            - roofAsbestos
+            - roofAsphalt
+            - roofBuiltUp
+            - roofClayTile
+            - roofCompositionShingle
+            - roofConcreteTile
+            - roofCopper
+            - roofCorrugatedMetal
+            - roofGreen
+            - roofMasoniteOrCementShake
+            - roofMembrane
+            - roofMetal
+            - roofSlate
+            - roofSolarPanel
+            - roofStandingSeam
+            - roofSteel
+            - roofTarAndGravel
+            - roofThatched
+            - roofTile
+            - roofUrethane
+            - roofWoodShake
+            - roofWoodShingle
+            - viewAirport
+            - viewAverage
+            - viewBluff
+            - viewBridge
+            - viewCanyon
+            - viewCity
+            - viewDesert
+            - viewForest
+            - viewGolfCourse
+            - viewHarbor
+            - viewHills
+            - viewLake
+            - viewMarina
+            - viewMountain
+            - viewOcean
+            - viewPanorama
+            - viewPark
+            - viewRavine
+            - viewRiver
+            - viewTerritorial
+            - viewValley
+            - viewVista
+            - viewWater
+            - studentFriendly
+            - utilitiesIncluded
+          default: []
+        transactionType:
+          title: Property transaction type - "rental" or "sale".
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+        openHouse:
+          title: Just text field (specifically needed for sale apartments).
+          type: string
+        status:
+          type: string
+          default: draft
+        originalLanguage:
+          type: string
+        bedrooms:
+          type: integer
+        baths:
+          type: number
+          format: float
+        floors:
+          type: integer
+        buildingUnitCount:
+          title: legacy.
+          type: integer
+        parking:
+          title: legacy.
+          type: integer
+        cooling:
+          title: legacy.
+          type: string
+        heating:
+          title: legacy.
+          type: string
+        yearBuilt:
+          type: integer
+        yearUpdated:
+          title: legacy.
+          type: integer
+        lotSize:
+          title: legacy.
+          type: integer
+        cat:
+          type: boolean
+        dog:
+          type: boolean
+        depositPet:
+          type: integer
+          maximum: 9999999
+          minimum: 0
+        autorenew:
+          type: boolean
+        section:
+          title: legacy.
+          type: string
+          default: residential
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    RentalPayment:
+      properties:
+        amount:
+          type: string
+          default: '0'
+        expireAt:
+          type: string
+          format: date-time
+        id:
+          type: integer
+        rental:
+          $ref: '#/components/schemas/Rental'
+        user:
+          $ref: '#/components/schemas/User'
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/RentalPaymentUnit'
+        comment:
+          type: string
+        currency:
+          type: string
+        paymentCurrency:
+          type: string
+        rate:
+          type: string
+        commissionFee:
+          type: string
+          default: '0'
+        amountTotal:
+          type: string
+          default: '0'
+        status:
+          type: string
+          default: created
+        stripePayment:
+          $ref: '#/components/schemas/StripePayment'
+        rentalSubscription:
+          $ref: '#/components/schemas/RentalSubscription'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    OpenHouseApplication:
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        phone:
+          type: integer
+        confirmed:
+          type: boolean
+          default: false
+        declined:
+          type: boolean
+          default: false
+        expired:
+          type: boolean
+          default: false
+        declineReason:
+          type: string
+        date:
+          type: string
+          format: date-time
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    VirtualTour:
+      required:
+      - url
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        isMain:
+          type: boolean
+          default: false
+        duration:
+          type: integer
+        thumbnailUrl:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+      type: object
+    ListingApplication:
+      properties:
+        deposit:
+          type: string
+          minimum: 0
+        accepted:
+          title: for iOs compatibility.
+          type: boolean
+        declined:
+          title: for iOs compatibility.
+          type: boolean
+        expired:
+          title: for iOs compatibility.
+          type: boolean
+        deleted:
+          title: for iOs compatibility.
+          type: boolean
+        id:
+          type: integer
+        listing:
+          $ref: '#/components/schemas/Listing'
+        price:
+          type: string
+          minimum: 1
+        term:
+          type: integer
+        moveIn:
+          type: string
+          format: date-time
+        rental:
+          $ref: '#/components/schemas/Rental'
+        applicants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Applicant'
+        declinedReason:
+          type: string
+          maxLength: 255
+          minLength: 1
+        new:
+          type: boolean
+          default: true
+        showNotification:
+          type: boolean
+          default: false
+        status:
+          type: string
+          default: draft
+        notes:
+          type: string
+          maxLength: 1000
+          minLength: 1
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Maintenance:
+      required:
+      - description
+      properties:
+        id:
+          type: integer
+        listing:
+          $ref: '#/components/schemas/Listing'
+        user:
+          $ref: '#/components/schemas/User'
+        description:
+          type: string
+          maxLength: 255
+          minLength: 2
+        priority:
+          type: integer
+      type: object
+    Price:
+      properties: []
+      type: object
+    ListingPicture:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+        imageThumbs:
+          type: string
+        order:
+          type: integer
+        type:
+          type: string
+          default: picture
+      type: object
+    ListingAddress:
+      properties:
+        latitude:
+          type: number
+          format: float
+          default: 0
+        longitude:
+          type: number
+          format: float
+          default: 0
+        apartmentNumber:
+          type: string
+          maxLength: 64
+          minLength: 1
+        state:
+          $ref: '#/components/schemas/State'
+        providedBy:
+          type: string
+        providerId:
+          type:
+          - string
+          - 'null'
+          default: null
+        adminLevels:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/AdminLevelCollection'
+        coordinates:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Coordinates'
+        bounds:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Bounds'
+        streetNumber:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 64
+          minLength: 1
+        streetName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        postalCode:
+          type:
+          - string
+          - 'null'
+          default: null
+        locality:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        sublocality:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        country:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Country'
+        timezone:
+          type:
+          - string
+          - 'null'
+          default: null
+        shortAddress:
+          type: string
+        exposeAddress:
+          type: boolean
+          default: true
+      type: object
+    ApplyResponse:
+      properties:
+        apartmentApplyStatus:
+          type: string
+        apartmentApplyPricingStatus:
+          type: string
+        apartmentApplyWaitingFlag:
+          type: boolean
+      type: object

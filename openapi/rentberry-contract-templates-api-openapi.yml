@@ -1,0 +1,253 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Contract Templates API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Contract Templates
+  description: Contract Templates
+paths:
+  /v{version}/contract/template:
+    get:
+      tags:
+      - Contract Templates
+      summary: List contract templates
+      description: Available since API version 1. Returns a paginated list of contract templates owned by the authenticated user.
+      operationId: get_api_v1_contract_template_list
+      parameters:
+      - name: page
+        in: query
+        description: Page number
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 10
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of contract templates
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ContractTemplate'
+                  pagination:
+                    properties:
+                      total:
+                        description: Total number of items
+                        type: integer
+                      count:
+                        description: Number of items on current page
+                        type: integer
+                      perPage:
+                        description: Number of items per page
+                        type: integer
+                      lastPage:
+                        description: Last page number
+                        type: integer
+                      currentPage:
+                        description: Current page number
+                        type: integer
+                    type: object
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+    post:
+      tags:
+      - Contract Templates
+      summary: Create contract template
+      description: Available since API version 1. Uploads and creates a new contract template.
+      operationId: post_api_v1_contract_template_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - name
+              - contractTemplateFile
+              properties:
+                name:
+                  description: Name of the contract template
+                  type: string
+                  example: Residential Lease Agreement
+                contractTemplateFile:
+                  description: Contract template file (PDF)
+                  type: string
+                  format: binary
+              type: object
+      responses:
+        '200':
+          description: Contract template created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractTemplate'
+        '400':
+          description: Bad request - Validation failed
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+  /v{version}/contract/template/{id}:
+    post:
+      tags:
+      - Contract Templates
+      summary: Update contract template
+      description: Available since API version 1. Updates an existing contract template. Can update the name and/or template file.
+      operationId: post_api_v1_contract_template_edit
+      parameters:
+      - name: id
+        in: path
+        description: Contract template ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                name:
+                  description: Updated name of the contract template
+                  type: string
+                contractTemplateFile:
+                  description: Updated contract template file (PDF, optional)
+                  type: string
+                  format: binary
+              type: object
+      responses:
+        '200':
+          description: Contract template updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractTemplate'
+        '400':
+          description: Bad request - Validation failed
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 6001) Not your template - Cannot edit template owned by another user
+        '404':
+          description: Template not found
+      security:
+      - XAuthToken: []
+    delete:
+      tags:
+      - Contract Templates
+      summary: Delete contract template
+      description: Available since API version 1. Deletes an existing contract template.
+      operationId: delete_api_v1_contract_template_delete
+      parameters:
+      - name: id
+        in: path
+        description: Contract template ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Contract template deleted successfully
+          content:
+            application/json:
+              schema:
+                properties: []
+                type: object
+              example: []
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 6002) Not your template - Cannot delete template owned by another user
+        '404':
+          description: Template not found
+      security:
+      - XAuthToken: []
+  /v{version}/contract/template/download/{id}:
+    get:
+      tags:
+      - Contract Templates
+      summary: Download contract template file
+      description: Available since API version 1. Downloads the contract template file.
+      operationId: get_api_v1_contract_template_download
+      parameters:
+      - name: id
+        in: path
+        description: Contract template ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Contract template file
+          content:
+            application/octet-stream: []
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '404':
+          description: File not found or user does not have rights to access it
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    ContractTemplate:
+      properties:
+        id:
+          type: integer
+        fileName:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object

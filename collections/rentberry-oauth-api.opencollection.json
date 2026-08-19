@@ -1,0 +1,212 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry O Auth API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get OAuth authorization URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/oauth/:provider",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "OAuth provider name (e.g., \"google\", \"apple\")"
+              },
+              {
+                "name": "redirectUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL to redirect after OAuth authentication"
+              },
+              {
+                "name": "authActionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of authentication action (e.g., \"login\", \"register\", \"connect\")"
+              },
+              {
+                "name": "prevUrl",
+                "value": "",
+                "type": "query",
+                "description": "Previous URL to return to after authentication"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns the URL to initiate OAuth authorization with the specified provider."
+        },
+        {
+          "info": {
+            "name": "Handle Apple OAuth callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/oauth/apple/callback",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Processes the callback from Apple OAuth authentication and redirects to the authentication page."
+        },
+        {
+          "info": {
+            "name": "Authorize via OAuth code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/oauth/:provider/authorize/code",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "OAuth provider name"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Authorization code from the provider"
+              },
+              {
+                "name": "authActionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of authentication action (login, register, connect)"
+              },
+              {
+                "name": "isRaiUser",
+                "value": "",
+                "type": "query",
+                "description": "Mark user as RAI user. Pass \"1\" or \"true\" to set. Only sets to true, never resets."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 2. Processes OAuth authorization code from any supported provider."
+        },
+        {
+          "info": {
+            "name": "Verify Google One Tap token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/oauth/google/authorize/token",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Verifies and processes a Google One Tap authentication token."
+        },
+        {
+          "info": {
+            "name": "Authorize via OAuth access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/oauth/:provider/authorize/access-token",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "OAuth provider name"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Short-lived access token from the provider"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Authentication action type"
+              },
+              {
+                "name": "isRaiUser",
+                "value": "",
+                "type": "query",
+                "description": "Mark user as RAI user. Pass \"1\" or \"true\" to set. Only sets to true, never resets."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 2. Processes OAuth short-lived access token from any supported provider."
+        },
+        {
+          "info": {
+            "name": "Disconnect OAuth provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/oauth/disconnect/:provider",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "OAuth provider ID to disconnect"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Removes the connection between user account and OAuth provider."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

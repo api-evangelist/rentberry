@@ -1,0 +1,263 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Features API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Features
+  description: Features
+paths:
+  /v{version}/user/feature/payment/{id}:
+    get:
+      tags:
+      - Features
+      summary: Get feature payment details.
+      description: Available since API version 1. Returns details of a specific feature payment.
+      operationId: get_api_v1_feature_payment_view
+      parameters:
+      - name: id
+        in: path
+        description: Payment ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns feature payment details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturePayment'
+        '404':
+          description: Payment not found
+  /v{version}/user/feature/{type}:
+    get:
+      tags:
+      - Features
+      summary: Get feature information.
+      description: Available since API version 1. Returns feature status and availability for the current user.
+      operationId: get_api_v1_feature_view
+      parameters:
+      - name: type
+        in: path
+        description: Feature type
+        required: true
+        schema:
+          type: string
+          pattern: \w+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns feature information.
+          content:
+            application/json:
+              schema:
+                properties:
+                  isActive:
+                    description: Whether feature is active for user
+                    type: boolean
+                  isLocked:
+                    description: Whether feature is locked for user
+                    type: boolean
+                type: object
+        '404':
+          description: Feature type not found
+  /v{version}/user/feature/{type}/ticket:
+    get:
+      tags:
+      - Features
+      summary: Get unused feature ticket.
+      description: Available since API version 1. Returns unused feature ticket for the specified type.
+      operationId: get_api_v1_feature_view_ticket
+      parameters:
+      - name: type
+        in: path
+        description: Feature type
+        required: true
+        schema:
+          type: string
+          pattern: \w+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns feature ticket or null.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureTicket'
+        '401':
+          description: Unauthorized
+      security:
+      - XAuthToken: []
+  /v{version}/user/feature/price/{currency}:
+    get:
+      tags:
+      - Features
+      summary: Get feature prices for currency.
+      description: Available since API version 1. Returns feature prices for the specified currency.
+      operationId: get_api_v1_feature_view_prices
+      parameters:
+      - name: currency
+        in: path
+        description: Currency code (e.g., USD, EUR)
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns feature prices.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid currency
+  /v{version}/user/feature/payment/stripe/feature/{type}:
+    post:
+      tags:
+      - Features
+      summary: Create Stripe payment for feature.
+      description: Available since API version 1. Creates a Stripe payment intent for purchasing a feature.
+      operationId: post_api_v1_feature_create_stripe_payment
+      parameters:
+      - name: type
+        in: path
+        description: Feature type
+        required: true
+        schema:
+          type: string
+          pattern: \w+
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                screening_reference:
+                  description: Screening request reference (required for screening feature)
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Payment intent created successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  stripe_payment:
+                    $ref: '#/components/schemas/StripePayment'
+                  feature_payment:
+                    $ref: '#/components/schemas/FeaturePayment'
+                  clientSecret:
+                    description: Stripe client secret for payment confirmation
+                    type: string
+                type: object
+        '400':
+          description: Invalid feature type
+        '404':
+          description: Screening request not found
+        '409':
+          description: Screening request already paid
+components:
+  schemas:
+    StripePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        status:
+          type: string
+        cancellationReason:
+          type: string
+        errorMessage:
+          type: string
+        internalType:
+          type: string
+        last4Digits:
+          type: string
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    FeatureTicket:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+        usedAt:
+          type: string
+          format: date-time
+        isUsed:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    FeaturePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+        currency:
+          type: string
+        status:
+          type: integer
+          default: 1
+        type:
+          type:
+          - string
+          - 'null'
+        ticket:
+          $ref: '#/components/schemas/FeatureTicket'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object

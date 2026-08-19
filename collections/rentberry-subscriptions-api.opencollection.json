@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Subscriptions API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user subscription preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/subscription",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query",
+                "description": "JWT token for accessing subscriptions without authentication (from email links)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns current subscription status for all notification groups. Can be accessed via JWT token from email unsubscribe links."
+        },
+        {
+          "info": {
+            "name": "Update user subscription preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/subscription",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query",
+                "description": "JWT token for accessing subscriptions without authentication (from email links)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Updates subscription preferences for specific notification groups. Can be accessed via JWT token from email unsubscribe links."
+        },
+        {
+          "info": {
+            "name": "Toggle subscription type (SMS/Email)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/subscription/type-status/:groupType/toggle",
+            "params": [
+              {
+                "name": "groupType",
+                "value": "",
+                "type": "path",
+                "description": "Type of notifications to toggle"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Toggles all notifications of specified type (SMS or Email) on/off. Returns new subscription status."
+        },
+        {
+          "info": {
+            "name": "Get subscription type statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/subscription/type-status",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns overall subscription status for SMS and Email notification types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

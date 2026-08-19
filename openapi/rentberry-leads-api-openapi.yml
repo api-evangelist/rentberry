@@ -1,0 +1,47 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Leads API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Leads
+  description: Leads
+paths:
+  /v{version}/apartment/{id}/lead:
+    post:
+      tags:
+      - Leads
+      summary: Get lead information for a listing
+      description: Available since API version 3. Returns lead URL and provider information for external listings that support lead generation.
+      operationId: post_api_apartment_lead_get_original
+      parameters:
+      - name: id
+        in: path
+        description: Listing ID
+        required: true
+        schema:
+          type: integer
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Lead information retrieved successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  toUrl:
+                    description: External URL to redirect the user to for lead generation
+                    type: string
+                    example: https://external-provider.com/listing/12345
+                  providerName:
+                    description: Human-readable name of the listing provider
+                    type: string
+                    example: Zillow
+                type: object
+        '404':
+          description: Listing not found or lead URL not available for this listing

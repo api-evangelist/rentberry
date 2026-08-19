@@ -1,0 +1,156 @@
+{
+  "item": [
+    {
+      "id": "443a3e33-6a2a-4072-a192-94efdb279551",
+      "name": "Resources",
+      "description": {
+        "content": "Resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "940a3768-8f5c-4b26-b151-dc3affffa481",
+          "name": "Get states by country.",
+          "request": {
+            "name": "Get states by country.",
+            "description": {
+              "content": "Available since API version 1. Returns list of states for specified country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "resources",
+                "state",
+                ":country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "withApartments",
+                  "value": "<boolean>",
+                  "description": "Include only states with apartments"
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "rental",
+                  "description": "Transaction type filter"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "US",
+                  "key": "country",
+                  "description": "(Required) Country code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5401d66e-5ea5-4139-8aaf-880724a0c8d5",
+              "name": "Returns list of states.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "resources",
+                    "state",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withApartments",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "rental"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "US",
+                      "key": "country",
+                      "description": "(Required) Country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6848,\n    \"name\": \"string\",\n    \"shortCode\": \"string\"\n  },\n  {\n    \"id\": 9683,\n    \"name\": \"string\",\n    \"shortCode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "5369018e-8525-4f43-886e-6e2ef9d53556",
+    "name": "Rentberry Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

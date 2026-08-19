@@ -1,0 +1,2625 @@
+{
+  "item": [
+    {
+      "id": "c34defd9-e90d-48cc-91df-e5af5546a7d6",
+      "name": "Auth",
+      "description": {
+        "content": "Auth",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "425309e0-1363-49c4-8454-6e453aea5b3a",
+          "name": "Get current user session information",
+          "request": {
+            "name": "Get current user session information",
+            "description": {
+              "content": "Available since API version 2. Retrieves authenticated user session information including notifications counters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "c82f337c-020f-4b9d-a6d4-9f497d66931d",
+              "name": "Returns user session data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auth\": true,\n  \"counters\": {\n    \"messagesTenant\": 5753,\n    \"messagesHomeowner\": 1845,\n    \"propertiesHomeowner\": 1467,\n    \"screeningCounter\": 7155,\n    \"propertiesTenant\": 355,\n    \"openHousesApplies\": 6097,\n    \"placeCounter\": 7018,\n    \"appliesCounter\": 1637,\n    \"emailVerified\": 7280,\n    \"csMyCampaigns\": 2986,\n    \"csReceived\": 7076,\n    \"csSupported\": 7377\n  },\n  \"user\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstr\",\n    \"birthday\": \"1978-05-05T14:18:00.537Z\",\n    \"hasPassword\": true,\n    \"phoneCountryCode\": \"string\",\n    \"id\": 3171,\n    \"nameMiddle\": \"string\",\n    \"company\": {\n      \"id\": 3755,\n      \"name\": \"string\",\n      \"phone\": 9437,\n      \"website\": \"string\",\n      \"logoThumbs\": \"string\",\n      \"email\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"st\",\n      \"provider\": \"string\",\n      \"externalId\": \"string\",\n      \"createdAt\": \"1978-10-04T00:04:21.991Z\",\n      \"updatedAt\": \"1970-12-24T16:10:19.573Z\"\n    },\n    \"companyName\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"bio\": \"string\",\n    \"oauthProviders\": [\n      {\n        \"id\": 2474,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      },\n      {\n        \"id\": 8568,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      }\n    ],\n    \"address\": {\n      \"street\": \"string\",\n      \"houseNumber\": \"string\",\n      \"city\": \"string\",\n      \"zip\": \"string\",\n      \"streetType\": null,\n      \"state\": {\n        \"id\": 5098,\n        \"shortName\": null,\n        \"name\": null\n      }\n    },\n    \"creditScore\": {\n      \"score\": 1179,\n      \"creditScoreUpdatedAt\": \"2003-07-11T18:48:06.487Z\",\n      \"alert\": \"string\",\n      \"createdAt\": \"1952-02-13T09:01:59.126Z\",\n      \"updatedAt\": \"1947-08-12T15:03:40.976Z\"\n    },\n    \"criminalReport\": {\n      \"criminalRecordFound\": false,\n      \"status\": 4307,\n      \"createdAt\": \"1950-05-15T09:18:34.465Z\",\n      \"updatedAt\": \"1998-10-16T22:52:16.629Z\"\n    },\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"username\": \"string\",\n        \"phone\": \"stringstri\",\n        \"birthday\": \"1977-03-12T00:49:42.529Z\",\n        \"hasPassword\": false,\n        \"phoneCountryCode\": \"string\",\n        \"id\": 5499,\n        \"nameMiddle\": \"string\",\n        \"company\": {\n          \"id\": 2794,\n          \"name\": \"string\",\n          \"phone\": 3084,\n          \"website\": \"string\",\n          \"logoThumbs\": \"string\",\n          \"email\": \"string\",\n          \"city\": \"string\",\n          \"countryCode\": \"st\",\n          \"provider\": \"string\",\n          \"externalId\": \"string\",\n          \"createdAt\": \"1960-03-16T00:31:32.838Z\",\n          \"updatedAt\": \"1950-08-16T22:10:09.643Z\"\n        },\n        \"companyName\": \"string\",\n        \"profilePictureThumbs\": \"string\",\n        \"bio\": \"string\",\n        \"oauthProviders\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"providerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nameFirst\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nameLast\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pictureUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"appId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"providerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"connectId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nameFirst\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nameLast\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pictureUrl\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"appId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"address\": {\n          \"street\": \"string\",\n          \"houseNumber\": \"string\",\n          \"city\": \"string\",\n          \"zip\": \"string\",\n          \"streetType\": null,\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"creditScore\": {\n          \"score\": 2743,\n          \"creditScoreUpdatedAt\": \"2008-08-06T09:01:29.897Z\",\n          \"alert\": \"string\",\n          \"createdAt\": \"2006-10-08T21:46:55.810Z\",\n          \"updatedAt\": \"1973-09-05T13:42:42.050Z\"\n        },\n        \"criminalReport\": {\n          \"criminalRecordFound\": false,\n          \"status\": 3719,\n          \"createdAt\": \"1958-09-14T06:05:01.398Z\",\n          \"updatedAt\": \"2004-07-11T22:20:43.927Z\"\n        },\n        \"stripeCustomer\": {\n          \"value\": \"<Circular reference to #/components/schemas/UserStripeCustomer2 detected>\"\n        },\n        \"active\": true,\n        \"fromNotBerryForbiddenCountry\": false,\n        \"verified\": false,\n        \"emailVerified\": false,\n        \"phoneVerified\": false,\n        \"registered\": true,\n        \"emailNotVerifiedAfter\": \"2022-10-23T06:47:11.344Z\",\n        \"lastActiveAt\": \"1966-03-24T14:55:03.334Z\",\n        \"createdAt\": \"1999-06-20T16:20:05.505Z\",\n        \"updatedAt\": \"2019-01-15T07:10:49.513Z\",\n        \"statusType\": \"regular\",\n        \"authToken\": \"string\",\n        \"deleted\": false,\n        \"rentalPaymentAccount\": {\n          \"stripeAccountId\": \"string\",\n          \"isStripeOnboardingFinished\": false,\n          \"createdAt\": \"2005-05-26T16:22:07.062Z\",\n          \"updatedAt\": \"1979-12-17T04:59:19.864Z\"\n        },\n        \"newsletterSubscription\": false,\n        \"premiumPartner\": false,\n        \"locale\": \"en_US\",\n        \"currency\": \"string\",\n        \"lengthUnit\": \"m\",\n        \"isRaiUser\": false\n      },\n      \"createdAt\": \"1954-05-24T05:19:59.401Z\",\n      \"updatedAt\": \"2006-02-28T12:49:05.532Z\"\n    },\n    \"active\": true,\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"emailNotVerifiedAfter\": \"1947-02-26T19:49:33.922Z\",\n    \"lastActiveAt\": \"1974-06-03T01:21:46.814Z\",\n    \"createdAt\": \"1990-05-31T19:08:14.560Z\",\n    \"updatedAt\": \"1973-09-30T00:38:20.507Z\",\n    \"statusType\": \"regular\",\n    \"authToken\": \"string\",\n    \"deleted\": false,\n    \"rentalPaymentAccount\": {\n      \"stripeAccountId\": \"string\",\n      \"isStripeOnboardingFinished\": false,\n      \"createdAt\": \"1962-04-30T18:07:02.571Z\",\n      \"updatedAt\": \"1954-05-13T22:30:46.999Z\"\n    },\n    \"newsletterSubscription\": false,\n    \"premiumPartner\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"m\",\n    \"isRaiUser\": false,\n    \"intercomSecret\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4afdbdd3-a4e0-4e0c-8490-85a61d04c6c4",
+              "name": "Unauthorized - Missing or invalid authentication token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bc864da-95c7-4ff6-854e-55a867fd837e",
+          "name": "Get user notification counters",
+          "request": {
+            "name": "Get user notification counters",
+            "description": {
+              "content": "Available since API version 4. Retrieves counts of various notification types for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "counters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "e8a17e4f-2934-4e3b-957e-027f79bd6a34",
+              "name": "Returns notification counters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messagesTenant\": 4880,\n  \"messagesHomeowner\": 5712,\n  \"propertiesHomeowner\": 5395,\n  \"screeningCounter\": 7735,\n  \"propertiesTenant\": 3974,\n  \"openHousesApplies\": 61,\n  \"placeCounter\": 9478,\n  \"appliesCounter\": 1643,\n  \"emailVerified\": 4890,\n  \"rentalPaymentsTenant\": 771,\n  \"paymentsTenant\": 2418,\n  \"paymentsHomeowner\": 4543,\n  \"rentalPaymentsLandlord\": 849,\n  \"csMyCampaigns\": 1248,\n  \"csReceived\": 9942,\n  \"csSupported\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bedbeb78-f880-4615-8a3f-ce6bd7b87160",
+              "name": "Unauthorized - User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7d040d8-b2dd-4a17-baa4-bdf5ad0b24ad",
+              "name": "Forbidden - User does not have sufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adc14fc0-b930-4f43-84e7-d6e10454c226",
+          "name": "Request password reset",
+          "request": {
+            "name": "Request password reset",
+            "description": {
+              "content": "Available since API version 1.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "425898aa-08da-4285-9d2c-848f94d21e12",
+              "name": "Password reset email sent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55807e09-62f7-4de3-a656-8647f1f0322d",
+              "name": "Invalid email format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62884407-b645-4496-ae8c-c3bc9d82467b",
+          "name": "Register a new user",
+          "request": {
+            "name": "Register a new user",
+            "description": {
+              "content": "Available since API version 3.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfac1149-17d1-4b01-baa9-9493ff42b9a6",
+              "name": "User registered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nameFirst\": \"string\",\n  \"nameLast\": \"string\",\n  \"username\": \"string\",\n  \"phone\": \"stringstring\",\n  \"birthday\": \"1974-01-26T01:34:05.359Z\",\n  \"hasPassword\": true,\n  \"phoneCountryCode\": \"string\",\n  \"id\": 2367,\n  \"nameMiddle\": \"string\",\n  \"company\": {\n    \"id\": 2050,\n    \"name\": \"string\",\n    \"phone\": 9623,\n    \"website\": \"string\",\n    \"logoThumbs\": \"string\",\n    \"email\": \"string\",\n    \"city\": \"string\",\n    \"countryCode\": \"st\",\n    \"provider\": \"string\",\n    \"externalId\": \"string\",\n    \"createdAt\": \"1981-05-05T15:34:02.256Z\",\n    \"updatedAt\": \"2024-11-17T03:00:11.303Z\"\n  },\n  \"companyName\": \"string\",\n  \"profilePictureThumbs\": \"string\",\n  \"bio\": \"string\",\n  \"oauthProviders\": [\n    {\n      \"id\": 8894,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    },\n    {\n      \"id\": 9633,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    }\n  ],\n  \"address\": {\n    \"street\": \"string\",\n    \"houseNumber\": \"string\",\n    \"city\": \"string\",\n    \"zip\": \"strin\",\n    \"streetType\": null,\n    \"state\": {\n      \"id\": 3382,\n      \"shortName\": null,\n      \"name\": null\n    }\n  },\n  \"creditScore\": {\n    \"score\": 9777,\n    \"creditScoreUpdatedAt\": \"1962-01-30T18:39:00.393Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1987-02-28T14:43:54.679Z\",\n    \"updatedAt\": \"1950-11-04T10:13:38.559Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 4365,\n    \"createdAt\": \"1969-03-10T07:39:28.656Z\",\n    \"updatedAt\": \"1951-01-07T16:19:29.884Z\"\n  },\n  \"stripeCustomer\": {\n    \"customerId\": \"string\",\n    \"user\": {\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"username\": \"string\",\n      \"phone\": \"stringstring\",\n      \"birthday\": \"1989-06-06T06:49:07.513Z\",\n      \"hasPassword\": true,\n      \"phoneCountryCode\": \"string\",\n      \"id\": 4950,\n      \"nameMiddle\": \"string\",\n      \"company\": {\n        \"id\": 8455,\n        \"name\": \"string\",\n        \"phone\": 8289,\n        \"website\": \"string\",\n        \"logoThumbs\": \"string\",\n        \"email\": \"string\",\n        \"city\": \"string\",\n        \"countryCode\": \"st\",\n        \"provider\": \"string\",\n        \"externalId\": \"string\",\n        \"createdAt\": \"1954-09-06T18:11:37.556Z\",\n        \"updatedAt\": \"1961-07-19T16:55:57.061Z\"\n      },\n      \"companyName\": \"string\",\n      \"profilePictureThumbs\": \"string\",\n      \"bio\": \"string\",\n      \"oauthProviders\": [\n        {\n          \"id\": 2240,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        },\n        {\n          \"id\": 9476,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        }\n      ],\n      \"address\": {\n        \"street\": \"string\",\n        \"houseNumber\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"strin\",\n        \"streetType\": \"string\",\n        \"state\": {\n          \"id\": 3194,\n          \"shortName\": null,\n          \"name\": null\n        }\n      },\n      \"creditScore\": {\n        \"score\": 6735,\n        \"creditScoreUpdatedAt\": \"2002-05-10T09:52:53.440Z\",\n        \"alert\": \"string\",\n        \"createdAt\": \"2023-08-01T07:20:35.129Z\",\n        \"updatedAt\": \"1983-07-06T18:52:24.365Z\"\n      },\n      \"criminalReport\": {\n        \"criminalRecordFound\": false,\n        \"status\": 6188,\n        \"createdAt\": \"2019-02-08T13:35:25.453Z\",\n        \"updatedAt\": \"1956-02-08T17:33:49.398Z\"\n      },\n      \"stripeCustomer\": {\n        \"value\": \"<Circular reference to #/components/schemas/UserStripeCustomer2 detected>\"\n      },\n      \"active\": true,\n      \"fromNotBerryForbiddenCountry\": false,\n      \"verified\": false,\n      \"emailVerified\": false,\n      \"phoneVerified\": false,\n      \"registered\": true,\n      \"emailNotVerifiedAfter\": \"1982-02-28T08:58:51.484Z\",\n      \"lastActiveAt\": \"2005-02-07T23:39:30.181Z\",\n      \"createdAt\": \"1978-10-12T10:10:22.204Z\",\n      \"updatedAt\": \"1999-09-18T06:35:38.807Z\",\n      \"statusType\": \"regular\",\n      \"authToken\": \"string\",\n      \"deleted\": false,\n      \"rentalPaymentAccount\": {\n        \"stripeAccountId\": \"string\",\n        \"isStripeOnboardingFinished\": false,\n        \"createdAt\": \"1965-01-10T18:15:47.449Z\",\n        \"updatedAt\": \"2009-06-12T19:04:26.146Z\"\n      },\n      \"newsletterSubscription\": false,\n      \"premiumPartner\": false,\n      \"locale\": \"en_US\",\n      \"currency\": \"string\",\n      \"lengthUnit\": \"m\",\n      \"isRaiUser\": false\n    },\n    \"createdAt\": \"1985-02-18T19:01:16.236Z\",\n    \"updatedAt\": \"1967-03-21T16:12:10.021Z\"\n  },\n  \"active\": true,\n  \"fromNotBerryForbiddenCountry\": false,\n  \"verified\": false,\n  \"emailVerified\": false,\n  \"phoneVerified\": false,\n  \"registered\": true,\n  \"emailNotVerifiedAfter\": \"2012-07-05T07:47:52.143Z\",\n  \"lastActiveAt\": \"2008-01-07T20:34:52.382Z\",\n  \"createdAt\": \"2020-03-25T14:23:49.589Z\",\n  \"updatedAt\": \"1994-07-31T07:16:51.644Z\",\n  \"statusType\": \"regular\",\n  \"authToken\": \"string\",\n  \"deleted\": false,\n  \"rentalPaymentAccount\": {\n    \"stripeAccountId\": \"string\",\n    \"isStripeOnboardingFinished\": false,\n    \"createdAt\": \"2020-12-02T02:56:07.227Z\",\n    \"updatedAt\": \"2013-11-22T01:45:53.743Z\"\n  },\n  \"newsletterSubscription\": false,\n  \"premiumPartner\": false,\n  \"locale\": \"en_US\",\n  \"currency\": \"string\",\n  \"lengthUnit\": \"ft\",\n  \"isRaiUser\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa8dce56-3175-4cca-a2c7-6a07550b72a0",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee8ab4a8-89cd-414e-aecc-2704232827f4",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5fa9ac1d-9adb-4874-b3ec-b1bf51699b98",
+              "name": "User already registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 1004,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0eb8ade1-5612-473e-a640-9a9d69b5909c",
+              "name": "User blocked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 1005,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d3c1c73-c2d8-4bb7-b237-eb4dccdc1976",
+          "name": "Authenticate user and get token",
+          "request": {
+            "name": "Authenticate user and get token",
+            "description": {
+              "content": "Available since API version 1.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<email>\",\n  \"plainPassword\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e6a69e3-b65b-453a-8388-9eb42f8bbf1a",
+              "name": "Authentication successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"plainPassword\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auth_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d3d0d04-3f82-4757-95ac-47880bf17a15",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"plainPassword\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14d916dc-7eec-44a7-88f8-8094e77242b3",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"plainPassword\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90bdfbe6-d435-4b4d-b127-8b2eb0fd628f",
+              "name": "User blocked or not verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"plainPassword\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 1005,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "654802b0-dc74-4a13-87ce-5d8c6bc4c701",
+          "name": "Request OTP code for email authentication",
+          "request": {
+            "name": "Request OTP code for email authentication",
+            "description": {
+              "content": "Sends a 4-digit OTP code to the specified email address for passwordless login or registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "email-otp",
+                "request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02d9e006-896d-4f06-90eb-96da4dbe7d9b",
+              "name": "OTP code sent (same response regardless of email existence)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "email-otp",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"OK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5116ebee-8fb0-4f19-8c6d-2d9309c36c2a",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "email-otp",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21e475f8-df93-4ada-8f88-70de0447e8aa",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "email-otp",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fc689c8-ded8-4764-b3b9-2a05baddc7a8",
+          "name": "Verify OTP code and login or register",
+          "request": {
+            "name": "Verify OTP code and login or register",
+            "description": {
+              "content": "Verifies the 4-digit OTP code. If user exists - logs in, if not - creates a new account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "email-otp",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"code\": \"<integer>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcc8eeba-6472-463b-9b3c-29a1c4985729",
+              "name": "Login or registration successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "email-otp",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"code\": \"<integer>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8594,\n  \"hasPassword\": false,\n  \"locale\": \"string\",\n  \"nameFirst\": \"string\",\n  \"nameMiddle\": \"string\",\n  \"nameLast\": \"string\",\n  \"companyName\": \"string\",\n  \"username\": \"string\",\n  \"statusType\": \"string\",\n  \"phone\": 8750,\n  \"birthday\": \"1984-08-02T13:31:18.168Z\",\n  \"bio\": \"string\",\n  \"fromNotBerryForbiddenCountry\": true,\n  \"active\": true,\n  \"verified\": true,\n  \"emailVerified\": true,\n  \"phoneVerified\": false,\n  \"registered\": false,\n  \"emailNotVerifiedAfter\": \"1989-02-06T23:22:03.314Z\",\n  \"lastActiveAt\": \"1971-07-19T22:23:41.042Z\",\n  \"createdAt\": \"1968-01-06T22:48:43.209Z\",\n  \"authToken\": \"string\",\n  \"phoneCountryCode\": {},\n  \"roles\": {},\n  \"currency\": \"string\",\n  \"lengthUnit\": \"string\",\n  \"profilePictureThumbs\": \"string\",\n  \"rentalPaymentAccount\": {\n    \"stripeAccountId\": \"string\",\n    \"isStripeOnboardingFinished\": false,\n    \"createdAt\": \"1978-06-29T22:49:28.477Z\",\n    \"updatedAt\": \"1978-12-13T13:12:26.668Z\"\n  },\n  \"intercomSecret\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f3f1682-925d-4356-bf8d-006acb73a2db",
+              "name": "Invalid or expired code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "email-otp",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"code\": \"<integer>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba2f0581-afd4-4258-b969-3f461dc943ab",
+          "name": "Get OAuth authorization URL",
+          "request": {
+            "name": "Get OAuth authorization URL",
+            "description": {
+              "content": "Available since API version 1. Returns the URL to initiate OAuth authorization with the specified provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                ":provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirectUrl",
+                  "value": "<string>",
+                  "description": "URL to redirect after OAuth authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "authActionType",
+                  "value": "<string>",
+                  "description": "Type of authentication action (e.g., \"login\", \"register\", \"connect\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "prevUrl",
+                  "value": "<string>",
+                  "description": "Previous URL to return to after authentication"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) OAuth provider name (e.g., \"google\", \"apple\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5540879-dbac-41a9-832d-a8ac1f667768",
+              "name": "OAuth authorization URL successfully generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirectUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prevUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name (e.g., \"google\", \"apple\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"oauthUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a4fa1a6-5d29-42e0-9ff3-f7420d8cab39",
+              "name": "Invalid provider or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirectUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prevUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name (e.g., \"google\", \"apple\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4481eb7-d55a-4733-9265-cc064fb79801",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirectUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prevUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name (e.g., \"google\", \"apple\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b2e484f-39b7-4232-aee7-23bb64107d27",
+          "name": "Handle Apple OAuth callback",
+          "request": {
+            "name": "Handle Apple OAuth callback",
+            "description": {
+              "content": "Available since API version 4. Processes the callback from Apple OAuth authentication and redirects to the authentication page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                "apple",
+                "callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id_token\": \"<string>\",\n  \"user\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9a820fd-97d2-4107-a0c9-87b0df7ccea2",
+              "name": "Redirect to authentication page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "apple",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id_token\": \"<string>\",\n  \"user\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL to redirect to",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "024d99f8-41b4-4957-aae4-47d81182b930",
+              "name": "Invalid callback data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "apple",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id_token\": \"<string>\",\n  \"user\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "663a706b-3717-4620-bc9d-8eafddee615a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "apple",
+                    "callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"state\": \"<string>\",\n  \"id_token\": \"<string>\",\n  \"user\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddd55d06-17ff-4f73-b8d8-c92b9c8bd171",
+          "name": "Authorize via OAuth code",
+          "request": {
+            "name": "Authorize via OAuth code",
+            "description": {
+              "content": "Available since API version 2. Processes OAuth authorization code from any supported provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                ":provider",
+                "authorize",
+                "code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) Authorization code from the provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "authActionType",
+                  "value": "<string>",
+                  "description": "Type of authentication action (login, register, connect)"
+                },
+                {
+                  "disabled": false,
+                  "key": "isRaiUser",
+                  "value": "<string>",
+                  "description": "Mark user as RAI user. Pass \"1\" or \"true\" to set. Only sets to true, never resets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) OAuth provider name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc781472-e1a4-4e56-8d45-e7b2ae8aa623",
+              "name": "Authorization successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userData\": {\n    \"id\": 9503,\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"string\",\n    \"pictureUrl\": \"string\"\n  },\n  \"action\": \"string\",\n  \"accessToken\": \"string\",\n  \"oauthProvider\": \"string\",\n  \"oauthConnectId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f696c84-1a52-48cd-8f77-9691e6fa9cff",
+              "name": "No OAuth code provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"No OAuth code provided\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8eda3b2-4e63-4352-b59c-fc0ca1b32c88",
+              "name": "Authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid OAuth code\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4460feed-afbe-40e6-9b11-7bdae281e852",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authActionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ba59772-e9d3-4c03-816c-1af4eca49baa",
+          "name": "Verify Google One Tap token",
+          "request": {
+            "name": "Verify Google One Tap token",
+            "description": {
+              "content": "Available since API version 4. Verifies and processes a Google One Tap authentication token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                "google",
+                "authorize",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"authActionType\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\",\n  \"provider\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d631e437-ee5e-448c-a66e-4d427b9dca47",
+              "name": "Token verification successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "google",
+                    "authorize",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"authActionType\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\",\n  \"provider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userData\": {\n    \"id\": 9503,\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"string\",\n    \"pictureUrl\": \"string\"\n  },\n  \"action\": \"string\",\n  \"accessToken\": \"string\",\n  \"oauthProvider\": \"string\",\n  \"oauthConnectId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88faa090-3865-40ff-9d3e-73ae6b087968",
+              "name": "Token verification failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "google",
+                    "authorize",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"authActionType\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\",\n  \"provider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffb5a191-467e-4960-a6ca-f1d814d5d44e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "google",
+                    "authorize",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"authActionType\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\",\n  \"provider\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c432387-595c-4ffe-8224-006346124c8e",
+          "name": "Authorize via OAuth access token",
+          "request": {
+            "name": "Authorize via OAuth access token",
+            "description": {
+              "content": "Available since API version 2. Processes OAuth short-lived access token from any supported provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                ":provider",
+                "authorize",
+                "access-token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) Short-lived access token from the provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Authentication action type"
+                },
+                {
+                  "disabled": false,
+                  "key": "isRaiUser",
+                  "value": "<string>",
+                  "description": "Mark user as RAI user. Pass \"1\" or \"true\" to set. Only sets to true, never resets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) OAuth provider name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd1679ab-c93d-41d6-9469-70251de7c48c",
+              "name": "Authorization successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "access-token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userData\": {\n    \"id\": 9503,\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"string\",\n    \"pictureUrl\": \"string\"\n  },\n  \"action\": \"string\",\n  \"accessToken\": \"string\",\n  \"oauthProvider\": \"string\",\n  \"oauthConnectId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df113c7e-e740-4090-b4d2-7017048cd43f",
+              "name": "No OAuth code provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "access-token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c5a551b-7ce7-4d16-8119-5e7e92a27066",
+              "name": "Authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "access-token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6c95e6b-7a4f-42f5-a8c5-f71d8422f75d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    ":provider",
+                    "authorize",
+                    "access-token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isRaiUser",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25ad8251-f2d6-4253-aed7-c06567dea97a",
+          "name": "Disconnect OAuth provider",
+          "request": {
+            "name": "Disconnect OAuth provider",
+            "description": {
+              "content": "Available since API version 1. Removes the connection between user account and OAuth provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "oauth",
+                "disconnect",
+                ":provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "provider",
+                  "description": "(Required) OAuth provider ID to disconnect"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "388e4c87-659c-4803-a697-f4305e2cf932",
+              "name": "Provider disconnected successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "disconnect",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider ID to disconnect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f8e684c-599f-41e8-bbf2-7faad461737f",
+              "name": "No connected user for this provider",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "disconnect",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider ID to disconnect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92c8ca9e-cfa6-4808-aa3b-9343edf3ff29",
+              "name": "Unauthorized - User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "disconnect",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider ID to disconnect"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "864dbae1-e774-4bf8-8f79-48b00411254a",
+              "name": "Trying to disconnect provider that belongs to another user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "disconnect",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider ID to disconnect"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a69f376-b881-4713-8f54-1efcdf237b00",
+              "name": "Provider not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "oauth",
+                    "disconnect",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "provider",
+                      "description": "(Required) OAuth provider ID to disconnect"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4a6c505-af9e-4c03-b37b-3ac7d71a1d9d",
+    "name": "Rentberry Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

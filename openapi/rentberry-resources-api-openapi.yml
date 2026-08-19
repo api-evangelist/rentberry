@@ -1,0 +1,62 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Resources API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Resources
+  description: Resources
+paths:
+  /v{version}/resources/state/{country}:
+    get:
+      tags:
+      - Resources
+      summary: Get states by country.
+      description: Available since API version 1. Returns list of states for specified country.
+      operationId: get_api_v1_resources_state
+      parameters:
+      - name: country
+        in: path
+        description: Country code
+        required: true
+        schema:
+          type: string
+          default: US
+      - name: withApartments
+        in: query
+        description: Include only states with apartments
+        required: false
+        schema:
+          type: boolean
+      - name: transactionType
+        in: query
+        description: Transaction type filter
+        required: false
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns list of states.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    shortCode:
+                      type: string
+                  type: object

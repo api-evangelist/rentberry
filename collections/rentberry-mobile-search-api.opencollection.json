@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Mobile Search API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mobile Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search listings by place (mobile)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/place-mobile",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 2. Mobile-optimized search for listings by place/address with amenities support. Supports legacy amenities format conversion."
+        },
+        {
+          "info": {
+            "name": "Search listings by map bounds (mobile)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/bounds-mobile",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 2. Mobile-optimized search for listings within specified map boundaries (northeast/southwest coordinates)."
+        },
+        {
+          "info": {
+            "name": "Search nearby listings (mobile)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/nearby-mobile",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 2. Mobile-optimized search for listings near specific coordinates with radius-based filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

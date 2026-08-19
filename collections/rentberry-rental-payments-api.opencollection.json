@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Rental Payments API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rental Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/payment/account/balance",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns the rental payment account balance for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/payment/account/payout",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Creates a Stripe payout for the authenticated user's rental payment account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

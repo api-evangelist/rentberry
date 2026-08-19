@@ -1,0 +1,234 @@
+{
+  "item": [
+    {
+      "id": "11e3a359-2157-4186-bd34-dc5ddfe5226e",
+      "name": "SEO Redirects",
+      "description": {
+        "content": "SEO Redirects",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e6ecfd01-f6c0-4ad6-aa13-3646454c8e99",
+          "name": "Track redirect hit",
+          "request": {
+            "name": "Track redirect hit",
+            "description": {
+              "content": "Available since API version 1. Records a hit/click for the specified redirect URL for analytics and tracking purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "seo_redirect_url",
+                ":id",
+                "hit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Redirect ID to track"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c50cc75-db96-4893-afe3-4ff5f427e2a4",
+              "name": "Hit recorded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "seo_redirect_url",
+                    ":id",
+                    "hit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Redirect ID to track"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a438bc7-76cb-40e6-bbce-2cc6d0039b2a",
+              "name": "Redirect not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "seo_redirect_url",
+                    ":id",
+                    "hit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Redirect ID to track"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01eacc60-9f0e-4614-b5ac-81484164b992",
+          "name": "Get all active redirects",
+          "request": {
+            "name": "Get all active redirects",
+            "description": {
+              "content": "Available since API version 1. Returns list of all active SEO redirects with their URLs and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "seo_redirect_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49615594-6be6-4e6e-a97c-bbc6306cb351",
+              "name": "List of active redirects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "seo_redirect_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"string\",\n    \"urlFrom\": \"string\",\n    \"id\": 1744,\n    \"saveGetString\": false,\n    \"httpStatus\": 301,\n    \"createdAt\": \"1966-09-12T05:11:48.576Z\",\n    \"updatedAt\": \"2025-11-19T08:23:17.787Z\"\n  },\n  {\n    \"url\": \"string\",\n    \"urlFrom\": \"string\",\n    \"id\": 3902,\n    \"saveGetString\": false,\n    \"httpStatus\": 301,\n    \"createdAt\": \"1982-02-12T23:49:09.536Z\",\n    \"updatedAt\": \"1999-05-14T19:59:38.305Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "61ae5190-2cfa-48b6-8468-a09e0b919d50",
+    "name": "Rentberry SEO Redirects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1877 @@
+{
+  "item": [
+    {
+      "id": "7a7defce-2491-4b69-b0c6-35b0f21a19e8",
+      "name": "Search",
+      "description": {
+        "content": "Search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b004e32-3060-4a2a-9dc0-5c0edf1baf3b",
+          "name": "Search polygons by bounds",
+          "request": {
+            "name": "Search polygons by bounds",
+            "description": {
+              "content": "Available since API version 1. Searches for polygons (neighborhoods, districts) within specified geographical bounds. Returns neighborhoods only when zoom level is sufficient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "polygon",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bounds\": {\n    \"north\": \"<float>\",\n    \"south\": \"<float>\",\n    \"east\": \"<float>\",\n    \"west\": \"<float>\"\n  },\n  \"zoom\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17fc7995-17dd-4fc8-b1f8-01b85a5726dd",
+              "name": "List of polygons within the specified bounds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "polygon",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bounds\": {\n    \"north\": \"<float>\",\n    \"south\": \"<float>\",\n    \"east\": \"<float>\",\n    \"west\": \"<float>\"\n  },\n  \"zoom\": 12\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad88e59c-6c48-44be-a9be-9fc30aafc213",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "polygon",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bounds\": {\n    \"north\": \"<float>\",\n    \"south\": \"<float>\",\n    \"east\": \"<float>\",\n    \"west\": \"<float>\"\n  },\n  \"zoom\": 12\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fd852f7-c7c6-481a-82ce-a84c44c59075",
+          "name": "Get listings by IDs",
+          "request": {
+            "name": "Get listings by IDs",
+            "description": {
+              "content": "Available since API version 2. Retrieves specific listings by their IDs with optional sorting and location-based relevance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<string>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"transactionType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37a39515-9b3b-41eb-a40a-b44ff55b3919",
+              "name": "Listings retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<string>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"transactionType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a22c8677-d0a2-47b5-90c0-2caa9a9fbb69",
+              "name": "Validation failed - Invalid IDs or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"sort\": \"<string>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"transactionType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa2814d3-1dbc-44c3-83d2-d6f7af86b4d2",
+          "name": "Get similar listings",
+          "request": {
+            "name": "Get similar listings",
+            "description": {
+              "content": "Available since API version 1. Returns listings similar to the specified one based on location, price, and features.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "similar-apartment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Listing ID to find similar properties for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a3c9513-cd82-4712-ba1f-9adb728ae5fa",
+              "name": "Similar listings found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "similar-apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Listing ID to find similar properties for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 317,\n  \"searchRoute\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6c139c4-8e79-4067-a36a-ca35a4e32d7a",
+              "name": "Original listing not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "similar-apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Listing ID to find similar properties for"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "371265c2-6d24-4203-9f2f-41134745377d",
+          "name": "Get search filter configuration",
+          "request": {
+            "name": "Get search filter configuration",
+            "description": {
+              "content": "Available since API version 4. Returns available filter options for search based on country and transaction type (rental/sale).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "search-filter-config",
+                ":countryCode",
+                ":transactionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) ISO country code (e.g., US, CA, GB)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionType",
+                  "description": "(Required) Type of property transaction"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6fc65ea-7c5d-4f3f-ba83-58e22ecd372a",
+              "name": "Filter configuration retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "search-filter-config",
+                    ":countryCode",
+                    ":transactionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO country code (e.g., US, CA, GB)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionType",
+                      "description": "(Required) Type of property transaction"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionType\": \"string\",\n  \"id\": 4212,\n  \"country\": {\n    \"shortCode\": \"string\",\n    \"longCode\": \"string\",\n    \"name\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"createdAt\": \"2004-08-05T15:15:16.061Z\",\n  \"updatedAt\": \"1958-08-14T03:19:12.813Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66acdb54-b630-481e-b9de-b7a782c9f0c0",
+              "name": "No configuration found for this country and transaction type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "search-filter-config",
+                    ":countryCode",
+                    ":transactionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) ISO country code (e.g., US, CA, GB)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionType",
+                      "description": "(Required) Type of property transaction"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c68bd06-ea9e-4a64-a691-1663d11ef04d",
+          "name": "Initialize Search",
+          "request": {
+            "name": "Initialize Search",
+            "description": {
+              "content": "Available since API version 4. Initializes search parameters from URL and returns initial search data with map configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "init"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapView\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42ad080e-c8e7-4b62-9b3b-0df41a57b580",
+              "name": "Search initialized successfully with parsed parameters and initial data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b71afdbd-81d7-4a84-b888-fa862a134bdb",
+              "name": "Bad request - Invalid URL or search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73f74519-b9b3-4965-8102-ad28c9d871bf",
+              "name": "Place not found in search URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc17fa40-c5cc-46a9-9722-d4d611719366",
+              "name": "(Real code 13001) Search place could not be resolved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapView\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "387fe580-c6cc-4e20-a24f-b184d2548e0b",
+          "name": "Search listings by place (web)",
+          "request": {
+            "name": "Search listings by place (web)",
+            "description": {
+              "content": "Available since API version 4. Web-optimized search for listings by specific place or address with full filtering capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "place"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"googleId\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapScale\": \"<number>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ca52c2a-7768-4cb9-bd32-83dbff723a39",
+              "name": "Search results for place-based Search",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "place"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"googleId\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapScale\": \"<number>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fff9e6b-b2be-498d-95e5-7f8de4beab56",
+              "name": "Bad request - Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "place"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"googleId\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapScale\": \"<number>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf3d35ab-3f38-4a32-b5ea-6cc0529ee927",
+              "name": "No results found or search window too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "place"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"googleId\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"mapScale\": \"<number>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c04d2ae-c2e1-45aa-8cc1-de6c5ff98882",
+          "name": "Search listings by map bounds (web)",
+          "request": {
+            "name": "Search listings by map bounds (web)",
+            "description": {
+              "content": "Available since API version 4. Web-optimized search for listings within specified rectangular map area defined by coordinates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "bounds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"zoom\": \"<number>\",\n  \"seLatitude\": \"<string>\",\n  \"seLongitude\": \"<string>\",\n  \"nwLatitude\": \"<string>\",\n  \"nwLongitude\": \"<string>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fee2de2d-b1db-458b-a29c-b9ebd508ad9a",
+              "name": "Search results for bounds-based Search",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "bounds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"zoom\": \"<number>\",\n  \"seLatitude\": \"<string>\",\n  \"seLongitude\": \"<string>\",\n  \"nwLatitude\": \"<string>\",\n  \"nwLongitude\": \"<string>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "728a24d8-f284-4822-a507-8b1c76c1a720",
+              "name": "Bad request - Invalid map bounds or search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "bounds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"zoom\": \"<number>\",\n  \"seLatitude\": \"<string>\",\n  \"seLongitude\": \"<string>\",\n  \"nwLatitude\": \"<string>\",\n  \"nwLongitude\": \"<string>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6070393-efbe-48fe-b5a1-12badb1972fc",
+              "name": "No results found or search window too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "bounds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"formattedAddress\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"minPrice\": \"<integer>\",\n  \"maxPrice\": \"<integer>\",\n  \"minPriceOriginal\": \"<integer>\",\n  \"maxPriceOriginal\": \"<integer>\",\n  \"originalCurrency\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"bedrooms\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"baths\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isFilterChanged\": \"<string>\",\n  \"cat\": \"<string>\",\n  \"dog\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"sort\": \"<string>\",\n  \"hasVirtualTour\": \"<string>\",\n  \"mapView\": \"<string>\",\n  \"zoom\": \"<number>\",\n  \"seLatitude\": \"<string>\",\n  \"seLongitude\": \"<string>\",\n  \"nwLatitude\": \"<string>\",\n  \"nwLongitude\": \"<string>\",\n  \"url\": \"<string>\",\n  \"amenities\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67bc6541-3246-4147-a874-9067c7e748e2",
+          "name": "Get search buckets",
+          "request": {
+            "name": "Get search buckets",
+            "description": {
+              "content": "Available since API version 1. Returns aggregated data buckets for search faceting and filtering (DEPRECATED - consider using newer search endpoints).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "buckets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<integer>\",\n  \"mapHeight\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5cc66fad-984b-4439-8b05-e6b2f13c90c5",
+              "name": "Search buckets data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "buckets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<integer>\",\n  \"mapHeight\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c801d245-30c7-4139-807c-ca7763e36bf4",
+              "name": "Bad request - Missing or invalid URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "buckets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<integer>\",\n  \"mapHeight\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8517e321-42a5-4419-bc46-8f38fb22eb2f",
+          "name": "Get price settings",
+          "request": {
+            "name": "Get price settings",
+            "description": {
+              "content": "Available since API version 4. Returns recommended price ranges and settings for search filters based on location and market data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "price-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"minPrice\": \"<number>\",\n  \"maxPrice\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9587c75c-1468-4bfc-a68b-669759f46e8d",
+              "name": "Price settings and recommendations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "price-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"minPrice\": \"<number>\",\n  \"maxPrice\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5b30727-a320-4788-9bb9-302702341ce5",
+              "name": "Bad request - Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "price-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"minPrice\": \"<number>\",\n  \"maxPrice\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83ac8e66-af4c-4bc9-b830-5035a974a640",
+              "name": "Location not found for price analysis",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "price-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"mapWidth\": \"<number>\",\n  \"mapHeight\": \"<number>\",\n  \"minPrice\": \"<number>\",\n  \"maxPrice\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ada2d6f-15ed-4ce6-a3e7-69c3e555660b",
+          "name": "Get search content",
+          "request": {
+            "name": "Get search content",
+            "description": {
+              "content": "Available since API version 4. Returns SEO content and metadata for search results pages based on search URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "Search URL to generate content for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9019d38-8e7a-4808-8f1d-0c0ffaf2022d",
+              "name": "SEO content and metadata for search page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbb5724f-b3f6-4814-b123-217f0f8b2c5d",
+          "name": "Get search content (POST)",
+          "request": {
+            "name": "Get search content (POST)",
+            "description": {
+              "content": "Available since API version 4. Returns SEO content and metadata for search results pages based on search URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"originalRequest\": {\n    \"httpMethodParameterOverride\": false,\n    \"attributes\": {},\n    \"request\": {},\n    \"query\": {},\n    \"server\": {},\n    \"files\": {},\n    \"cookies\": {},\n    \"headers\": {},\n    \"pathInfo\": \"<string>\",\n    \"requestUri\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"basePath\": \"<string>\",\n    \"method\": \"<string>\",\n    \"format\": \"<string>\",\n    \"session\": {},\n    \"locale\": \"<string>\",\n    \"defaultLocale\": \"en\",\n    \"requestFactory\": \"<object>\",\n    \"preferredFormat\": \"<string>\",\n    \"isHostValid\": true,\n    \"isForwardedValid\": true,\n    \"isSafeContentPreferred\": \"<boolean>\",\n    \"trustedHeaderSet\": -1,\n    \"isIisRewrite\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d719ec4-f5c7-4667-ae7b-450f88f37b1f",
+              "name": "SEO content and metadata for search page",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"originalRequest\": {\n    \"httpMethodParameterOverride\": false,\n    \"attributes\": {},\n    \"request\": {},\n    \"query\": {},\n    \"server\": {},\n    \"files\": {},\n    \"cookies\": {},\n    \"headers\": {},\n    \"pathInfo\": \"<string>\",\n    \"requestUri\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"basePath\": \"<string>\",\n    \"method\": \"<string>\",\n    \"format\": \"<string>\",\n    \"session\": {},\n    \"locale\": \"<string>\",\n    \"defaultLocale\": \"en\",\n    \"requestFactory\": \"<object>\",\n    \"preferredFormat\": \"<string>\",\n    \"isHostValid\": true,\n    \"isForwardedValid\": true,\n    \"isSafeContentPreferred\": \"<boolean>\",\n    \"trustedHeaderSet\": -1,\n    \"isIisRewrite\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e4966a3-95bc-4db1-a64f-d2ed70477ca8",
+          "name": "Get related search content",
+          "request": {
+            "name": "Get related search content",
+            "description": {
+              "content": "Available since API version 4. Returns related search suggestions and content recommendations based on current search URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "related-content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "Current search URL to find related content for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23086639-74a5-4ab2-9e71-684fe25ef1a5",
+              "name": "Related search content and suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "related-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0654566-0a85-4a88-a7fb-1c26470c9603",
+          "name": "Get related search content (POST)",
+          "request": {
+            "name": "Get related search content (POST)",
+            "description": {
+              "content": "Available since API version 4. Returns related search suggestions and content recommendations based on current search URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "apartment",
+                "search",
+                "related-content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"originalRequest\": {\n    \"httpMethodParameterOverride\": false,\n    \"attributes\": {},\n    \"request\": {},\n    \"query\": {},\n    \"server\": {},\n    \"files\": {},\n    \"cookies\": {},\n    \"headers\": {},\n    \"pathInfo\": \"<string>\",\n    \"requestUri\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"basePath\": \"<string>\",\n    \"method\": \"<string>\",\n    \"format\": \"<string>\",\n    \"session\": {},\n    \"locale\": \"<string>\",\n    \"defaultLocale\": \"en\",\n    \"requestFactory\": \"<object>\",\n    \"preferredFormat\": \"<string>\",\n    \"isHostValid\": true,\n    \"isForwardedValid\": true,\n    \"isSafeContentPreferred\": \"<boolean>\",\n    \"trustedHeaderSet\": -1,\n    \"isIisRewrite\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1aa0876f-bc36-46cb-8007-58979bd020b1",
+              "name": "Related search content and suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "apartment",
+                    "search",
+                    "related-content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"originalRequest\": {\n    \"httpMethodParameterOverride\": false,\n    \"attributes\": {},\n    \"request\": {},\n    \"query\": {},\n    \"server\": {},\n    \"files\": {},\n    \"cookies\": {},\n    \"headers\": {},\n    \"pathInfo\": \"<string>\",\n    \"requestUri\": \"<string>\",\n    \"baseUrl\": \"<string>\",\n    \"basePath\": \"<string>\",\n    \"method\": \"<string>\",\n    \"format\": \"<string>\",\n    \"session\": {},\n    \"locale\": \"<string>\",\n    \"defaultLocale\": \"en\",\n    \"requestFactory\": \"<object>\",\n    \"preferredFormat\": \"<string>\",\n    \"isHostValid\": true,\n    \"isForwardedValid\": true,\n    \"isSafeContentPreferred\": \"<boolean>\",\n    \"trustedHeaderSet\": -1,\n    \"isIisRewrite\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "b79ad8ad-97d1-4f47-81ea-09e0881da9db",
+    "name": "Rentberry Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

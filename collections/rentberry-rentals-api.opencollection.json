@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Rentals API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rentals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payments for rental",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/rental/:rental_id/payment/stripe",
+            "params": [
+              {
+                "name": "rental_id",
+                "value": "",
+                "type": "path",
+                "description": "Rental ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns paginated list of Stripe payments for a specific rental with notification status."
+        },
+        {
+          "info": {
+            "name": "Create Stripe payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/:rental_id/payment/stripe",
+            "params": [
+              {
+                "name": "rental_id",
+                "value": "",
+                "type": "path",
+                "description": "Rental ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Creates a Stripe payment for a rental and returns clientSecret for frontend payment form."
+        },
+        {
+          "info": {
+            "name": "Update Stripe payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/rental/payment/:rental_payment_id/stripe/update",
+            "params": [
+              {
+                "name": "rental_payment_id",
+                "value": "",
+                "type": "path",
+                "description": "Rental payment ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Updates an existing Stripe payment."
+        },
+        {
+          "info": {
+            "name": "Cancel Stripe payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v:version/rental/payment/:rental_payment_id/stripe",
+            "params": [
+              {
+                "name": "rental_payment_id",
+                "value": "",
+                "type": "path",
+                "description": "Rental payment ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Cancels an existing Stripe payment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

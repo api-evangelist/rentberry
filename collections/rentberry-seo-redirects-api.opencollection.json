@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry SEO Redirects API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SEO Redirects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track redirect hit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/seo_redirect_url/:id/hit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Redirect ID to track"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Records a hit/click for the specified redirect URL for analytics and tracking purposes."
+        },
+        {
+          "info": {
+            "name": "Get all active redirects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/seo_redirect_url",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns list of all active SEO redirects with their URLs and configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

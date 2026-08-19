@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Virtual Tours API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Tours",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get virtual tour by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/listing/virtual-tour/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Virtual tour ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns virtual tour information for a specific virtual tour ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,177 @@
+{
+  "item": [
+    {
+      "id": "4fcf5dc0-9746-400c-b02c-aaf2951cc73f",
+      "name": "Notifications",
+      "description": {
+        "content": "Notifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be99c31d-dda6-4288-b234-4a1ef3a55fe7",
+          "name": "Get user notification counters",
+          "request": {
+            "name": "Get user notification counters",
+            "description": {
+              "content": "Available since API version 4. Retrieves counts of various notification types for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "counters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "1e1f7dd4-10b3-4831-a584-7a9d91e62eb7",
+              "name": "Returns notification counters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messagesTenant\": 6980,\n  \"messagesHomeowner\": 8127,\n  \"propertiesHomeowner\": 5073,\n  \"screeningCounter\": 5357,\n  \"propertiesTenant\": 5530,\n  \"openHousesApplies\": 3942,\n  \"placeCounter\": 4739,\n  \"appliesCounter\": 1865,\n  \"emailVerified\": 1557,\n  \"rentalPaymentsTenant\": 7103,\n  \"paymentsTenant\": 6795,\n  \"paymentsHomeowner\": 4313,\n  \"rentalPaymentsLandlord\": 883,\n  \"csMyCampaigns\": 9512,\n  \"csReceived\": 3393,\n  \"csSupported\": 4072\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d765c95f-8703-44fd-bacc-65ca1a48b1ea",
+              "name": "Unauthorized - User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2a58faa-ecd4-42f6-a954-be254dd7aee3",
+              "name": "Forbidden - User does not have sufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "counters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "2cf4e4ca-1a29-436f-ae42-0739b55468d4",
+    "name": "Rentberry Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

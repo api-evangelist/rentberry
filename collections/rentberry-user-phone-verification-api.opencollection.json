@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry User Phone Verification API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Phone Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Change user phone number and send verification code.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/phone",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Updates user phone number and sends SMS verification code."
+        },
+        {
+          "info": {
+            "name": "Validate phone verification code.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/user/phone/code",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Validates the SMS verification code and marks phone as verified."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

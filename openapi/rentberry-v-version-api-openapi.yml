@@ -1,0 +1,347 @@
+openapi: 3.2.0
+info:
+  title: Rentberry V{version} V{version} API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: V{version}
+paths:
+  /v{version}/email/unsubscribe/callback:
+    post:
+      operationId: post_api_v4_email_unsubscribe_callback
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/mailchimp/webhook:
+    post:
+      operationId: post_api_v4_mailchimp_webhook
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/mandrill/webhook:
+    get:
+      operationId: get_api_v4_mandrill_webhook
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+    post:
+      operationId: post_api_v4_mandrill_webhook
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/stripe/connected/webhook:
+    post:
+      operationId: post_api_v1_stripe_connected_webhook
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/stripe/direct/webhook:
+    post:
+      operationId: post_api_v1_stripe_direct_webhook
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/email/render/{type}:
+    post:
+      operationId: post_email_render_preview
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/email/types:
+    get:
+      operationId: get_get_email_types
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/email/parameters/{type}:
+    get:
+      operationId: get_get_email_parameters
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/email/send:
+    post:
+      operationId: post_email_test_send
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/push-testing-helper/notifications-list:
+    get:
+      operationId: get_api_v1_notification_test_helper_list
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/push-testing-helper/notification-send:
+    post:
+      operationId: post_api_v1_notification_test_helper_send
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-apartment:
+    post:
+      operationId: post_api_v1_test_helper_apartment_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-rented-apartment:
+    post:
+      operationId: post_api_v1_test_helper_rented_apartment_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-inactive-apartment:
+    post:
+      operationId: post_api_v1_test_helper_inactive_apartment_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-apples-apartment:
+    post:
+      operationId: post_api_v1_test_helper_apples_apartment_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-declined-application:
+    post:
+      operationId: post_api_v1_test_helper_declined_application_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-roommates-application:
+    post:
+      operationId: post_api_v1_test_helper_roommates_application_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-application:
+    post:
+      operationId: post_api_v1_test_helper_application_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/create-application-proof-income:
+    post:
+      operationId: post_api_v1_test_helper_application_proof_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/update-contract-status:
+    post:
+      operationId: post_api_v1_test_helper_update_contract_status
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}
+  /v{version}/testing-helper/update-apartment-listed-at:
+    post:
+      operationId: post_api_v1_test_helper_update_apartment_listed_at
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        default:
+          description: ''
+      tags:
+      - V{version}

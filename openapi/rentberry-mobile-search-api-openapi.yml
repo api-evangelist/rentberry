@@ -1,0 +1,419 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Mobile Search API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Mobile Search
+  description: Mobile Search
+paths:
+  /v{version}/apartment/search/place-mobile:
+    post:
+      tags:
+      - Mobile Search
+      summary: Search listings by place (mobile)
+      description: Available since API version 2. Mobile-optimized search for listings by place/address with amenities support. Supports legacy amenities format conversion.
+      operationId: post_api_v2_apartment_search_place_mobile
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchPlaceMobileType'
+      responses:
+        '200':
+          description: Search results for place-based mobile search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaceResponse'
+        '400':
+          description: Validation failed - Invalid search parameters
+  /v{version}/apartment/search/bounds-mobile:
+    post:
+      tags:
+      - Mobile Search
+      summary: Search listings by map bounds (mobile)
+      description: Available since API version 2. Mobile-optimized search for listings within specified map boundaries (northeast/southwest coordinates).
+      operationId: post_api_v2_apartment_search_bounds_mobile
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchBoundsMobileType'
+      responses:
+        '200':
+          description: Search results for bounds-based mobile search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundsResponse'
+        '400':
+          description: Validation failed - Invalid map bounds or search parameters
+  /v{version}/apartment/search/nearby-mobile:
+    post:
+      tags:
+      - Mobile Search
+      summary: Search nearby listings (mobile)
+      description: Available since API version 2. Mobile-optimized search for listings near specific coordinates with radius-based filtering.
+      operationId: post_api_v2_apartment_search_nearby
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingSearchNearbyMobileType'
+      responses:
+        '200':
+          description: Search results for nearby mobile search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyResponse'
+        '400':
+          description: Validation failed - Invalid coordinates or search parameters
+components:
+  schemas:
+    ListingSearchNearbyMobileType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - latitude
+      - longitude
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+      type: object
+    NearbyResponse:
+      type: object
+    PlaceResponse:
+      type: object
+    ListingSearchBoundsMobileType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - zoom
+      - seLatitude
+      - seLongitude
+      - nwLatitude
+      - nwLongitude
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        zoom:
+          type: number
+        seLatitude:
+          type: string
+        seLongitude:
+          type: string
+        nwLatitude:
+          type: string
+        nwLongitude:
+          type: string
+      type: object
+    ListingSearchPlaceMobileType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - googleId
+      - mapWidth
+      - mapHeight
+      - mapScale
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        googleId:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapScale:
+          type: number
+      type: object
+    BoundsResponse:
+      type: object

@@ -8,18 +8,16 @@ server:
   url: null
   published: false
 search:
-  note: >-
-    No official Rentberry MCP server exists. Probed 2026-08-02 — https://api.rentberry.com/mcp 404,
-    https://rentberry.com/mcp 404, no /.well-known/oauth-protected-resource on either host, nothing in the
-    Rentberry GitHub organization (10 repos, all infrastructure), nothing on npm under
-    @modelcontextprotocol or a rentberry scope, and no MCP mention in the docs. No `MCPServer` pointer is
-    wired into apis.yml — this file is a candidate design derived from the OpenAPI, not a claim that
-    Rentberry ships an MCP server.
+  note: No official Rentberry MCP server exists. Probed 2026-08-02 — https://api.rentberry.com/mcp 404,
+    https://rentberry.com/mcp 404, no /.well-known/oauth-protected-resource on either host, nothing in
+    the Rentberry GitHub organization (10 repos, all infrastructure), nothing on npm under @modelcontextprotocol
+    or a rentberry scope, and no MCP mention in the docs. No `MCPServer` pointer is wired into apis.yml
+    — this file is a candidate design derived from the OpenAPI, not a claim that Rentberry ships an MCP
+    server.
 authentication:
   required: true
   scheme: XAuthToken (see authentication/rentberry-authentication.yml)
-  note: >-
-    Every candidate tool below except the public search/location reads requires a user token from
+  note: Every candidate tool below except the public search/location reads requires a user token from
     post_api_v1_auth_token, so an MCP deployment would need per-user credentials, not a service key.
 tools:
 - name: search_listings_by_place
@@ -94,7 +92,12 @@ tools:
 coverage:
   rest_operations_total: 220
   candidate_tools: 22
-  note: >-
-    Deliberately a curated subset of the marquee read/write flows, not a 1:1 wrap of all 220 operations.
-    Write tools touching money (payouts, subscriptions, feature payments), account deletion and the
-    testing-helper fixture family are intentionally excluded from the candidate surface.
+  note: Deliberately a curated subset of the marquee read/write flows, not a 1:1 wrap of all 220 operations.
+    Write tools touching money (payouts, subscriptions, feature payments), account deletion and the testing-helper
+    fixture family are intentionally excluded from the candidate surface.
+deployment:
+  mode: none
+  verified: derived
+  tools: 23
+  checked: '2026-08-12'
+  source: catalog MCP census

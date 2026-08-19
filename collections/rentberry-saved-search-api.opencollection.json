@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Saved Search API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Saved Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Save search criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/saved-search",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Saves search criteria to receive email alerts when new matching listings are found."
+        },
+        {
+          "info": {
+            "name": "Disable saved search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/saved-search/disable/:hash",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "path",
+                "description": "Unique hash identifier of the saved search"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Disables an active saved search using its unique hash to stop receiving email alerts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

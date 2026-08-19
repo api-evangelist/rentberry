@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Landing Pages API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Landing Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all hyperlink sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/hyperlinking/",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns all hyperlink sets used for landing pages. Hyperlink sets contain organized links for different regions and listing types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Landing Statistics API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Landing Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get cities and average prices by listing type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/landing/statistics/type/:listingType",
+            "params": [
+              {
+                "name": "listingType",
+                "value": "",
+                "type": "path",
+                "description": "Type of listing to get statistics for"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction (default: rental)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns top 10 cities with average prices for a specific listing type. This data is used for statistical displays on landing pages."
+        },
+        {
+          "info": {
+            "name": "Get statistics by listing type and city",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/landing/statistics/type/:city/:listingType/:stateId/:countryCode",
+            "params": [
+              {
+                "name": "city",
+                "value": "",
+                "type": "path",
+                "description": "City name"
+              },
+              {
+                "name": "listingType",
+                "value": "",
+                "type": "path",
+                "description": "Type of listing"
+              },
+              {
+                "name": "stateId",
+                "value": "",
+                "type": "path",
+                "description": "State ID"
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "path",
+                "description": "Country code"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction (default: rental)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns detailed price statistics for a specific listing type in a city, including breakdowns by number of bedrooms."
+        },
+        {
+          "info": {
+            "name": "Get statistics by state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/landing/statistics/state/:state",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "path",
+                "description": "State name or abbreviation"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction (default: rental)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns landing page statistics for a specific state, including cities with their listing counts."
+        },
+        {
+          "info": {
+            "name": "Get statistics by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/landing/statistics/country/:country",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "path",
+                "description": "Country name"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Type of transaction (default: rental)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns landing page statistics for a specific country, including states and cities with their listing counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

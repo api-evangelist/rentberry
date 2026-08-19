@@ -1,0 +1,93 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Integration Requests API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Integration Requests
+  description: Integration Requests
+paths:
+  /v{version}/listing/integration-request:
+    post:
+      tags:
+      - Integration Requests
+      summary: Create integration request
+      description: Available since API version 3. Creates a request for MLS integration and sends notification emails to the sales team.
+      operationId: post_api_listing_integration_request_create
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - email
+              - companyName
+              properties:
+                name:
+                  description: Full name of the person making the request
+                  type: string
+                  example: John Smith
+                email:
+                  description: Email address of the requester
+                  type: string
+                  format: email
+                  example: john.smith@company.com
+                companyName:
+                  description: Name of the company requesting integration
+                  type: string
+                  example: ABC Real Estate
+                phone:
+                  description: Phone number of the requester
+                  type: string
+                  example: '+1234567890'
+                message:
+                  description: Additional message or details about the integration request
+                  type: string
+                  example: We would like to integrate our MLS system with your platform to synchronize our listings.
+              type: object
+      responses:
+        '201':
+          description: Integration request created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationRequest'
+        '400':
+          description: Bad request - Validation failed
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    IntegrationRequest:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        companyName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        message:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object

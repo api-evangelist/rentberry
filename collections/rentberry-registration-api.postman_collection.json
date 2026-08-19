@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "1af1bca7-dbac-44a4-b5eb-b044acb33617",
+      "name": "Registration",
+      "description": {
+        "content": "Registration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18914478-680e-46e2-873a-be7f2100a167",
+          "name": "Register a new user",
+          "request": {
+            "name": "Register a new user",
+            "description": {
+              "content": "Available since API version 3.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5c7b002-d63a-457f-8c1d-a0eeab1ec700",
+              "name": "User registered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nameFirst\": \"string\",\n  \"nameLast\": \"string\",\n  \"username\": \"string\",\n  \"phone\": \"stringstr\",\n  \"birthday\": \"1956-07-07T22:45:34.635Z\",\n  \"hasPassword\": true,\n  \"phoneCountryCode\": \"string\",\n  \"id\": 2547,\n  \"nameMiddle\": \"string\",\n  \"company\": {\n    \"id\": 4324,\n    \"name\": \"string\",\n    \"phone\": 4338,\n    \"website\": \"string\",\n    \"logoThumbs\": \"string\",\n    \"email\": \"string\",\n    \"city\": \"string\",\n    \"countryCode\": \"st\",\n    \"provider\": \"string\",\n    \"externalId\": \"string\",\n    \"createdAt\": \"2012-07-29T12:37:26.906Z\",\n    \"updatedAt\": \"1974-06-22T10:30:50.157Z\"\n  },\n  \"companyName\": \"string\",\n  \"profilePictureThumbs\": \"string\",\n  \"bio\": \"string\",\n  \"oauthProviders\": [\n    {\n      \"id\": 7777,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    },\n    {\n      \"id\": 3640,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    }\n  ],\n  \"address\": {\n    \"street\": \"string\",\n    \"houseNumber\": \"string\",\n    \"city\": \"string\",\n    \"zip\": \"string\",\n    \"streetType\": \"string\",\n    \"state\": {\n      \"id\": 2117,\n      \"shortName\": null,\n      \"name\": null\n    }\n  },\n  \"creditScore\": {\n    \"score\": 1978,\n    \"creditScoreUpdatedAt\": \"1950-08-01T02:51:05.068Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1995-05-26T00:11:41.403Z\",\n    \"updatedAt\": \"1947-03-19T23:25:07.679Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 6076,\n    \"createdAt\": \"1981-12-08T09:26:33.868Z\",\n    \"updatedAt\": \"1980-07-25T23:33:31.086Z\"\n  },\n  \"stripeCustomer\": {\n    \"customerId\": \"string\",\n    \"user\": {\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"username\": \"string\",\n      \"phone\": \"stringstring\",\n      \"birthday\": \"2014-11-28T04:00:37.706Z\",\n      \"hasPassword\": true,\n      \"phoneCountryCode\": \"string\",\n      \"id\": 4093,\n      \"nameMiddle\": \"string\",\n      \"company\": {\n        \"id\": 8379,\n        \"name\": \"string\",\n        \"phone\": 930,\n        \"website\": \"string\",\n        \"logoThumbs\": \"string\",\n        \"email\": \"string\",\n        \"city\": \"string\",\n        \"countryCode\": \"st\",\n        \"provider\": \"string\",\n        \"externalId\": \"string\",\n        \"createdAt\": \"1959-04-19T17:39:01.054Z\",\n        \"updatedAt\": \"2014-06-27T01:15:31.854Z\"\n      },\n      \"companyName\": \"string\",\n      \"profilePictureThumbs\": \"string\",\n      \"bio\": \"string\",\n      \"oauthProviders\": [\n        {\n          \"id\": 9631,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        },\n        {\n          \"id\": 3129,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        }\n      ],\n      \"address\": {\n        \"street\": \"string\",\n        \"houseNumber\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"string\",\n        \"streetType\": null,\n        \"state\": {\n          \"id\": 4934,\n          \"shortName\": null,\n          \"name\": null\n        }\n      },\n      \"creditScore\": {\n        \"score\": 4885,\n        \"creditScoreUpdatedAt\": \"1997-06-19T00:31:19.830Z\",\n        \"alert\": \"string\",\n        \"createdAt\": \"2015-06-12T21:52:46.215Z\",\n        \"updatedAt\": \"1973-05-07T23:50:27.819Z\"\n      },\n      \"criminalReport\": {\n        \"criminalRecordFound\": false,\n        \"status\": 9706,\n        \"createdAt\": \"1998-05-01T16:08:56.998Z\",\n        \"updatedAt\": \"1950-03-13T21:13:12.402Z\"\n      },\n      \"stripeCustomer\": {\n        \"value\": \"<Circular reference to #/components/schemas/UserStripeCustomer2 detected>\"\n      },\n      \"active\": true,\n      \"fromNotBerryForbiddenCountry\": false,\n      \"verified\": false,\n      \"emailVerified\": false,\n      \"phoneVerified\": false,\n      \"registered\": true,\n      \"emailNotVerifiedAfter\": \"1990-02-02T13:04:04.108Z\",\n      \"lastActiveAt\": \"2011-01-28T23:31:54.557Z\",\n      \"createdAt\": \"1981-11-21T10:33:52.407Z\",\n      \"updatedAt\": \"2009-11-22T00:39:45.671Z\",\n      \"statusType\": \"regular\",\n      \"authToken\": \"string\",\n      \"deleted\": false,\n      \"rentalPaymentAccount\": {\n        \"stripeAccountId\": \"string\",\n        \"isStripeOnboardingFinished\": false,\n        \"createdAt\": \"1952-05-31T06:07:29.186Z\",\n        \"updatedAt\": \"1969-06-19T18:43:10.753Z\"\n      },\n      \"newsletterSubscription\": false,\n      \"premiumPartner\": false,\n      \"locale\": \"en_US\",\n      \"currency\": \"string\",\n      \"lengthUnit\": \"m\",\n      \"isRaiUser\": false\n    },\n    \"createdAt\": \"2024-05-12T01:55:18.449Z\",\n    \"updatedAt\": \"1981-06-30T13:45:58.034Z\"\n  },\n  \"active\": true,\n  \"fromNotBerryForbiddenCountry\": false,\n  \"verified\": false,\n  \"emailVerified\": false,\n  \"phoneVerified\": false,\n  \"registered\": true,\n  \"emailNotVerifiedAfter\": \"1999-10-01T13:31:07.466Z\",\n  \"lastActiveAt\": \"1961-12-04T23:23:58.577Z\",\n  \"createdAt\": \"1953-09-05T13:02:26.505Z\",\n  \"updatedAt\": \"2021-04-30T22:42:35.815Z\",\n  \"statusType\": \"regular\",\n  \"authToken\": \"string\",\n  \"deleted\": false,\n  \"rentalPaymentAccount\": {\n    \"stripeAccountId\": \"string\",\n    \"isStripeOnboardingFinished\": false,\n    \"createdAt\": \"2004-12-23T16:38:26.004Z\",\n    \"updatedAt\": \"1981-10-13T20:53:05.808Z\"\n  },\n  \"newsletterSubscription\": false,\n  \"premiumPartner\": false,\n  \"locale\": \"en_US\",\n  \"currency\": \"string\",\n  \"lengthUnit\": \"m\",\n  \"isRaiUser\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4554a217-f318-4aec-813a-0f79abe8d665",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "34ccfe08-7353-46e8-b61a-3b1e06b10023",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff181285-bbc1-4159-8613-cec7483692ff",
+              "name": "User already registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 1004,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f77af21-14bb-4432-bc75-5c0db1046f31",
+              "name": "User blocked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<email>\",\n  \"password\": \"<string>\",\n  \"nameFirst\": \"<string>\",\n  \"nameLast\": \"<string>\",\n  \"oauthConnectId\": \"<string>\",\n  \"oauthProvider\": \"<string>\",\n  \"recaptchaResponse\": \"<string>\",\n  \"isRaiUser\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "code": 1005,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "c144812b-b229-4c2a-a37c-80d508b91b3f",
+    "name": "Rentberry Registration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

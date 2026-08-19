@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rentberry Search API",
+    "version": "4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search polygons by bounds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/polygon/search",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Searches for polygons (neighborhoods, districts) within specified geographical bounds. Returns neighborhoods only when zoom level is sufficient."
+        },
+        {
+          "info": {
+            "name": "Get listings by IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/ids",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 2. Retrieves specific listings by their IDs with optional sorting and location-based relevance."
+        },
+        {
+          "info": {
+            "name": "Get similar listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/search/similar-apartment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Listing ID to find similar properties for"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 1. Returns listings similar to the specified one based on location, price, and features."
+        },
+        {
+          "info": {
+            "name": "Get search filter configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/search-filter-config/:countryCode/:transactionType",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "path",
+                "description": "ISO country code (e.g., US, CA, GB)"
+              },
+              {
+                "name": "transactionType",
+                "value": "rental",
+                "type": "path",
+                "description": "Type of property transaction"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns available filter options for search based on country and transaction type (rental/sale)."
+        },
+        {
+          "info": {
+            "name": "Initialize Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/init",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Initializes search parameters from URL and returns initial search data with map configuration."
+        },
+        {
+          "info": {
+            "name": "Search listings by place (web)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/place",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Web-optimized search for listings by specific place or address with full filtering capabilities."
+        },
+        {
+          "info": {
+            "name": "Search listings by map bounds (web)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/bounds",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Web-optimized search for listings within specified rectangular map area defined by coordinates."
+        },
+        {
+          "info": {
+            "name": "Get search buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/buckets",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 1. Returns aggregated data buckets for search faceting and filtering (DEPRECATED - consider using newer search endpoints)."
+        },
+        {
+          "info": {
+            "name": "Get price settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/price-settings",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Returns recommended price ranges and settings for search filters based on location and market data."
+        },
+        {
+          "info": {
+            "name": "Get search content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/search/content",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Search URL to generate content for"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns SEO content and metadata for search results pages based on search URL."
+        },
+        {
+          "info": {
+            "name": "Get search content (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/content",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Returns SEO content and metadata for search results pages based on search URL."
+        },
+        {
+          "info": {
+            "name": "Get related search content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v:version/apartment/search/related-content",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Current search URL to find related content for"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Available since API version 4. Returns related search suggestions and content recommendations based on current search URL."
+        },
+        {
+          "info": {
+            "name": "Get related search content (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v:version/apartment/search/related-content",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available since API version 4. Returns related search suggestions and content recommendations based on current search URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

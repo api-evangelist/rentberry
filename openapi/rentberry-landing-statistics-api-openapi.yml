@@ -1,0 +1,324 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Landing Statistics API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Landing Statistics
+  description: Landing Statistics
+paths:
+  /v{version}/landing/statistics/type/{listingType}:
+    get:
+      tags:
+      - Landing Statistics
+      summary: Get cities and average prices by listing type
+      description: Available since API version 1. Returns top 10 cities with average prices for a specific listing type. This data is used for statistical displays on landing pages.
+      operationId: get_api_v1_landing_statistics_by_type
+      parameters:
+      - name: listingType
+        in: path
+        description: Type of listing to get statistics for
+        required: true
+        schema:
+          type: string
+          pattern: (apartment|house|condo|townhouse|duplex|loft|room)
+          enum:
+          - apartment
+          - house
+          - condo
+          - townhouse
+          - duplex
+          - loft
+          - room
+      - name: transactionType
+        in: query
+        description: 'Type of transaction (default: rental)'
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Top 10 cities with average prices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    city:
+                      description: City name
+                      type: string
+                    stateShortName:
+                      description: State short name (e.g., CA, NY)
+                      type: string
+                    countryCode:
+                      description: Country code (e.g., US, CA)
+                      type: string
+                    stateId:
+                      description: State ID
+                      type: integer
+                    averagePrice:
+                      description: Average price for listings
+                      type: number
+                      format: float
+                    count:
+                      description: Number of listings counted
+                      type: integer
+                  type: object
+              example:
+              - city: New York
+                stateShortName: NY
+                countryCode: US
+                stateId: 32
+                averagePrice: 3200.5
+                count: 12543
+              - city: Los Angeles
+                stateShortName: CA
+                countryCode: US
+                stateId: 5
+                averagePrice: 2850.75
+                count: 9876
+        '400':
+          description: Invalid parameters
+  /v{version}/landing/statistics/type/{city}/{listingType}/{stateId}/{countryCode}:
+    get:
+      tags:
+      - Landing Statistics
+      summary: Get statistics by listing type and city
+      description: Available since API version 1. Returns detailed price statistics for a specific listing type in a city, including breakdowns by number of bedrooms.
+      operationId: get_api_v1_landing_statistics_by_type_and_city
+      parameters:
+      - name: city
+        in: path
+        description: City name
+        required: true
+        schema:
+          type: string
+          pattern: .+
+      - name: listingType
+        in: path
+        description: Type of listing
+        required: true
+        schema:
+          type: string
+          pattern: (apartment|house|condo|townhouse|duplex|loft|room)
+          enum:
+          - apartment
+          - house
+          - condo
+          - townhouse
+          - duplex
+          - loft
+          - room
+      - name: stateId
+        in: path
+        description: State ID
+        required: true
+        schema:
+          type: integer
+          pattern: \d+
+      - name: countryCode
+        in: path
+        description: Country code
+        required: true
+        schema:
+          type: string
+      - name: transactionType
+        in: query
+        description: 'Type of transaction (default: rental)'
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Price statistics for the specified city and listing type
+          content:
+            application/json:
+              schema:
+                properties:
+                  city:
+                    description: City name
+                    type: string
+                  stateShortName:
+                    description: State short name
+                    type: string
+                  listingType:
+                    description: Type of listing
+                    type: string
+                  byBedroomsCount:
+                    description: Statistics grouped by number of bedrooms
+                    type: object
+                    additionalProperties:
+                      properties:
+                        averagePrice:
+                          description: Average price
+                          type: number
+                          format: float
+                        count:
+                          description: Number of listings
+                          type: integer
+                      type: object
+                  allAveragePrice:
+                    description: Overall average price for all bedroom counts
+                    type: number
+                    format: float
+                  totalCount:
+                    description: Total number of listings
+                    type: integer
+                type: object
+              example:
+                city: New York
+                stateShortName: NY
+                listingType: apartment
+                byBedroomsCount:
+                  '1':
+                    averagePrice: 2500
+                    count: 3450
+                  '2':
+                    averagePrice: 3800
+                    count: 2780
+                  '3':
+                    averagePrice: 5200
+                    count: 1100
+                allAveragePrice: 3500
+                totalCount: 7330
+        '400':
+          description: Invalid parameters
+  /v{version}/landing/statistics/state/{state}:
+    get:
+      tags:
+      - Landing Statistics
+      summary: Get statistics by state
+      description: Available since API version 1. Returns landing page statistics for a specific state, including cities with their listing counts.
+      operationId: get_api_v1_landing_statistics_by_state
+      parameters:
+      - name: state
+        in: path
+        description: State name or abbreviation
+        required: true
+        schema:
+          type: string
+          pattern: .+
+      - name: transactionType
+        in: query
+        description: 'Type of transaction (default: rental)'
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Landing statistics for the state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/State'
+        '202':
+          description: Sitemap not ready yet
+        '404':
+          description: No cities found for state or state not found
+  /v{version}/landing/statistics/country/{country}:
+    get:
+      tags:
+      - Landing Statistics
+      summary: Get statistics by country
+      description: Available since API version 1. Returns landing page statistics for a specific country, including states and cities with their listing counts.
+      operationId: get_api_v1_landing_statistics_by_country
+      parameters:
+      - name: country
+        in: path
+        description: Country name
+        required: true
+        schema:
+          type: string
+          pattern: .+
+      - name: transactionType
+        in: query
+        description: 'Type of transaction (default: rental)'
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Landing statistics for the country
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        '202':
+          description: Sitemap not ready yet
+        '404':
+          description: No cities found for country or country not found
+components:
+  schemas:
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    State:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
+          type: string
+      type: object

@@ -1,0 +1,273 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Location API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Location
+  description: Location
+paths:
+  /v{version}/country:
+    get:
+      tags:
+      - Location
+      summary: Get countries list
+      description: Available since API version 1. Returns list of countries, optionally filtered to only include countries with available listings.
+      operationId: get_api_v1_country_list
+      parameters:
+      - name: withApartments
+        in: query
+        description: Filter to only countries with available listings
+        schema:
+          type: boolean
+          default: false
+      - name: transactionType
+        in: query
+        description: Type of transaction (only used when withApartments=true)
+        schema:
+          type: string
+          default: rental
+          enum:
+          - rental
+          - sale
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of countries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      description: Country ID
+                      type: integer
+                    name:
+                      description: Country name
+                      type: string
+                    shortCode:
+                      description: Country code (ISO)
+                      type: string
+                  type: object
+  /v{version}/country-settings:
+    post:
+      tags:
+      - Location
+      summary: Get country settings by address
+      description: Available since API version 1. Geocodes an address and returns country-specific settings for that location.
+      operationId: post_api_v1_country_settings
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - formattedAddress
+              properties:
+                formattedAddress:
+                  description: Formatted address to geocode
+                  type: string
+                  example: 123 Main St, New York, NY 10001, USA
+              type: object
+      responses:
+        '200':
+          description: Country settings for the geocoded address
+          content:
+            application/json:
+              schema:
+                description: Country-specific configuration settings
+                type: object
+        '400':
+          description: Bad request - formattedAddress field is empty
+          content:
+            application/json:
+              schema:
+                type: string
+              example: Field formattedAddress is empty
+        '405':
+          description: (Real code 13001) Place not found during geocoding
+        '409':
+          description: Conflict - Country code cannot be resolved from address
+  /v{version}/place/geocode:
+    post:
+      tags:
+      - Location
+      summary: Geocode formatted address
+      description: Converts a formatted address string into geographic location data
+      operationId: post_api_v4_place_geocoding
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - formattedAddress
+              properties:
+                formattedAddress:
+                  description: Full formatted address to geocode
+                  type: string
+                  example: 123 William St, New York, NY 10038, USA
+              type: object
+      responses:
+        '200':
+          description: Successfully geocoded address
+          content:
+            application/json:
+              schema:
+                properties:
+                  placeType:
+                    type: string
+                    example: street
+                  placeAddress:
+                    type: string
+                    example: 123 William St, New York, NY 10038, USA
+                  formattedAddressForUsa:
+                    type:
+                    - string
+                    - 'null'
+                    example: 123 William Street, Manhattan, New York, NY
+                  location:
+                    properties:
+                      formattedAddress:
+                        type: string
+                        example: 123 William St, New York, NY 10038, USA
+                      streetNumber:
+                        type:
+                        - string
+                        - 'null'
+                        example: '123'
+                      streetName:
+                        type:
+                        - string
+                        - 'null'
+                        example: William Street
+                      country:
+                        type:
+                        - string
+                        - 'null'
+                        example: US
+                      state:
+                        type:
+                        - string
+                        - 'null'
+                        example: NY
+                      locality:
+                        type:
+                        - string
+                        - 'null'
+                        example: New York
+                      subLocality:
+                        type:
+                        - string
+                        - 'null'
+                        example: Manhattan
+                      neighborhood:
+                        type:
+                        - string
+                        - 'null'
+                        example: null
+                      postalCode:
+                        type:
+                        - string
+                        - 'null'
+                        example: '10038'
+                      adminLevels:
+                        type: object
+                        example:
+                          '1':
+                            level: 1
+                            name: New York
+                            code: NY
+                          '2':
+                            level: 2
+                            name: New York County
+                            code: New York County
+                      coordinates:
+                        type: array
+                        items:
+                          type: number
+                          format: float
+                        example:
+                        - -74.0071269
+                        - 40.7094055
+                      bounds:
+                        properties:
+                          south:
+                            type: number
+                            format: float
+                            example: 40.7079548197085
+                          west:
+                            type: number
+                            format: float
+                            example: -74.0083148802915
+                          north:
+                            type: number
+                            format: float
+                            example: 40.7106527802915
+                          east:
+                            type: number
+                            format: float
+                            example: -74.00561691970849
+                        type: object
+                      provider:
+                        type: string
+                        example: google
+                    type: object
+                type: object
+        '400':
+          description: Bad request - formattedAddress is missing
+          content:
+            application/json:
+              schema:
+                properties:
+                  body:
+                    type: string
+                    example: Field formattedAddress is empty
+                  error:
+                    properties:
+                      code:
+                        type: integer
+                        example: 400
+                      message:
+                        type: string
+                      description:
+                        type: string
+                    type: object
+                type: object
+        '409':
+          description: Place not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: integer
+                        example: 13001
+                      message:
+                        type: string
+                      description:
+                        type: string
+                    type: object
+                type: object

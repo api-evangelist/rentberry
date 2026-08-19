@@ -1,0 +1,459 @@
+{
+  "item": [
+    {
+      "id": "6b123783-ac91-48d3-bf3b-977f1b4fa187",
+      "name": "User Phone Verification",
+      "description": {
+        "content": "User Phone Verification",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7a80ada-6a6c-4e3f-baaf-ef84dcbc05b9",
+          "name": "Change user phone number and send verification code.",
+          "request": {
+            "name": "Change user phone number and send verification code.",
+            "description": {
+              "content": "Available since API version 1. Updates user phone number and sends SMS verification code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "phone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e1a7c63-ced0-4b07-b792-91d0f56d9ced",
+              "name": "Verification code sent successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fd7e7b1-bd66-4341-89ce-808c6cab5c63",
+              "name": "Validation failed, recaptcha failed, or phone already verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45591d03-9cdb-48e6-b00a-82866a1e7e06",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e40bc2c-7619-46ba-90fc-f1bd2cf5162a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77a0aaeb-ae9d-481e-9f74-13bab6cdbd3f",
+          "name": "Validate phone verification code.",
+          "request": {
+            "name": "Validate phone verification code.",
+            "description": {
+              "content": "Available since API version 1. Validates the SMS verification code and marks phone as verified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "user",
+                "phone",
+                "code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"<integer>\",\n  \"code\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00e9ba86-7d63-4381-9e6d-53e9ae9d0bf1",
+              "name": "Phone verified successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\",\n  \"code\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nameFirst\": \"string\",\n  \"nameLast\": \"string\",\n  \"username\": \"string\",\n  \"phone\": \"stringstring\",\n  \"birthday\": \"1993-05-03T17:20:53.172Z\",\n  \"hasPassword\": false,\n  \"phoneCountryCode\": \"string\",\n  \"id\": 6748,\n  \"nameMiddle\": \"string\",\n  \"company\": {\n    \"id\": 2581,\n    \"name\": \"string\",\n    \"phone\": 3072,\n    \"website\": \"string\",\n    \"logoThumbs\": \"string\",\n    \"email\": \"string\",\n    \"city\": \"string\",\n    \"countryCode\": \"st\",\n    \"provider\": \"string\",\n    \"externalId\": \"string\",\n    \"createdAt\": \"2010-05-09T07:43:23.892Z\",\n    \"updatedAt\": \"1971-02-19T11:29:48.068Z\"\n  },\n  \"companyName\": \"string\",\n  \"profilePictureThumbs\": \"string\",\n  \"bio\": \"string\",\n  \"oauthProviders\": [\n    {\n      \"id\": 9774,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    },\n    {\n      \"id\": 9252,\n      \"provider\": \"string\",\n      \"providerId\": \"string\",\n      \"connectId\": \"string\",\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"pictureUrl\": \"string\",\n      \"appId\": \"string\"\n    }\n  ],\n  \"address\": {\n    \"street\": \"string\",\n    \"houseNumber\": \"string\",\n    \"city\": \"string\",\n    \"zip\": \"string\",\n    \"streetType\": \"string\",\n    \"state\": {\n      \"id\": 6245,\n      \"shortName\": null,\n      \"name\": null\n    }\n  },\n  \"creditScore\": {\n    \"score\": 8392,\n    \"creditScoreUpdatedAt\": \"1956-02-21T15:55:00.316Z\",\n    \"alert\": \"string\",\n    \"createdAt\": \"1946-08-17T23:22:09.090Z\",\n    \"updatedAt\": \"1991-04-10T01:17:59.447Z\"\n  },\n  \"criminalReport\": {\n    \"criminalRecordFound\": false,\n    \"status\": 3511,\n    \"createdAt\": \"1976-09-26T03:07:16.426Z\",\n    \"updatedAt\": \"2006-11-07T15:23:21.979Z\"\n  },\n  \"stripeCustomer\": {\n    \"customerId\": \"string\",\n    \"user\": {\n      \"nameFirst\": \"string\",\n      \"nameLast\": \"string\",\n      \"username\": \"string\",\n      \"phone\": \"stringstring\",\n      \"birthday\": \"1947-01-22T15:57:58.103Z\",\n      \"hasPassword\": false,\n      \"phoneCountryCode\": \"string\",\n      \"id\": 6837,\n      \"nameMiddle\": \"string\",\n      \"company\": {\n        \"id\": 3298,\n        \"name\": \"string\",\n        \"phone\": 3650,\n        \"website\": \"string\",\n        \"logoThumbs\": \"string\",\n        \"email\": \"string\",\n        \"city\": \"string\",\n        \"countryCode\": \"st\",\n        \"provider\": \"string\",\n        \"externalId\": \"string\",\n        \"createdAt\": \"2018-08-31T06:14:08.896Z\",\n        \"updatedAt\": \"1960-07-13T02:55:53.637Z\"\n      },\n      \"companyName\": \"string\",\n      \"profilePictureThumbs\": \"string\",\n      \"bio\": \"string\",\n      \"oauthProviders\": [\n        {\n          \"id\": 9125,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        },\n        {\n          \"id\": 1231,\n          \"provider\": \"string\",\n          \"providerId\": \"string\",\n          \"connectId\": \"string\",\n          \"nameFirst\": \"string\",\n          \"nameLast\": \"string\",\n          \"pictureUrl\": \"string\",\n          \"appId\": \"string\"\n        }\n      ],\n      \"address\": {\n        \"street\": \"string\",\n        \"houseNumber\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"string\",\n        \"streetType\": \"string\",\n        \"state\": {\n          \"id\": 6138,\n          \"shortName\": null,\n          \"name\": null\n        }\n      },\n      \"creditScore\": {\n        \"score\": 9960,\n        \"creditScoreUpdatedAt\": \"2002-12-01T14:27:06.343Z\",\n        \"alert\": \"string\",\n        \"createdAt\": \"1990-06-13T03:44:29.939Z\",\n        \"updatedAt\": \"1985-04-12T00:42:31.124Z\"\n      },\n      \"criminalReport\": {\n        \"criminalRecordFound\": false,\n        \"status\": 9885,\n        \"createdAt\": \"1948-01-03T09:23:23.349Z\",\n        \"updatedAt\": \"1985-02-17T10:59:06.590Z\"\n      },\n      \"stripeCustomer\": {\n        \"value\": \"<Circular reference to #/components/schemas/UserStripeCustomer2 detected>\"\n      },\n      \"active\": true,\n      \"fromNotBerryForbiddenCountry\": false,\n      \"verified\": false,\n      \"emailVerified\": false,\n      \"phoneVerified\": false,\n      \"registered\": true,\n      \"emailNotVerifiedAfter\": \"1990-05-11T15:18:16.675Z\",\n      \"lastActiveAt\": \"2012-08-21T05:16:03.629Z\",\n      \"createdAt\": \"1997-01-11T03:54:48.491Z\",\n      \"updatedAt\": \"1963-12-22T00:51:30.631Z\",\n      \"statusType\": \"regular\",\n      \"authToken\": \"string\",\n      \"deleted\": false,\n      \"rentalPaymentAccount\": {\n        \"stripeAccountId\": \"string\",\n        \"isStripeOnboardingFinished\": false,\n        \"createdAt\": \"1953-02-21T12:25:59.300Z\",\n        \"updatedAt\": \"1965-07-25T13:41:24.146Z\"\n      },\n      \"newsletterSubscription\": false,\n      \"premiumPartner\": false,\n      \"locale\": \"en_US\",\n      \"currency\": \"string\",\n      \"lengthUnit\": \"m\",\n      \"isRaiUser\": false\n    },\n    \"createdAt\": \"1979-06-20T21:49:43.144Z\",\n    \"updatedAt\": \"1947-01-20T15:01:37.084Z\"\n  },\n  \"active\": true,\n  \"fromNotBerryForbiddenCountry\": false,\n  \"verified\": false,\n  \"emailVerified\": false,\n  \"phoneVerified\": false,\n  \"registered\": true,\n  \"emailNotVerifiedAfter\": \"2006-03-26T06:22:41.977Z\",\n  \"lastActiveAt\": \"1995-12-01T08:10:33.986Z\",\n  \"createdAt\": \"1947-03-09T09:36:37.087Z\",\n  \"updatedAt\": \"1954-01-23T10:34:08.238Z\",\n  \"statusType\": \"regular\",\n  \"authToken\": \"string\",\n  \"deleted\": false,\n  \"rentalPaymentAccount\": {\n    \"stripeAccountId\": \"string\",\n    \"isStripeOnboardingFinished\": false,\n    \"createdAt\": \"1997-05-31T19:22:34.359Z\",\n    \"updatedAt\": \"2002-09-19T05:26:54.863Z\"\n  },\n  \"newsletterSubscription\": false,\n  \"premiumPartner\": false,\n  \"locale\": \"en_US\",\n  \"currency\": \"string\",\n  \"lengthUnit\": \"ft\",\n  \"isRaiUser\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbdc5e6e-2ec1-41fe-985d-942e71e13f48",
+              "name": "Invalid verification code or phone already verified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\",\n  \"code\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "754d2e13-5497-4901-aaa1-2d9133aaeeed",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\",\n  \"code\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db04e137-ce84-47ee-a920-bc51e8f063b6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "user",
+                    "phone",
+                    "code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phone\": \"<integer>\",\n  \"code\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "babc302e-a0b6-4355-a5ab-c4f7ec666b72",
+    "name": "Rentberry User Phone Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,273 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Devices API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Devices
+  description: Devices
+paths:
+  /v{version}/device:
+    get:
+      tags:
+      - Devices
+      summary: List user devices
+      description: Available since API version 1. Returns a list of devices associated with the authenticated user.
+      operationId: get_api_v1_device_list
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: List of user devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+              example:
+              - id: 1
+                platform: iOS
+                osVersion: 15.4.1
+                model: iPhone 13
+                deviceToken: dev-1a2b3c4d5e6f
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+      security:
+      - XAuthToken: []
+    put:
+      tags:
+      - Devices
+      summary: Update device
+      description: Available since API version 1. Updates an existing device identified by X-Device-Token header.
+      operationId: put_api_v1_device_update
+      parameters:
+      - name: X-Device-Token
+        in: header
+        description: Device token to identify the device
+        required: true
+        schema:
+          type: string
+          example: dev-1a2b3c4d5e6f
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                platform:
+                  description: Device platform (e.g., iOS, Android)
+                  type: string
+                osVersion:
+                  description: Operating system version
+                  type: string
+                firebaseToken:
+                  description: Firebase token for push notifications
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Device updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: Bad request - Validation failed
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+        '404':
+          description: Device not found with provided token
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: Device can not be found by provided X-Device-Token="dev-1a2b3c4d5e6f"
+                type: object
+    post:
+      tags:
+      - Devices
+      summary: Register device
+      description: Available since API version 1. Registers a new device or updates an existing one identified by X-Device-Token header. If user is logged in, the device will be associated with the user.
+      operationId: post_api_v1_device_register
+      parameters:
+      - name: X-Device-Token
+        in: header
+        description: Device token to identify the device. If provided and device exists, it will be updated; otherwise, a new device will be created.
+        schema:
+          type: string
+          example: dev-1a2b3c4d5e6f
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - platform
+              - osVersion
+              - model
+              properties:
+                platform:
+                  description: Device platform (e.g., iOS, Android)
+                  type: string
+                  example: iOS
+                osVersion:
+                  description: Operating system version
+                  type: string
+                  example: 15.4.1
+                model:
+                  description: Device model
+                  type: string
+                  example: iPhone 13
+                firebaseToken:
+                  description: Firebase token for push notifications
+                  type: string
+                  example: eX4mPl3-F1r3b4s3-T0k3n
+              type: object
+      responses:
+        '200':
+          description: Device registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: Bad request - Validation failed
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                type: object
+    delete:
+      tags:
+      - Devices
+      summary: Unlink device from user
+      description: Available since API version 1. Removes user association from a device. The device is identified by X-Device-Token header.
+      operationId: delete_api_v1_device_delete
+      parameters:
+      - name: X-Device-Token
+        in: header
+        description: Device token to identify the device
+        required: true
+        schema:
+          type: string
+          example: dev-1a2b3c4d5e6f
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Device unlinked successfully
+          content:
+            application/json:
+              schema:
+                properties: []
+                type: object
+              example: []
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '405':
+          description: (Real code 16001) Forbidden - Not your device
+        '404':
+          description: Device not found with provided token
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: Device can not be found by provided X-Device-Token="dev-1a2b3c4d5e6f"
+                type: object
+      security:
+      - XAuthToken: []
+  /v{version}/device/link:
+    put:
+      tags:
+      - Devices
+      summary: Link device to user
+      description: Available since API version 1. Links a device to the authenticated user. The device is identified by X-Device-Token header.
+      operationId: put_api_v1_device_link_user
+      parameters:
+      - name: X-Device-Token
+        in: header
+        description: Device token to identify the device
+        required: true
+        schema:
+          type: string
+          example: dev-1a2b3c4d5e6f
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Device linked successfully
+          content:
+            application/json:
+              schema:
+                properties: []
+                type: object
+              example: []
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '404':
+          description: Device not found with provided token
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: Device can not be found by provided X-Device-Token="dev-1a2b3c4d5e6f"
+                type: object
+      security:
+      - XAuthToken: []
+components:
+  schemas:
+    Device:
+      properties:
+        id:
+          type: integer
+        firebaseToken:
+          type: string
+        deviceToken:
+          type: string
+        deviceModel:
+          type: string
+        deviceId:
+          type: string
+        deviceOs:
+          type: string
+        deviceOsVersion:
+          type: string
+      type: object

@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "8cb1acbb-d0e9-4cb3-9475-334b74c4b867",
+      "name": "Integration Requests",
+      "description": {
+        "content": "Integration Requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "17e400a1-93ce-4bd8-bcbf-725da7dc175d",
+          "name": "Create integration request",
+          "request": {
+            "name": "Create integration request",
+            "description": {
+              "content": "Available since API version 3. Creates a request for MLS integration and sends notification emails to the sales team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "listing",
+                "integration-request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"companyName\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "386ce72a-cc1c-4edc-9a55-caf496263d7b",
+              "name": "Integration request created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "listing",
+                    "integration-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Smith\",\n  \"email\": \"john.smith@company.com\",\n  \"companyName\": \"ABC Real Estate\",\n  \"phone\": \"+1234567890\",\n  \"message\": \"We would like to integrate our MLS system with your platform to synchronize our listings.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1043,\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"email\": \"string\",\n  \"phone\": \"string\",\n  \"message\": \"string\",\n  \"createdAt\": \"1981-01-11T19:49:39.117Z\",\n  \"updatedAt\": \"1998-07-17T17:51:39.989Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a85129c-e64e-4fe6-ba8a-81e2861b1cda",
+              "name": "Bad request - Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "listing",
+                    "integration-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Smith\",\n  \"email\": \"john.smith@company.com\",\n  \"companyName\": \"ABC Real Estate\",\n  \"phone\": \"+1234567890\",\n  \"message\": \"We would like to integrate our MLS system with your platform to synchronize our listings.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "bfa4fb22-abc0-45de-ad2d-632c4243d6b8",
+    "name": "Rentberry Integration Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

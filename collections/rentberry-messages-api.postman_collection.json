@@ -1,0 +1,1297 @@
+{
+  "item": [
+    {
+      "id": "a7f9f58d-c6bf-4c2a-acd7-592b815eecb6",
+      "name": "Messages",
+      "description": {
+        "content": "Messages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9850d549-cd79-45ec-bf6a-542188b5da78",
+          "name": "Get list of conversations for user.",
+          "request": {
+            "name": "Get list of conversations for user.",
+            "description": {
+              "content": "Available since API version 1. Returns paginated list of conversations for tenant or homeowner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                ":userType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userType",
+                  "description": "(Required) User type filter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "b29c3dd3-3ef2-4676-8be1-f3e4c4ac1bd8",
+              "name": "Returns paginated list of conversations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":userType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userType",
+                      "description": "(Required) User type filter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"conversationId\": 6604,\n      \"lastMessage\": {\n        \"body\": \"string\",\n        \"id\": 2782,\n        \"conversationId\": 2411,\n        \"userId\": 7674,\n        \"readed\": false,\n        \"viewed\": false,\n        \"notified\": false,\n        \"notifiedAt\": \"1995-01-25T02:40:25.948Z\",\n        \"createdAt\": \"1969-08-23T11:16:23.529Z\",\n        \"updatedAt\": \"2017-11-18T11:42:14.890Z\"\n      },\n      \"partner\": {\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"username\": \"string\",\n        \"phone\": \"stringstring\",\n        \"birthday\": \"1993-06-28T10:51:04.059Z\",\n        \"hasPassword\": false,\n        \"phoneCountryCode\": \"string\",\n        \"id\": 3890,\n        \"nameMiddle\": \"string\",\n        \"company\": {\n          \"id\": 4486,\n          \"name\": \"string\",\n          \"phone\": 634,\n          \"website\": \"string\",\n          \"logoThumbs\": \"string\",\n          \"email\": \"string\",\n          \"city\": \"string\",\n          \"countryCode\": \"st\",\n          \"provider\": \"string\",\n          \"externalId\": \"string\",\n          \"createdAt\": \"1970-05-26T23:49:22.443Z\",\n          \"updatedAt\": \"1988-07-31T23:42:37.031Z\"\n        },\n        \"companyName\": \"string\",\n        \"profilePictureThumbs\": \"string\",\n        \"bio\": \"string\",\n        \"oauthProviders\": [\n          {\n            \"id\": 4485,\n            \"provider\": \"string\",\n            \"providerId\": \"string\",\n            \"connectId\": \"string\",\n            \"nameFirst\": \"string\",\n            \"nameLast\": \"string\",\n            \"pictureUrl\": \"string\",\n            \"appId\": \"string\"\n          },\n          {\n            \"id\": 373,\n            \"provider\": \"string\",\n            \"providerId\": \"string\",\n            \"connectId\": \"string\",\n            \"nameFirst\": \"string\",\n            \"nameLast\": \"string\",\n            \"pictureUrl\": \"string\",\n            \"appId\": \"string\"\n          }\n        ],\n        \"address\": {\n          \"street\": \"string\",\n          \"houseNumber\": \"string\",\n          \"city\": \"string\",\n          \"zip\": \"string\",\n          \"streetType\": null,\n          \"state\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shortName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"creditScore\": {\n          \"score\": 273,\n          \"creditScoreUpdatedAt\": \"1977-03-12T18:50:22.196Z\",\n          \"alert\": \"string\",\n          \"createdAt\": \"2007-01-11T03:51:01.380Z\",\n          \"updatedAt\": \"1998-03-14T13:03:56.273Z\"\n        },\n        \"criminalReport\": {\n          \"criminalRecordFound\": false,\n          \"status\": 208,\n          \"createdAt\": \"1952-02-14T05:09:36.705Z\",\n          \"updatedAt\": \"1988-04-24T17:18:17.284Z\"\n        },\n        \"stripeCustomer\": {\n          \"customerId\": \"string\",\n          \"user\": {\n            \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n          },\n          \"createdAt\": \"1976-04-16T03:18:05.293Z\",\n          \"updatedAt\": \"1988-12-12T04:24:42.618Z\"\n        },\n        \"active\": true,\n        \"fromNotBerryForbiddenCountry\": false,\n        \"verified\": false,\n        \"emailVerified\": false,\n        \"phoneVerified\": false,\n        \"registered\": true,\n        \"emailNotVerifiedAfter\": \"1954-07-19T15:05:32.748Z\",\n        \"lastActiveAt\": \"1996-09-05T09:40:36.538Z\",\n        \"createdAt\": \"2012-10-31T01:47:15.203Z\",\n        \"updatedAt\": \"1946-08-21T11:54:24.042Z\",\n        \"statusType\": \"regular\",\n        \"authToken\": \"string\",\n        \"rentalHistory\": [\n          {\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"homeownerPhone\": 4095,\n            \"id\": 6784,\n            \"user\": {\n              \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n            },\n            \"applicantId\": 2372,\n            \"price\": 7205,\n            \"term\": 855\n          },\n          {\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"homeownerPhone\": 7568,\n            \"id\": 2498,\n            \"user\": {\n              \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n            },\n            \"applicantId\": 1541,\n            \"price\": 6796,\n            \"term\": 6270\n          }\n        ],\n        \"deleted\": false,\n        \"rentalPaymentAccount\": {\n          \"stripeAccountId\": \"string\",\n          \"isStripeOnboardingFinished\": false,\n          \"createdAt\": \"1997-06-12T17:22:56.481Z\",\n          \"updatedAt\": \"1947-03-18T19:34:15.810Z\"\n        },\n        \"newsletterSubscription\": false,\n        \"premiumPartner\": false,\n        \"locale\": \"en_US\",\n        \"currency\": \"string\",\n        \"lengthUnit\": \"m\",\n        \"isRaiUser\": false\n      },\n      \"apartmentId\": 8651,\n      \"isViewed\": false,\n      \"topicType\": \"string\",\n      \"apartmentAddress\": {\n        \"latitude\": 0,\n        \"longitude\": 0,\n        \"apartmentNumber\": \"string\",\n        \"state\": {\n          \"id\": 5876,\n          \"shortName\": null,\n          \"name\": null,\n          \"description\": \"string\"\n        },\n        \"providedBy\": \"string\",\n        \"providerId\": null,\n        \"adminLevels\": {},\n        \"coordinates\": {\n          \"latitude\": 921.6697083620551,\n          \"longitude\": 5826.919220777382\n        },\n        \"bounds\": {\n          \"northeast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"southwest\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"streetNumber\": null,\n        \"streetName\": null,\n        \"postalCode\": null,\n        \"locality\": null,\n        \"sublocality\": null,\n        \"country\": {\n          \"shortCode\": \"string\",\n          \"longCode\": \"string\",\n          \"name\": \"string\",\n          \"phone\": \"string\"\n        },\n        \"timezone\": null,\n        \"shortAddress\": \"string\",\n        \"exposeAddress\": true\n      },\n      \"countUnreaded\": 387,\n      \"countUnviewed\": 6724,\n      \"apartmentUrl\": \"string\"\n    },\n    {\n      \"conversationId\": 5353,\n      \"lastMessage\": {\n        \"body\": \"string\",\n        \"id\": 191,\n        \"conversationId\": 4778,\n        \"userId\": 5428,\n        \"readed\": false,\n        \"viewed\": false,\n        \"notified\": false,\n        \"notifiedAt\": \"1968-05-10T19:07:31.072Z\",\n        \"createdAt\": \"1955-09-05T01:31:26.912Z\",\n        \"updatedAt\": \"2009-05-12T12:35:11.014Z\"\n      },\n      \"partner\": {\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"username\": \"string\",\n        \"phone\": \"stringst\",\n        \"birthday\": \"1970-06-06T02:54:15.941Z\",\n        \"hasPassword\": true,\n        \"phoneCountryCode\": \"string\",\n        \"id\": 2574,\n        \"nameMiddle\": \"string\",\n        \"company\": {\n          \"id\": 6176,\n          \"name\": \"string\",\n          \"phone\": 5845,\n          \"website\": \"string\",\n          \"logoThumbs\": \"string\",\n          \"email\": \"string\",\n          \"city\": \"string\",\n          \"countryCode\": \"st\",\n          \"provider\": \"string\",\n          \"externalId\": \"string\",\n          \"createdAt\": \"1964-10-20T10:54:55.467Z\",\n          \"updatedAt\": \"2007-04-17T20:10:46.205Z\"\n        },\n        \"companyName\": \"string\",\n        \"profilePictureThumbs\": \"string\",\n        \"bio\": \"string\",\n        \"oauthProviders\": [\n          {\n            \"id\": 8403,\n            \"provider\": \"string\",\n            \"providerId\": \"string\",\n            \"connectId\": \"string\",\n            \"nameFirst\": \"string\",\n            \"nameLast\": \"string\",\n            \"pictureUrl\": \"string\",\n            \"appId\": \"string\"\n          },\n          {\n            \"id\": 3543,\n            \"provider\": \"string\",\n            \"providerId\": \"string\",\n            \"connectId\": \"string\",\n            \"nameFirst\": \"string\",\n            \"nameLast\": \"string\",\n            \"pictureUrl\": \"string\",\n            \"appId\": \"string\"\n          }\n        ],\n        \"address\": {\n          \"street\": \"string\",\n          \"houseNumber\": \"string\",\n          \"city\": \"string\",\n          \"zip\": \"string\",\n          \"streetType\": null,\n          \"state\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"shortName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"creditScore\": {\n          \"score\": 1530,\n          \"creditScoreUpdatedAt\": \"1967-03-03T13:43:31.189Z\",\n          \"alert\": \"string\",\n          \"createdAt\": \"2025-01-23T07:12:37.535Z\",\n          \"updatedAt\": \"1992-06-06T20:03:59.276Z\"\n        },\n        \"criminalReport\": {\n          \"criminalRecordFound\": false,\n          \"status\": 6860,\n          \"createdAt\": \"2025-01-06T02:38:59.881Z\",\n          \"updatedAt\": \"1962-12-17T22:54:24.416Z\"\n        },\n        \"stripeCustomer\": {\n          \"customerId\": \"string\",\n          \"user\": {\n            \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n          },\n          \"createdAt\": \"1984-03-06T06:15:25.734Z\",\n          \"updatedAt\": \"1964-11-08T16:55:48.989Z\"\n        },\n        \"active\": true,\n        \"fromNotBerryForbiddenCountry\": false,\n        \"verified\": false,\n        \"emailVerified\": false,\n        \"phoneVerified\": false,\n        \"registered\": true,\n        \"emailNotVerifiedAfter\": \"1990-10-18T00:03:00.667Z\",\n        \"lastActiveAt\": \"1999-09-27T09:28:51.318Z\",\n        \"createdAt\": \"1999-03-16T03:15:51.851Z\",\n        \"updatedAt\": \"1987-01-27T04:02:14.391Z\",\n        \"statusType\": \"regular\",\n        \"authToken\": \"string\",\n        \"rentalHistory\": [\n          {\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"homeownerPhone\": 1176,\n            \"id\": 2555,\n            \"user\": {\n              \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n            },\n            \"applicantId\": 9617,\n            \"price\": 5969,\n            \"term\": 1530\n          },\n          {\n            \"address\": \"string\",\n            \"city\": \"str\",\n            \"homeownerPhone\": 7862,\n            \"id\": 1448,\n            \"user\": {\n              \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n            },\n            \"applicantId\": 3044,\n            \"price\": 2326,\n            \"term\": 3762\n          }\n        ],\n        \"deleted\": false,\n        \"rentalPaymentAccount\": {\n          \"stripeAccountId\": \"string\",\n          \"isStripeOnboardingFinished\": false,\n          \"createdAt\": \"1999-04-25T12:16:25.389Z\",\n          \"updatedAt\": \"1983-12-17T11:14:43.287Z\"\n        },\n        \"newsletterSubscription\": false,\n        \"premiumPartner\": false,\n        \"locale\": \"en_US\",\n        \"currency\": \"string\",\n        \"lengthUnit\": \"ft\",\n        \"isRaiUser\": false\n      },\n      \"apartmentId\": 5528,\n      \"isViewed\": true,\n      \"topicType\": \"string\",\n      \"apartmentAddress\": {\n        \"latitude\": 0,\n        \"longitude\": 0,\n        \"apartmentNumber\": \"string\",\n        \"state\": {\n          \"id\": 7246,\n          \"shortName\": null,\n          \"name\": null,\n          \"description\": \"string\"\n        },\n        \"providedBy\": \"string\",\n        \"providerId\": null,\n        \"adminLevels\": {},\n        \"coordinates\": {\n          \"latitude\": 7276.920346333451,\n          \"longitude\": 3205.0968880875876\n        },\n        \"bounds\": {\n          \"northeast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"southwest\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"streetNumber\": null,\n        \"streetName\": null,\n        \"postalCode\": null,\n        \"locality\": null,\n        \"sublocality\": null,\n        \"country\": {\n          \"shortCode\": \"string\",\n          \"longCode\": \"string\",\n          \"name\": \"string\",\n          \"phone\": \"string\"\n        },\n        \"timezone\": null,\n        \"shortAddress\": \"string\",\n        \"exposeAddress\": true\n      },\n      \"countUnreaded\": 5738,\n      \"countUnviewed\": 953,\n      \"apartmentUrl\": \"string\"\n    }\n  ],\n  \"total\": 5012,\n  \"page\": 7876\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26b030b6-859a-4ca8-b2c5-71a9d354a596",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":userType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userType",
+                      "description": "(Required) User type filter"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fa6ca66-c64e-4369-adc3-0db6bc88b1ff",
+          "name": "Get or create conversation for apartment listing.",
+          "request": {
+            "name": "Get or create conversation for apartment listing.",
+            "description": {
+              "content": "Available since API version 1. Gets existing or creates new conversation for apartment listing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                "apartment",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Apartment listing ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f12a3dff-4eb3-414c-aa25-2af8c2635b17",
+              "name": "Returns conversation ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Apartment listing ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8520\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc2ce6d9-7c61-49f9-a244-2f6ee02a0409",
+              "name": "Invalid request or user trying to message themselves",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Apartment listing ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d53843d-e2c4-4d69-897f-3fe45f89f45d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Apartment listing ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4288157-d60e-451e-b910-4df03099345e",
+              "name": "User not related to listing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "apartment",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Apartment listing ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6caaf9ef-6616-4fce-9980-fbc72f009db3",
+          "name": "Get or create conversation for rental.",
+          "request": {
+            "name": "Get or create conversation for rental.",
+            "description": {
+              "content": "Available since API version 1. Gets existing or creates new conversation for rental between tenant and homeowner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                "rental",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Rental ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT"
+          },
+          "response": [
+            {
+              "id": "50884414-9051-447b-9b82-9cff2318cfbd",
+              "name": "Returns conversation ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "rental",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Rental ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8520\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60b132da-c714-4125-b8a8-d4a4f2ff7390",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "rental",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Rental ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b9fec71-07b4-4b1b-b134-508110fe912b",
+              "name": "User not related to rental",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "rental",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Rental ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2c93242-7eef-4dd5-b793-d93b3f75d6c4",
+          "name": "Get conversation details.",
+          "request": {
+            "name": "Get conversation details.",
+            "description": {
+              "content": "Available since API version 1. Returns detailed information about a specific conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                "conversation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "855612d1-3479-4ddd-852b-d4e615c54b9e",
+              "name": "Returns conversation details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "conversation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversationId\": 4744,\n  \"lastMessage\": {\n    \"body\": \"string\",\n    \"id\": 7480,\n    \"conversationId\": 6174,\n    \"userId\": 5991,\n    \"readed\": false,\n    \"viewed\": false,\n    \"notified\": false,\n    \"notifiedAt\": \"1981-01-26T18:38:59.337Z\",\n    \"createdAt\": \"2006-07-30T23:11:55.412Z\",\n    \"updatedAt\": \"2013-04-15T06:15:40.033Z\"\n  },\n  \"partner\": {\n    \"nameFirst\": \"string\",\n    \"nameLast\": \"string\",\n    \"username\": \"string\",\n    \"phone\": \"stringstring\",\n    \"birthday\": \"1971-09-22T19:13:03.498Z\",\n    \"hasPassword\": true,\n    \"phoneCountryCode\": \"string\",\n    \"id\": 1181,\n    \"nameMiddle\": \"string\",\n    \"company\": {\n      \"id\": 5943,\n      \"name\": \"string\",\n      \"phone\": 816,\n      \"website\": \"string\",\n      \"logoThumbs\": \"string\",\n      \"email\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"st\",\n      \"provider\": \"string\",\n      \"externalId\": \"string\",\n      \"createdAt\": \"2014-06-21T09:49:32.015Z\",\n      \"updatedAt\": \"2023-02-09T05:54:22.076Z\"\n    },\n    \"companyName\": \"string\",\n    \"profilePictureThumbs\": \"string\",\n    \"bio\": \"string\",\n    \"oauthProviders\": [\n      {\n        \"id\": 642,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      },\n      {\n        \"id\": 7470,\n        \"provider\": \"string\",\n        \"providerId\": \"string\",\n        \"connectId\": \"string\",\n        \"nameFirst\": \"string\",\n        \"nameLast\": \"string\",\n        \"pictureUrl\": \"string\",\n        \"appId\": \"string\"\n      }\n    ],\n    \"address\": {\n      \"street\": \"string\",\n      \"houseNumber\": \"string\",\n      \"city\": \"string\",\n      \"zip\": \"string\",\n      \"streetType\": \"string\",\n      \"state\": {\n        \"id\": 4763,\n        \"shortName\": null,\n        \"name\": null,\n        \"description\": \"string\"\n      }\n    },\n    \"creditScore\": {\n      \"score\": 3600,\n      \"creditScoreUpdatedAt\": \"1977-05-09T20:35:25.164Z\",\n      \"alert\": \"string\",\n      \"createdAt\": \"2001-09-15T19:28:14.974Z\",\n      \"updatedAt\": \"1993-10-17T18:40:00.225Z\"\n    },\n    \"criminalReport\": {\n      \"criminalRecordFound\": false,\n      \"status\": 205,\n      \"createdAt\": \"1946-10-16T15:04:01.604Z\",\n      \"updatedAt\": \"2013-06-01T08:47:52.617Z\"\n    },\n    \"stripeCustomer\": {\n      \"customerId\": \"string\",\n      \"user\": {\n        \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n      },\n      \"createdAt\": \"2012-11-25T04:20:49.677Z\",\n      \"updatedAt\": \"1956-08-11T17:05:05.830Z\"\n    },\n    \"active\": true,\n    \"fromNotBerryForbiddenCountry\": false,\n    \"verified\": false,\n    \"emailVerified\": false,\n    \"phoneVerified\": false,\n    \"registered\": true,\n    \"emailNotVerifiedAfter\": \"1995-01-26T19:51:38.778Z\",\n    \"lastActiveAt\": \"1992-05-13T21:50:29.897Z\",\n    \"createdAt\": \"1982-09-27T03:14:10.416Z\",\n    \"updatedAt\": \"1959-03-29T17:47:46.779Z\",\n    \"statusType\": \"regular\",\n    \"authToken\": \"string\",\n    \"rentalHistory\": [\n      {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"homeownerPhone\": 1075,\n        \"id\": 2572,\n        \"user\": {\n          \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n        },\n        \"applicantId\": 3842,\n        \"price\": 690,\n        \"term\": 3138\n      },\n      {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"homeownerPhone\": 9951,\n        \"id\": 8285,\n        \"user\": {\n          \"value\": \"<Circular reference to #/components/schemas/User detected>\"\n        },\n        \"applicantId\": 4551,\n        \"price\": 8090,\n        \"term\": 1266\n      }\n    ],\n    \"deleted\": false,\n    \"rentalPaymentAccount\": {\n      \"stripeAccountId\": \"string\",\n      \"isStripeOnboardingFinished\": false,\n      \"createdAt\": \"1979-12-18T21:44:35.849Z\",\n      \"updatedAt\": \"1988-12-31T05:20:40.211Z\"\n    },\n    \"newsletterSubscription\": false,\n    \"premiumPartner\": false,\n    \"locale\": \"en_US\",\n    \"currency\": \"string\",\n    \"lengthUnit\": \"m\",\n    \"isRaiUser\": false\n  },\n  \"apartmentId\": 2531,\n  \"isViewed\": true,\n  \"topicType\": \"string\",\n  \"apartmentAddress\": {\n    \"latitude\": 0,\n    \"longitude\": 0,\n    \"apartmentNumber\": \"string\",\n    \"state\": {\n      \"id\": 2477,\n      \"shortName\": null,\n      \"name\": null,\n      \"description\": \"string\"\n    },\n    \"providedBy\": \"string\",\n    \"providerId\": null,\n    \"adminLevels\": {},\n    \"coordinates\": {\n      \"latitude\": 2494.5524110863194,\n      \"longitude\": 8634.172341917103\n    },\n    \"bounds\": {\n      \"northeast\": {\n        \"latitude\": 1167.209465065353,\n        \"longitude\": 5102.395832659275\n      },\n      \"southwest\": {\n        \"latitude\": 8200.109989666207,\n        \"longitude\": 9952.524138671786\n      }\n    },\n    \"streetNumber\": null,\n    \"streetName\": null,\n    \"postalCode\": null,\n    \"locality\": null,\n    \"sublocality\": null,\n    \"country\": {\n      \"shortCode\": \"string\",\n      \"longCode\": \"string\",\n      \"name\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"timezone\": null,\n    \"shortAddress\": \"string\",\n    \"exposeAddress\": true\n  },\n  \"countUnreaded\": 8105,\n  \"countUnviewed\": 8466,\n  \"apartmentUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66e2d6a5-ce5f-4eb0-a91c-5a5a018e6d7a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "conversation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "886fa301-53be-4ebd-b087-a5bbe75bb8d6",
+              "name": "Access denied to conversation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "conversation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af461688-040c-4735-8c61-07de834d8c07",
+              "name": "Conversation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    "conversation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adeb4b58-282e-4ea0-898a-bb80b319b4c4",
+          "name": "Get messages from conversation.",
+          "request": {
+            "name": "Get messages from conversation.",
+            "description": {
+              "content": "Available since API version 1. Returns paginated list of messages from a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<integer>",
+                  "description": "Get messages before this message ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of messages to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "9c9076f5-8d55-4daa-ba4e-5ff31f656b72",
+              "name": "Returns messages from conversation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"body\": \"string\",\n      \"id\": 7803,\n      \"conversationId\": 4189,\n      \"userId\": 3531,\n      \"readed\": false,\n      \"viewed\": false,\n      \"notified\": false,\n      \"notifiedAt\": \"1995-12-13T23:27:29.494Z\",\n      \"createdAt\": \"1971-08-12T17:46:09.658Z\",\n      \"updatedAt\": \"1966-01-16T01:22:08.279Z\"\n    },\n    {\n      \"body\": \"string\",\n      \"id\": 256,\n      \"conversationId\": 5831,\n      \"userId\": 8785,\n      \"readed\": false,\n      \"viewed\": false,\n      \"notified\": false,\n      \"notifiedAt\": \"1957-03-13T12:39:57.769Z\",\n      \"createdAt\": \"2019-09-10T10:02:15.985Z\",\n      \"updatedAt\": \"1965-05-28T03:14:24.977Z\"\n    }\n  ],\n  \"hasMessagesBefore\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e8e66b8-b2e9-4bf0-b485-f7e0db9ab913",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "569579cf-21ef-40b0-83e6-7fd50daff468",
+              "name": "Access denied to conversation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "102d4a95-a063-4f58-a845-8c55a8dc2793",
+          "name": "Send message to conversation.",
+          "request": {
+            "name": "Send message to conversation.",
+            "description": {
+              "content": "Available since API version 1. Sends a new message to the specified conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "messages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be2c1cb6-f41b-490e-bce1-5ec5c4de5185",
+              "name": "Message sent successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"body\": \"string\",\n  \"id\": 5302,\n  \"conversationId\": 330,\n  \"userId\": 1971,\n  \"readed\": false,\n  \"viewed\": false,\n  \"notified\": false,\n  \"notifiedAt\": \"2016-06-24T20:18:46.193Z\",\n  \"createdAt\": \"2014-06-04T17:01:43.593Z\",\n  \"updatedAt\": \"1979-02-25T05:43:55.658Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "640e7394-78cf-4312-ac07-14081684b352",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ac64082-a5bb-45e6-959a-11d35163ba17",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7201135c-a0dc-4af0-bdd3-283ea38c2506",
+              "name": "Access denied to conversation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "21f7f3f0-be8a-4b62-b9c8-dadddd63d05e",
+    "name": "Rentberry Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

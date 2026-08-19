@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "c6251a1e-c701-408f-bbf8-0f9a1246a162",
+      "name": "Virtual Tours",
+      "description": {
+        "content": "Virtual Tours",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c389dee-c408-48e9-8c2a-b42a1391b175",
+          "name": "Get virtual tour by ID",
+          "request": {
+            "name": "Get virtual tour by ID",
+            "description": {
+              "content": "Available since API version 4. Returns virtual tour information for a specific virtual tour ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v{{version}}",
+                "listing",
+                "virtual-tour",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Virtual tour ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9cfefa9-7ea1-4691-b45c-b75bcddb93d7",
+              "name": "Virtual tour information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "listing",
+                    "virtual-tour",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Virtual tour ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\",\n  \"id\": 4022,\n  \"isMain\": false,\n  \"duration\": 3229,\n  \"thumbnailUrl\": \"string\",\n  \"publishedAt\": \"2005-05-04T13:43:05.454Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "217e959e-ffd2-4269-a598-6d5d63c15af2",
+              "name": "Virtual tour not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v{{version}}",
+                    "listing",
+                    "virtual-tour",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Virtual tour ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "version"
+    }
+  ],
+  "info": {
+    "_postman_id": "e2c4da63-e8a2-4f15-bfb9-ea058adcc0ca",
+    "name": "Rentberry Virtual Tours API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Renting Done Right. Finally.",
+      "type": "text/plain"
+    }
+  }
+}

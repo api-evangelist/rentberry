@@ -1,0 +1,68 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Newsletter API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Newsletter
+  description: Newsletter
+paths:
+  /v{version}/newsletter:
+    post:
+      tags:
+      - Newsletter
+      summary: Subscribe user to newsletter.
+      description: Available since API version 1. Subscribes user to newsletter and optionally to MailChimp list.
+      operationId: post_api_v1_newsletter_user_add
+      parameters:
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsletterUserType'
+      responses:
+        '200':
+          description: User subscribed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsletterUser'
+        '400':
+          description: Validation failed or email already subscribed
+components:
+  schemas:
+    NewsletterUser:
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    NewsletterUserType:
+      required:
+      - email
+      - type
+      properties:
+        email:
+          type: string
+        type:
+          type: string
+          enum:
+          - newsLetter
+          - newsLetterHomeowner
+      type: object

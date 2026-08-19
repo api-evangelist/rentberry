@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: Rentberry Providers API
+  description: Renting Done Right. Finally.
+  version: 4
+tags:
+- name: Providers
+  description: Providers
+paths:
+  /v{version}/provider/configuration/{provider}:
+    get:
+      tags:
+      - Providers
+      summary: Get provider configuration.
+      description: Available since API version 3. Returns configuration for specified listing provider.
+      operationId: get_api_get_provider_configuration
+      parameters:
+      - name: provider
+        in: path
+        description: Provider name
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '200':
+          description: Returns provider configuration.
+          content:
+            application/json:
+              schema:
+                properties:
+                  logo:
+                    properties:
+                      1x:
+                        description: Logo URL 1x
+                        type: string
+                      2x:
+                        description: Logo URL 2x
+                        type: string
+                    type:
+                    - object
+                    - 'null'
+                type: object
+  /v{version}/provider/{provider}/logo-{size}:
+    get:
+      tags:
+      - Providers
+      summary: Get provider logo redirect.
+      description: Available since API version 3. Redirects to provider logo URL.
+      operationId: get_api_get_provider_logo
+      parameters:
+      - name: provider
+        in: path
+        description: Provider name
+        required: true
+        schema:
+          type: string
+      - name: size
+        in: path
+        description: Logo size
+        required: true
+        schema:
+          type: string
+          default: 1x
+          enum:
+          - 1x
+          - 2x
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: \d+
+      responses:
+        '302':
+          description: Redirects to logo URL
+        '404':
+          description: Logo not found
