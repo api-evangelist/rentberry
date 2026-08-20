@@ -18,6 +18,19 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
+- Real-Estate
+- PropTech
+- Rentals
+- Rental Marketplace
+- Property Management
+- Tenant Screening
+- E-Signature
+- Payments
+- Listings
+- Search
+- Geocoding
+- Marketplace
+tags_raw:
 - real-estate
 - proptech
 - rentals
@@ -41,6 +54,12 @@ apis:
   humanURL: https://github.com/Rentberry/geocoder
   baseURL: https://github.com/Rentberry/geocoder
   tags:
+  - Geocoding
+  - gRPC
+  - Location
+  - Timezone
+  - Open-Source
+  tags_raw:
   - geocoding
   - grpc
   - location
@@ -57,6 +76,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -81,6 +102,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -225,6 +248,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -441,6 +466,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -513,6 +540,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -537,6 +566,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -633,6 +664,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Rentals
+  tags_raw:
   - Rental
   properties:
   - type: OpenAPI
@@ -921,6 +954,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -1088,7 +1123,8 @@ apis:
   description: The V{version} API from Rentberry — 21 operation(s) for v{version}.
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
-  tags:
+  tags: []
+  tags_raw:
   - V{version}
   properties:
   - type: OpenAPI
