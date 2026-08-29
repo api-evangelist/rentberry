@@ -10,6 +10,20 @@ description: >-
   concept aimed at digital nomads. Rentberry operates a versioned REST API at api.rentberry.com whose Swagger UI at
   /docs publishes an OpenAPI 3.0.0 description covering applications, auth and social OAuth login, listings, search,
   contracts, screening, payments, rentals, messaging, user verification and localization.
+deliveryModel:
+  model: open-core
+  license: GPL-3.0
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.rentberry.com/files/seo/main.jpg
 url: https://raw.githubusercontent.com/api-evangelist/rentberry/refs/heads/main/apis.yml
 x-type: company
@@ -1173,6 +1187,13 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/rentberry-capability-edges.yml
+  name: Rentberry Business Capability Map
+- type: IssueTracker
+  url: https://github.com/Rentberry/geocoder/issues
+- type: Releases
+  url: https://github.com/Rentberry/geocoder/releases
 - type: MCPServer
   url: mcp/rentberry-mcp.yml
 - type: License
