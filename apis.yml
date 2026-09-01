@@ -32,17 +32,17 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
-- real-estate
-- proptech
+- Real-Estate
+- PropTech
 - Rentals
-- rental-marketplace
-- property-management
-- tenant-screening
-- e-signature
+- Rental Marketplace
+- Property Management
+- Tenant Screening
+- E-Signature
 - Payments
 - Listings
 - Search
-- geocoding
+- Geocoding
 - Marketplace
 tags_raw:
 - real-estate
@@ -68,10 +68,10 @@ apis:
   humanURL: https://github.com/Rentberry/geocoder
   baseURL: https://github.com/Rentberry/geocoder
   tags:
-  - geocoding
-  - grpc
+  - Geocoding
+  - gRPC
   - Location
-  - timezone
+  - Timezone
   - Open-Source
   tags_raw:
   - geocoding
@@ -678,7 +678,7 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
-  - Rental
+  - Rentals
   tags_raw:
   - Rental
   properties:
