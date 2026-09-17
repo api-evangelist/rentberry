@@ -587,32 +587,6 @@ apis:
     url: data-model/rentberry-data-model.yml
   - type: Lifecycle
     url: lifecycle/rentberry-lifecycle.yml
-- aid: rentberry:rentberry-oauth-api
-  name: Rentberry O Auth API
-  description: OAuth
-  humanURL: https://api.rentberry.com/docs
-  baseURL: https://api.rentberry.com/
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/rentberry-oauth-api-openapi.yml
-  - type: APIReference
-    url: https://api.rentberry.com/docs
-  - type: Documentation
-    url: https://api.rentberry.com/docs
-  - type: Authentication
-    url: authentication/rentberry-authentication.yml
-  - type: Conventions
-    url: conventions/rentberry-conventions.yml
-  - type: ErrorCatalog
-    url: errors/rentberry-problem-types.yml
-  - type: DataModel
-    url: data-model/rentberry-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/rentberry-lifecycle.yml
 - aid: rentberry:rentberry-payments-api
   name: Rentberry Payments API
   description: Payments
@@ -1180,6 +1154,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/rentberry-virtual-tours-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentberry.com/docs
+  - type: Documentation
+    url: https://api.rentberry.com/docs
+  - type: Authentication
+    url: authentication/rentberry-authentication.yml
+  - type: Conventions
+    url: conventions/rentberry-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentberry-problem-types.yml
+  - type: DataModel
+    url: data-model/rentberry-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/rentberry-lifecycle.yml
+- aid: rentberry:rentberry-oauth-api
+  name: Rentberry O Auth API
+  description: OAuth
+  humanURL: https://github.com/Rentberry/geocoder
+  baseURL: https://github.com/Rentberry/geocoder
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/rentberry-oauth-api-openapi.yml
   - type: APIReference
     url: https://api.rentberry.com/docs
   - type: Documentation
