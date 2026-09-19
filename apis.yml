@@ -543,6 +543,8 @@ apis:
   humanURL: https://api.rentberry.com/docs
   baseURL: https://api.rentberry.com/
   tags:
+  - Newsletters
+  tags_raw:
   - Newsletter
   properties:
   - type: OpenAPI
@@ -1174,6 +1176,8 @@ apis:
   humanURL: https://github.com/Rentberry/geocoder
   baseURL: https://github.com/Rentberry/geocoder
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
