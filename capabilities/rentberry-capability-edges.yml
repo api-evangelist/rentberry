@@ -1,0 +1,97 @@
+slug: rentberry
+provider: Rentberry
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: Screening
+  spec_file: rentberry-screening-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.9
+  evidence: Perform tenant screening; Validate tenant data for screening; schemas UserCreditScore, UserCriminalReport,
+    UserRentalHistory, ScreeningRequest
+  reason: Operations create, resend and execute homeowner-initiated tenant screening requests with credit
+    score, criminal report and rental history checks — precisely landlord-side tenant application and
+    screening.
+- tag: Applications
+  spec_file: rentberry-applications-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.85
+  evidence: POST /applicant/proof-income 'Upload a new applicant attachment'; 'Submit the applicant for
+    review'; schemas ApplicantRentalHistoryType, ApplicantReferencesType, ListingApplication
+  reason: Operations capture rental applicants, income proof, rental history and references, and submit
+    applications against listings — landlord-side tenant application intake and screening.
+- tag: Screening Reports
+  spec_file: rentberry-screening-reports-api-openapi.yml
+  capability_id: BC-4950.40
+  capability_id_l1: BC-4950
+  capability_name: Tenant Application & Screening
+  confidence: 0.82
+  evidence: GET /v{version}/screening/criminal-report/{id} 'Get criminal background report (HTML)'; 'Get
+    credit score report'; schemas CreditReportDTO, CriminalReportDTO
+  reason: Operations retrieve credit and criminal background reports on rental applicants for a long-term
+    rental marketplace, which is exactly landlord-side tenant application screening (credit, identity,
+    reference checks).
+- tag: Contracts
+  spec_file: rentberry-contracts-api-openapi.yml
+  capability_id: BC-4950.50
+  capability_id_l1: BC-4950
+  capability_name: Lease Negotiation & Execution
+  confidence: 0.8
+  evidence: '''Invite to sign contract''; ''Get contract signing URL''; ''Get contract signatures''; GET
+    /contract/rental/{id} ''List contracts for a rental'''
+  reason: Contract creation, publication, e-signature invitation and signature retrieval tied to Rental/Listing
+    schemas — landlord-side lease drafting, execution and signing.
+- tag: Leads
+  spec_file: rentberry-leads-api-openapi.yml
+  capability_id: BC-4950.30
+  capability_id_l1: BC-4950
+  capability_name: Prospect & Inquiry Management
+  confidence: 0.7
+  evidence: POST /v{version}/apartment/{id}/lead — "Get lead information for a listing"
+  reason: Lead capture against a rental listing on a long-term rental marketplace maps to landlord-side
+    prospect and inquiry handling. Single thin operation limits confidence.
+- tag: Listing Pictures
+  spec_file: rentberry-listing-pictures-api-openapi.yml
+  capability_id: BC-4950.20
+  capability_id_l1: BC-4950
+  capability_name: Vacancy Marketing & Listing
+  confidence: 0.7
+  evidence: '"Create listing picture", "Update pictures order", "Detect amenities from listing pictures";
+    schema ListingPicture'
+  reason: Management of listing media for rental listings is vacancy marketing/listing content production.
+    Could arguably be listing-data (MLS-style) management, so L2 choice carries some ambiguity.
+- tag: Listings
+  spec_file: rentberry-listings-api-openapi.yml
+  capability_id: BC-4950.20
+  capability_id_l1: BC-4950
+  capability_name: Vacancy Marketing & Listing
+  confidence: 0.7
+  evidence: '"Create new listing", "Get homeowner listings list", "Create inquiry for a listing", "Generate
+    listing description as stream"'
+  reason: Landlord/homeowner rental listing lifecycle plus inquiries on a rental marketplace — landlord-side
+    leasing. Surface spans listing content, favorites and inquiries so the specific L2 is somewhat ambiguous.
+- tag: Rental
+  spec_file: rentberry-rental-api-openapi.yml
+  capability_id: BC-4950.60
+  capability_id_l1: BC-4950
+  capability_name: Lease Administration (Landlord-Side)
+  confidence: 0.7
+  evidence: Create a new rental; Activate rental by tenant; Send invitation to homeowner; Resend invitation
+    to tenant; Upload document to rental
+  reason: The 'rental' object is the landlord-tenant rental agreement record — created, activated by the
+    tenant, archived, with documents attached and both parties invited. That is landlord-side lease/rental
+    administration; some ambiguity between lease execution and ongoing administration.
