@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - User Verification
-      summary: Handle IDology verification callback.
+      summary: Handle IDology verification callback
       description: Available since API version 1. Webhook endpoint for IDology verification service callbacks.
       operationId: post_api_v1_user_verify_callback
       parameters:
@@ -37,7 +37,7 @@ paths:
     post:
       tags:
       - User Verification
-      summary: Start user verification process (US only).
+      summary: Start user verification process (US only)
       description: Available since API version 1. Step 1 of US user verification process using IDology.
       operationId: post_api_v1_user_verify
       parameters:
@@ -85,7 +85,7 @@ paths:
     post:
       tags:
       - User Verification
-      summary: Initialize verification process (non-US).
+      summary: Initialize verification process (non-US)
       description: Available since API version 1. Step 1 of international user verification process.
       operationId: post_api_v1_user_verify_init
       parameters:
@@ -124,7 +124,7 @@ paths:
     post:
       tags:
       - User Verification
-      summary: Upload documents for verification (non-US).
+      summary: Upload documents for verification (non-US)
       description: Available since API version 1. Step 2 of international user verification process.
       operationId: post_api_v1_user_verify_by_documents
       parameters:
@@ -155,7 +155,7 @@ paths:
     get:
       tags:
       - User Verification
-      summary: Check document verification status (non-US).
+      summary: Check document verification status (non-US)
       description: Available since API version 1. Step 3 of international user verification - check processing status.
       operationId: get_api_v1_user_verify_document_status
       parameters:
@@ -188,7 +188,7 @@ paths:
     post:
       tags:
       - User Verification
-      summary: Submit verification question answers (US only).
+      summary: Submit verification question answers (US only)
       description: Available since API version 1. Step 2 of US user verification process.
       operationId: post_api_v1_user_verify_answers
       parameters:
@@ -227,149 +227,6 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    VerifyInitType:
-      required:
-      - nameFirst
-      - nameLast
-      properties:
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-      type: object
-    UserAddress2:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State2'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    UserStripeCustomer2:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User2'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    AccountAddressType:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      - stateId
-      properties:
-        street:
-          type: string
-        houseNumber:
-          type: string
-        streetType:
-          type: string
-        city:
-          type: string
-        zip:
-          type: string
-        stateId:
-          type: integer
-      type: object
-    State2:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-      type: object
     User2:
       required:
       - nameFirst
@@ -499,17 +356,15 @@ components:
           type: boolean
           default: false
       type: object
-    AnswersVerifyQuestionsType:
+    VerifyInitType:
       required:
-      - idNumber
-      - answers
+      - nameFirst
+      - nameLast
       properties:
-        idNumber:
-          type: integer
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerifyAnswerType'
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
       type: object
     AccountVerifyType:
       required:
@@ -529,6 +384,20 @@ components:
           type: string
         address:
           $ref: '#/components/schemas/AccountAddressType'
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       type: object
     Company:
       properties:
@@ -571,16 +440,6 @@ components:
           type: string
           format: date-time
       type: object
-    VerifyAnswerType:
-      required:
-      - type
-      - answer
-      properties:
-        type:
-          type: string
-        answer:
-          type: string
-      type: object
     UserCriminalReport:
       properties:
         criminalRecordFound:
@@ -595,6 +454,105 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    AccountAddressType:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      - stateId
+      properties:
+        street:
+          type: string
+        houseNumber:
+          type: string
+        streetType:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+        stateId:
+          type: integer
+      type: object
+    UserAddress2:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    AnswersVerifyQuestionsType:
+      required:
+      - idNumber
+      - answers
+      properties:
+        idNumber:
+          type: integer
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerifyAnswerType'
       type: object
     VerifyByDocumentsType:
       required:
@@ -618,4 +576,46 @@ components:
           - driverLicense
           - idCard
           - passport
+      type: object
+    State2:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    VerifyAnswerType:
+      required:
+      - type
+      - answer
+      properties:
+        type:
+          type: string
+        answer:
+          type: string
       type: object

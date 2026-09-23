@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - User Phone Verification
-      summary: Change user phone number and send verification code.
+      summary: Change user phone number and send verification code
       description: Available since API version 1. Updates user phone number and sends SMS verification code.
       operationId: post_api_v1_user_phone_change
       parameters:
@@ -42,7 +42,7 @@ paths:
     post:
       tags:
       - User Phone Verification
-      summary: Validate phone verification code.
+      summary: Validate phone verification code
       description: Available since API version 1. Validates the SMS verification code and marks phone as verified.
       operationId: post_api_v1_user_phone_code_validate
       parameters:
@@ -75,137 +75,6 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    AccountPhoneType:
-      required:
-      - phone
-      properties:
-        phone:
-          type: integer
-      type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    UserAddress2:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State2'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    PhoneVerificationRequest:
-      required:
-      - phone
-      - code
-      properties:
-        phone:
-          type: integer
-        code:
-          type: integer
-          maximum: 9999
-          minimum: 1000
-      type: object
-    UserStripeCustomer2:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User2'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    State2:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-      type: object
     User2:
       required:
       - nameFirst
@@ -335,6 +204,32 @@ components:
           type: boolean
           default: false
       type: object
+    AccountPhoneType:
+      required:
+      - phone
+      properties:
+        phone:
+          type: integer
+      type: object
+    State2:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
     Company:
       properties:
         id:
@@ -384,6 +279,111 @@ components:
         status:
           type: integer
           maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress2:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    PhoneVerificationRequest:
+      required:
+      - phone
+      - code
+      properties:
+        phone:
+          type: integer
+        code:
+          type: integer
+          maximum: 9999
+          minimum: 1000
+      type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
         createdAt:
           type: string
           format: date-time

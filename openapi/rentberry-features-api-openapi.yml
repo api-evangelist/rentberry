@@ -11,7 +11,7 @@ paths:
     get:
       tags:
       - Features
-      summary: Get feature payment details.
+      summary: Get feature payment details
       description: Available since API version 1. Returns details of a specific feature payment.
       operationId: get_api_v1_feature_payment_view
       parameters:
@@ -41,7 +41,7 @@ paths:
     get:
       tags:
       - Features
-      summary: Get feature information.
+      summary: Get feature information
       description: Available since API version 1. Returns feature status and availability for the current user.
       operationId: get_api_v1_feature_view
       parameters:
@@ -78,7 +78,7 @@ paths:
     get:
       tags:
       - Features
-      summary: Get unused feature ticket.
+      summary: Get unused feature ticket
       description: Available since API version 1. Returns unused feature ticket for the specified type.
       operationId: get_api_v1_feature_view_ticket
       parameters:
@@ -110,7 +110,7 @@ paths:
     get:
       tags:
       - Features
-      summary: Get feature prices for currency.
+      summary: Get feature prices for currency
       description: Available since API version 1. Returns feature prices for the specified currency.
       operationId: get_api_v1_feature_view_prices
       parameters:
@@ -139,7 +139,7 @@ paths:
     post:
       tags:
       - Features
-      summary: Create Stripe payment for feature.
+      summary: Create Stripe payment for feature
       description: Available since API version 1. Creates a Stripe payment intent for purchasing a feature.
       operationId: post_api_v1_feature_create_stripe_payment
       parameters:
@@ -189,26 +189,23 @@ paths:
           description: Screening request already paid
 components:
   schemas:
-    StripePayment:
+    FeaturePayment:
       properties:
         id:
           type: integer
         amount:
           type: string
-          default: '0'
+        currency:
+          type: string
         status:
-          type: string
-        cancellationReason:
-          type: string
-        errorMessage:
-          type: string
-        internalType:
-          type: string
-        last4Digits:
-          type: string
-        paymentMethod:
-          type: string
-          default: card
+          type: integer
+          default: 1
+        type:
+          type:
+          - string
+          - 'null'
+        ticket:
+          $ref: '#/components/schemas/FeatureTicket'
         createdAt:
           type: string
           format: date-time
@@ -237,23 +234,26 @@ components:
           type: string
           format: date-time
       type: object
-    FeaturePayment:
+    StripePayment:
       properties:
         id:
           type: integer
         amount:
           type: string
-        currency:
-          type: string
+          default: '0'
         status:
-          type: integer
-          default: 1
-        type:
-          type:
-          - string
-          - 'null'
-        ticket:
-          $ref: '#/components/schemas/FeatureTicket'
+          type: string
+        cancellationReason:
+          type: string
+        errorMessage:
+          type: string
+        internalType:
+          type: string
+        last4Digits:
+          type: string
+        paymentMethod:
+          type: string
+          default: card
         createdAt:
           type: string
           format: date-time

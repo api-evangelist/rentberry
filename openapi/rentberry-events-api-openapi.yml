@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - Events
-      summary: Log event statistic (deprecated).
+      summary: Log event statistic (deprecated)
       description: Available since API version 2. This endpoint is deprecated and will be removed in future versions.
       operationId: post_api_event_statistic
       parameters:

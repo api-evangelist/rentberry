@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Rentberry V{version} V{version} API
+  title: Rentberry V{version} API
   description: Renting Done Right. Finally.
   version: 4
 tags:
@@ -21,6 +21,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v4 email unsubscribe callback
+      x-summary-source: derived
   /v{version}/mailchimp/webhook:
     post:
       operationId: post_api_v4_mailchimp_webhook
@@ -36,6 +38,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v4 mailchimp webhook
+      x-summary-source: derived
   /v{version}/mandrill/webhook:
     get:
       operationId: get_api_v4_mandrill_webhook
@@ -51,6 +55,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Get api v4 mandrill webhook
+      x-summary-source: derived
     post:
       operationId: post_api_v4_mandrill_webhook
       parameters:
@@ -65,6 +71,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v4 mandrill webhook
+      x-summary-source: derived
   /v{version}/stripe/connected/webhook:
     post:
       operationId: post_api_v1_stripe_connected_webhook
@@ -80,6 +88,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 stripe connected webhook
+      x-summary-source: derived
   /v{version}/stripe/direct/webhook:
     post:
       operationId: post_api_v1_stripe_direct_webhook
@@ -95,6 +105,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 stripe direct webhook
+      x-summary-source: derived
   /v{version}/email/render/{type}:
     post:
       operationId: post_email_render_preview
@@ -115,6 +127,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post email render preview
+      x-summary-source: derived
   /v{version}/email/types:
     get:
       operationId: get_get_email_types
@@ -130,6 +144,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Get get email types
+      x-summary-source: derived
   /v{version}/email/parameters/{type}:
     get:
       operationId: get_get_email_parameters
@@ -150,6 +166,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Get get email parameters
+      x-summary-source: derived
   /v{version}/email/send:
     post:
       operationId: post_email_test_send
@@ -165,6 +183,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post email test send
+      x-summary-source: derived
   /v{version}/push-testing-helper/notifications-list:
     get:
       operationId: get_api_v1_notification_test_helper_list
@@ -180,6 +200,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Get api v1 notification test helper list
+      x-summary-source: derived
   /v{version}/push-testing-helper/notification-send:
     post:
       operationId: post_api_v1_notification_test_helper_send
@@ -195,6 +217,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 notification test helper send
+      x-summary-source: derived
   /v{version}/testing-helper/create-apartment:
     post:
       operationId: post_api_v1_test_helper_apartment_create
@@ -210,6 +234,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper apartment create
+      x-summary-source: derived
   /v{version}/testing-helper/create-rented-apartment:
     post:
       operationId: post_api_v1_test_helper_rented_apartment_create
@@ -225,6 +251,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper rented apartment create
+      x-summary-source: derived
   /v{version}/testing-helper/create-inactive-apartment:
     post:
       operationId: post_api_v1_test_helper_inactive_apartment_create
@@ -240,6 +268,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper inactive apartment create
+      x-summary-source: derived
   /v{version}/testing-helper/create-apples-apartment:
     post:
       operationId: post_api_v1_test_helper_apples_apartment_create
@@ -255,6 +285,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper apples apartment create
+      x-summary-source: derived
   /v{version}/testing-helper/create-declined-application:
     post:
       operationId: post_api_v1_test_helper_declined_application_create
@@ -270,6 +302,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper declined application create
+      x-summary-source: derived
   /v{version}/testing-helper/create-roommates-application:
     post:
       operationId: post_api_v1_test_helper_roommates_application_create
@@ -285,6 +319,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper roommates application create
+      x-summary-source: derived
   /v{version}/testing-helper/create-application:
     post:
       operationId: post_api_v1_test_helper_application_create
@@ -300,6 +336,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper application create
+      x-summary-source: derived
   /v{version}/testing-helper/create-application-proof-income:
     post:
       operationId: post_api_v1_test_helper_application_proof_create
@@ -315,6 +353,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper application proof create
+      x-summary-source: derived
   /v{version}/testing-helper/update-contract-status:
     post:
       operationId: post_api_v1_test_helper_update_contract_status
@@ -330,6 +370,8 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper update contract status
+      x-summary-source: derived
   /v{version}/testing-helper/update-apartment-listed-at:
     post:
       operationId: post_api_v1_test_helper_update_apartment_listed_at
@@ -345,3 +387,5 @@ paths:
           description: ''
       tags:
       - V{version}
+      summary: Post api v1 test helper update apartment listed at
+      x-summary-source: derived

@@ -11,7 +11,7 @@ paths:
     get:
       tags:
       - Providers
-      summary: Get provider configuration.
+      summary: Get provider configuration
       description: Available since API version 3. Returns configuration for specified listing provider.
       operationId: get_api_get_provider_configuration
       parameters:
@@ -50,7 +50,7 @@ paths:
     get:
       tags:
       - Providers
-      summary: Get provider logo redirect.
+      summary: Get provider logo redirect
       description: Available since API version 3. Redirects to provider logo URL.
       operationId: get_api_get_provider_logo
       parameters:

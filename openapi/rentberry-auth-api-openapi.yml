@@ -755,25 +755,221 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    union: []
-    UserOauthProvider:
+    User2:
+      required:
+      - nameFirst
+      - nameLast
+      - username
+      - phone
+      - birthday
+      properties:
+        hasPassword:
+          type: boolean
+        phoneCountryCode:
+          type: string
+        id:
+          type: integer
+        nameFirst:
+          type: string
+          maxLength: 255
+          minLength: 2
+        nameMiddle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        nameLast:
+          type: string
+          maxLength: 255
+          minLength: 2
+        company:
+          $ref: '#/components/schemas/Company'
+        companyName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        username:
+          type: string
+          maxLength: 255
+          minLength: 1
+        profilePictureThumbs:
+          type: string
+        phone:
+          type: string
+          maxLength: 15
+          minLength: 7
+        birthday:
+          type: string
+          format: date-time
+        bio:
+          type: string
+          maxLength: 1500
+        oauthProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserOauthProvider'
+        address:
+          $ref: '#/components/schemas/UserAddress2'
+        creditScore:
+          $ref: '#/components/schemas/UserCreditScore'
+        criminalReport:
+          $ref: '#/components/schemas/UserCriminalReport'
+        stripeCustomer:
+          $ref: '#/components/schemas/UserStripeCustomer2'
+        active:
+          type: boolean
+          default: true
+        fromNotBerryForbiddenCountry:
+          type: boolean
+          default: false
+        verified:
+          type: boolean
+          default: false
+        emailVerified:
+          type: boolean
+          default: false
+        phoneVerified:
+          type: boolean
+          default: false
+        registered:
+          type: boolean
+          default: true
+        emailNotVerifiedAfter:
+          type: string
+          format: date-time
+        lastActiveAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        statusType:
+          type: string
+          default: regular
+          enum:
+          - regular
+          - premium
+          - premium_pending
+          - vip
+          - vip_pending
+        authToken:
+          type: string
+        deleted:
+          type: boolean
+          default: false
+        rentalPaymentAccount:
+          $ref: '#/components/schemas/RentalPaymentAccount'
+        newsletterSubscription:
+          type: boolean
+          default: false
+        premiumPartner:
+          type: boolean
+          default: false
+        locale:
+          type: string
+          default: en_US
+          enum:
+          - en_US
+          - es_ES
+        currency:
+          type: string
+        lengthUnit:
+          type: string
+          enum:
+          - m
+          - ft
+        isRaiUser:
+          type: boolean
+          default: false
+      type: object
+    OAuthUserUser:
       properties:
         id:
           type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
         nameFirst:
           type: string
         nameLast:
           type: string
+        username:
+          type: string
+        phone:
+          type: string
         pictureUrl:
           type: string
-        appId:
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
           type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       type: object
     OAuthUserResponse:
       properties:
@@ -786,6 +982,71 @@ components:
         oauthProvider:
           type: string
         oauthConnectId:
+          type: string
+      type: object
+    UserAuthResponse:
+      properties:
+        id:
+          type: integer
+        hasPassword:
+          type: boolean
+        locale:
+          type: string
+        nameFirst:
+          type: string
+        nameMiddle:
+          type: string
+        nameLast:
+          type: string
+        companyName:
+          type: string
+        username:
+          type: string
+        statusType:
+          type: string
+        phone:
+          type: integer
+        birthday:
+          type: string
+          format: date-time
+        bio:
+          type: string
+        fromNotBerryForbiddenCountry:
+          type: boolean
+        active:
+          type: boolean
+        verified:
+          type: boolean
+        emailVerified:
+          type: boolean
+        phoneVerified:
+          type: boolean
+        registered:
+          type: boolean
+        emailNotVerifiedAfter:
+          type: string
+          format: date-time
+        lastActiveAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        authToken:
+          type: string
+        phoneCountryCode:
+          $ref: '#/components/schemas/union'
+        roles:
+          $ref: '#/components/schemas/union'
+        currency:
+          type: string
+        lengthUnit:
+          type: string
+        profilePictureThumbs:
+          type: string
+        rentalPaymentAccount:
+          $ref: '#/components/schemas/RentalPaymentAccount'
+        intercomSecret:
           type: string
       type: object
     UserAddress2:
@@ -819,35 +1080,24 @@ components:
           maxLength: 9
           minLength: 5
       type: object
-    UserCreditScore:
+    UserOauthProvider:
       properties:
-        score:
+        id:
           type: integer
-        creditScoreUpdatedAt:
+        provider:
           type: string
-          format: date-time
-        alert:
+        providerId:
           type: string
-        createdAt:
+        connectId:
           type: string
-          format: date-time
-        updatedAt:
+        nameFirst:
           type: string
-          format: date-time
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
+        nameLast:
           type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
+        pictureUrl:
           type: string
-          format: date-time
-        updatedAt:
+        appId:
           type: string
-          format: date-time
       type: object
     UserAuthResponseV3:
       required:
@@ -980,33 +1230,19 @@ components:
         intercomSecret:
           type: string
       type: object
-    UserStripeCustomer2:
+    RentalPaymentAccount:
       properties:
-        customerId:
+        stripeAccountId:
           type: string
-        user:
-          $ref: '#/components/schemas/User2'
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
         createdAt:
           type: string
           format: date-time
         updatedAt:
           type: string
           format: date-time
-      type: object
-    OAuthUserUser:
-      properties:
-        id:
-          type: integer
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        username:
-          type: string
-        phone:
-          type: string
-        pictureUrl:
-          type: string
       type: object
     State2:
       properties:
@@ -1027,234 +1263,12 @@ components:
           maxLength: 255
           minLength: 1
       type: object
-    UserAuthResponse:
+    UserStripeCustomer2:
       properties:
-        id:
-          type: integer
-        hasPassword:
-          type: boolean
-        locale:
+        customerId:
           type: string
-        nameFirst:
-          type: string
-        nameMiddle:
-          type: string
-        nameLast:
-          type: string
-        companyName:
-          type: string
-        username:
-          type: string
-        statusType:
-          type: string
-        phone:
-          type: integer
-        birthday:
-          type: string
-          format: date-time
-        bio:
-          type: string
-        fromNotBerryForbiddenCountry:
-          type: boolean
-        active:
-          type: boolean
-        verified:
-          type: boolean
-        emailVerified:
-          type: boolean
-        phoneVerified:
-          type: boolean
-        registered:
-          type: boolean
-        emailNotVerifiedAfter:
-          type: string
-          format: date-time
-        lastActiveAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        authToken:
-          type: string
-        phoneCountryCode:
-          $ref: '#/components/schemas/union'
-        roles:
-          $ref: '#/components/schemas/union'
-        currency:
-          type: string
-        lengthUnit:
-          type: string
-        profilePictureThumbs:
-          type: string
-        rentalPaymentAccount:
-          $ref: '#/components/schemas/RentalPaymentAccount'
-        intercomSecret:
-          type: string
-      type: object
-    User2:
-      required:
-      - nameFirst
-      - nameLast
-      - username
-      - phone
-      - birthday
-      properties:
-        hasPassword:
-          type: boolean
-        phoneCountryCode:
-          type: string
-        id:
-          type: integer
-        nameFirst:
-          type: string
-          maxLength: 255
-          minLength: 2
-        nameMiddle:
-          type: string
-          maxLength: 255
-          minLength: 1
-        nameLast:
-          type: string
-          maxLength: 255
-          minLength: 2
-        company:
-          $ref: '#/components/schemas/Company'
-        companyName:
-          type: string
-          maxLength: 255
-          minLength: 1
-        username:
-          type: string
-          maxLength: 255
-          minLength: 1
-        profilePictureThumbs:
-          type: string
-        phone:
-          type: string
-          maxLength: 15
-          minLength: 7
-        birthday:
-          type: string
-          format: date-time
-        bio:
-          type: string
-          maxLength: 1500
-        oauthProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserOauthProvider'
-        address:
-          $ref: '#/components/schemas/UserAddress2'
-        creditScore:
-          $ref: '#/components/schemas/UserCreditScore'
-        criminalReport:
-          $ref: '#/components/schemas/UserCriminalReport'
-        stripeCustomer:
-          $ref: '#/components/schemas/UserStripeCustomer2'
-        active:
-          type: boolean
-          default: true
-        fromNotBerryForbiddenCountry:
-          type: boolean
-          default: false
-        verified:
-          type: boolean
-          default: false
-        emailVerified:
-          type: boolean
-          default: false
-        phoneVerified:
-          type: boolean
-          default: false
-        registered:
-          type: boolean
-          default: true
-        emailNotVerifiedAfter:
-          type: string
-          format: date-time
-        lastActiveAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        statusType:
-          type: string
-          default: regular
-          enum:
-          - regular
-          - premium
-          - premium_pending
-          - vip
-          - vip_pending
-        authToken:
-          type: string
-        deleted:
-          type: boolean
-          default: false
-        rentalPaymentAccount:
-          $ref: '#/components/schemas/RentalPaymentAccount'
-        newsletterSubscription:
-          type: boolean
-          default: false
-        premiumPartner:
-          type: boolean
-          default: false
-        locale:
-          type: string
-          default: en_US
-          enum:
-          - en_US
-          - es_ES
-        currency:
-          type: string
-        lengthUnit:
-          type: string
-          enum:
-          - m
-          - ft
-        isRaiUser:
-          type: boolean
-          default: false
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
+        user:
+          $ref: '#/components/schemas/User2'
         createdAt:
           type: string
           format: date-time
@@ -1262,18 +1276,4 @@ components:
           type: string
           format: date-time
       type: object
-    UserCriminalReport:
-      properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
+    union: []

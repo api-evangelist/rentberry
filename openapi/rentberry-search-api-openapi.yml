@@ -453,87 +453,6 @@ paths:
                 type: object
 components:
   schemas:
-    InitType:
-      required:
-      - url
-      - mapWidth
-      - mapHeight
-      - mapView
-      properties:
-        url:
-          type: string
-        mapWidth:
-          type: number
-        mapHeight:
-          type: number
-        mapView:
-          type: string
-      type: object
-    ListingSearchIdsType:
-      required:
-      - ids
-      - sort
-      - latitude
-      - longitude
-      - transactionType
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-        sort:
-          type: string
-          enum:
-          - newest
-          - relevance
-          - price:asc
-          - price:desc
-        latitude:
-          type: number
-        longitude:
-          type: number
-        transactionType:
-          type: string
-          enum:
-          - rental
-          - sale
-      type: object
-    PriceSettingsType:
-      required:
-      - url
-      - mapWidth
-      - mapHeight
-      - minPrice
-      - maxPrice
-      properties:
-        url:
-          type: string
-        mapWidth:
-          type: number
-        mapHeight:
-          type: number
-        minPrice:
-          type: number
-        maxPrice:
-          type: number
-      type: object
-    IdsResponse:
-      properties: []
-      type: object
-    SearchResponse:
-      type: object
-    FileBag:
-      properties: []
-      type: object
-    URLRequest:
-      required:
-      - url
-      properties:
-        url:
-          type: string
-        originalRequest:
-          $ref: '#/components/schemas/Request'
-      type: object
     SimilarResponse:
       properties:
         total:
@@ -543,6 +462,11 @@ components:
           - string
           - 'null'
           default: null
+      type: object
+    HeaderBag:
+      properties: []
+      type: object
+    Closure:
       type: object
     ListingSearchBoundsWebType:
       required:
@@ -1138,14 +1062,28 @@ components:
             - newConstruction
             - securitySystem
       type: object
-    ServerBag:
-      properties: []
+    SearchResponse:
       type: object
-    union: []
+    PriceSettingsType:
+      required:
+      - url
+      - mapWidth
+      - mapHeight
+      - minPrice
+      - maxPrice
+      properties:
+        url:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        minPrice:
+          type: number
+        maxPrice:
+          type: number
+      type: object
     ParameterBag:
-      properties: []
-      type: object
-    InputBag:
       properties: []
       type: object
     Country:
@@ -1163,27 +1101,25 @@ components:
         phone:
           type: string
       type: object
-    SearchFilterConfig:
-      required:
-      - transactionType
-      properties:
-        id:
-          type: integer
-        country:
-          $ref: '#/components/schemas/Country'
-        transactionType:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Closure:
-      type: object
-    HeaderBag:
+    union: []
+    ServerBag:
       properties: []
+      type: object
+    InitType:
+      required:
+      - url
+      - mapWidth
+      - mapHeight
+      - mapView
+      properties:
+        url:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapView:
+          type: string
       type: object
     ListingSearchPlaceWebType:
       required:
@@ -1852,4 +1788,68 @@ components:
         isIisRewrite:
           type: boolean
           default: false
+      type: object
+    URLRequest:
+      required:
+      - url
+      properties:
+        url:
+          type: string
+        originalRequest:
+          $ref: '#/components/schemas/Request'
+      type: object
+    IdsResponse:
+      properties: []
+      type: object
+    FileBag:
+      properties: []
+      type: object
+    InputBag:
+      properties: []
+      type: object
+    SearchFilterConfig:
+      required:
+      - transactionType
+      properties:
+        id:
+          type: integer
+        country:
+          $ref: '#/components/schemas/Country'
+        transactionType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ListingSearchIdsType:
+      required:
+      - ids
+      - sort
+      - latitude
+      - longitude
+      - transactionType
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        latitude:
+          type: number
+        longitude:
+          type: number
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
       type: object

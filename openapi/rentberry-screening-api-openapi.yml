@@ -315,6 +315,22 @@ paths:
           description: (Real code 11005) Error obtaining screening reports
 components:
   schemas:
+    ScreeningResponse:
+      properties: []
+      type: object
+    UserStripeCustomer7:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User7'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     ScreeningRequestCreateType:
       required:
       - tenantNameFirst
@@ -327,6 +343,163 @@ components:
           type: string
         tenantEmail:
           type: string
+      type: object
+    FeatureTicket:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+        usedAt:
+          type: string
+          format: date-time
+        isUsed:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    ScreeningRequestsType:
+      required:
+      - users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScreeningRequestCreateType'
+      type: object
+    UserStripeCustomer:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ScreeningRequest:
+      properties:
+        id:
+          type: integer
+        homeowner:
+          $ref: '#/components/schemas/User7'
+        status:
+          type: integer
+          default: 1
+        active:
+          type: boolean
+          default: true
+        deleted:
+          type: boolean
+          default: false
+        tenantEmail:
+          type: string
+        tenantNameFirst:
+          type: string
+        tenantNameLast:
+          type: string
+        reference:
+          type: string
+        creditScore:
+          $ref: '#/components/schemas/UserCreditScore'
+        criminalReport:
+          $ref: '#/components/schemas/UserCriminalReport'
+        expiredAt:
+          type: string
+          format: date-time
+        featureTicket:
+          $ref: '#/components/schemas/FeatureTicket'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserRentalHistory:
+      required:
+      - address
+      - city
+      - homeownerPhone
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        applicantId:
+          type: integer
+        address:
+          type: string
+          maxLength: 255
+          minLength: 3
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
+          maxLength: 15
+          minLength: 7
       type: object
     User7:
       required:
@@ -404,22 +577,6 @@ components:
           - m
           - ft
       type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     ScreeningRequest2:
       properties:
         id:
@@ -458,6 +615,94 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    AccountCreditScoreType:
+      required:
+      - ssn
+      properties:
+        ssn:
+          type: string
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    State:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
+          type: string
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
       type: object
     AccountCreditScoreCheckType:
       required:
@@ -620,210 +865,15 @@ components:
           type: boolean
           default: false
       type: object
-    UserRentalHistory:
-      required:
-      - address
-      - city
-      - homeownerPhone
+    UserCreditScore:
       properties:
-        id:
+        score:
           type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        applicantId:
-          type: integer
-        address:
-          type: string
-          maxLength: 255
-          minLength: 3
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        price:
-          type: integer
-        term:
-          type: integer
-        homeownerPhone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
+        creditScoreUpdatedAt:
           type: string
           format: date-time
-        updatedAt:
+        alert:
           type: string
-          format: date-time
-      type: object
-    UserAddress:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    ScreeningRequestsType:
-      required:
-      - users
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScreeningRequestCreateType'
-      type: object
-    UserCriminalReport:
-      properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    UserStripeCustomer:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    State:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        description:
-          type: string
-      type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    FeatureTicket:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        type:
-          type: string
-        usedAt:
-          type: string
-          format: date-time
-        isUsed:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    ScreeningRequest:
-      properties:
-        id:
-          type: integer
-        homeowner:
-          $ref: '#/components/schemas/User7'
-        status:
-          type: integer
-          default: 1
-        active:
-          type: boolean
-          default: true
-        deleted:
-          type: boolean
-          default: false
-        tenantEmail:
-          type: string
-        tenantNameFirst:
-          type: string
-        tenantNameLast:
-          type: string
-        reference:
-          type: string
-        creditScore:
-          $ref: '#/components/schemas/UserCreditScore'
-        criminalReport:
-          $ref: '#/components/schemas/UserCriminalReport'
-        expiredAt:
-          type: string
-          format: date-time
-        featureTicket:
-          $ref: '#/components/schemas/FeatureTicket'
         createdAt:
           type: string
           format: date-time
@@ -852,67 +902,17 @@ components:
         stateId:
           type: integer
       type: object
-    ScreeningResponse:
-      properties: []
-      type: object
-    Company:
+    RentalPaymentAccount:
       properties:
-        id:
-          type: integer
-        name:
+        stripeAccountId:
           type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
         createdAt:
           type: string
           format: date-time
         updatedAt:
           type: string
           format: date-time
-      type: object
-    UserStripeCustomer7:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User7'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    AccountCreditScoreType:
-      required:
-      - ssn
-      properties:
-        ssn:
-          type: string
       type: object

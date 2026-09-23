@@ -286,21 +286,6 @@ paths:
           description: No cities found for country or country not found
 components:
   schemas:
-    Country:
-      properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-      type: object
     State:
       properties:
         id:
@@ -320,5 +305,20 @@ components:
           maxLength: 255
           minLength: 1
         description:
+          type: string
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
           type: string
       type: object

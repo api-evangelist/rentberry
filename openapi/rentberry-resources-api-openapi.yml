@@ -11,7 +11,7 @@ paths:
     get:
       tags:
       - Resources
-      summary: Get states by country.
+      summary: Get states by country
       description: Available since API version 1. Returns list of states for specified country.
       operationId: get_api_v1_resources_state
       parameters:

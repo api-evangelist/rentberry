@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - Rental Subscription
-      summary: Create a rental subscription with Stripe.
+      summary: Create a rental subscription with Stripe
       description: Creates a new rental subscription and returns client secret for Stripe payment setup. Available since API version 4.
       operationId: post_api_v4_rental_subscription_stripe
       parameters:
@@ -52,7 +52,7 @@ paths:
     post:
       tags:
       - Rental Subscription
-      summary: Update an existing rental subscription.
+      summary: Update an existing rental subscription
       description: Updates rental subscription payment details. Available since API version 4.
       operationId: post_api_v4_rental_subscription_stripe_update
       parameters:
@@ -93,7 +93,7 @@ paths:
     get:
       tags:
       - Rental Subscription
-      summary: Get rental subscription details.
+      summary: Get rental subscription details
       description: Retrieves details of a specific rental subscription. Available since API version 4.
       operationId: get_api_v4_rental_subscription_stripe_get
       parameters:
@@ -127,7 +127,7 @@ paths:
     delete:
       tags:
       - Rental Subscription
-      summary: Cancel a rental subscription.
+      summary: Cancel a rental subscription
       description: Cancels an active rental subscription. Available since API version 4.
       operationId: delete_api_v4_rental_subscription_stripe_cancel
       parameters:
@@ -156,19 +156,6 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    RentalPaymentType:
-      required:
-      - comment
-      - amount
-      - paymentMethod
-      properties:
-        comment:
-          type: string
-        amount:
-          type: number
-        paymentMethod:
-          type: string
-      type: object
     StripeSubscriptionCreatedResponse:
       properties:
         clientSecret:
@@ -188,5 +175,18 @@ components:
         paymentMethod:
           type: string
         stripeSubscriptionId:
+          type: string
+      type: object
+    RentalPaymentType:
+      required:
+      - comment
+      - amount
+      - paymentMethod
+      properties:
+        comment:
+          type: string
+        amount:
+          type: number
+        paymentMethod:
           type: string
       type: object

@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - Applications
-      summary: Upload a new applicant attachment.
+      summary: Upload a new applicant attachment
       description: Available since API version 1. Requires ROLE_USER.
       operationId: post_api_v1_applicant_attachment_create
       parameters:
@@ -42,7 +42,7 @@ paths:
     post:
       tags:
       - Applications
-      summary: Update an existing applicant attachment.
+      summary: Update an existing applicant attachment
       description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
       operationId: post_api_v1_applicant_attachment_edit
       parameters:
@@ -80,7 +80,7 @@ paths:
     delete:
       tags:
       - Applications
-      summary: Delete an applicant attachment.
+      summary: Delete an applicant attachment
       description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
       operationId: delete_api_v1_applicant_attachment_delete
       parameters:
@@ -109,7 +109,7 @@ paths:
     get:
       tags:
       - Applications
-      summary: Download an applicant attachment file.
+      summary: Download an applicant attachment file
       description: Available since API version 1. Requires ROLE_USER and ownership of the attachment.
       operationId: get_api_v1_applicant_attachment_download
       parameters:
@@ -138,7 +138,7 @@ paths:
     get:
       tags:
       - Applications
-      summary: Retrieve the last active applicant for the authenticated user.
+      summary: Retrieve the last active applicant for the authenticated user
       description: Available since API version 1. Requires ROLE_USER.
       operationId: get_api_v1_applicant_last
       parameters:
@@ -162,7 +162,7 @@ paths:
     post:
       tags:
       - Applications
-      summary: Create a new applicant record.
+      summary: Create a new applicant record
       description: Available since API version 1. Requires ROLE_USER.
       operationId: post_api_v1_applicant_create
       parameters:
@@ -197,7 +197,7 @@ paths:
     put:
       tags:
       - Applications
-      summary: Submit the applicant for review.
+      summary: Submit the applicant for review
       description: Available since API version 1. Requires ROLE_USER and ownership of the applicant.
       operationId: put_api_v1_applicant_submit
       parameters:
@@ -229,7 +229,7 @@ paths:
     post:
       tags:
       - Applications
-      summary: Edit an existing applicant.
+      summary: Edit an existing applicant
       description: Available since API version 1. Requires ROLE_USER and ownership of the applicant.
       operationId: post_api_v1_applicant_edit
       parameters:
@@ -270,7 +270,7 @@ paths:
     get:
       tags:
       - Applications
-      summary: Retrieve list of applicants.
+      summary: Retrieve list of applicants
       description: Available since API version 1. Requires ROLE_USER.
       operationId: get_api_v1_get_applicants_list
       parameters:
@@ -707,23 +707,14 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    Bounds:
+    ApplicantAttachmentType:
+      required:
+      - proofIncomeFile
+      - applicantId
       properties:
-        northeast:
-          $ref: '#/components/schemas/Coordinates'
-        southwest:
-          $ref: '#/components/schemas/Coordinates'
-      type: object
-    RentalPaymentUnit:
-      properties:
-        paymentAmount:
-          type: string
-        id:
+        proofIncomeFile: []
+        applicantId:
           type: integer
-        type:
-          type: string
-        amount:
-          type: string
       type: object
     ApplicantAttachment:
       properties:
@@ -742,14 +733,383 @@ components:
           type: string
           format: date-time
       type: object
-    UserCreditScore:
+    ApplyResponse:
       properties:
-        score:
+        apartmentApplyStatus:
+          type: string
+        apartmentApplyPricingStatus:
+          type: string
+        apartmentApplyWaitingFlag:
+          type: boolean
+      type: object
+    RentalSubscription:
+      properties:
+        id:
           type: integer
-        creditScoreUpdatedAt:
+        amount:
+          type: string
+          default: '0'
+        commissionFee:
+          type: string
+          default: '0'
+        amountTotal:
+          type: string
+          default: '0'
+        currency:
+          type: string
+        comment:
+          type: string
+        status:
+          type: string
+          default: incomplete
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
           type: string
           format: date-time
-        alert:
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    RentalPaymentUnit:
+      properties:
+        paymentAmount:
+          type: string
+        id:
+          type: integer
+        type:
+          type: string
+        amount:
+          type: string
+      type: object
+    UserStripeCustomer:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Bounds:
+      properties:
+        northeast:
+          $ref: '#/components/schemas/Coordinates'
+        southwest:
+          $ref: '#/components/schemas/Coordinates'
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserDocument:
+      required:
+      - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ApplicantReferencesType:
+      required:
+      - name
+      - phone
+      - relationship
+      - email
+      properties:
+        name:
+          type: string
+        phone:
+          type: integer
+        relationship:
+          type: string
+        email:
+          type: string
+      type: object
+    UserRentalHistory:
+      required:
+      - address
+      - city
+      - homeownerPhone
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        applicantId:
+          type: integer
+        address:
+          type: string
+          maxLength: 255
+          minLength: 3
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    Rental:
+      properties:
+        listing:
+          $ref: '#/components/schemas/Listing'
+        apartmentId:
+          title: for iOs compatibility.
+          type: integer
+        latestPayment:
+          $ref: '#/components/schemas/RentalPayment'
+        activeSubscription:
+          $ref: '#/components/schemas/RentalSubscription'
+        id:
+          type: integer
+        application:
+          $ref: '#/components/schemas/ListingApplication'
+        moveIn:
+          type: string
+          format: date-time
+        moveOut:
+          type: string
+          format: date-time
+        firstPaymentDate:
+          type: string
+          format: date-time
+        monthlyRentAmount:
+          type: string
+          maximum: 9999999
+          minimum: 1
+        monthlyDueDate:
+          type: integer
+        tenantFirstName:
+          type: string
+        tenantLastName:
+          type: string
+        tenantEmail:
+          type: string
+        address:
+          type: string
+        unit:
+          type: string
+        homeowner:
+          $ref: '#/components/schemas/User'
+        tenant:
+          $ref: '#/components/schemas/User'
+        status:
+          type: string
+          default: pending
+        isChargeable:
+          type: boolean
+          default: false
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDocument'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ListingPicture:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+        imageThumbs:
+          type: string
+        order:
+          type: integer
+        type:
+          type: string
+          default: picture
+      type: object
+    AdminLevelCollection:
+      properties: []
+      type: object
+    Coordinates:
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    ListingApplication:
+      properties:
+        deposit:
+          type: string
+          minimum: 0
+        accepted:
+          title: for iOs compatibility.
+          type: boolean
+        declined:
+          title: for iOs compatibility.
+          type: boolean
+        expired:
+          title: for iOs compatibility.
+          type: boolean
+        deleted:
+          title: for iOs compatibility.
+          type: boolean
+        id:
+          type: integer
+        listing:
+          $ref: '#/components/schemas/Listing'
+        price:
+          type: string
+          minimum: 1
+        term:
+          type: integer
+        moveIn:
+          type: string
+          format: date-time
+        rental:
+          $ref: '#/components/schemas/Rental'
+        applicants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Applicant'
+        declinedReason:
+          type: string
+          maxLength: 255
+          minLength: 1
+        new:
+          type: boolean
+          default: true
+        showNotification:
+          type: boolean
+          default: false
+        status:
+          type: string
+          default: draft
+        notes:
+          type: string
+          maxLength: 1000
+          minLength: 1
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Price:
+      properties: []
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
           type: string
         createdAt:
           type: string
@@ -758,54 +1118,168 @@ components:
           type: string
           format: date-time
       type: object
-    Applicant:
-      required:
-      - employmentType
+    State:
       properties:
         id:
           type: integer
-        apartmentApply:
-          $ref: '#/components/schemas/ListingApplication'
-        user:
-          $ref: '#/components/schemas/User'
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
+          type: string
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    ApplicantAttachmentsType:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+      type: object
+    ApplicantFormType:
+      required:
+      - term
+      - moveIn
+      - notes
+      - references
+      - proofIncomes
+      - rentalHistory
+      - employmentType
+      - employmentIncome
+      - employmentTitle
+      - employmentName
+      - employmentSourceIncome
+      properties:
+        term:
+          type: integer
+        moveIn:
+          type: integer
+        notes:
+          type: string
         references:
           type: array
           items:
-            $ref: '#/components/schemas/ApplicantReference'
-        attachments:
+            $ref: '#/components/schemas/ApplicantReferencesType'
+        proofIncomes:
           type: array
           items:
-            $ref: '#/components/schemas/ApplicantAttachment'
-        creator:
-          type: boolean
-          default: false
-        active:
-          type: boolean
-          default: false
+            $ref: '#/components/schemas/ApplicantAttachmentsType'
         rentalHistory:
           type: array
           items:
-            $ref: '#/components/schemas/UserRentalHistory'
+            $ref: '#/components/schemas/ApplicantRentalHistoryType'
         employmentType:
           type: string
           enum:
           - employed
           - unemployed
           - student
-        employmentName:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentTitle:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentSourceIncome:
-          type: string
-          maxLength: 255
-          minLength: 1
         employmentIncome:
           type: integer
+        employmentTitle:
+          type: string
+        employmentName:
+          type: string
+        employmentSourceIncome:
+          type: string
+      type: object
+    StripePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        status:
+          type: string
+        cancellationReason:
+          type: string
+        errorMessage:
+          type: string
+        internalType:
+          type: string
+        last4Digits:
+          type: string
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Maintenance:
+      required:
+      - description
+      properties:
+        id:
+          type: integer
+        listing:
+          $ref: '#/components/schemas/Listing'
+        user:
+          $ref: '#/components/schemas/User'
+        description:
+          type: string
+          maxLength: 255
+          minLength: 2
+        priority:
+          type: integer
+      type: object
+    OpenHouseApplication:
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        phone:
+          type: integer
+        confirmed:
+          type: boolean
+          default: false
+        declined:
+          type: boolean
+          default: false
+        expired:
+          type: boolean
+          default: false
+        declineReason:
+          type: string
+        date:
+          type: string
+          format: date-time
+        message:
+          type: string
         createdAt:
           type: string
           format: date-time
@@ -946,18 +1420,15 @@ components:
           type: boolean
           default: false
       type: object
-    UserDocument:
-      required:
-      - name
+    UserCreditScore:
       properties:
-        id:
+        score:
           type: integer
-        name:
+        creditScoreUpdatedAt:
           type: string
-        mimeType:
+          format: date-time
+        alert:
           type: string
-        size:
-          type: integer
         createdAt:
           type: string
           format: date-time
@@ -965,50 +1436,107 @@ components:
           type: string
           format: date-time
       type: object
-    ApplicantAttachmentsType:
+    ListingAddress:
+      properties:
+        latitude:
+          type: number
+          format: float
+          default: 0
+        longitude:
+          type: number
+          format: float
+          default: 0
+        apartmentNumber:
+          type: string
+          maxLength: 64
+          minLength: 1
+        state:
+          $ref: '#/components/schemas/State'
+        providedBy:
+          type: string
+        providerId:
+          type:
+          - string
+          - 'null'
+          default: null
+        adminLevels:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/AdminLevelCollection'
+        coordinates:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Coordinates'
+        bounds:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Bounds'
+        streetNumber:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 64
+          minLength: 1
+        streetName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        postalCode:
+          type:
+          - string
+          - 'null'
+          default: null
+        locality:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        sublocality:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        country:
+          default: null
+          oneOf:
+          - $ref: '#/components/schemas/Country'
+        timezone:
+          type:
+          - string
+          - 'null'
+          default: null
+        shortAddress:
+          type: string
+        exposeAddress:
+          type: boolean
+          default: true
+      type: object
+    VirtualTour:
       required:
-      - id
+      - url
       properties:
         id:
           type: integer
-      type: object
-    UserRentalHistory:
-      required:
-      - address
-      - city
-      - homeownerPhone
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        applicantId:
-          type: integer
-        address:
+        url:
           type: string
-          maxLength: 255
-          minLength: 3
-        city:
+        isMain:
+          type: boolean
+          default: false
+        duration:
+          type: integer
+        thumbnailUrl:
           type: string
-          maxLength: 255
-          minLength: 3
-        price:
-          type: integer
-        term:
-          type: integer
-        homeownerPhone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    ApplicantAttachmentType:
-      required:
-      - proofIncomeFile
-      - applicantId
-      properties:
-        proofIncomeFile: []
-        applicantId:
-          type: integer
+        publishedAt:
+          type: string
+          format: date-time
       type: object
     ApplicantReference:
       required:
@@ -1035,6 +1563,61 @@ components:
           maxLength: 15
           minLength: 7
       type: object
+    Applicant:
+      required:
+      - employmentType
+      properties:
+        id:
+          type: integer
+        apartmentApply:
+          $ref: '#/components/schemas/ListingApplication'
+        user:
+          $ref: '#/components/schemas/User'
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantReference'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantAttachment'
+        creator:
+          type: boolean
+          default: false
+        active:
+          type: boolean
+          default: false
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory'
+        employmentType:
+          type: string
+          enum:
+          - employed
+          - unemployed
+          - student
+        employmentName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentTitle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentSourceIncome:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentIncome:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     RentalPaymentAccount:
       properties:
         stripeAccountId:
@@ -1042,339 +1625,6 @@ components:
         isStripeOnboardingFinished:
           type: boolean
           default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Coordinates:
-      properties:
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-      type: object
-    UserAddress:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    UserCriminalReport:
-      properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    State:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        description:
-          type: string
-      type: object
-    UserStripeCustomer:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    ApplicantReferencesType:
-      required:
-      - name
-      - phone
-      - relationship
-      - email
-      properties:
-        name:
-          type: string
-        phone:
-          type: integer
-        relationship:
-          type: string
-        email:
-          type: string
-      type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    StripePayment:
-      properties:
-        id:
-          type: integer
-        amount:
-          type: string
-          default: '0'
-        status:
-          type: string
-        cancellationReason:
-          type: string
-        errorMessage:
-          type: string
-        internalType:
-          type: string
-        last4Digits:
-          type: string
-        paymentMethod:
-          type: string
-          default: card
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalSubscription:
-      properties:
-        id:
-          type: integer
-        amount:
-          type: string
-          default: '0'
-        commissionFee:
-          type: string
-          default: '0'
-        amountTotal:
-          type: string
-          default: '0'
-        currency:
-          type: string
-        comment:
-          type: string
-        status:
-          type: string
-          default: incomplete
-        paymentMethod:
-          type: string
-          default: card
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Rental:
-      properties:
-        listing:
-          $ref: '#/components/schemas/Listing'
-        apartmentId:
-          title: for iOs compatibility.
-          type: integer
-        latestPayment:
-          $ref: '#/components/schemas/RentalPayment'
-        activeSubscription:
-          $ref: '#/components/schemas/RentalSubscription'
-        id:
-          type: integer
-        application:
-          $ref: '#/components/schemas/ListingApplication'
-        moveIn:
-          type: string
-          format: date-time
-        moveOut:
-          type: string
-          format: date-time
-        firstPaymentDate:
-          type: string
-          format: date-time
-        monthlyRentAmount:
-          type: string
-          maximum: 9999999
-          minimum: 1
-        monthlyDueDate:
-          type: integer
-        tenantFirstName:
-          type: string
-        tenantLastName:
-          type: string
-        tenantEmail:
-          type: string
-        address:
-          type: string
-        unit:
-          type: string
-        homeowner:
-          $ref: '#/components/schemas/User'
-        tenant:
-          $ref: '#/components/schemas/User'
-        status:
-          type: string
-          default: pending
-        isChargeable:
-          type: boolean
-          default: false
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDocument'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    AdminLevelCollection:
-      properties: []
-      type: object
-    ApplicantFormType:
-      required:
-      - term
-      - moveIn
-      - notes
-      - references
-      - proofIncomes
-      - rentalHistory
-      - employmentType
-      - employmentIncome
-      - employmentTitle
-      - employmentName
-      - employmentSourceIncome
-      properties:
-        term:
-          type: integer
-        moveIn:
-          type: integer
-        notes:
-          type: string
-        references:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantReferencesType'
-        proofIncomes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantAttachmentsType'
-        rentalHistory:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantRentalHistoryType'
-        employmentType:
-          type: string
-          enum:
-          - employed
-          - unemployed
-          - student
-        employmentIncome:
-          type: integer
-        employmentTitle:
-          type: string
-        employmentName:
-          type: string
-        employmentSourceIncome:
-          type: string
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
         createdAt:
           type: string
           format: date-time
@@ -2221,254 +2471,4 @@ components:
         updatedAt:
           type: string
           format: date-time
-      type: object
-    OpenHouseApplication:
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        phone:
-          type: integer
-        confirmed:
-          type: boolean
-          default: false
-        declined:
-          type: boolean
-          default: false
-        expired:
-          type: boolean
-          default: false
-        declineReason:
-          type: string
-        date:
-          type: string
-          format: date-time
-        message:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Country:
-      properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-      type: object
-    VirtualTour:
-      required:
-      - url
-      properties:
-        id:
-          type: integer
-        url:
-          type: string
-        isMain:
-          type: boolean
-          default: false
-        duration:
-          type: integer
-        thumbnailUrl:
-          type: string
-        publishedAt:
-          type: string
-          format: date-time
-      type: object
-    ListingApplication:
-      properties:
-        deposit:
-          type: string
-          minimum: 0
-        accepted:
-          title: for iOs compatibility.
-          type: boolean
-        declined:
-          title: for iOs compatibility.
-          type: boolean
-        expired:
-          title: for iOs compatibility.
-          type: boolean
-        deleted:
-          title: for iOs compatibility.
-          type: boolean
-        id:
-          type: integer
-        listing:
-          $ref: '#/components/schemas/Listing'
-        price:
-          type: string
-          minimum: 1
-        term:
-          type: integer
-        moveIn:
-          type: string
-          format: date-time
-        rental:
-          $ref: '#/components/schemas/Rental'
-        applicants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Applicant'
-        declinedReason:
-          type: string
-          maxLength: 255
-          minLength: 1
-        new:
-          type: boolean
-          default: true
-        showNotification:
-          type: boolean
-          default: false
-        status:
-          type: string
-          default: draft
-        notes:
-          type: string
-          maxLength: 1000
-          minLength: 1
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Maintenance:
-      required:
-      - description
-      properties:
-        id:
-          type: integer
-        listing:
-          $ref: '#/components/schemas/Listing'
-        user:
-          $ref: '#/components/schemas/User'
-        description:
-          type: string
-          maxLength: 255
-          minLength: 2
-        priority:
-          type: integer
-      type: object
-    Price:
-      properties: []
-      type: object
-    ListingPicture:
-      required:
-      - id
-      properties:
-        id:
-          type: integer
-        imageThumbs:
-          type: string
-        order:
-          type: integer
-        type:
-          type: string
-          default: picture
-      type: object
-    ListingAddress:
-      properties:
-        latitude:
-          type: number
-          format: float
-          default: 0
-        longitude:
-          type: number
-          format: float
-          default: 0
-        apartmentNumber:
-          type: string
-          maxLength: 64
-          minLength: 1
-        state:
-          $ref: '#/components/schemas/State'
-        providedBy:
-          type: string
-        providerId:
-          type:
-          - string
-          - 'null'
-          default: null
-        adminLevels:
-          default: null
-          oneOf:
-          - $ref: '#/components/schemas/AdminLevelCollection'
-        coordinates:
-          default: null
-          oneOf:
-          - $ref: '#/components/schemas/Coordinates'
-        bounds:
-          default: null
-          oneOf:
-          - $ref: '#/components/schemas/Bounds'
-        streetNumber:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 64
-          minLength: 1
-        streetName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        postalCode:
-          type:
-          - string
-          - 'null'
-          default: null
-        locality:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        sublocality:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        country:
-          default: null
-          oneOf:
-          - $ref: '#/components/schemas/Country'
-        timezone:
-          type:
-          - string
-          - 'null'
-          default: null
-        shortAddress:
-          type: string
-        exposeAddress:
-          type: boolean
-          default: true
-      type: object
-    ApplyResponse:
-      properties:
-        apartmentApplyStatus:
-          type: string
-        apartmentApplyPricingStatus:
-          type: string
-        apartmentApplyWaitingFlag:
-          type: boolean
       type: object

@@ -11,7 +11,7 @@ paths:
     get:
       tags:
       - User Settings
-      summary: Get user settings by keys.
+      summary: Get user settings by keys
       description: Available since API version 1. Returns user settings values for specified keys.
       operationId: get_api_v1_user_settings_get
       parameters:
@@ -44,7 +44,7 @@ paths:
     post:
       tags:
       - User Settings
-      summary: Set user settings.
+      summary: Set user settings
       description: Available since API version 1. Sets user settings with provided key-value pairs.
       operationId: post_api_v1_user_settings_set
       parameters:

@@ -96,6 +96,116 @@ paths:
           description: Validation failed - Invalid coordinates or search parameters
 components:
   schemas:
+    ListingSearchPlaceMobileType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - googleId
+      - mapWidth
+      - mapHeight
+      - mapScale
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        googleId:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapScale:
+          type: number
+      type: object
+    BoundsResponse:
+      type: object
+    NearbyResponse:
+      type: object
     ListingSearchNearbyMobileType:
       required:
       - formattedAddress
@@ -195,10 +305,6 @@ components:
           type: number
         longitude:
           type: number
-      type: object
-    NearbyResponse:
-      type: object
-    PlaceResponse:
       type: object
     ListingSearchBoundsMobileType:
       required:
@@ -309,111 +415,5 @@ components:
         nwLongitude:
           type: string
       type: object
-    ListingSearchPlaceMobileType:
-      required:
-      - formattedAddress
-      - transactionType
-      - minPrice
-      - maxPrice
-      - minPriceOriginal
-      - maxPriceOriginal
-      - originalCurrency
-      - currency
-      - bedrooms
-      - baths
-      - types
-      - isFilterChanged
-      - cat
-      - dog
-      - page
-      - sort
-      - hasVirtualTour
-      - mapView
-      - googleId
-      - mapWidth
-      - mapHeight
-      - mapScale
-      properties:
-        formattedAddress:
-          type: string
-        transactionType:
-          type: string
-          enum:
-          - rental
-          - sale
-        minPrice:
-          type: integer
-        maxPrice:
-          type: integer
-        minPriceOriginal:
-          type: integer
-        maxPriceOriginal:
-          type: integer
-        originalCurrency:
-          type: string
-        currency:
-          type: string
-        bedrooms:
-          type: array
-          items:
-            type: number
-            enum:
-            - 0
-            - 1
-            - 2
-            - 3
-            - 4
-        baths:
-          type: array
-          items:
-            type: number
-            enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-        types:
-          type: array
-          items:
-            type: string
-            enum:
-            - apartment
-            - house
-            - condo
-            - townhouse
-            - duplex
-            - loft
-            - room
-            - land
-            - other
-        isFilterChanged:
-          type: string
-        cat:
-          type: string
-        dog:
-          type: string
-        page:
-          type: integer
-        sort:
-          type: string
-          enum:
-          - newest
-          - relevance
-          - price:asc
-          - price:desc
-        hasVirtualTour:
-          type: string
-        mapView:
-          type: string
-        googleId:
-          type: string
-        mapWidth:
-          type: number
-        mapHeight:
-          type: number
-        mapScale:
-          type: number
-      type: object
-    BoundsResponse:
+    PlaceResponse:
       type: object
