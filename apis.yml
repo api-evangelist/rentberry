@@ -45,7 +45,7 @@ specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
-- Real-Estate
+- Real Estate
 - PropTech
 - Rentals
 - Rental Marketplace
@@ -70,6 +70,7 @@ tags_raw:
 - search
 - geocoding
 - marketplace
+- Real-Estate
 apis:
 - name: Rentberry Geocoder (gRPC)
   description: >-
@@ -85,13 +86,14 @@ apis:
   - gRPC
   - Location
   - Timezone
-  - Open-Source
+  - Open Source
   tags_raw:
   - geocoding
   - grpc
   - location
   - timezone
   - open-source
+  - Open-Source
   properties:
   - type: Protobuf
     url: grpc/rentberry-geocoder.proto

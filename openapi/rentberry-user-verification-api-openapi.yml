@@ -227,6 +227,107 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    VerifyAnswerType:
+      required:
+      - type
+      - answer
+      properties:
+        type:
+          type: string
+        answer:
+          type: string
+      type: object
+    AnswersVerifyQuestionsType:
+      required:
+      - idNumber
+      - answers
+      properties:
+        idNumber:
+          type: integer
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerifyAnswerType'
+      type: object
+    VerifyByDocumentsType:
+      required:
+      - image
+      - backImage
+      - faceImage
+      - queryId
+      - countryCode
+      - documentType
+      properties:
+        image: []
+        backImage: []
+        faceImage: []
+        queryId:
+          type: string
+        countryCode:
+          type: string
+        documentType:
+          type: string
+          enum:
+          - driverLicense
+          - idCard
+          - passport
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     User2:
       required:
       - nameFirst
@@ -356,6 +457,38 @@ components:
           type: boolean
           default: false
       type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     VerifyInitType:
       required:
       - nameFirst
@@ -365,111 +498,6 @@ components:
           type: string
         nameLast:
           type: string
-      type: object
-    AccountVerifyType:
-      required:
-      - nameFirst
-      - nameLast
-      - birthday
-      - ssn
-      - address
-      properties:
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        birthday:
-          type: integer
-        ssn:
-          type: string
-        address:
-          $ref: '#/components/schemas/AccountAddressType'
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    UserCriminalReport:
-      properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
       type: object
     AccountAddressType:
       required:
@@ -523,60 +551,6 @@ components:
           maxLength: 9
           minLength: 5
       type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    AnswersVerifyQuestionsType:
-      required:
-      - idNumber
-      - answers
-      properties:
-        idNumber:
-          type: integer
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerifyAnswerType'
-      type: object
-    VerifyByDocumentsType:
-      required:
-      - image
-      - backImage
-      - faceImage
-      - queryId
-      - countryCode
-      - documentType
-      properties:
-        image: []
-        backImage: []
-        faceImage: []
-        queryId:
-          type: string
-        countryCode:
-          type: string
-        documentType:
-          type: string
-          enum:
-          - driverLicense
-          - idCard
-          - passport
-      type: object
     State2:
       properties:
         id:
@@ -596,12 +570,34 @@ components:
           maxLength: 255
           minLength: 1
       type: object
-    UserStripeCustomer2:
+    AccountVerifyType:
+      required:
+      - nameFirst
+      - nameLast
+      - birthday
+      - ssn
+      - address
       properties:
-        customerId:
+        nameFirst:
           type: string
-        user:
-          $ref: '#/components/schemas/User2'
+        nameLast:
+          type: string
+        birthday:
+          type: integer
+        ssn:
+          type: string
+        address:
+          $ref: '#/components/schemas/AccountAddressType'
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
         createdAt:
           type: string
           format: date-time
@@ -609,13 +605,17 @@ components:
           type: string
           format: date-time
       type: object
-    VerifyAnswerType:
-      required:
-      - type
-      - answer
+    RentalPaymentAccount:
       properties:
-        type:
+        stripeAccountId:
           type: string
-        answer:
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
           type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       type: object

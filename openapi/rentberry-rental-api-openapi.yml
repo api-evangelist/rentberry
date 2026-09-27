@@ -405,288 +405,6 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    UserRentalHistory2:
-      required:
-      - address
-      - city
-      - homeownerPhone
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User6'
-        applicantId:
-          type: integer
-        address:
-          type: string
-          maxLength: 255
-          minLength: 3
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        price:
-          type: integer
-        term:
-          type: integer
-        homeownerPhone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    InviteHomeownerType:
-      required:
-      - email
-      properties:
-        email:
-          type: string
-      type: object
-    ApplicantAttachment:
-      properties:
-        id:
-          type: integer
-        fileName:
-          type: string
-        mimeType:
-          type: string
-        size:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Applicant:
-      required:
-      - employmentType
-      properties:
-        id:
-          type: integer
-        apartmentApply:
-          $ref: '#/components/schemas/ListingApplication'
-        user:
-          $ref: '#/components/schemas/User'
-        references:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantReference'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantAttachment'
-        creator:
-          type: boolean
-          default: false
-        active:
-          type: boolean
-          default: false
-        rentalHistory:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRentalHistory'
-        employmentType:
-          type: string
-          enum:
-          - employed
-          - unemployed
-          - student
-        employmentName:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentTitle:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentSourceIncome:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentIncome:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalSubscription:
-      properties:
-        id:
-          type: integer
-        amount:
-          type: string
-          default: '0'
-        commissionFee:
-          type: string
-          default: '0'
-        amountTotal:
-          type: string
-          default: '0'
-        currency:
-          type: string
-        comment:
-          type: string
-        status:
-          type: string
-          default: incomplete
-        paymentMethod:
-          type: string
-          default: card
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    ApplicantReference2:
-      required:
-      - name
-      - relationship
-      - phone
-      properties:
-        id:
-          type: integer
-        applicant:
-          $ref: '#/components/schemas/Applicant4'
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        relationship:
-          type: string
-          maxLength: 255
-          minLength: 1
-        email:
-          type: string
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    UserAddress:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    ListingApplication4:
-      properties:
-        deposit:
-          type: string
-          minimum: 0
-        accepted:
-          title: for iOs compatibility.
-          type: boolean
-        declined:
-          title: for iOs compatibility.
-          type: boolean
-        expired:
-          title: for iOs compatibility.
-          type: boolean
-        deleted:
-          title: for iOs compatibility.
-          type: boolean
-        id:
-          type: integer
-        listing:
-          $ref: '#/components/schemas/Listing7'
-        price:
-          type: string
-          minimum: 1
-        term:
-          type: integer
-        moveIn:
-          type: string
-          format: date-time
-        applicants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Applicant4'
-        declinedReason:
-          type: string
-          maxLength: 255
-          minLength: 1
-        new:
-          type: boolean
-          default: true
-        showNotification:
-          type: boolean
-          default: false
-        status:
-          type: string
-          default: draft
-        notes:
-          type: string
-          maxLength: 1000
-          minLength: 1
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalPaymentUnit:
-      properties:
-        paymentAmount:
-          type: string
-        id:
-          type: integer
-        type:
-          type: string
-        amount:
-          type: string
-      type: object
-    UserStripeCustomer:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Bounds:
-      properties:
-        northeast:
-          $ref: '#/components/schemas/Coordinates'
-        southwest:
-          $ref: '#/components/schemas/Coordinates'
-      type: object
     UserCriminalReport:
       properties:
         criminalRecordFound:
@@ -702,188 +420,53 @@ components:
           type: string
           format: date-time
       type: object
-    UserDocument:
-      required:
-      - name
+    UserStripeCustomer:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Company:
       properties:
         id:
           type: integer
         name:
           type: string
-        mimeType:
-          type: string
-        size:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    User6:
-      required:
-      - nameFirst
-      - nameLast
-      - username
-      - phone
-      properties:
-        phoneCountryCode:
-          type: string
-        id:
-          type: integer
-        nameFirst:
-          type: string
-          maxLength: 255
-          minLength: 2
-        nameMiddle:
-          type: string
           maxLength: 255
           minLength: 1
-        nameLast:
-          type: string
-          maxLength: 255
-          minLength: 2
-        username:
-          type: string
-          maxLength: 255
-          minLength: 1
-        profilePictureThumbs:
-          type: string
         phone:
-          type: string
+          type: integer
           maxLength: 15
           minLength: 7
-        stripeCustomer:
-          $ref: '#/components/schemas/UserStripeCustomer6'
-        fromNotBerryForbiddenCountry:
-          type: boolean
-          default: false
-        verified:
-          type: boolean
-          default: false
-        emailVerified:
-          type: boolean
-          default: false
-        phoneVerified:
-          type: boolean
-          default: false
-        registered:
-          type: boolean
-          default: true
-        statusType:
-          type: string
-          default: regular
-          enum:
-          - regular
-          - premium
-          - premium_pending
-          - vip
-          - vip_pending
-        rentalHistory:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRentalHistory2'
-        deleted:
-          type: boolean
-          default: false
-        locale:
-          type: string
-          default: en_US
-          enum:
-          - en_US
-          - es_ES
-        currency:
-          type: string
-        lengthUnit:
-          type: string
-          enum:
-          - m
-          - ft
-      type: object
-    UserRentalHistory:
-      required:
-      - address
-      - city
-      - homeownerPhone
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        applicantId:
-          type: integer
-        address:
+        website:
           type: string
           maxLength: 255
-          minLength: 3
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
         city:
           type: string
           maxLength: 255
-          minLength: 3
-        price:
-          type: integer
-        term:
-          type: integer
-        homeownerPhone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    Rental:
-      properties:
-        listing:
-          $ref: '#/components/schemas/Listing'
-        apartmentId:
-          title: for iOs compatibility.
-          type: integer
-        latestPayment:
-          $ref: '#/components/schemas/RentalPayment'
-        activeSubscription:
-          $ref: '#/components/schemas/RentalSubscription'
-        id:
-          type: integer
-        application:
-          $ref: '#/components/schemas/ListingApplication'
-        moveIn:
+          minLength: 1
+        countryCode:
           type: string
-          format: date-time
-        moveOut:
+          maxLength: 2
+          minLength: 2
+        provider:
           type: string
-          format: date-time
-        firstPaymentDate:
+        externalId:
           type: string
-          format: date-time
-        monthlyRentAmount:
-          type: string
-          maximum: 9999999
-          minimum: 1
-        monthlyDueDate:
-          type: integer
-        tenantFirstName:
-          type: string
-        tenantLastName:
-          type: string
-        tenantEmail:
-          type: string
-        address:
-          type: string
-        unit:
-          type: string
-        homeowner:
-          $ref: '#/components/schemas/User'
-        tenant:
-          $ref: '#/components/schemas/User'
-        status:
-          type: string
-          default: pending
-        isChargeable:
-          type: boolean
-          default: false
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDocument'
         createdAt:
           type: string
           format: date-time
@@ -891,41 +474,14 @@ components:
           type: string
           format: date-time
       type: object
-    RentalType:
-      required:
-      - moveIn
-      - moveOut
-      - firstPaymentDate
-      - monthlyRentAmount
-      - monthlyDueDate
-      - tenantFirstName
-      - tenantLastName
-      - tenantEmail
-      - address
-      - unit
+    Bounds:
       properties:
-        moveIn:
-          type: integer
-        moveOut:
-          type: integer
-        firstPaymentDate:
-          type: integer
-        monthlyRentAmount:
-          type: number
-        monthlyDueDate:
-          type: integer
-        tenantFirstName:
-          type: string
-        tenantLastName:
-          type: string
-        tenantEmail:
-          type: string
-        address:
-          type: string
-        unit:
-          type: string
+        northeast:
+          $ref: '#/components/schemas/Coordinates'
+        southwest:
+          $ref: '#/components/schemas/Coordinates'
       type: object
-    State2:
+    State:
       properties:
         id:
           type: integer
@@ -943,23 +499,8 @@ components:
           default: null
           maxLength: 255
           minLength: 1
-      type: object
-    ListingPicture:
-      required:
-      - id
-      properties:
-        id:
-          type: integer
-        imageThumbs:
+        description:
           type: string
-        order:
-          type: integer
-        type:
-          type: string
-          default: picture
-      type: object
-    AdminLevelCollection:
-      properties: []
       type: object
     Coordinates:
       properties:
@@ -970,19 +511,11 @@ components:
           type: number
           format: float
       type: object
-    Country:
+    InviteHomeownerType:
+      required:
+      - email
       properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
+        email:
           type: string
       type: object
     ListingAddress2:
@@ -1068,161 +601,105 @@ components:
           type: boolean
           default: true
       type: object
-    Applicant4:
+    User6:
       required:
-      - employmentType
+      - nameFirst
+      - nameLast
+      - username
+      - phone
       properties:
+        phoneCountryCode:
+          type: string
         id:
           type: integer
-        user:
-          $ref: '#/components/schemas/User6'
-        references:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantReference2'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApplicantAttachment'
-        creator:
+        nameFirst:
+          type: string
+          maxLength: 255
+          minLength: 2
+        nameMiddle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        nameLast:
+          type: string
+          maxLength: 255
+          minLength: 2
+        username:
+          type: string
+          maxLength: 255
+          minLength: 1
+        profilePictureThumbs:
+          type: string
+        phone:
+          type: string
+          maxLength: 15
+          minLength: 7
+        stripeCustomer:
+          $ref: '#/components/schemas/UserStripeCustomer6'
+        fromNotBerryForbiddenCountry:
           type: boolean
           default: false
-        active:
+        verified:
           type: boolean
           default: false
+        emailVerified:
+          type: boolean
+          default: false
+        phoneVerified:
+          type: boolean
+          default: false
+        registered:
+          type: boolean
+          default: true
+        statusType:
+          type: string
+          default: regular
+          enum:
+          - regular
+          - premium
+          - premium_pending
+          - vip
+          - vip_pending
         rentalHistory:
           type: array
           items:
             $ref: '#/components/schemas/UserRentalHistory2'
-        employmentType:
+        deleted:
+          type: boolean
+          default: false
+        locale:
+          type: string
+          default: en_US
+          enum:
+          - en_US
+          - es_ES
+        currency:
+          type: string
+        lengthUnit:
           type: string
           enum:
-          - employed
-          - unemployed
-          - student
-        employmentName:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentTitle:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentSourceIncome:
-          type: string
-          maxLength: 255
-          minLength: 1
-        employmentIncome:
-          type: integer
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          - m
+          - ft
       type: object
-    ListingApplication:
+    Maintenance:
+      required:
+      - description
       properties:
-        deposit:
-          type: string
-          minimum: 0
-        accepted:
-          title: for iOs compatibility.
-          type: boolean
-        declined:
-          title: for iOs compatibility.
-          type: boolean
-        expired:
-          title: for iOs compatibility.
-          type: boolean
-        deleted:
-          title: for iOs compatibility.
-          type: boolean
         id:
           type: integer
         listing:
           $ref: '#/components/schemas/Listing'
-        price:
-          type: string
-          minimum: 1
-        term:
-          type: integer
-        moveIn:
-          type: string
-          format: date-time
-        rental:
-          $ref: '#/components/schemas/Rental'
-        applicants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Applicant'
-        declinedReason:
+        user:
+          $ref: '#/components/schemas/User'
+        description:
           type: string
           maxLength: 255
-          minLength: 1
-        new:
-          type: boolean
-          default: true
-        showNotification:
-          type: boolean
-          default: false
-        status:
-          type: string
-          default: draft
-        notes:
-          type: string
-          maxLength: 1000
-          minLength: 1
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          minLength: 2
+        priority:
+          type: integer
       type: object
     Price:
       properties: []
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
       type: object
     Listing7:
       required:
@@ -1989,52 +1466,16 @@ components:
           type: string
           format: date-time
       type: object
-    State:
+    ApplicantAttachment:
       properties:
         id:
           type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        description:
+        fileName:
           type: string
-      type: object
-    UserOauthProvider:
-      properties:
-        id:
+        mimeType:
+          type: string
+        size:
           type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    UserStripeCustomer6:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User6'
         createdAt:
           type: string
           format: date-time
@@ -2042,74 +1483,56 @@ components:
           type: string
           format: date-time
       type: object
-    StripePayment:
+    ListingApplication4:
       properties:
-        id:
-          type: integer
-        amount:
+        deposit:
           type: string
-          default: '0'
-        status:
-          type: string
-        cancellationReason:
-          type: string
-        errorMessage:
-          type: string
-        internalType:
-          type: string
-        last4Digits:
-          type: string
-        paymentMethod:
-          type: string
-          default: card
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Maintenance:
-      required:
-      - description
-      properties:
+          minimum: 0
+        accepted:
+          title: for iOs compatibility.
+          type: boolean
+        declined:
+          title: for iOs compatibility.
+          type: boolean
+        expired:
+          title: for iOs compatibility.
+          type: boolean
+        deleted:
+          title: for iOs compatibility.
+          type: boolean
         id:
           type: integer
         listing:
-          $ref: '#/components/schemas/Listing'
-        user:
-          $ref: '#/components/schemas/User'
-        description:
+          $ref: '#/components/schemas/Listing7'
+        price:
           type: string
-          maxLength: 255
-          minLength: 2
-        priority:
+          minimum: 1
+        term:
           type: integer
-      type: object
-    OpenHouseApplication:
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        phone:
-          type: integer
-        confirmed:
-          type: boolean
-          default: false
-        declined:
-          type: boolean
-          default: false
-        expired:
-          type: boolean
-          default: false
-        declineReason:
-          type: string
-        date:
+        moveIn:
           type: string
           format: date-time
-        message:
+        applicants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Applicant4'
+        declinedReason:
           type: string
+          maxLength: 255
+          minLength: 1
+        new:
+          type: boolean
+          default: true
+        showNotification:
+          type: boolean
+          default: false
+        status:
+          type: string
+          default: draft
+        notes:
+          type: string
+          maxLength: 1000
+          minLength: 1
         createdAt:
           type: string
           format: date-time
@@ -2117,154 +1540,63 @@ components:
           type: string
           format: date-time
       type: object
-    User:
+    UserRentalHistory:
       required:
-      - nameFirst
-      - nameLast
-      - username
-      - phone
-      - birthday
+      - address
+      - city
+      - homeownerPhone
       properties:
-        hasPassword:
-          type: boolean
-        phoneCountryCode:
-          type: string
         id:
           type: integer
-        nameFirst:
+        user:
+          $ref: '#/components/schemas/User'
+        applicantId:
+          type: integer
+        address:
           type: string
           maxLength: 255
-          minLength: 2
-        nameMiddle:
+          minLength: 3
+        city:
           type: string
           maxLength: 255
-          minLength: 1
-        nameLast:
-          type: string
-          maxLength: 255
-          minLength: 2
-        company:
-          $ref: '#/components/schemas/Company'
-        companyName:
-          type: string
-          maxLength: 255
-          minLength: 1
-        username:
-          type: string
-          maxLength: 255
-          minLength: 1
-        profilePictureThumbs:
-          type: string
-        phone:
-          type: string
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
           maxLength: 15
           minLength: 7
-        birthday:
-          type: string
-          format: date-time
-        bio:
-          type: string
-          maxLength: 1500
-        oauthProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserOauthProvider'
-        address:
-          $ref: '#/components/schemas/UserAddress'
-        creditScore:
-          $ref: '#/components/schemas/UserCreditScore'
-        criminalReport:
-          $ref: '#/components/schemas/UserCriminalReport'
-        stripeCustomer:
-          $ref: '#/components/schemas/UserStripeCustomer'
-        active:
-          type: boolean
-          default: true
-        fromNotBerryForbiddenCountry:
-          type: boolean
-          default: false
-        verified:
-          type: boolean
-          default: false
-        emailVerified:
-          type: boolean
-          default: false
-        phoneVerified:
-          type: boolean
-          default: false
-        registered:
-          type: boolean
-          default: true
-        emailNotVerifiedAfter:
-          type: string
-          format: date-time
-        lastActiveAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        statusType:
-          type: string
-          default: regular
-          enum:
-          - regular
-          - premium
-          - premium_pending
-          - vip
-          - vip_pending
-        authToken:
-          type: string
-        rentalHistory:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRentalHistory'
-        deleted:
-          type: boolean
-          default: false
-        rentalPaymentAccount:
-          $ref: '#/components/schemas/RentalPaymentAccount'
-        newsletterSubscription:
-          type: boolean
-          default: false
-        premiumPartner:
-          type: boolean
-          default: false
-        locale:
-          type: string
-          default: en_US
-          enum:
-          - en_US
-          - es_ES
-        currency:
-          type: string
-        lengthUnit:
-          type: string
-          enum:
-          - m
-          - ft
-        isRaiUser:
-          type: boolean
-          default: false
       type: object
-    UserCreditScore:
+    UserRentalHistory2:
+      required:
+      - address
+      - city
+      - homeownerPhone
       properties:
-        score:
+        id:
           type: integer
-        creditScoreUpdatedAt:
+        user:
+          $ref: '#/components/schemas/User6'
+        applicantId:
+          type: integer
+        address:
           type: string
-          format: date-time
-        alert:
+          maxLength: 255
+          minLength: 3
+        city:
           type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          maxLength: 255
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
+          maxLength: 15
+          minLength: 7
       type: object
     ListingAddress:
       properties:
@@ -2349,6 +1681,111 @@ components:
           type: boolean
           default: true
       type: object
+    RentalPayment:
+      properties:
+        amount:
+          type: string
+          default: '0'
+        expireAt:
+          type: string
+          format: date-time
+        id:
+          type: integer
+        rental:
+          $ref: '#/components/schemas/Rental'
+        user:
+          $ref: '#/components/schemas/User'
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/RentalPaymentUnit'
+        comment:
+          type: string
+        currency:
+          type: string
+        paymentCurrency:
+          type: string
+        rate:
+          type: string
+        commissionFee:
+          type: string
+          default: '0'
+        amountTotal:
+          type: string
+          default: '0'
+        status:
+          type: string
+          default: created
+        stripePayment:
+          $ref: '#/components/schemas/StripePayment'
+        rentalSubscription:
+          $ref: '#/components/schemas/RentalSubscription'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ListingApplication:
+      properties:
+        deposit:
+          type: string
+          minimum: 0
+        accepted:
+          title: for iOs compatibility.
+          type: boolean
+        declined:
+          title: for iOs compatibility.
+          type: boolean
+        expired:
+          title: for iOs compatibility.
+          type: boolean
+        deleted:
+          title: for iOs compatibility.
+          type: boolean
+        id:
+          type: integer
+        listing:
+          $ref: '#/components/schemas/Listing'
+        price:
+          type: string
+          minimum: 1
+        term:
+          type: integer
+        moveIn:
+          type: string
+          format: date-time
+        rental:
+          $ref: '#/components/schemas/Rental'
+        applicants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Applicant'
+        declinedReason:
+          type: string
+          maxLength: 255
+          minLength: 1
+        new:
+          type: boolean
+          default: true
+        showNotification:
+          type: boolean
+          default: false
+        status:
+          type: string
+          default: draft
+        notes:
+          type: string
+          maxLength: 1000
+          minLength: 1
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     VirtualTour:
       required:
       - url
@@ -2367,31 +1804,6 @@ components:
         publishedAt:
           type: string
           format: date-time
-      type: object
-    ApplicantReference:
-      required:
-      - name
-      - relationship
-      - phone
-      properties:
-        id:
-          type: integer
-        applicant:
-          $ref: '#/components/schemas/Applicant'
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        relationship:
-          type: string
-          maxLength: 255
-          minLength: 1
-        email:
-          type: string
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
       type: object
     Listing:
       required:
@@ -3172,6 +2584,316 @@ components:
           type: string
           format: date-time
       type: object
+    ApplicantReference2:
+      required:
+      - name
+      - relationship
+      - phone
+      properties:
+        id:
+          type: integer
+        applicant:
+          $ref: '#/components/schemas/Applicant4'
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        relationship:
+          type: string
+          maxLength: 255
+          minLength: 1
+        email:
+          type: string
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Applicant:
+      required:
+      - employmentType
+      properties:
+        id:
+          type: integer
+        apartmentApply:
+          $ref: '#/components/schemas/ListingApplication'
+        user:
+          $ref: '#/components/schemas/User'
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantReference'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantAttachment'
+        creator:
+          type: boolean
+          default: false
+        active:
+          type: boolean
+          default: false
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory'
+        employmentType:
+          type: string
+          enum:
+          - employed
+          - unemployed
+          - student
+        employmentName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentTitle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentSourceIncome:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentIncome:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    State2:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
+    RentalType:
+      required:
+      - moveIn
+      - moveOut
+      - firstPaymentDate
+      - monthlyRentAmount
+      - monthlyDueDate
+      - tenantFirstName
+      - tenantLastName
+      - tenantEmail
+      - address
+      - unit
+      properties:
+        moveIn:
+          type: integer
+        moveOut:
+          type: integer
+        firstPaymentDate:
+          type: integer
+        monthlyRentAmount:
+          type: number
+        monthlyDueDate:
+          type: integer
+        tenantFirstName:
+          type: string
+        tenantLastName:
+          type: string
+        tenantEmail:
+          type: string
+        address:
+          type: string
+        unit:
+          type: string
+      type: object
+    OpenHouseApplication:
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        phone:
+          type: integer
+        confirmed:
+          type: boolean
+          default: false
+        declined:
+          type: boolean
+          default: false
+        expired:
+          type: boolean
+          default: false
+        declineReason:
+          type: string
+        date:
+          type: string
+          format: date-time
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserDocument:
+      required:
+      - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    RentalPaymentUnit:
+      properties:
+        paymentAmount:
+          type: string
+        id:
+          type: integer
+        type:
+          type: string
+        amount:
+          type: string
+      type: object
+    UserStripeCustomer6:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User6'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    AdminLevelCollection:
+      properties: []
+      type: object
+    Applicant4:
+      required:
+      - employmentType
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User6'
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantReference2'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicantAttachment'
+        creator:
+          type: boolean
+          default: false
+        active:
+          type: boolean
+          default: false
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory2'
+        employmentType:
+          type: string
+          enum:
+          - employed
+          - unemployed
+          - student
+        employmentName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentTitle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentSourceIncome:
+          type: string
+          maxLength: 255
+          minLength: 1
+        employmentIncome:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     Rental4:
       properties:
         listing:
@@ -3231,6 +2953,197 @@ components:
           type: string
           format: date-time
       type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    StripePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        status:
+          type: string
+        cancellationReason:
+          type: string
+        errorMessage:
+          type: string
+        internalType:
+          type: string
+        last4Digits:
+          type: string
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Rental:
+      properties:
+        listing:
+          $ref: '#/components/schemas/Listing'
+        apartmentId:
+          title: for iOs compatibility.
+          type: integer
+        latestPayment:
+          $ref: '#/components/schemas/RentalPayment'
+        activeSubscription:
+          $ref: '#/components/schemas/RentalSubscription'
+        id:
+          type: integer
+        application:
+          $ref: '#/components/schemas/ListingApplication'
+        moveIn:
+          type: string
+          format: date-time
+        moveOut:
+          type: string
+          format: date-time
+        firstPaymentDate:
+          type: string
+          format: date-time
+        monthlyRentAmount:
+          type: string
+          maximum: 9999999
+          minimum: 1
+        monthlyDueDate:
+          type: integer
+        tenantFirstName:
+          type: string
+        tenantLastName:
+          type: string
+        tenantEmail:
+          type: string
+        address:
+          type: string
+        unit:
+          type: string
+        homeowner:
+          $ref: '#/components/schemas/User'
+        tenant:
+          $ref: '#/components/schemas/User'
+        status:
+          type: string
+          default: pending
+        isChargeable:
+          type: boolean
+          default: false
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDocument'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ApplicantReference:
+      required:
+      - name
+      - relationship
+      - phone
+      properties:
+        id:
+          type: integer
+        applicant:
+          $ref: '#/components/schemas/Applicant'
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        relationship:
+          type: string
+          maxLength: 255
+          minLength: 1
+        email:
+          type: string
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    RentalSubscription:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+          default: '0'
+        commissionFee:
+          type: string
+          default: '0'
+        amountTotal:
+          type: string
+          default: '0'
+        currency:
+          type: string
+        comment:
+          type: string
+        status:
+          type: string
+          default: incomplete
+        paymentMethod:
+          type: string
+          default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    ListingPicture:
+      required:
+      - id
+      properties:
+        id:
+          type: integer
+        imageThumbs:
+          type: string
+        order:
+          type: integer
+        type:
+          type: string
+          default: picture
+      type: object
     RentalPaymentAccount:
       properties:
         stripeAccountId:
@@ -3245,49 +3158,136 @@ components:
           type: string
           format: date-time
       type: object
-    RentalPayment:
+    User:
+      required:
+      - nameFirst
+      - nameLast
+      - username
+      - phone
+      - birthday
       properties:
-        amount:
+        hasPassword:
+          type: boolean
+        phoneCountryCode:
           type: string
-          default: '0'
-        expireAt:
-          type: string
-          format: date-time
         id:
           type: integer
-        rental:
-          $ref: '#/components/schemas/Rental'
-        user:
-          $ref: '#/components/schemas/User'
-        units:
+        nameFirst:
+          type: string
+          maxLength: 255
+          minLength: 2
+        nameMiddle:
+          type: string
+          maxLength: 255
+          minLength: 1
+        nameLast:
+          type: string
+          maxLength: 255
+          minLength: 2
+        company:
+          $ref: '#/components/schemas/Company'
+        companyName:
+          type: string
+          maxLength: 255
+          minLength: 1
+        username:
+          type: string
+          maxLength: 255
+          minLength: 1
+        profilePictureThumbs:
+          type: string
+        phone:
+          type: string
+          maxLength: 15
+          minLength: 7
+        birthday:
+          type: string
+          format: date-time
+        bio:
+          type: string
+          maxLength: 1500
+        oauthProviders:
           type: array
           items:
-            $ref: '#/components/schemas/RentalPaymentUnit'
-        comment:
+            $ref: '#/components/schemas/UserOauthProvider'
+        address:
+          $ref: '#/components/schemas/UserAddress'
+        creditScore:
+          $ref: '#/components/schemas/UserCreditScore'
+        criminalReport:
+          $ref: '#/components/schemas/UserCriminalReport'
+        stripeCustomer:
+          $ref: '#/components/schemas/UserStripeCustomer'
+        active:
+          type: boolean
+          default: true
+        fromNotBerryForbiddenCountry:
+          type: boolean
+          default: false
+        verified:
+          type: boolean
+          default: false
+        emailVerified:
+          type: boolean
+          default: false
+        phoneVerified:
+          type: boolean
+          default: false
+        registered:
+          type: boolean
+          default: true
+        emailNotVerifiedAfter:
           type: string
-        currency:
+          format: date-time
+        lastActiveAt:
           type: string
-        paymentCurrency:
-          type: string
-        rate:
-          type: string
-        commissionFee:
-          type: string
-          default: '0'
-        amountTotal:
-          type: string
-          default: '0'
-        status:
-          type: string
-          default: created
-        stripePayment:
-          $ref: '#/components/schemas/StripePayment'
-        rentalSubscription:
-          $ref: '#/components/schemas/RentalSubscription'
+          format: date-time
         createdAt:
           type: string
           format: date-time
         updatedAt:
           type: string
           format: date-time
+        statusType:
+          type: string
+          default: regular
+          enum:
+          - regular
+          - premium
+          - premium_pending
+          - vip
+          - vip_pending
+        authToken:
+          type: string
+        rentalHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRentalHistory'
+        deleted:
+          type: boolean
+          default: false
+        rentalPaymentAccount:
+          $ref: '#/components/schemas/RentalPaymentAccount'
+        newsletterSubscription:
+          type: boolean
+          default: false
+        premiumPartner:
+          type: boolean
+          default: false
+        locale:
+          type: string
+          default: en_US
+          enum:
+          - en_US
+          - es_ES
+        currency:
+          type: string
+        lengthUnit:
+          type: string
+          enum:
+          - m
+          - ft
+        isRaiUser:
+          type: boolean
+          default: false
       type: object

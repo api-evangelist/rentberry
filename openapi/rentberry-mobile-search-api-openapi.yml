@@ -96,6 +96,108 @@ paths:
           description: Validation failed - Invalid coordinates or search parameters
 components:
   schemas:
+    BoundsResponse:
+      type: object
+    ListingSearchNearbyMobileType:
+      required:
+      - formattedAddress
+      - transactionType
+      - minPrice
+      - maxPrice
+      - minPriceOriginal
+      - maxPriceOriginal
+      - originalCurrency
+      - currency
+      - bedrooms
+      - baths
+      - types
+      - isFilterChanged
+      - cat
+      - dog
+      - page
+      - sort
+      - hasVirtualTour
+      - mapView
+      - latitude
+      - longitude
+      properties:
+        formattedAddress:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - rental
+          - sale
+        minPrice:
+          type: integer
+        maxPrice:
+          type: integer
+        minPriceOriginal:
+          type: integer
+        maxPriceOriginal:
+          type: integer
+        originalCurrency:
+          type: string
+        currency:
+          type: string
+        bedrooms:
+          type: array
+          items:
+            type: number
+            enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+        baths:
+          type: array
+          items:
+            type: number
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - apartment
+            - house
+            - condo
+            - townhouse
+            - duplex
+            - loft
+            - room
+            - land
+            - other
+        isFilterChanged:
+          type: string
+        cat:
+          type: string
+        dog:
+          type: string
+        page:
+          type: integer
+        sort:
+          type: string
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        hasVirtualTour:
+          type: string
+        mapView:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+      type: object
     ListingSearchPlaceMobileType:
       required:
       - formattedAddress
@@ -200,110 +302,6 @@ components:
         mapHeight:
           type: number
         mapScale:
-          type: number
-      type: object
-    BoundsResponse:
-      type: object
-    NearbyResponse:
-      type: object
-    ListingSearchNearbyMobileType:
-      required:
-      - formattedAddress
-      - transactionType
-      - minPrice
-      - maxPrice
-      - minPriceOriginal
-      - maxPriceOriginal
-      - originalCurrency
-      - currency
-      - bedrooms
-      - baths
-      - types
-      - isFilterChanged
-      - cat
-      - dog
-      - page
-      - sort
-      - hasVirtualTour
-      - mapView
-      - latitude
-      - longitude
-      properties:
-        formattedAddress:
-          type: string
-        transactionType:
-          type: string
-          enum:
-          - rental
-          - sale
-        minPrice:
-          type: integer
-        maxPrice:
-          type: integer
-        minPriceOriginal:
-          type: integer
-        maxPriceOriginal:
-          type: integer
-        originalCurrency:
-          type: string
-        currency:
-          type: string
-        bedrooms:
-          type: array
-          items:
-            type: number
-            enum:
-            - 0
-            - 1
-            - 2
-            - 3
-            - 4
-        baths:
-          type: array
-          items:
-            type: number
-            enum:
-            - 1
-            - 2
-            - 3
-            - 4
-            - 5
-        types:
-          type: array
-          items:
-            type: string
-            enum:
-            - apartment
-            - house
-            - condo
-            - townhouse
-            - duplex
-            - loft
-            - room
-            - land
-            - other
-        isFilterChanged:
-          type: string
-        cat:
-          type: string
-        dog:
-          type: string
-        page:
-          type: integer
-        sort:
-          type: string
-          enum:
-          - newest
-          - relevance
-          - price:asc
-          - price:desc
-        hasVirtualTour:
-          type: string
-        mapView:
-          type: string
-        latitude:
-          type: number
-        longitude:
           type: number
       type: object
     ListingSearchBoundsMobileType:
@@ -416,4 +414,6 @@ components:
           type: string
       type: object
     PlaceResponse:
+      type: object
+    NearbyResponse:
       type: object

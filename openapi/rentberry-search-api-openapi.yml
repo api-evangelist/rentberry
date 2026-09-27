@@ -453,21 +453,6 @@ paths:
                 type: object
 components:
   schemas:
-    SimilarResponse:
-      properties:
-        total:
-          type: integer
-        searchRoute:
-          type:
-          - string
-          - 'null'
-          default: null
-      type: object
-    HeaderBag:
-      properties: []
-      type: object
-    Closure:
-      type: object
     ListingSearchBoundsWebType:
       required:
       - formattedAddress
@@ -1062,64 +1047,37 @@ components:
             - newConstruction
             - securitySystem
       type: object
-    SearchResponse:
-      type: object
-    PriceSettingsType:
-      required:
-      - url
-      - mapWidth
-      - mapHeight
-      - minPrice
-      - maxPrice
-      properties:
-        url:
-          type: string
-        mapWidth:
-          type: number
-        mapHeight:
-          type: number
-        minPrice:
-          type: number
-        maxPrice:
-          type: number
-      type: object
-    ParameterBag:
+    InputBag:
       properties: []
       type: object
-    Country:
-      properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-      type: object
-    union: []
-    ServerBag:
-      properties: []
-      type: object
-    InitType:
+    ListingSearchIdsType:
       required:
-      - url
-      - mapWidth
-      - mapHeight
-      - mapView
+      - ids
+      - sort
+      - latitude
+      - longitude
+      - transactionType
       properties:
-        url:
+        ids:
+          type: array
+          items:
+            type: integer
+        sort:
           type: string
-        mapWidth:
+          enum:
+          - newest
+          - relevance
+          - price:asc
+          - price:desc
+        latitude:
           type: number
-        mapHeight:
+        longitude:
           type: number
-        mapView:
+        transactionType:
           type: string
+          enum:
+          - rental
+          - sale
       type: object
     ListingSearchPlaceWebType:
       required:
@@ -1789,23 +1747,23 @@ components:
           type: boolean
           default: false
       type: object
-    URLRequest:
+    InitType:
       required:
       - url
+      - mapWidth
+      - mapHeight
+      - mapView
       properties:
         url:
           type: string
-        originalRequest:
-          $ref: '#/components/schemas/Request'
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        mapView:
+          type: string
       type: object
-    IdsResponse:
-      properties: []
-      type: object
-    FileBag:
-      properties: []
-      type: object
-    InputBag:
-      properties: []
+    SearchResponse:
       type: object
     SearchFilterConfig:
       required:
@@ -1824,32 +1782,74 @@ components:
           type: string
           format: date-time
       type: object
-    ListingSearchIdsType:
+    URLRequest:
       required:
-      - ids
-      - sort
-      - latitude
-      - longitude
-      - transactionType
+      - url
       properties:
-        ids:
-          type: array
-          items:
-            type: integer
-        sort:
+        url:
           type: string
-          enum:
-          - newest
-          - relevance
-          - price:asc
-          - price:desc
-        latitude:
-          type: number
-        longitude:
-          type: number
-        transactionType:
+        originalRequest:
+          $ref: '#/components/schemas/Request'
+      type: object
+    ParameterBag:
+      properties: []
+      type: object
+    union: []
+    FileBag:
+      properties: []
+      type: object
+    Closure:
+      type: object
+    IdsResponse:
+      properties: []
+      type: object
+    SimilarResponse:
+      properties:
+        total:
+          type: integer
+        searchRoute:
+          type:
+          - string
+          - 'null'
+          default: null
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
           type: string
-          enum:
-          - rental
-          - sale
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    PriceSettingsType:
+      required:
+      - url
+      - mapWidth
+      - mapHeight
+      - minPrice
+      - maxPrice
+      properties:
+        url:
+          type: string
+        mapWidth:
+          type: number
+        mapHeight:
+          type: number
+        minPrice:
+          type: number
+        maxPrice:
+          type: number
+      type: object
+    HeaderBag:
+      properties: []
+      type: object
+    ServerBag:
+      properties: []
       type: object

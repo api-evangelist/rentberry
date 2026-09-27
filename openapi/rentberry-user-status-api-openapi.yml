@@ -36,6 +36,62 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     User2:
       required:
       - nameFirst
@@ -165,71 +221,31 @@ components:
           type: boolean
           default: false
       type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Company:
+    UserOauthProvider:
       properties:
         id:
           type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
         provider:
           type: string
-        externalId:
+        providerId:
           type: string
-        createdAt:
+        connectId:
           type: string
-          format: date-time
-        updatedAt:
+        nameFirst:
           type: string
-          format: date-time
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
       type: object
-    UserCriminalReport:
+    UserStripeCustomer2:
       properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
         createdAt:
           type: string
           format: date-time
@@ -268,39 +284,6 @@ components:
           maxLength: 9
           minLength: 5
       type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     State2:
       properties:
         id:
@@ -320,12 +303,29 @@ components:
           maxLength: 255
           minLength: 1
       type: object
-    UserStripeCustomer2:
+    UserCreditScore:
       properties:
-        customerId:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
           type: string
-        user:
-          $ref: '#/components/schemas/User2'
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
         createdAt:
           type: string
           format: date-time

@@ -75,6 +75,69 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    AccountPhoneType:
+      required:
+      - phone
+      properties:
+        phone:
+          type: integer
+      type: object
     User2:
       required:
       - nameFirst
@@ -204,66 +267,31 @@ components:
           type: boolean
           default: false
       type: object
-    AccountPhoneType:
-      required:
-      - phone
-      properties:
-        phone:
-          type: integer
-      type: object
-    State2:
+    UserOauthProvider:
       properties:
         id:
           type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
         provider:
           type: string
-        externalId:
+        providerId:
           type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
         createdAt:
           type: string
           format: date-time
@@ -271,36 +299,17 @@ components:
           type: string
           format: date-time
       type: object
-    UserCriminalReport:
+    PhoneVerificationRequest:
+      required:
+      - phone
+      - code
       properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
+        phone:
           type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    UserCreditScore:
-      properties:
-        score:
+        code:
           type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+          maximum: 9999
+          minimum: 1000
       type: object
     UserAddress2:
       required:
@@ -333,24 +342,40 @@ components:
           maxLength: 9
           minLength: 5
       type: object
-    UserOauthProvider:
+    State2:
       properties:
         id:
           type: integer
-        provider:
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
           type: string
-        providerId:
+          format: date-time
+        alert:
           type: string
-        connectId:
+        createdAt:
           type: string
-        nameFirst:
+          format: date-time
+        updatedAt:
           type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
+          format: date-time
       type: object
     RentalPaymentAccount:
       properties:
@@ -359,31 +384,6 @@ components:
         isStripeOnboardingFinished:
           type: boolean
           default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    PhoneVerificationRequest:
-      required:
-      - phone
-      - code
-      properties:
-        phone:
-          type: integer
-        code:
-          type: integer
-          maximum: 9999
-          minimum: 1000
-      type: object
-    UserStripeCustomer2:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User2'
         createdAt:
           type: string
           format: date-time
