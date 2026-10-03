@@ -242,50 +242,52 @@ components:
           type: string
           format: date-time
       type: object
-    VerifyAnswerType:
-      required:
-      - type
-      - answer
+    UserCreditScore:
       properties:
-        type:
-          type: string
-        answer:
-          type: string
-      type: object
-    AnswersVerifyQuestionsType:
-      required:
-      - idNumber
-      - answers
-      properties:
-        idNumber:
+        score:
           type: integer
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerifyAnswerType'
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
       type: object
-    VerifyByDocumentsType:
+    UserAddress2:
       required:
-      - image
-      - backImage
-      - faceImage
-      - queryId
-      - countryCode
-      - documentType
+      - street
+      - houseNumber
+      - city
+      - zip
       properties:
-        image: []
-        backImage: []
-        faceImage: []
-        queryId:
+        street:
           type: string
-        countryCode:
+          maxLength: 255
+          minLength: 1
+        houseNumber:
           type: string
-        documentType:
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
           type: string
-          enum:
-          - driverLicense
-          - idCard
-          - passport
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
       type: object
     Company:
       properties:
@@ -457,6 +459,93 @@ components:
           type: boolean
           default: false
       type: object
+    UserStripeCustomer2:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User2'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    VerifyAnswerType:
+      required:
+      - type
+      - answer
+      properties:
+        type:
+          type: string
+        answer:
+          type: string
+      type: object
+    State2:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+      type: object
+    AnswersVerifyQuestionsType:
+      required:
+      - idNumber
+      - answers
+      properties:
+        idNumber:
+          type: integer
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerifyAnswerType'
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    AccountVerifyType:
+      required:
+      - nameFirst
+      - nameLast
+      - birthday
+      - ssn
+      - address
+      properties:
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        birthday:
+          type: integer
+        ssn:
+          type: string
+        address:
+          $ref: '#/components/schemas/AccountAddressType'
+      type: object
     UserOauthProvider:
       properties:
         id:
@@ -474,29 +563,6 @@ components:
         pictureUrl:
           type: string
         appId:
-          type: string
-      type: object
-    UserStripeCustomer2:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User2'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    VerifyInitType:
-      required:
-      - nameFirst
-      - nameLast
-      properties:
-        nameFirst:
-          type: string
-        nameLast:
           type: string
       type: object
     AccountAddressType:
@@ -520,102 +586,36 @@ components:
         stateId:
           type: integer
       type: object
-    UserAddress2:
+    VerifyByDocumentsType:
       required:
-      - street
-      - houseNumber
-      - city
-      - zip
+      - image
+      - backImage
+      - faceImage
+      - queryId
+      - countryCode
+      - documentType
       properties:
-        street:
+        image: []
+        backImage: []
+        faceImage: []
+        queryId:
           type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
+        countryCode:
           type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
+        documentType:
           type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State2'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
+          enum:
+          - driverLicense
+          - idCard
+          - passport
       type: object
-    State2:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-      type: object
-    AccountVerifyType:
+    VerifyInitType:
       required:
       - nameFirst
       - nameLast
-      - birthday
-      - ssn
-      - address
       properties:
         nameFirst:
           type: string
         nameLast:
           type: string
-        birthday:
-          type: integer
-        ssn:
-          type: string
-        address:
-          $ref: '#/components/schemas/AccountAddressType'
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    RentalPaymentAccount:
-      properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
       type: object

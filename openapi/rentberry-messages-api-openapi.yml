@@ -284,6 +284,98 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    MessageType:
+      required:
+      - body
+      properties:
+        body:
+          type: string
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Company:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+        phone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+        website:
+          type: string
+          maxLength: 255
+          minLength: 1
+        logoThumbs:
+          type: string
+        email:
+          type: string
+          maxLength: 255
+          minLength: 1
+        city:
+          type: string
+          maxLength: 255
+          minLength: 1
+        countryCode:
+          type: string
+          maxLength: 2
+          minLength: 2
+        provider:
+          type: string
+        externalId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserStripeCustomer:
+      properties:
+        customerId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     ListingAddress:
       properties:
         latitude:
@@ -367,21 +459,6 @@ components:
           type: boolean
           default: true
       type: object
-    UserCriminalReport:
-      properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
-          type: integer
-          maxLength: 10
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     UserAddress:
       required:
       - street
@@ -413,91 +490,6 @@ components:
           maxLength: 9
           minLength: 5
       type: object
-    UserStripeCustomer:
-      properties:
-        customerId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Company:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-        phone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-        website:
-          type: string
-          maxLength: 255
-          minLength: 1
-        logoThumbs:
-          type: string
-        email:
-          type: string
-          maxLength: 255
-          minLength: 1
-        city:
-          type: string
-          maxLength: 255
-          minLength: 1
-        countryCode:
-          type: string
-          maxLength: 2
-          minLength: 2
-        provider:
-          type: string
-        externalId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Bounds:
-      properties:
-        northeast:
-          $ref: '#/components/schemas/Coordinates'
-        southwest:
-          $ref: '#/components/schemas/Coordinates'
-      type: object
-    AdminLevelCollection:
-      properties: []
-      type: object
-    State:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        description:
-          type: string
-      type: object
     UserRentalHistory:
       required:
       - address
@@ -526,56 +518,6 @@ components:
           type: integer
           maxLength: 15
           minLength: 7
-      type: object
-    Country:
-      properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-      type: object
-    Coordinates:
-      properties:
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-      type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
-    MessageType:
-      required:
-      - body
-      properties:
-        body:
-          type: string
       type: object
     ConversationMessage:
       required:
@@ -610,44 +552,12 @@ components:
           type: string
           format: date-time
       type: object
-    ConversationResponse:
+    Bounds:
       properties:
-        conversationId:
-          type: integer
-        lastMessage:
-          $ref: '#/components/schemas/ConversationMessage'
-        partner:
-          $ref: '#/components/schemas/User'
-        apartmentId:
-          type: integer
-        isViewed:
-          type: boolean
-        topicType:
-          type: string
-        apartmentAddress:
-          $ref: '#/components/schemas/ListingAddress'
-        countUnreaded:
-          type: integer
-        countUnviewed:
-          type: integer
-        apartmentUrl:
-          type: string
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+        northeast:
+          $ref: '#/components/schemas/Coordinates'
+        southwest:
+          $ref: '#/components/schemas/Coordinates'
       type: object
     RentalPaymentAccount:
       properties:
@@ -662,6 +572,42 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    State:
+      properties:
+        id:
+          type: integer
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
+          type: string
       type: object
     User:
       required:
@@ -795,4 +741,58 @@ components:
         isRaiUser:
           type: boolean
           default: false
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
+      type: object
+    ConversationResponse:
+      properties:
+        conversationId:
+          type: integer
+        lastMessage:
+          $ref: '#/components/schemas/ConversationMessage'
+        partner:
+          $ref: '#/components/schemas/User'
+        apartmentId:
+          type: integer
+        isViewed:
+          type: boolean
+        topicType:
+          type: string
+        apartmentAddress:
+          $ref: '#/components/schemas/ListingAddress'
+        countUnreaded:
+          type: integer
+        countUnviewed:
+          type: integer
+        apartmentUrl:
+          type: string
+      type: object
+    AdminLevelCollection:
+      properties: []
+      type: object
+    Coordinates:
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
       type: object

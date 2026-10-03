@@ -83,6 +83,53 @@ components:
           type: string
           format: date-time
       type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress2:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
     Company:
       properties:
         id:
@@ -253,25 +300,6 @@ components:
           type: boolean
           default: false
       type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
     UserStripeCustomer2:
       properties:
         customerId:
@@ -284,37 +312,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-      type: object
-    UserAddress2:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State2'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
       type: object
     State2:
       properties:
@@ -335,21 +332,24 @@ components:
           maxLength: 255
           minLength: 1
       type: object
-    UserCreditScore:
+    UserOauthProvider:
       properties:
-        score:
+        id:
           type: integer
-        creditScoreUpdatedAt:
+        provider:
           type: string
-          format: date-time
-        alert:
+        providerId:
           type: string
-        createdAt:
+        connectId:
           type: string
-          format: date-time
-        updatedAt:
+        nameFirst:
           type: string
-          format: date-time
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
       type: object
     RentalPaymentAccount:
       properties:

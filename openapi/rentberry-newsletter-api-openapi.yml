@@ -38,19 +38,6 @@ paths:
           description: Validation failed or email already subscribed
 components:
   schemas:
-    NewsletterUserType:
-      required:
-      - email
-      - type
-      properties:
-        email:
-          type: string
-        type:
-          type: string
-          enum:
-          - newsLetter
-          - newsLetterHomeowner
-      type: object
     NewsletterUser:
       required:
       - email
@@ -65,4 +52,17 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    NewsletterUserType:
+      required:
+      - email
+      - type
+      properties:
+        email:
+          type: string
+        type:
+          type: string
+          enum:
+          - newsLetter
+          - newsLetterHomeowner
       type: object

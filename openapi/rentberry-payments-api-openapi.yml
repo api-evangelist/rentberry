@@ -142,27 +142,6 @@ components:
           type: string
           format: date-time
       type: object
-    FeatureTicket:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        type:
-          type: string
-        usedAt:
-          type: string
-          format: date-time
-        isUsed:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     StripePayment:
       properties:
         id:
@@ -183,6 +162,27 @@ components:
         paymentMethod:
           type: string
           default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    FeatureTicket:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+        usedAt:
+          type: string
+          format: date-time
+        isUsed:
+          type: boolean
+          default: false
         createdAt:
           type: string
           format: date-time

@@ -90,6 +90,53 @@ components:
           type: string
           format: date-time
       type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserAddress2:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State2'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
     Company:
       properties:
         id:
@@ -130,13 +177,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-      type: object
-    AccountPhoneType:
-      required:
-      - phone
-      properties:
-        phone:
-          type: integer
       type: object
     User2:
       required:
@@ -267,25 +307,6 @@ components:
           type: boolean
           default: false
       type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
     UserStripeCustomer2:
       properties:
         customerId:
@@ -298,49 +319,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-      type: object
-    PhoneVerificationRequest:
-      required:
-      - phone
-      - code
-      properties:
-        phone:
-          type: integer
-        code:
-          type: integer
-          maximum: 9999
-          minimum: 1000
-      type: object
-    UserAddress2:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State2'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
       type: object
     State2:
       properties:
@@ -361,21 +339,31 @@ components:
           maxLength: 255
           minLength: 1
       type: object
-    UserCreditScore:
+    AccountPhoneType:
+      required:
+      - phone
       properties:
-        score:
+        phone:
           type: integer
-        creditScoreUpdatedAt:
+      type: object
+    UserOauthProvider:
+      properties:
+        id:
+          type: integer
+        provider:
           type: string
-          format: date-time
-        alert:
+        providerId:
           type: string
-        createdAt:
+        connectId:
           type: string
-          format: date-time
-        updatedAt:
+        nameFirst:
           type: string
-          format: date-time
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
       type: object
     RentalPaymentAccount:
       properties:
@@ -390,4 +378,16 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    PhoneVerificationRequest:
+      required:
+      - phone
+      - code
+      properties:
+        phone:
+          type: integer
+        code:
+          type: integer
+          maximum: 9999
+          minimum: 1000
       type: object
