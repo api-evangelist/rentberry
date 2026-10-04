@@ -284,43 +284,26 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    UserCriminalReport:
+    State:
       properties:
-        criminalRecordFound:
-          type: boolean
-          default: false
-        status:
+        id:
           type: integer
-          maxLength: 10
-        createdAt:
+        shortName:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 200
+          minLength: 1
+        name:
+          type:
+          - string
+          - 'null'
+          default: null
+          maxLength: 255
+          minLength: 1
+        description:
           type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    MessageType:
-      required:
-      - body
-      properties:
-        body:
-          type: string
-      type: object
-    UserCreditScore:
-      properties:
-        score:
-          type: integer
-        creditScoreUpdatedAt:
-          type: string
-          format: date-time
-        alert:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
       type: object
     Company:
       properties:
@@ -356,6 +339,171 @@ components:
           type: string
         externalId:
           type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCriminalReport:
+      properties:
+        criminalRecordFound:
+          type: boolean
+          default: false
+        status:
+          type: integer
+          maxLength: 10
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    Coordinates:
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+      type: object
+    Country:
+      properties:
+        shortCode:
+          title: 'ISO 3166-1 alpha-2
+
+            Use in geocoding responses from Google.'
+          type: string
+        longCode:
+          title: ISO 3166-1 alpha-3.
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    AdminLevelCollection:
+      properties: []
+      type: object
+    ConversationMessage:
+      required:
+      - body
+      properties:
+        id:
+          type: integer
+        conversationId:
+          type: integer
+        userId:
+          type: integer
+        body:
+          type: string
+          maxLength: 1000
+          minLength: 1
+        readed:
+          type: boolean
+          default: false
+        viewed:
+          type: boolean
+          default: false
+        notified:
+          type: boolean
+          default: false
+        notifiedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserCreditScore:
+      properties:
+        score:
+          type: integer
+        creditScoreUpdatedAt:
+          type: string
+          format: date-time
+        alert:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    UserRentalHistory:
+      required:
+      - address
+      - city
+      - homeownerPhone
+      properties:
+        id:
+          type: integer
+        user:
+          $ref: '#/components/schemas/User'
+        applicantId:
+          type: integer
+        address:
+          type: string
+          maxLength: 255
+          minLength: 3
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        price:
+          type: integer
+        term:
+          type: integer
+        homeownerPhone:
+          type: integer
+          maxLength: 15
+          minLength: 7
+      type: object
+    UserAddress:
+      required:
+      - street
+      - houseNumber
+      - city
+      - zip
+      properties:
+        street:
+          type: string
+          maxLength: 255
+          minLength: 1
+        houseNumber:
+          type: string
+          maxLength: 255
+          minLength: 1
+        streetType:
+          type:
+          - string
+          - 'null'
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 255
+          minLength: 3
+        state:
+          $ref: '#/components/schemas/State'
+        zip:
+          type: string
+          maxLength: 9
+          minLength: 5
+      type: object
+    RentalPaymentAccount:
+      properties:
+        stripeAccountId:
+          type: string
+        isStripeOnboardingFinished:
+          type: boolean
+          default: false
         createdAt:
           type: string
           format: date-time
@@ -459,99 +607,6 @@ components:
           type: boolean
           default: true
       type: object
-    UserAddress:
-      required:
-      - street
-      - houseNumber
-      - city
-      - zip
-      properties:
-        street:
-          type: string
-          maxLength: 255
-          minLength: 1
-        houseNumber:
-          type: string
-          maxLength: 255
-          minLength: 1
-        streetType:
-          type:
-          - string
-          - 'null'
-          maxLength: 10
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        state:
-          $ref: '#/components/schemas/State'
-        zip:
-          type: string
-          maxLength: 9
-          minLength: 5
-      type: object
-    UserRentalHistory:
-      required:
-      - address
-      - city
-      - homeownerPhone
-      properties:
-        id:
-          type: integer
-        user:
-          $ref: '#/components/schemas/User'
-        applicantId:
-          type: integer
-        address:
-          type: string
-          maxLength: 255
-          minLength: 3
-        city:
-          type: string
-          maxLength: 255
-          minLength: 3
-        price:
-          type: integer
-        term:
-          type: integer
-        homeownerPhone:
-          type: integer
-          maxLength: 15
-          minLength: 7
-      type: object
-    ConversationMessage:
-      required:
-      - body
-      properties:
-        id:
-          type: integer
-        conversationId:
-          type: integer
-        userId:
-          type: integer
-        body:
-          type: string
-          maxLength: 1000
-          minLength: 1
-        readed:
-          type: boolean
-          default: false
-        viewed:
-          type: boolean
-          default: false
-        notified:
-          type: boolean
-          default: false
-        notifiedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     Bounds:
       properties:
         northeast:
@@ -559,54 +614,11 @@ components:
         southwest:
           $ref: '#/components/schemas/Coordinates'
       type: object
-    RentalPaymentAccount:
+    MessageType:
+      required:
+      - body
       properties:
-        stripeAccountId:
-          type: string
-        isStripeOnboardingFinished:
-          type: boolean
-          default: false
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    Country:
-      properties:
-        shortCode:
-          title: 'ISO 3166-1 alpha-2
-
-            Use in geocoding responses from Google.'
-          type: string
-        longCode:
-          title: ISO 3166-1 alpha-3.
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-      type: object
-    State:
-      properties:
-        id:
-          type: integer
-        shortName:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 200
-          minLength: 1
-        name:
-          type:
-          - string
-          - 'null'
-          default: null
-          maxLength: 255
-          minLength: 1
-        description:
+        body:
           type: string
       type: object
     User:
@@ -742,25 +754,6 @@ components:
           type: boolean
           default: false
       type: object
-    UserOauthProvider:
-      properties:
-        id:
-          type: integer
-        provider:
-          type: string
-        providerId:
-          type: string
-        connectId:
-          type: string
-        nameFirst:
-          type: string
-        nameLast:
-          type: string
-        pictureUrl:
-          type: string
-        appId:
-          type: string
-      type: object
     ConversationResponse:
       properties:
         conversationId:
@@ -784,15 +777,22 @@ components:
         apartmentUrl:
           type: string
       type: object
-    AdminLevelCollection:
-      properties: []
-      type: object
-    Coordinates:
+    UserOauthProvider:
       properties:
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
+        id:
+          type: integer
+        provider:
+          type: string
+        providerId:
+          type: string
+        connectId:
+          type: string
+        nameFirst:
+          type: string
+        nameLast:
+          type: string
+        pictureUrl:
+          type: string
+        appId:
+          type: string
       type: object

@@ -250,6 +250,15 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    PicturesIdsType:
+      required:
+      - picturesIds
+      properties:
+        picturesIds:
+          type: array
+          items:
+            type: integer
+      type: object
     ListingPicture:
       required:
       - id
@@ -263,13 +272,4 @@ components:
         type:
           type: string
           default: picture
-      type: object
-    PicturesIdsType:
-      required:
-      - picturesIds
-      properties:
-        picturesIds:
-          type: array
-          items:
-            type: integer
       type: object

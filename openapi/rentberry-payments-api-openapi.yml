@@ -118,30 +118,6 @@ paths:
           description: Screening request already paid
 components:
   schemas:
-    FeaturePayment:
-      properties:
-        id:
-          type: integer
-        amount:
-          type: string
-        currency:
-          type: string
-        status:
-          type: integer
-          default: 1
-        type:
-          type:
-          - string
-          - 'null'
-        ticket:
-          $ref: '#/components/schemas/FeatureTicket'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
     StripePayment:
       properties:
         id:
@@ -162,6 +138,30 @@ components:
         paymentMethod:
           type: string
           default: card
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
+    FeaturePayment:
+      properties:
+        id:
+          type: integer
+        amount:
+          type: string
+        currency:
+          type: string
+        status:
+          type: integer
+          default: 1
+        type:
+          type:
+          - string
+          - 'null'
+        ticket:
+          $ref: '#/components/schemas/FeatureTicket'
         createdAt:
           type: string
           format: date-time

@@ -63,19 +63,6 @@ paths:
           description: Saved search not found or already disabled
 components:
   schemas:
-    SavedSearchType:
-      required:
-      - email
-      - filter
-      - originalCurrency
-      properties:
-        email:
-          type: string
-        filter:
-          $ref: '#/components/schemas/SavedSearchFilterType'
-        originalCurrency:
-          type: string
-      type: object
     SearchData:
       required:
       - email
@@ -95,6 +82,19 @@ components:
         updatedAt:
           type: string
           format: date-time
+      type: object
+    SavedSearchType:
+      required:
+      - email
+      - filter
+      - originalCurrency
+      properties:
+        email:
+          type: string
+        filter:
+          $ref: '#/components/schemas/SavedSearchFilterType'
+        originalCurrency:
+          type: string
       type: object
     SavedSearchFilterType:
       required:
