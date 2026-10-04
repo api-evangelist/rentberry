@@ -1,29 +1,27 @@
-# Kin Score artifact — rentberry — 2026-08-27T140727
+# Kin Score artifact — rentberry — 2026-09-24T090406
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: rentberry
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T140727
-  composite: 40.6
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T090406
+  composite: 44.0
   band: developing
   facets:
-    discoverability: 50.0
-    contract_quality: 50.1
-    governance: 16.7
-    operational_transparency: 2.6
+    discoverability: 63.0
+    contract_quality: 44.8
+    contract_governance: 4.5
+    operational_transparency: 18.4
     developer_ergonomics: 54.2
-    commercial_clarity: 44.7
-    contract_governance: 16.7
     access_clarity: 44.7
   agent_readiness:
-    score: 21.8
+    score: 23.5
     band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: false
-      reversibility_documented: false
+      reversibility_documented: documented
       mcp_server: false
       auth_clarity: bearer
       idempotency: false
@@ -46,6 +44,9 @@ kin_score:
     regime_id: payments
     score: 39.1
     matched_via: tags
+  open_source:
+    applies: true
+    score: 25.0
   provenance:
     mcp: derived
     skills: derived
@@ -54,4 +55,4 @@ kin_score:
       total: 45
       derived: 0
       coverage: 0.0
-      callable: 100.0
+      callable: 0.0
