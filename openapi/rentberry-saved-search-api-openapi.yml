@@ -83,19 +83,6 @@ components:
           type: string
           format: date-time
       type: object
-    SavedSearchType:
-      required:
-      - email
-      - filter
-      - originalCurrency
-      properties:
-        email:
-          type: string
-        filter:
-          $ref: '#/components/schemas/SavedSearchFilterType'
-        originalCurrency:
-          type: string
-      type: object
     SavedSearchFilterType:
       required:
       - types
@@ -140,4 +127,17 @@ components:
             - 2
             - 3
             - 4
+      type: object
+    SavedSearchType:
+      required:
+      - email
+      - filter
+      - originalCurrency
+      properties:
+        email:
+          type: string
+        filter:
+          $ref: '#/components/schemas/SavedSearchFilterType'
+        originalCurrency:
+          type: string
       type: object

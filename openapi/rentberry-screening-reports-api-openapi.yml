@@ -148,6 +148,16 @@ paths:
       - XAuthToken: []
 components:
   schemas:
+    CriminalReportDTO:
+      properties:
+        reportId:
+          type: string
+        criminalReportFound:
+          type: boolean
+        status:
+          type: string
+          default: NO STATUS
+      type: object
     CreditReportDTO:
       properties:
         reportId:
@@ -178,14 +188,4 @@ components:
           type: string
         status:
           type: string
-      type: object
-    CriminalReportDTO:
-      properties:
-        reportId:
-          type: string
-        criminalReportFound:
-          type: boolean
-        status:
-          type: string
-          default: NO STATUS
       type: object

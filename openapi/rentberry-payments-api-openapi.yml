@@ -145,6 +145,27 @@ components:
           type: string
           format: date-time
       type: object
+    FeatureTicket:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+        usedAt:
+          type: string
+          format: date-time
+        isUsed:
+          type: boolean
+          default: false
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      type: object
     FeaturePayment:
       properties:
         id:
@@ -162,27 +183,6 @@ components:
           - 'null'
         ticket:
           $ref: '#/components/schemas/FeatureTicket'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      type: object
-    FeatureTicket:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        type:
-          type: string
-        usedAt:
-          type: string
-          format: date-time
-        isUsed:
-          type: boolean
-          default: false
         createdAt:
           type: string
           format: date-time

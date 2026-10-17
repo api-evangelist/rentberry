@@ -375,19 +375,6 @@ paths:
       - XAuthToken: []
 components:
   schemas:
-    OAuthUserResponse:
-      properties:
-        userData:
-          $ref: '#/components/schemas/OAuthUserUser'
-        action:
-          type: string
-        accessToken:
-          type: string
-        oauthProvider:
-          type: string
-        oauthConnectId:
-          type: string
-      type: object
     OAuthUserUser:
       properties:
         id:
@@ -401,5 +388,18 @@ components:
         phone:
           type: string
         pictureUrl:
+          type: string
+      type: object
+    OAuthUserResponse:
+      properties:
+        userData:
+          $ref: '#/components/schemas/OAuthUserUser'
+        action:
+          type: string
+        accessToken:
+          type: string
+        oauthProvider:
+          type: string
+        oauthConnectId:
           type: string
       type: object
