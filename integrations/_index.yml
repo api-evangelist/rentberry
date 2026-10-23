@@ -34,3 +34,34 @@
     detected: '2026-10-18'
   status: not-a-workflow
   arazzo: null
+- slug: rentberry-packagist
+  label: Packagist
+  partner: packagist
+  partner_name: Packagist
+  category: official SDK (PHP)
+  type: register
+  channel: package-registry
+  evidence: https://packagist.org/packages/rentberry/coinmarketcap-api
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Packagist (public registry JSON)
+    spec_file: null
+    language: PHP
+    packages:
+    - name: rentberry/coinmarketcap-api
+      version: 1.0.1
+      released: '2021-03-02'
+      released_field: time
+      lapsed: true
+      page: https://packagist.org/packages/rentberry/coinmarketcap-api
+      repo_leg: github-org:rentberry
+      publisher_leg: org:rentberry
+      matched_by: github-org
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
