@@ -64,43 +64,183 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Rentberry, Inc. is an international long-term home rental marketplace founded in 2015 and headquartered in
-San Francisco, California. The platform runs the whole rental lifecycle in one closed loop for tenants and
-landlords: listing and syndication, worldwide search, virtual tours and open houses, custom rent offers,
-applications with proof of income, US credit and background screening, e-signed contracts and contract
-templates, Stripe-backed rent collection and rental subscriptions, messaging, maintenance and complaints.
+Rentberry, Inc. is an international long-term home rental marketplace founded in 2015 and headquartered in San Francisco, California. The platform runs the whole rental lifecycle in one closed loop for both tenants and landlords: property listing and syndication, search across residential rental cities worldwide, virtual tours and open-house scheduling, custom rent offers and negotiation, rental applications with proof-of-income attachments, US credit and background screening, e-signed rental contracts and contract templates, online rent collection and rental subscriptions via Stripe, in-platform messaging, maintenance and complaint handling, and a flexible-living concept aimed at digital nomads. Rentberry operates a versioned REST API at api.rentberry.com whose Swagger UI at /docs publishes an OpenAPI 3.0.0 description covering applications, auth and social OAuth login, listings, search, contracts, screening, payments, rentals, messaging, user verification and localization.
 
-- Website: https://rentberry.com/
-- API reference (Swagger UI): https://api.rentberry.com/docs
-- Help center: https://help.rentberry.com/en/
-- GitHub: https://github.com/Rentberry
+**Areas:** Real Estate · PropTech · Rentals · Rental Marketplace · Property Management · Tenant Screening · E-Signature · Payments · Listings · Search · Geocoding · Marketplace
 
-## APIs
+## Rentberry on APIs.io
 
-| API | Contract | Surface |
-|---|---|---|
-| Rentberry API | OpenAPI 3.0.0 — `openapi/rentberry-openapi.yml` | 188 paths, 220 operations, 44 tags, 164 schemas |
-| Rentberry Geocoder | proto3 — `grpc/rentberry-geocoder.proto` | GeocodeService, TimezoneService |
+Everything profiled for Rentberry is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rentberry/](https://apis.io/providers/rentberry/)** — or go straight to one of the APIs or properties below.
 
-The OpenAPI was harvested on 2026-08-02 from the Swagger UI at `https://api.rentberry.com/docs`, where it is
-embedded in the page as `<script id="swagger-data" type="application/json">`. There is no standalone
-`/openapi.json` or `/swagger.json` endpoint. The unmodified document is kept at
-`openapi/_original/rentberry-openapi.json`.
+### APIs (46)
 
-## Artifacts
+- [Rentberry Geocoder (gRPC)](https://apis.io/apis/rentberry/rentberry-geocoder-grpc/) — Open-source gRPC geocoding and timezone-lookup service Rentberry built and runs for its own property search, with published proto3 definitions and PHP…
+- [Rentberry Applications API](https://apis.io/apis/rentberry/rentberry-applications-api/) — Applications
+- [Rentberry Auth API](https://apis.io/apis/rentberry/rentberry-auth-api/) — Auth
+- [Rentberry Breadcrumbs API](https://apis.io/apis/rentberry/rentberry-breadcrumbs-api/) — Breadcrumbs
+- [Rentberry Complaints API](https://apis.io/apis/rentberry/rentberry-complaints-api/) — Complaints
+- [Rentberry Contract Templates API](https://apis.io/apis/rentberry/rentberry-contract-templates-api/) — Contract Templates
+- [Rentberry Contracts API](https://apis.io/apis/rentberry/rentberry-contracts-api/) — Contracts
+- [Rentberry Devices API](https://apis.io/apis/rentberry/rentberry-devices-api/) — Devices
+- [Rentberry Events API](https://apis.io/apis/rentberry/rentberry-events-api/) — Events
+- [Rentberry Features API](https://apis.io/apis/rentberry/rentberry-features-api/) — Features
+- [Rentberry Integration Requests API](https://apis.io/apis/rentberry/rentberry-integration-requests-api/) — Integration Requests
+- [Rentberry Landing Pages API](https://apis.io/apis/rentberry/rentberry-landing-pages-api/) — Landing Pages
+- [Rentberry Landing Statistics API](https://apis.io/apis/rentberry/rentberry-landing-statistics-api/) — Landing Statistics
+- [Rentberry Leads API](https://apis.io/apis/rentberry/rentberry-leads-api/) — Leads
+- [Rentberry Listing Pictures API](https://apis.io/apis/rentberry/rentberry-listing-pictures-api/) — Listing Pictures
+- [Rentberry Listings API](https://apis.io/apis/rentberry/rentberry-listings-api/) — Listings
+- [Rentberry Location API](https://apis.io/apis/rentberry/rentberry-location-api/) — Location
+- [Rentberry Messages API](https://apis.io/apis/rentberry/rentberry-messages-api/) — Messages
+- [Rentberry Mobile Search API](https://apis.io/apis/rentberry/rentberry-mobile-search-api/) — Mobile Search
+- [Rentberry Newsletter API](https://apis.io/apis/rentberry/rentberry-newsletter-api/) — Newsletter
+- [Rentberry Notifications API](https://apis.io/apis/rentberry/rentberry-notifications-api/) — Notifications
+- [Rentberry Payments API](https://apis.io/apis/rentberry/rentberry-payments-api/) — Payments
+- [Rentberry Providers API](https://apis.io/apis/rentberry/rentberry-providers-api/) — Providers
+- [Rentberry Registration API](https://apis.io/apis/rentberry/rentberry-registration-api/) — Registration
+- [Rentberry Rental API](https://apis.io/apis/rentberry/rentberry-rental-api/) — Rental
+- [Rentberry Rental Payments API](https://apis.io/apis/rentberry/rentberry-rental-payments-api/) — Rental Payments
+- [Rentberry Rental Subscription API](https://apis.io/apis/rentberry/rentberry-rental-subscription-api/) — Rental Subscription
+- [Rentberry Rentals API](https://apis.io/apis/rentberry/rentberry-rentals-api/) — Rentals
+- [Rentberry Resources API](https://apis.io/apis/rentberry/rentberry-resources-api/) — Resources
+- [Rentberry Saved Search API](https://apis.io/apis/rentberry/rentberry-saved-search-api/) — Saved Search
+- [Rentberry Screening API](https://apis.io/apis/rentberry/rentberry-screening-api/) — Screening
+- [Rentberry Screening Reports API](https://apis.io/apis/rentberry/rentberry-screening-reports-api/) — Screening Reports
+- [Rentberry Search API](https://apis.io/apis/rentberry/rentberry-search-api/) — Search
+- [Rentberry SEO Redirects API](https://apis.io/apis/rentberry/rentberry-seo-redirects-api/) — SEO Redirects
+- [Rentberry SEO URLs API](https://apis.io/apis/rentberry/rentberry-seo-urls-api/) — SEO URLs
+- [Rentberry SMS API](https://apis.io/apis/rentberry/rentberry-sms-api/) — SMS
+- [Rentberry Subscriptions API](https://apis.io/apis/rentberry/rentberry-subscriptions-api/) — Subscriptions
+- [Rentberry Translation API](https://apis.io/apis/rentberry/rentberry-translation-api/) — Translation
+- [Rentberry User API](https://apis.io/apis/rentberry/rentberry-user-api/) — User
+- [Rentberry User Phone Verification API](https://apis.io/apis/rentberry/rentberry-user-phone-verification-api/) — User Phone Verification
+- [Rentberry User Settings API](https://apis.io/apis/rentberry/rentberry-user-settings-api/) — User Settings
+- [Rentberry User Status API](https://apis.io/apis/rentberry/rentberry-user-status-api/) — User Status
+- [Rentberry User Verification API](https://apis.io/apis/rentberry/rentberry-user-verification-api/) — User Verification
+- [Rentberry V{version} API](https://apis.io/apis/rentberry/rentberry-v-version-api/) — The V{version} API from Rentberry — 21 operation(s) for v{version}.
+- [Rentberry Virtual Tours API](https://apis.io/apis/rentberry/rentberry-virtual-tours-api/) — Virtual Tours
+- [Rentberry O Auth API](https://apis.io/apis/rentberry/rentberry-oauth-api/) — OAuth
 
-`openapi/` `grpc/` `authentication/` `conventions/` `errors/` `lifecycle/` `conformance/` `data-model/`
-`overlays/` `packages/` `sandbox/` `security/` `well-known/` `llms/` `mcp/` `skills/`
+### Published properties
 
-## Notable gaps (probed 2026-08-02)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- OpenAPI declares no `servers[]` and no `components.securitySchemes`, yet 122 operations reference a
-  scheme named `XAuthToken`; 22 operations are untagged. See `overlays/rentberry-openapi-overlay.yaml`.
-- No idempotency contract on any write, including payments, subscriptions and payouts.
-- No `/.well-known/` documents, no A2A agent card, no MCP server, no GraphQL.
-- No consumer webhooks or AsyncAPI — the webhook paths in the spec are inbound Stripe / Mailchimp /
-  Mandrill receivers Rentberry runs for itself.
-- No client SDK for the API in any package registry.
-- No status page, changelog, deprecation policy or SLA.
-- No vulnerability disclosure program, trust center or published certifications, despite handling US
-  consumer screening data and card payments.
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [rentberry](https://apis.io/servers/rentberry/rentberry/)
+
+#### Collections (45)
+
+Postman and Open Collection request collections.
+
+- [Rentberry Applications API](https://apis.io/collections/rentberry/open-rentberry-applications-api/)
+- [Rentberry Auth API](https://apis.io/collections/rentberry/open-rentberry-auth-api/)
+- [Rentberry Breadcrumbs API](https://apis.io/collections/rentberry/open-rentberry-breadcrumbs-api/)
+- [Rentberry Complaints API](https://apis.io/collections/rentberry/open-rentberry-complaints-api/)
+- [Rentberry Contract Templates API](https://apis.io/collections/rentberry/open-rentberry-contract-templates-api/)
+- [Rentberry Contracts API](https://apis.io/collections/rentberry/open-rentberry-contracts-api/)
+- [Rentberry Devices API](https://apis.io/collections/rentberry/open-rentberry-devices-api/)
+- [Rentberry Events API](https://apis.io/collections/rentberry/open-rentberry-events-api/)
+- [Rentberry Features API](https://apis.io/collections/rentberry/open-rentberry-features-api/)
+- [Rentberry Integration Requests API](https://apis.io/collections/rentberry/open-rentberry-integration-requests-api/)
+- [Rentberry Landing Pages API](https://apis.io/collections/rentberry/open-rentberry-landing-pages-api/)
+- [Rentberry Landing Statistics API](https://apis.io/collections/rentberry/open-rentberry-landing-statistics-api/)
+- [Rentberry Leads API](https://apis.io/collections/rentberry/open-rentberry-leads-api/)
+- [Rentberry Listing Pictures API](https://apis.io/collections/rentberry/open-rentberry-listing-pictures-api/)
+- [Rentberry Listings API](https://apis.io/collections/rentberry/open-rentberry-listings-api/)
+- [Rentberry Location API](https://apis.io/collections/rentberry/open-rentberry-location-api/)
+- [Rentberry Messages API](https://apis.io/collections/rentberry/open-rentberry-messages-api/)
+- [Rentberry Mobile Search API](https://apis.io/collections/rentberry/open-rentberry-mobile-search-api/)
+- [Rentberry Newsletter API](https://apis.io/collections/rentberry/open-rentberry-newsletter-api/)
+- [Rentberry Notifications API](https://apis.io/collections/rentberry/open-rentberry-notifications-api/)
+- [Rentberry O Auth API](https://apis.io/collections/rentberry/open-rentberry-oauth-api/)
+- [Rentberry Payments API](https://apis.io/collections/rentberry/open-rentberry-payments-api/)
+- [Rentberry Providers API](https://apis.io/collections/rentberry/open-rentberry-providers-api/)
+- [Rentberry Registration API](https://apis.io/collections/rentberry/open-rentberry-registration-api/)
+- [Rentberry Rental API](https://apis.io/collections/rentberry/open-rentberry-rental-api/)
+- …and 20 more published on APIs.io
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Rentberry Openapi Overlay](https://apis.io/overlays/rentberry/rentberry-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rentberry Authentication](https://apis.io/security/rentberry/rentberry-authentication/)
+- [Rentberry Domain Security](https://apis.io/security/rentberry/rentberry-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://rentberry.com/)
+- [Documentation](https://api.rentberry.com/docs)
+- [API reference](https://api.rentberry.com/docs)
+- [Pricing](https://rentberry.com/pricing)
+- [Sign up](https://rentberry.com/auth)
+- [Support](https://help.rentberry.com/en/)
+- [Blog](https://rentberry.com/blog/)
+- [Terms of service](https://rentberry.com/terms)
+- [Privacy policy](https://rentberry.com/privacy)
+- [GitHub](https://github.com/Rentberry)
+
+## API Evangelist rating
+
+**Kin Score 42.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 40.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 44.7 |
+
+**Agent readiness 22.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rentberry/](https://apis.io/providers/rentberry/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rentberry: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rentberry/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
